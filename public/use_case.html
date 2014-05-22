@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <title>PlantUML</title>
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache, must-revalidate">
+
+    <script type="text/javascript" src="/assets/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="/assets/jquery_plantuml.js"></script>
+</head>
+<body>
+<img uml="
+User << Human >>
+:RDF: as RDF << Application >>
+
+rectangle Speilinformationen {
+  User -> (Speilinformationen)
+  RDF -> (Speilinformationen)
+  (Ortsinformationen) .> (Speilinformationen) : include
+  (Stdaioninformationen) .> (Ortsinformationen) : include
+  (Stadtinformationen) .> (Ortsinformationen) : include
+  (Mannschaftsinformationen) .> (Speilinformationen) : include
+  (Spielerinformationen) .> (Mannschaftsinformationen) : include
+  (Tagesinformationen) .> (Speilinformationen) : include
+}
+
+">
+
+</body>
+</html>
