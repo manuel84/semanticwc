@@ -1,1 +1,12 @@
-<h1>Semantic World Cup</h1>
+<div data-role="page" id="matchday" class="matchday-page" data-dom-cache="true" data-theme="b"
+     data-prev="<%= pages_path(:uri => @matchdays[@current_index-1]) %>"
+     data-next="<%= pages_path(:uri => @matchdays[@current_index+1]) %>" data-url="">
+  <div role="main" class="">
+    <div id="trivia-matchday" class="" data-tolerance="50,30,30,30" data-theme="a">
+
+      <p>Spieltag Nr. <%= @current_index+1 %></p>
+    </div>
+    <!-- /popup -->
+  </div>
+  <!-- /content -->
+</div>
