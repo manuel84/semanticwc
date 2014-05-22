@@ -21,8 +21,9 @@ User << Human >>
 rectangle Speilinformationen {
   User -> (Speilinformationen)
   RDF -> (Speilinformationen)
-  (Ortsinformationen) .> (Speilinformationen) : include
-  (Stdaioninformationen) .> (Ortsinformationen) : include
+  (Spielereignisse) .> (Spielinformationen) : include
+  (Ortsinformationen) .> (Spielinformationen) : include
+  (Stadioninformationen) .> (Ortsinformationen) : include
   (Stadtinformationen) .> (Ortsinformationen) : include
   (Mannschaftsinformationen) .> (Speilinformationen) : include
   (Spielerinformationen) .> (Mannschaftsinformationen) : include
@@ -30,6 +31,53 @@ rectangle Speilinformationen {
 }
 
 ">
+
+<h2>Spielinformationen</h2>
+- Teams
+- Gruppe
+- Runde
+- Begegnunsstatistik
+
+<h2>Spielereignisse</h2>
+Ereignisse aufsteigend sortiert
+- Tore
+- Karten
+- Ecken
+- Freistöße
+- Elfmeter
+
+<h2>Stadtinformationen</h2>
+- Stadtnamen
+- Region
+- Einwohner
+- Vegetation
+- Sehenswürdigkeiten
+
+<h2>Stadioninformationen</h2>
+- Zuschauerplätze
+- Baujahr
+- Heimatverein
+- Geoposition
+- WM-Spiele
+
+<h2>Mannschaftsinformationen</h2>
+- Verbandsugehörigkeit
+- WM-Titel
+- Name
+- Trainer
+- Kaderliste
+
+<h2>Spielerinformationen</h2>
+- Name
+- Künstlername
+- Stammdaten
+- Team aktuell
+- Teams Historie
+
+<h2>Tagesinformationen</h2>
+- Datum
+- Wetter
+- besonderes Ereignisse an diesem Datum
 
 </body>
 </html>
