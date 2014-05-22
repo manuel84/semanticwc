@@ -14,3 +14,10 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+/.idea/workspace.xml
+
+/.idea/.generators
+/.idea/runConfigurations/
+/.idea/semanticwc.iml
+/.idea/vcs.xml
