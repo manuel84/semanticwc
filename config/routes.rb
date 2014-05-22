@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  resources :pages, only: [] do
-    get :show_matchday, on: :member
+  resources :pages, only: [:index] do
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

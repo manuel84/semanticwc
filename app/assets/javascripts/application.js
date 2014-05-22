@@ -12,6 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-
-//= require_tree .
 //= require jquery.mobile-1.4.2.min
+//= require pages
