@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2908628664">
+    <data-source source="LOCAL" name="Rails semanticwc: development" uuid="26012d4e-8551-4b26-945a-b36071c4cfad">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:semanticwc_development</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails semanticwc: test" uuid="c4f0e6b4-34ad-4309-b9ba-33d6b765bff0">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:semanticwc_test</jdbc-url>
+      <libraries />
+    </data-source>
+    <data-source source="LOCAL" name="Rails semanticwc: production" uuid="7e704578-b3f1-400e-bdf8-fe576f4b5975">
+      <driver-ref>postgresql</driver-ref>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql:semanticwc_production</jdbc-url>
+      <user-name>semanticwc</user-name>
+      <user-password>df96df8fdf97df8adfefdfe4dffcdff1df8ddff9dfefdfe7dfebdfe4dffedfe3dfe9dffddfe9dff5dfeedfebdffedfebdfe8dfebdff9dfefdff5dffadfebdff9dff9dffddfe5dff8dfeedf8ddff7df8adf8fdf94</user-password>
+      <libraries />
+    </data-source>
+  </component>
+</project>
+
