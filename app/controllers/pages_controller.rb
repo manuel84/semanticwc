@@ -2,7 +2,6 @@ class PagesController < ApplicationController
 
   def index
     o = OpenLigaDbDataWrapper.new
-    prefix = 'http://localhost:3000/matchdays/'
     @matchdays = o.brasil_matches o.brasil_rounds.first
     @current_index = @matchdays.index { |m| m.last.first.first.eql?(params[:uri]) }
     @matchday = @matchdays[@current_index]
