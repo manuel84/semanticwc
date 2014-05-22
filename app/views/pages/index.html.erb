@@ -1,10 +1,18 @@
 <div data-role="page" id="matchday" class="matchday-page" data-dom-cache="true" data-theme="b"
-     <%= "data-prev=\"#{pages_path(:uri => @matchdays[@current_index-1])}\"".html_safe if @current_index > 0 %>
-     <%= "data-next=\"#{pages_path(:uri => @matchdays[@current_index+1])}\"".html_safe if @matchdays.count >= @current_index+2 %>>
+     <%= "data-prev=\"#{pages_path(:uri => @matchdays[@current_index-1].last.first.first)}\"".html_safe if @current_index > 0 %>
+     <%= "data-next=\"#{pages_path(:uri => @matchdays[@current_index+1].last.first.first)}\"".html_safe if @matchdays.count >= @current_index+2 %>>
   <div role="main" class="">
     <div id="trivia-matchday" class="" data-tolerance="50,30,30,30" data-theme="a">
 
-      <p>Spieltag Nr. <%= @current_index+1 %></p>
+      <p>
+        <%= @matchday.last.select { |t| t[1].eql?("time") }.first.last.to_s(:db) %><br/>
+        <img src="<%= @matchday.last.select { |t| t[1].eql?("team1_icon") }.first.last %>"/>
+        <%= @matchday.last.select { |t| t[1].eql?("team1") }.first.last %>
+        - <%= @matchday.last.select { |t| t[1].eql?("team2") }.first.last %>
+        <img src="<%= @matchday.last.select { |t| t[1].eql?("team2_icon") }.first.last %>"/><br/>
+        <%= @matchday.last.select { |t| t[1].eql?("stadium") }.first.last %> (<%= @matchday.last.select { |t| t[1].eql?("city") }.first.last %>)
+
+      </p>
     </div>
     <!-- /popup -->
   </div>
