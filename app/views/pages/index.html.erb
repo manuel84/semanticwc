@@ -11,7 +11,7 @@
         Navigation </a>
     </div>
 
-    <div class="ui-content ui-page-theme-a" data-form="ui-page-theme-a" data-theme="a" role="main">
+    <div class="ui-content ui-page-theme-a page" data-form="ui-page-theme-a" data-theme="a" role="main">
 
       <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all">
         <li data-role="list-divider" data-theme="a" data-swatch="a" data-form="ui-bar-a" role="heading">
@@ -19,8 +19,14 @@
         </li>
         <li data-form="ui-body-a" data-swatch="a" data-theme="a">
           <div class="big center">
-            <img src="<%= @matchday.last.select { |t| t[1].eql?("team1_icon") }.first.last %>" height="40" alt="Team 1"/>
-            <img src="<%= @matchday.last.select { |t| t[1].eql?("team2_icon") }.first.last %>" height="40" alt="Team 2"/><br/>
+            <a href="<%= pages_path(:uri => "team_"+@matchday.last.select { |t| t[1].eql?("team1") }.first.last) %>" class="img">
+              <img src="<%= @matchday.last.select { |t| t[1].eql?("team1_icon") }.first.last %>" height="40" alt="Team 1"/>
+            </a>
+            <a href="<%= pages_path(:uri => "team_"+@matchday.last.select { |t| t[1].eql?("team2") }.first.last) %>" class="img">
+              <img src="<%= @matchday.last.select { |t| t[1].eql?("team2_icon") }.first.last %>" height="40" alt="Team 2"/>
+            </a>
+            <br/>
+
             <%= @matchday.last.select { |t| t[1].eql?("team1") }.first.last %>
             - <%= @matchday.last.select { |t| t[1].eql?("team2") }.first.last %>
 
@@ -28,7 +34,9 @@
 
         </li>
         <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="#"><%= @matchday.last.select { |t| t[1].eql?("stadium") }.first.last %>
+          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a"
+             href="<%= pages_path(:uri => "team_"+@matchday.last.select { |t| t[1].eql?("team1") }.first.last) %>">
+            <%= @matchday.last.select { |t| t[1].eql?("stadium") }.first.last %>
             (<%= @matchday.last.select { |t| t[1].eql?("city") }.first.last %>)</a></li>
       </ul>
 
