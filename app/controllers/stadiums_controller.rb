@@ -1,4 +1,4 @@
-class PagesController < ApplicationController
+class StadiumsController < ApplicationController
 
   def index
     #http://localhost:3000/pages?uri=2014-06-13_Mexiko_Kamerun

@@ -5,7 +5,7 @@
 
     <link rel="shortcut icon" href="favicon.ico">
 
-    <title>PlantUML</title>
+    <title>Use Cases</title>
     <meta http-equiv="expires" content="0">
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache, must-revalidate">
@@ -15,100 +15,139 @@
 </head>
 <body>
 
+<h2>vereinfachtes Anwendungsfall-Diagramm</h2>
 <img uml="
 left to right direction
 User << Human >>
-:Server: as Server << Application >>
 
 rectangle Spielinformationen {
-  User -> (Spielinformationen)
-  Server -> (Spielinformationen)
+  User -> (Spielinformationen abrufen)
+  User -> (Spielerinformationen abrufen)
+  User -> (Trainerinformationen abrufen)
+  User -> (Stadioninformationen abrufen)
+  User -> (Mannschaftsinformationen abrufen)
 }
 
 ">
-<br/>
-<img uml="
 
+<h2>ausführliches Anwendungsfall-Diagramm</h2>
+<img uml="
+left to right direction
 User << Human >>
-:Server: as Server << Application >>
-:RDF Builder: as RDF << Application >>
-:Triple Store: as TS << Database >>
-:Remote Data Sources: as RDS
-:Ontologies: as Ontos
+:Server: as Server << system >>
+:RDF Builder: as RDF << system >>
+
 
 rectangle Spielinformationen {
-  User -> (Spielinformationen)
-  Server -> (Spielinformationen)
-  (Spielereignisse) .> (Spielinformationen) : include
-  (Ortsinformationen) .> (Spielinformationen) : include
-  (Stadioninformationen) .> (Ortsinformationen) : include
-  (Stadtinformationen) .> (Ortsinformationen) : include
-  (Mannschaftsinformationen) .> (Spielinformationen) : include
-  (Mannschaftsinformationen) .> (Trainerinformationen) : include
-  (Spielerinformationen) .> (Mannschaftsinformationen) : include
-  (Tagesinformationen) .> (Spielinformationen) : include
+  (Aggregiere Daten) <- RDF
+  (Konvertiere zu RDF) <- RDF
+
+
+
+  User --> (Spielinformationen abrufen)
+  (Spielinformationen abrufen) .> (Spielereignisse abrufen) : <<include>>
+
+  User --> (Spielerinformationen abrufen)
+  User --> (Trainerinformationen abrufen)
+  User --> (Stadioninformationen abrufen)
+  (Stadioninformationen abrufen) .> (Stadtinformationen abrufen) : <<include>>
+
+  (Mannschaftsinformationen abrufen) .> (Länderinformationen abrufen) : <<include>>
+  User --> (Mannschaftsinformationen abrufen)
+
+
+  User --> (Spielereignisse abrufen)
+  User --> (Länderinformationen abrufen)
+  User --> (Stadtinformationen abrufen)
+
+
+  (Spielinformationen abrufen) <-- Server
+  (Spielerinformationen abrufen) <-- Server
+  (Trainerinformationen abrufen) <-- Server
+  (Stadioninformationen abrufen) <-- Server
+  (Mannschaftsinformationen abrufen) <-- Server
+  (Spielereignisse abrufen) <-- Server
+  (Länderinformationen abrufen) <-- Server
+  (Stadtinformationen abrufen) <-- Server
+
 }
 
-RDF .> Server : extends
-RDF .> TS : uses
-RDF .> RDS : uses
-RDF .> Ontos : uses
 ">
 
 <h2>Spielinformationen</h2>
-- Teams
-- Gruppe
-- Runde
-- Begegnunsstatistik
+<ul>
+    <li>Teams</li>
+    <li>Gruppe</li>
+    <li>Runde</li>
+    <li>Begegnunsstatistik</li>
 
-<h2>Spielereignisse</h2>
-Ereignisse aufsteigend sortiert
-- Tore
-- Karten
-- Ecken
-- Freistöße
-- Elfmeter
 
-<h2>Stadtinformationen</h2>
-- Stadtnamen
-- Region
-- Einwohner
-- Vegetation
-- Sehenswürdigkeiten
-- Geoposition
+    <li>Spielereignisse (aufsteigend sortiert)
+        <ul>
+            <li>Tore</li>
+            <li>Karten</li>
+            <li>Ecken</li>
+            <li>Freistöße</li>
+            <li>Elfmeter</li>
+        </ul>
+    </li>
+    <li>
+
+        Tagesinformationen (optional)
+        <ul>
+            <li>Datum
+            <li>Wetter
+            <li>besonderes Ereignisse an diesem Datum
+        </ul>
+    </li>
+</ul>
+
 
 <h2>Stadioninformationen</h2>
-- Zuschauerplätze
-- Baujahr
-- Heimatverein
-- Geoposition
-- WM-Spiele
-- Bild
+<ul>
+    <li>Zuschauerplätze</li>
+    <li>Baujahr</li>
+    <li>Heimatverein</li>
+    <li>Geoposition</li>
+    <li>WM-Spiele</li>
+    <li>Bild</li>
+    <li>Stadtinformationen
+        <ul>
+            <li>Stadtnamen</li>
+            <li>Region</li>
+            <li>Einwohner</li>
+            <li>Vegetation</li>
+            <li>Sehenswürdigkeiten</li>
+            <li>Geoposition</li>
+        </ul>
+    </li>
+</ul>
 
 <h2>Mannschaftsinformationen</h2>
-- Verbandsugehörigkeit
-- WM-Titel
-- Name
-- Trainer
-- Kaderliste
+<ul>
+    <li>Verbandsugehörigkeit</li>
+    <li>WM-Titel</li>
+    <li>Name</li>
+    <li>Trainer</li>
+    <li>Kaderliste</li>
+</ul>
 
 <h2>Spielerinformationen</h2>
-- Name
-- Künstlername
-- Stammdaten
-- Team aktuell
-- Teams Historie
+<ul>
+    <li>Name</li>
+    <li>Künstlername</li>
+    <li>Stammdaten</li>
+    <li>Team aktuell</li>
+    <li>Teams Historie</li>
+</ul>
 
 <h2>Trainierinformationen</h2>
-- Name
-- Stammdaten
-- Team aktuell
-- Tainerstationen
-
-<h2>Tagesinformationen</h2>
-- Datum
-- Wetter
-- besonderes Ereignisse an diesem Datum
+<ul>
+    <li>Name</li>
+    <li>Stammdaten</li>
+    <li>Team aktuell</li>
+    <li>Tainerstationen</li>
+</ul>
 
 </body>
 </html>

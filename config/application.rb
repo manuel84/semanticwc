@@ -23,3 +23,7 @@ module Semanticwc
     config.autoload_paths += %W(#{Rails.root.join 'lib', 'data_wrapper'})
   end
 end
+
+module PREFIX
+  WC = 'http://cs.hs-rm.de/mdudd001/wc/'
+end

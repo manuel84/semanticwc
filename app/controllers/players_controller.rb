@@ -1,4 +1,4 @@
-class PagesController < ApplicationController
+class PlayersController < ApplicationController
 
   def index
     #http://localhost:3000/pages?uri=2014-06-13_Mexiko_Kamerun
@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     if params[:uri] && params[:uri].starts_with?('team_')
       render :team
     elsif params[:uri] && params[:uri].starts_with?('player_')
-      render :player
+
     else
       @current_index = @matchdays.index { |m| m.last.first.first.eql?(params[:uri]) } || 0
       @matchday = @matchdays[@current_index]

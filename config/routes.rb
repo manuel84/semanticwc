@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  resources :pages, only: [:index] do
-  end
+  resources :teams, :players, :trainers, :stadiums, :matches, only: [:index]
 
+  root 'matches#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
