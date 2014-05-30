@@ -6,7 +6,7 @@
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
-<http://de.dbpedia.org/page/Fu%C3%9Fball-Weltmeisterschaft> a bbcsport:RecurringCompetition ;
+<http://de.dbpedia.org/page/Fu%C3%9Fball-Weltmeisterschaft> rdf:type bbcsport:RecurringCompetition ;
     bbcevent:recurringEvent <http://de.dbpedia.org/page/Fu%C3%9Fball-Weltmeisterschaft_2014> .
 
-<http://de.dbpedia.org/page/Fu%C3%9Fball-Weltmeisterschaft_2014> a bbcsport:DivisionalCompetition .
+<http://de.dbpedia.org/page/Fu%C3%9Fball-Weltmeisterschaft_2014> rdf:type bbcsport:DivisionalCompetition .

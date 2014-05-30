@@ -26,4 +26,11 @@ end
 
 module PREFIX
   WC = 'http://cs.hs-rm.de/mdudd001/wc/'
+  BBCEVENT = 'http://www.bbc.co.uk/ontologies/event/'
+  BBCSPORT = 'http://www.bbc.co.uk/ontologies/sport/'
+  DB = 'http://de.dbpedia.org/'
+  RDF = 'http://www.w3.org/1999/02/22-rdf-syntax-ns#'
+  RDFS ='http://www.w3.org/2000/01/rdf-schema#'
+  XML = 'http://www.w3.org/XML/1998/namespace'
+  XSD = 'http://www.w3.org/2001/XMLSchema#'
 end
