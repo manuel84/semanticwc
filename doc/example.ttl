@@ -9,4 +9,4 @@
 <http://de.dbpedia.org/page/Fu%C3%9Fball-Weltmeisterschaft> rdf:type bbcsport:RecurringCompetition ;
     bbcevent:recurringEvent <http://de.dbpedia.org/page/Fu%C3%9Fball-Weltmeisterschaft_2014> .
 
-<http://de.dbpedia.org/page/Fu%C3%9Fball-Weltmeisterschaft_2014> rdf:type bbcsport:DivisionalCompetition .
+<http://de.dbpedia.org/page/Fu%C3%9Fball-Weltmeisterschaft_2014> rdf:type bbcsport:MultiStageCompetition .
