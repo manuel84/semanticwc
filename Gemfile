@@ -54,5 +54,6 @@ end
 gem 'savon'
 gem 'rdf'
 gem 'rdf-turtle'
+gem 'rdf-rdfxml'
 gem 'sparql'
 gem 'equivalent-xml'

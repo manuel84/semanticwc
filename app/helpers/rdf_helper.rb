@@ -6,4 +6,11 @@ module RdfHelper
     sparql = SPARQL.parse("SELECT * WHERE { ?s <#{PREFIX::RDF}type> <#{PREFIX::BBCSPORT}MultiStageCompetition> }")
     solutions = QUERYABLE.query(sparql)
   end
+
+  def write_to_xml
+    graph = RDF::Graph.load RDF_TTL_FILE
+    RDF::RDFXML::Writer.open((Rails.root.join 'doc', 'example.rdf').to_s, format: :xml) do |writer|
+      writer << graph
+    end
+  end
 end
