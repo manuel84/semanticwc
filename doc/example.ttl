@@ -1,0 +1,52 @@
+@prefix wiki: <http://de.wikipedia.org/wiki/> .
+@prefix wc14: <http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#> .
+@prefix wc14a: <http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#> .
+@prefix hsrm: <http://cs.hs-rm.de/~mdudd001/wc/> .
+@prefix bbcevent: <http://www.bbc.co.uk/ontologies/event/> .
+@prefix bbcsport: <http://www.bbc.co.uk/ontologies/sport/> .
+@prefix db: <http://de.dbpedia.org/page/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+db:Fußball-Weltmeisterschaft rdf:type bbcsport:RecurringCompetition ;
+    bbcevent:recurringEvent db:Fußball-Weltmeisterschaft_2014 .
+
+db:Fußball-Weltmeisterschaft_2014 rdf:type bbcsport:MultiStageCompetition ;
+    bbcsport:firstStage wc14:Vorrunde ;
+    bbcsport:lastStage  wc14:Finale ;
+    bbcsport:hasStage   wc14:Achtelfinale ,
+                        wc14:Viertelfinale ,
+                        wc14:Halbfinale ,
+                        wc14:Spiel_um_Platz_3 .
+                        
+
+
+wc14:Vorrunde rdf:type bbcsport:GroupCompetition ;
+    bbcsport:hasGroup   wc14:Gruppe_A,
+                        wc14:Gruppe_B,
+                        wc14:Gruppe_C,
+                        wc14:Gruppe_D,
+                        wc14:Gruppe_E,
+                        wc14:Gruppe_F,
+                        wc14:Gruppe_G,
+                        wc14:Gruppe_H .
+wc14:Achtelfinale rdf:type bbcsport:KnockoutCompetition .
+wc14:Viertelfinale rdf:type bbcsport:KnockoutCompetition .
+wc14:Halbfinale rdf:type bbcsport:KnockoutCompetition .
+wc14:Spiel_um_Platz_3 rdf:type bbcsport:KnockoutCompetition ;
+                      bbcsport:hasRound hsrm:Spiel_um_PLatz_3 .
+wc14:Finale rdf:type bbcsport:KnockoutCompetition ;
+            bbcsport:hasRound hsrm:Finalspiel .
+
+wc14:Gruppe_A bbcsport:hasMatch wc14a:Brasilien_.E2.80.93_Kroatien ,
+                                wc14a:Mexiko_.E2.80.93_Kamerun_-:-_.28-:-.29 ,
+                                wc14a:Brasilien_.E2.80.93_Mexiko_-:-_.28-:-.29 ,
+                                wc14a:Kamerun_.E2.80.93_Kroatien_-:-_.28-:-.29 ,
+                                wc14a:Kamerun_.E2.80.93_Brasilien_-:-_.28-:-.29 ,
+                                wc14a:Kroatien_.E2.80.93_Mexiko_-:-_.28-:-.29 .
+
+# Konkrete Spiele
+wc14:Gruppe_A#Brasilien_.E2.80.93_Kroatien bbcsport:homeCompetitor wiki:Brasilianische_Fußballnationalmannschaft ;
+                                           bbcsport:awayCompetitor wiki:Kroatische_Fußballnationalmannschaft .

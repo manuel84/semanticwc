@@ -47,4 +47,13 @@ group :development do
   gem 'binding_of_caller'
 end
 
+group :test, :development do
+  gem 'rspec-rails'
+end
+
 gem 'savon'
+gem 'rdf'
+gem 'rdf-turtle'
+gem 'rdf-rdfxml'
+gem 'sparql'
+gem 'equivalent-xml'
