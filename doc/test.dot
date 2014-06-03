@@ -1,0 +1,64 @@
+digraph {
+	rankdir = LR;
+	charset="utf-8";
+
+	"Rdb:Fußball-Weltmeisterschaft" -> "Rbbcsport:RecurringCompetition" [ label="rdf:type" ];
+	"Rdb:Fußball-Weltmeisterschaft" -> "Rdb:Fußball-Weltmeisterschaft_2014" [ label="bbcevent:recurringEvent" ];
+	"Rdb:Fußball-Weltmeisterschaft_2014" -> "Rbbcsport:MultiStageCompetition" [ label="rdf:type" ];
+	"Rdb:Fußball-Weltmeisterschaft_2014" -> "Rwiki:Fußball-Weltmeisterschaft_2014#Vorrunde" [ label="bbcsport:firstStage" ];
+	"Rdb:Fußball-Weltmeisterschaft_2014" -> "Rwiki:Fußball-Weltmeisterschaft_2014#Finale" [ label="bbcsport:lastStage" ];
+	"Rdb:Fußball-Weltmeisterschaft_2014" -> "Rwiki:Fußball-Weltmeisterschaft_2014#Achtelfinale" [ label="bbcsport:hasStage" ];
+	"Rdb:Fußball-Weltmeisterschaft_2014" -> "Rwiki:Fußball-Weltmeisterschaft_2014#Viertelfinale" [ label="bbcsport:hasStage" ];
+	"Rdb:Fußball-Weltmeisterschaft_2014" -> "Rwiki:Fußball-Weltmeisterschaft_2014#Halbfinale" [ label="bbcsport:hasStage" ];
+	"Rdb:Fußball-Weltmeisterschaft_2014" -> "Rwiki:Fußball-Weltmeisterschaft_2014#Spiel_um_Platz_3" [ label="bbcsport:hasStage" ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Vorrunde" -> "Rbbcsport:GroupCompetition" [ label="rdf:type" ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Vorrunde" -> "Rwiki:Fußball-Weltmeisterschaft_2014#Gruppe_A" [ label="bbcsport:hasGroup" ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Vorrunde" -> "Rwiki:Fußball-Weltmeisterschaft_2014#Gruppe_B" [ label="bbcsport:hasGroup" ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Vorrunde" -> "Rwiki:Fußball-Weltmeisterschaft_2014#Gruppe_G" [ label="bbcsport:hasGroup" ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Vorrunde" -> "Rwiki:Fußball-Weltmeisterschaft_2014#Gruppe_H" [ label="bbcsport:hasGroup" ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Achtelfinale" -> "Rbbcsport:KnockoutCompetition" [ label="rdf:type" ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Viertelfinale" -> "Rbbcsport:KnockoutCompetition" [ label="rdf:type" ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Halbfinale" -> "Rbbcsport:KnockoutCompetition" [ label="rdf:type" ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Spiel_um_Platz_3" -> "Rbbcsport:KnockoutCompetition" [ label="rdf:type" ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Spiel_um_Platz_3" -> "Rhsrm:Spiel_um_PLatz_3" [ label="bbcsport:hasRound" ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Finale" -> "Rbbcsport:KnockoutCompetition" [ label="rdf:type" ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Finale" -> "Rhsrm:Finalspiel" [ label="bbcsport:hasRound" ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Gruppe_A" -> "Rwiki:Fußball-Weltmeisterschaft_2014/Gruppe_A#Brasilien_.E2.80.93_Kroatien" [ label="bbcsport:hasMatch" ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Gruppe_A" -> "Rwiki:Fußball-Weltmeisterschaft_2014/Gruppe_A#Mexiko_.E2.80.93_Kamerun_-:-_.28-:-.29" [ label="bbcsport:hasMatch" ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Gruppe_A" -> "Rwiki:Fußball-Weltmeisterschaft_2014/Gruppe_A#Kroatien_.E2.80.93_Mexiko_-:-_.28-:-.29" [ label="bbcsport:hasMatch" ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014/Gruppe_A#Brasilien_.E2.80.93_Kroatien" -> "Rwiki:Brasilianische_Fußballnationalmannschaft" [ label="bbcsport:homeCompetitor" ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014/Gruppe_A#Brasilien_.E2.80.93_Kroatien" -> "Rdb:Felix_Brych" [ label="smm:Referee" ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014/Gruppe_A#Brasilien_.E2.80.93_Kroatien" -> "Rwiki:Kroatische_Fußballnationalmannschaft" [ label="bbcsport:awayCompetitor" ];
+
+	// Resources
+	"Rdb:Fußball-Weltmeisterschaft" [ label="db:Fußball-Weltmeisterschaft", shape = ellipse, color = blue ];
+	"Rbbcsport:RecurringCompetition" [ label="bbcsport:RecurringCompetition", shape = ellipse, color = blue ];
+	"Rdb:Fußball-Weltmeisterschaft_2014" [ label="db:Fußball-Weltmeisterschaft_2014", shape = ellipse, color = blue ];
+	"Rbbcsport:MultiStageCompetition" [ label="bbcsport:MultiStageCompetition", shape = ellipse, color = blue ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Vorrunde" [ label="wiki:Fußball-Weltmeisterschaft_2014#Vorrunde", shape = ellipse, color = blue ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Finale" [ label="wiki:Fußball-Weltmeisterschaft_2014#Finale", shape = ellipse, color = blue ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Achtelfinale" [ label="wiki:Fußball-Weltmeisterschaft_2014#Achtelfinale", shape = ellipse, color = blue ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Viertelfinale" [ label="wiki:Fußball-Weltmeisterschaft_2014#Viertelfinale", shape = ellipse, color = blue ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Halbfinale" [ label="wiki:Fußball-Weltmeisterschaft_2014#Halbfinale", shape = ellipse, color = blue ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Spiel_um_Platz_3" [ label="wiki:Fußball-Weltmeisterschaft_2014#Spiel_um_Platz_3", shape = ellipse, color = blue ];
+	"Rbbcsport:GroupCompetition" [ label="bbcsport:GroupCompetition", shape = ellipse, color = blue ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Gruppe_A" [ label="wiki:Fußball-Weltmeisterschaft_2014#Gruppe_A", shape = ellipse, color = blue ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Gruppe_B" [ label="wiki:Fußball-Weltmeisterschaft_2014#Gruppe_B", shape = ellipse, color = blue ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Gruppe_G" [ label="wiki:Fußball-Weltmeisterschaft_2014#Gruppe_G", shape = ellipse, color = blue ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014#Gruppe_H" [ label="wiki:Fußball-Weltmeisterschaft_2014#Gruppe_H", shape = ellipse, color = blue ];
+	"Rbbcsport:KnockoutCompetition" [ label="bbcsport:KnockoutCompetition", shape = ellipse, color = blue ];
+	"Rhsrm:Spiel_um_PLatz_3" [ label="hsrm:Spiel_um_PLatz_3", shape = ellipse, color = blue ];
+	"Rhsrm:Finalspiel" [ label="hsrm:Finalspiel", shape = ellipse, color = blue ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014/Gruppe_A#Brasilien_.E2.80.93_Kroatien" [ label="wiki:Fußball-Weltmeisterschaft_2014/Gruppe_A#Brasilien_.E2.80.93_Kroatien", shape = ellipse, color = blue ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014/Gruppe_A#Mexiko_.E2.80.93_Kamerun_-:-_.28-:-.29" [ label="wiki:Fußball-Weltmeisterschaft_2014/Gruppe_A#Mexiko_.E2.80.93_Kamerun_-:-_.28-:-.29", shape = ellipse, color = blue ];
+	"Rwiki:Fußball-Weltmeisterschaft_2014/Gruppe_A#Kroatien_.E2.80.93_Mexiko_-:-_.28-:-.29" [ label="wiki:Fußball-Weltmeisterschaft_2014/Gruppe_A#Kroatien_.E2.80.93_Mexiko_-:-_.28-:-.29", shape = ellipse, color = blue ];
+	"Rwiki:Brasilianische_Fußballnationalmannschaft" [ label="wiki:Brasilianische_Fußballnationalmannschaft", shape = ellipse, color = blue ];
+	"Rdb:Felix_Brych" [ label="db:Felix_Brych", shape = ellipse, color = blue ];
+	"Rwiki:Kroatische_Fußballnationalmannschaft" [ label="wiki:Kroatische_Fußballnationalmannschaft", shape = ellipse, color = blue ];
+
+	// Anonymous nodes
+
+	// Literals
+
+	label="\n\nModel:\n(Unknown)\n\nNamespaces:\nwiki: http://de.wikipedia.org/wiki/\nwc14: http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#\nwc14a: http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#\nhsrm: http://cs.hs-rm.de/~mdudd001/wc/\nbbcevent: http://www.bbc.co.uk/ontologies/event/\nbbcsport: http://www.bbc.co.uk/ontologies/sport/\nsmm: http://purl.org/hpi/soccer-voc/\ndb: http://de.dbpedia.org/page/\nrdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#\nrdfs: http://www.w3.org/2000/01/rdf-schema#\nxml: http://www.w3.org/XML/1998/namespace\nxsd: http://www.w3.org/2001/XMLSchema#\n";
+}

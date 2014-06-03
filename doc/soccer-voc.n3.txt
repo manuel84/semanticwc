@@ -1,0 +1,179 @@
+## 
+# Soccer Voc
+#   a vocabulary for describing soccer events
+#   developed for the Seminar Semantic Media Mining at Hasso Plattner Institute, Winter Term 2012/2013
+##
+# Release Log:
+# Revision 0.3.0 (28 April 2013)
+#  * major changes
+#  * replaced classes and properties with equivalents from bbcsport and part
+#
+# Revision 0.2.0 (26 November 2012)
+#  * changed some names of properties
+#  * less binding to DBpedia ontology
+#
+# Revision 0.1.0 (23 November 2012)
+#  * initial release
+##
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix bbcsport: <http://www.bbc.co.uk/ontologies/sport/> .
+@prefix event: <http://purl.org/NET/c4dm/event.owl#> .
+@prefix part: <http://purl.org/vocab/participation/schema> .
+@prefix time: <http://www.w3.org/2006/time#> .
+@prefix geo: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix dbpo: <http://dbpedia.org/ontology/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#"> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix smm: <http://purl.org/hpi/soccer-voc/> .
+
+## Classes ##
+
+# was called smm:Team
+smm:SoccerTeam a rdfs:Class ;
+	rdfs:subClassOf bbc:CompetitiveSportingOrganisation ;
+	rdfs:label "Soccer Team"@en .
+
+# bbcsport:Match replaces smm:Match
+#smm:Match a rdfs:Class ;
+#	rdfs:label "Match"@en .
+
+# bbcsport:SportGoverningBody replaces smm:Association
+#smm:Association a rdfs:Class ;
+#	rdfs:label "Association"@en .
+
+smm:InGameEvent a rdfs:Class ;
+	rdfs:subClassOf event:Event ;
+	rdfs:label "Event in game"@en .
+
+smm:Goal a rdfs:Class ;
+	rdfs:subClassOf smm:InGameEvent ;
+	rdfs:label "Goal"@en .
+
+# bbcsport:Competition replaces smm:Competition
+#smm:Competition a rdfs:Class ;
+#	rdfs:label "Competition"@en .
+
+# related class: bbcsport:LeagueSeason
+smm:SoccerLeagueSeason a rdfs:Class ;
+	rdfs:subClassOf bbcsport:LeagueSeason ;
+	rdfs:label "Soccer League Season"@en .
+
+# related class: bbcsport:CompetitiveSportingOrganisation
+smm:SoccerClub a rdfs:Class ;
+	rdfs:subClassOf foaf:Organisation ;
+	rdfs:label "Soccer Club"@en .
+
+smm:Referee a rdfs:Class ;
+    rdfs:subClassOf foaf:Person ;
+	rdfs:label "Referee"@en .
+
+# related class: bbc:FootballManagerRole
+smm:SoccerManager a rdfs:Class ;
+    rdfs:subClassOf foaf:Person ;
+	rdfs:label "Soccer Manager"@en .
+
+# related class: dbpo:SoccerPlayer
+# related class: bbc:FootballPlayerRole
+smm:SoccerPlayer a rdfs:Class ;
+    rdfs:subClassOf foaf:Person ;
+	rdfs:label "Soccer Player"@en .
+
+# related class: dbpo:Stadium
+smm:Stadium a rdfs:Class ;
+    rdfs:subClassOf geo:SpatialThing ;
+	rdfs:label "Stadium"@en .
+
+# part:Role replaces smm:Job
+#smm:Job a rdfs:Class .
+
+
+## Properties ##
+
+# was called smm:association
+smm:heldBy a rdfs:Property ;
+	rdfs:domain bbcsport:Competition ;
+	rdfs:range bbcsport:SportGoverningBody .
+
+# bbc:isGroupOf replaces smm:memberOf
+#smm:memberOf a rdfs:Property ;
+#	rdfs:domain smm:Team ;
+#	rdfs:range bbcsport:SportGoverningBody .
+
+# event:place replaces smm:venue
+# was called smm:holdIn
+# related property: event:place
+#smm:venue a rdfs:Property ;
+#	rdfs:domain bbcsport:Match ;
+#	rdfs:range smm:Stadium .
+
+# bbcsport:homeCompetitor replaces smm:homeTeam
+# related inverse property: bbcsport:competesIn
+# related property: bbcsport:homeCompetitor
+#smm:homeTeam a rdfs:Property ;
+#	rdfs:domain bbcsport:Match ;
+#	rdfs:range smm:SoccerTeam .
+
+# bbcsport:awayCompetitor replaces smm:guestTeam
+# related inverse property: bbcsport:competesIn
+# related property: bbcsport:awayCompetitor
+#smm:guestTeam a rdfs:Property ;
+#	rdfs:domain bbcsport:Match ;
+#	rdfs:range smm:SoccerTeam .
+
+# related inverse property: bbcsport:hasUnitCompetition
+smm:partOf a rdfs:Property ;
+	rdfs:domain bbcsport:Match ;
+	rdfs:range smm:SoccerLeagueSeason .
+
+# was called: smm:happenedIn
+smm:match a rdfs:Property ;
+	rdfs:domain smm:InGameEvent ;
+	rdfs:range bbcsport:Match .
+
+# related property part:role_at
+# related inverse property part:role
+smm:actor a rdfs:Property ;
+	rdfs:domain part:Role ;
+	rdfs:range foaf:Agent .
+
+# role type? rename!
+smm:role a rdfs:Property ;
+	rdfs:domain part:Role .
+
+# part:startDate and part:EndDate replace smm:jobTime
+#smm:jobTime a rdfs:Property ;
+#	rdfs:domain part:Role ;
+#	rdfs:range time:TemporalEntity .
+
+# ? rename!
+smm:jobExecutedIn a rdfs:Property ;
+	rdfs:domain part:Role .
+
+smm:referee a rdfs:Property ;
+	rdfs:domain bbcsport:Match ;
+	rdfs:range smm:Referee .
+
+# rename!
+smm:associatedWith a rdfs:Property ;
+	rdfs:domain smm:SoccerLeagueSeason ;
+	rdfs:range bbcsport:Competition .
+
+smm:player a rdfs:Property ;
+	rdfs:domain bbcsport:Match ;
+	rdfs:range smm:SoccerPlayer .
+
+smm:startPlayer a rdfs:Property ;
+	rdfs:subPropertyOf smm:player .
+
+smm:substitutePlayer a rdfs:Property ;
+	rdfs:subPropertyOf smm:player .
+
+smm:playsFor a rdfs:Property ;
+	rdfs:domain smm:SoccerTeam ;
+	rdfs:range smm:Club .
+
+## Datatypes ##

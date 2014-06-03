@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:bbcevent="http://www.bbc.co.uk/ontologies/event/" xmlns:bbcsport="http://www.bbc.co.uk/ontologies/sport/" xmlns:db="http://de.dbpedia.org/page/" xmlns:hsrm="http://cs.hs-rm.de/~mdudd001/wc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:smm="http://purl.org/hpi/soccer-voc/" xmlns:wc14="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#" xmlns:wc14a="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#" xmlns:wiki="http://de.wikipedia.org/wiki/" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <rdf:Description rdf:about="http://de.dbpedia.org/page/Fußball-Weltmeisterschaft">
+    <rdf:type rdf:resource="http://www.bbc.co.uk/ontologies/sport/RecurringCompetition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.dbpedia.org/page/Fußball-Weltmeisterschaft">
+    <bbcevent:recurringEvent rdf:resource="http://de.dbpedia.org/page/Fußball-Weltmeisterschaft_2014"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.dbpedia.org/page/Fußball-Weltmeisterschaft_2014">
+    <rdf:type rdf:resource="http://www.bbc.co.uk/ontologies/sport/MultiStageCompetition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.dbpedia.org/page/Fußball-Weltmeisterschaft_2014">
+    <bbcsport:firstStage rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Vorrunde"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.dbpedia.org/page/Fußball-Weltmeisterschaft_2014">
+    <bbcsport:lastStage rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Finale"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.dbpedia.org/page/Fußball-Weltmeisterschaft_2014">
+    <bbcsport:hasStage rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Achtelfinale"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.dbpedia.org/page/Fußball-Weltmeisterschaft_2014">
+    <bbcsport:hasStage rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Viertelfinale"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.dbpedia.org/page/Fußball-Weltmeisterschaft_2014">
+    <bbcsport:hasStage rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Halbfinale"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.dbpedia.org/page/Fußball-Weltmeisterschaft_2014">
+    <bbcsport:hasStage rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Spiel_um_Platz_3"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Vorrunde">
+    <rdf:type rdf:resource="http://www.bbc.co.uk/ontologies/sport/GroupCompetition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Vorrunde">
+    <bbcsport:hasGroup rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Gruppe_A"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Vorrunde">
+    <bbcsport:hasGroup rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Gruppe_B"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Vorrunde">
+    <bbcsport:hasGroup rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Gruppe_G"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Vorrunde">
+    <bbcsport:hasGroup rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Gruppe_H"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Achtelfinale">
+    <rdf:type rdf:resource="http://www.bbc.co.uk/ontologies/sport/KnockoutCompetition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Viertelfinale">
+    <rdf:type rdf:resource="http://www.bbc.co.uk/ontologies/sport/KnockoutCompetition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Halbfinale">
+    <rdf:type rdf:resource="http://www.bbc.co.uk/ontologies/sport/KnockoutCompetition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Spiel_um_Platz_3">
+    <rdf:type rdf:resource="http://www.bbc.co.uk/ontologies/sport/KnockoutCompetition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Spiel_um_Platz_3">
+    <bbcsport:hasRound rdf:resource="http://cs.hs-rm.de/~mdudd001/wc/Spiel_um_PLatz_3"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Finale">
+    <rdf:type rdf:resource="http://www.bbc.co.uk/ontologies/sport/KnockoutCompetition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Finale">
+    <bbcsport:hasRound rdf:resource="http://cs.hs-rm.de/~mdudd001/wc/Finalspiel"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Gruppe_A">
+    <bbcsport:hasMatch rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#Brasilien_.E2.80.93_Kroatien"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Gruppe_A">
+    <bbcsport:hasMatch rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#Mexiko_.E2.80.93_Kamerun_-:-_.28-:-.29"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Gruppe_A">
+    <bbcsport:hasMatch rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#Kroatien_.E2.80.93_Mexiko_-:-_.28-:-.29"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#Brasilien_.E2.80.93_Kroatien">
+    <bbcsport:homeCompetitor rdf:resource="http://de.wikipedia.org/wiki/Brasilianische_Fußballnationalmannschaft"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#Brasilien_.E2.80.93_Kroatien">
+    <smm:Referee rdf:resource="http://de.dbpedia.org/page/Felix_Brych"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#Brasilien_.E2.80.93_Kroatien">
+    <bbcsport:awayCompetitor rdf:resource="http://de.wikipedia.org/wiki/Kroatische_Fußballnationalmannschaft"/>
+  </rdf:Description>
+</rdf:RDF>
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:bbcevent="http://www.bbc.co.uk/ontologies/event/" xmlns:bbcsport="http://www.bbc.co.uk/ontologies/sport/" xmlns:db="http://de.dbpedia.org/page/" xmlns:hsrm="http://cs.hs-rm.de/~mdudd001/wc/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:smm="http://purl.org/hpi/soccer-voc/" xmlns:wc14="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#" xmlns:wc14a="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#" xmlns:wiki="http://de.wikipedia.org/wiki/" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <rdf:Description rdf:about="http://de.dbpedia.org/page/Fußball-Weltmeisterschaft">
+    <rdf:type rdf:resource="http://www.bbc.co.uk/ontologies/sport/RecurringCompetition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.dbpedia.org/page/Fußball-Weltmeisterschaft">
+    <bbcevent:recurringEvent rdf:resource="http://de.dbpedia.org/page/Fußball-Weltmeisterschaft_2014"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.dbpedia.org/page/Fußball-Weltmeisterschaft_2014">
+    <rdf:type rdf:resource="http://www.bbc.co.uk/ontologies/sport/MultiStageCompetition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.dbpedia.org/page/Fußball-Weltmeisterschaft_2014">
+    <bbcsport:firstStage rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Vorrunde"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.dbpedia.org/page/Fußball-Weltmeisterschaft_2014">
+    <bbcsport:lastStage rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Finale"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.dbpedia.org/page/Fußball-Weltmeisterschaft_2014">
+    <bbcsport:hasStage rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Achtelfinale"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.dbpedia.org/page/Fußball-Weltmeisterschaft_2014">
+    <bbcsport:hasStage rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Viertelfinale"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.dbpedia.org/page/Fußball-Weltmeisterschaft_2014">
+    <bbcsport:hasStage rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Halbfinale"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.dbpedia.org/page/Fußball-Weltmeisterschaft_2014">
+    <bbcsport:hasStage rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Spiel_um_Platz_3"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Vorrunde">
+    <rdf:type rdf:resource="http://www.bbc.co.uk/ontologies/sport/GroupCompetition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Vorrunde">
+    <bbcsport:hasGroup rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Gruppe_A"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Vorrunde">
+    <bbcsport:hasGroup rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Gruppe_B"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Vorrunde">
+    <bbcsport:hasGroup rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Gruppe_G"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Vorrunde">
+    <bbcsport:hasGroup rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Gruppe_H"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Achtelfinale">
+    <rdf:type rdf:resource="http://www.bbc.co.uk/ontologies/sport/KnockoutCompetition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Viertelfinale">
+    <rdf:type rdf:resource="http://www.bbc.co.uk/ontologies/sport/KnockoutCompetition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Halbfinale">
+    <rdf:type rdf:resource="http://www.bbc.co.uk/ontologies/sport/KnockoutCompetition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Spiel_um_Platz_3">
+    <rdf:type rdf:resource="http://www.bbc.co.uk/ontologies/sport/KnockoutCompetition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Spiel_um_Platz_3">
+    <bbcsport:hasRound rdf:resource="http://cs.hs-rm.de/~mdudd001/wc/Spiel_um_PLatz_3"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Finale">
+    <rdf:type rdf:resource="http://www.bbc.co.uk/ontologies/sport/KnockoutCompetition"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Finale">
+    <bbcsport:hasRound rdf:resource="http://cs.hs-rm.de/~mdudd001/wc/Finalspiel"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Gruppe_A">
+    <bbcsport:hasMatch rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#Brasilien_.E2.80.93_Kroatien"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Gruppe_A">
+    <bbcsport:hasMatch rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#Mexiko_.E2.80.93_Kamerun_-:-_.28-:-.29"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Gruppe_A">
+    <bbcsport:hasMatch rdf:resource="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#Kroatien_.E2.80.93_Mexiko_-:-_.28-:-.29"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#Brasilien_.E2.80.93_Kroatien">
+    <bbcsport:homeCompetitor rdf:resource="http://de.wikipedia.org/wiki/Brasilianische_Fußballnationalmannschaft"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#Brasilien_.E2.80.93_Kroatien">
+    <smm:Referee rdf:resource="http://de.dbpedia.org/page/Felix_Brych"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#Brasilien_.E2.80.93_Kroatien">
+    <bbcsport:awayCompetitor rdf:resource="http://de.wikipedia.org/wiki/Kroatische_Fußballnationalmannschaft"/>
+  </rdf:Description>
+</rdf:RDF>
