@@ -33,4 +33,5 @@ module PREFIX
   RDFS ='http://www.w3.org/2000/01/rdf-schema#'
   XML = 'http://www.w3.org/XML/1998/namespace'
   XSD = 'http://www.w3.org/2001/XMLSchema#'
+  WIKI = 'http://de.wikipedia.org/wiki/'
 end

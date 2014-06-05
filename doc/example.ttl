@@ -40,8 +40,12 @@ wc14:Finale rdf:type bbcsport:KnockoutCompetition ;
 wc14:Gruppe_A bbcsport:hasMatch wc14a:Brasilien_.E2.80.93_Kroatien ,
                                 wc14a:Mexiko_.E2.80.93_Kamerun_-:-_.28-:-.29 ,
                                 wc14a:Kroatien_.E2.80.93_Mexiko_-:-_.28-:-.29 .
+wc14:Gruppe_A rdfs:label "Gruppe A" .
 
 # Konkrete Spiele
 wc14a:Brasilien_.E2.80.93_Kroatien bbcsport:homeCompetitor wiki:Brasilianische_Fußballnationalmannschaft ;
                                     smm:Referee db:Felix_Brych ;
                                     bbcsport:awayCompetitor wiki:Kroatische_Fußballnationalmannschaft .
+
+wiki:Brasilianische_Fußballnationalmannschaft rdfs:label "Brasilien" .
+wiki:Kroatische_Fußballnationalmannschaft rdfs:label "Kroatien" .
