@@ -7,28 +7,37 @@ module RdfHelper
     solutions = QUERYABLE.query(sparql)
   end
 
+  def get_matches(filter_type,filter_value)
 
-  def get_game uri
-    sparql = SPARQL.parse("SELECT ?homeCompetitor ?awayCompetitor ?round
+  end
+
+  def get_match(uri)
+    sparql = SPARQL.parse("SELECT ?homeCompetitor ?homeCompetitor_uri ?awayCompetitor ?awayCompetitor_uri ?round ?round_uri
     WHERE {
-            <#{uri}> <#{PREFIX::BBCSPORT}homeCompetitor> ?home .
-            ?home <#{PREFIX::RDFS}label> ?homeCompetitor .
-            <#{uri}> <#{PREFIX::BBCSPORT}awayCompetitor> ?away .
-            ?away <#{PREFIX::RDFS}label> ?awayCompetitor .
-            ?rnd <#{PREFIX::BBCSPORT}hasMatch> <#{uri}> .
-            ?rnd <#{PREFIX::RDFS}label> ?round .
+            <#{uri}> <#{PREFIX::BBCSPORT}homeCompetitor> ?homeCompetitor_uri .
+            ?homeCompetitor_uri <#{PREFIX::RDFS}label> ?homeCompetitor .
+            <#{uri}> <#{PREFIX::BBCSPORT}awayCompetitor> ?awayCompetitor_uri .
+            ?awayCompetitor_uri <#{PREFIX::RDFS}label> ?awayCompetitor .
+            ?round_uri <#{PREFIX::BBCSPORT}hasMatch> <#{uri}> .
+            ?round_uri <#{PREFIX::RDFS}label> ?round .
             }")
     solutions = QUERYABLE.query(sparql).first
   end
 
-  def __get_game2(uri)
-    sparql = SPARQL.parse("SELECT * WHERE { <#{uri}> ?p ?o .}")
-    solutions = QUERYABLE.query(sparql)
+  def get_team(uri)
+
   end
 
-  def __round_from_game(uri)
-    sparql = SPARQL.parse("SELECT * WHERE { ?s <#{PREFIX::BBCSPORT}hasMatch> <#{uri}> .}")
-    solutions = QUERYABLE.query(sparql)
+  def get_player(uri)
+
+  end
+
+  def get_stadium(uri)
+
+  end
+
+  def get_trainer(uri)
+
   end
 
   def write_to_xml

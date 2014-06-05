@@ -10,7 +10,7 @@ describe RdfHelper do
   end
 
   it "Koratien - Brasilien belongs to group A" do
-    bra_cro = helper.get_game "#{PREFIX::WIKI}Fußball-Weltmeisterschaft_2014/Gruppe_A#Brasilien_.E2.80.93_Kroatien"
+    bra_cro = helper.get_match "#{PREFIX::WIKI}Fußball-Weltmeisterschaft_2014/Gruppe_A#Brasilien_.E2.80.93_Kroatien"
     bra_cro.round.to_s.should be_eql("Gruppe A")
   end
 
