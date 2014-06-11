@@ -36,7 +36,7 @@ module RdfHelper
     solutions = QUERYABLE.query(sparql)
   end
 
-  # return a matches given a specific uri.
+  # return a match given by a specific uri.
   # A match contains
   # uri,
   # homeCompetitor,
@@ -72,19 +72,63 @@ module RdfHelper
     solution = QUERYABLE.query(sparql).first
   end
 
+  # return a team given by a specific uri.
+  # A team contains
+  # uri,
+  # TODO...
+  # @param uri [String] the uri of the team
+  # @return [RDF::Query::Solution] the team
   def get_team(uri)
 
   end
 
+  # return a player given by a specific uri.
+  # A player contains
+  # uri,
+  # TODO...
+  # @param uri [String] the uri of the player
+  # @return [RDF::Query::Solution] the player
   def get_player(uri)
 
   end
 
+  # return a stadium given by a specific uri.
+  # A stadium contains
+  # uri,
+  # TODO...
+  # @param uri [String] the uri of the stadium
+  # @return [RDF::Query::Solution] the stadium
   def get_stadium(uri)
 
   end
 
+  # return a trainer given by a specific uri.
+  # A trainer contains
+  # uri,
+  # TODO...
+  # @param uri [String] the uri of the trainer
+  # @return [RDF::Query::Solution] the trainer
   def get_trainer(uri)
+
+  end
+
+  # return all team stations with time period a player participated in descendant order given by a specific uri.
+  # A team station contains
+  # uri,
+  # TODO...
+  # @param uri [String] the uri of the player
+  # @return [RDF::Query::Solutions] the team stations
+  def get_player_team_stations(uri)
+
+  end
+
+  # return all team stations with time period a player participated in descendant order given by a specific uri.
+  # A team station contains
+  # uri,
+  # TODO...
+  # @param uri [String] the uri of the player
+  # @return [RDF::Query::Solutions] the team stations
+  def get_trainer_team_stations(uri)
 
   end
 
