@@ -85,6 +85,12 @@ module RdfHelper
   # return a player given by a specific uri.
   # A player contains
   # uri,
+  # firstName         FOAF
+  # firstName_uri     FOAF
+  # familyName        FOAF
+  # familyName_uri    FOAF
+  # playsFor          Soccer Voc
+  # playsFor_uri      Soccer Voc
   # TODO...
   # @param uri [String] the uri of the player
   # @return [RDF::Query::Solution] the player
@@ -95,6 +101,7 @@ module RdfHelper
   # return a stadium given by a specific uri.
   # A stadium contains
   # uri,
+  # BBC:Venue or smm:Stadium as subClassOf geo:SpatialThing
   # TODO...
   # @param uri [String] the uri of the stadium
   # @return [RDF::Query::Solution] the stadium
@@ -105,6 +112,10 @@ module RdfHelper
   # return a trainer given by a specific uri.
   # A trainer contains
   # uri,
+  # firstName         FOAF
+  # firstName_uri     FOAF
+  # familyName        FOAF
+  # familyName_uri    FOAF
   # TODO...
   # @param uri [String] the uri of the trainer
   # @return [RDF::Query::Solution] the trainer
