@@ -1,5 +1,6 @@
 $(document).one "pagecreate", ".matchday-page", ->
-
+  $("#header").toolbar({ theme: "a" })
+  $("#footer").toolbar({ theme: "a" })
   # Handler for navigating to the next page
   navnext = (next) ->
     $(":mobile-pagecontainer").pagecontainer "change", next,

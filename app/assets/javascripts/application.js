@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require jquery.mobile-1.4.2.min
 //= require pages
+//= require semwc

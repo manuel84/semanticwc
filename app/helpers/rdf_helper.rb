@@ -37,4 +37,91 @@ module RdfHelper
       writer << graph
     end
   end
+
+  def tmp_all_teams
+    [
+        "Algerien",
+        "Argentinien",
+        "Australien",
+        "Belgien",
+        "Bosnien und Herzegowina",
+        "Brasilien",
+        "Chile",
+        "Costa Rica",
+        "Deutschland",
+        "Ecuador",
+        "Elfenbeinküste",
+        "England",
+        "Frankreich",
+        "Ghana",
+        "Griechenland",
+        "Honduras",
+        "Iran",
+        "Italien",
+        "Japan",
+        "Kamerun",
+        "Kolumbien",
+        "Korea Republik",
+        "Kroatien",
+        "Mexiko",
+        "Niederlande",
+        "Nigeria",
+        "Portugal",
+        "Russland",
+        "Schweiz",
+        "Spanien",
+        "Uruguay",
+        "USA",
+        "Algerien",
+        "Elfenbeinküste",
+        "Ghana",
+        "Kamerun",
+        "Nigeria",
+        "Australien",
+        "Iran",
+        "Japan",
+        "Korea Republik",
+        "Belgien",
+        "Bosnien und Herzegowina",
+        "Deutschland",
+        "England",
+        "Frankreich",
+        "Griechenland",
+        "Italien",
+        "Kroatien",
+        "Niederlande",
+        "Portugal",
+        "Russland",
+        "Schweiz",
+        "Spanien",
+        "Costa Rica",
+        "Honduras",
+        "Mexiko",
+        "USA",
+        "Argentinien",
+        "Brasilien",
+        "Chile",
+        "Ecuador",
+        "Kolumbien",
+        "Uruguay"
+
+    ]
+  end
+
+  def tmp_all_stadiums
+    [
+        "Belo Horizonte",
+        "Brasília",
+        "Cuiabá",
+        "Curitiba",
+        "Fortaleza",
+        "Manaus",
+        "Natal",
+        "Porto Alegre",
+        "Recife",
+        "Rio De Janeiro",
+        "Salvador",
+        "São Paulo"
+    ]
+  end
 end
