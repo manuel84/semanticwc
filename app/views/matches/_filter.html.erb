@@ -1,42 +1,18 @@
-<div data-role="panel" data-position="right" data-theme="a" id="filter-form"  data-display="overlay">
+<div data-role="panel" data-position="right" data-theme="a" id="filter-panel" data-display="overlay">
   <form action="#" onsubmit="return false;" id="filter">
     <div class="ui-field-contain">
       <select name="select-filter-type" id="select-filter-type" onchange="Semwc.selectFilterType(this.value);">
-        <option value="all">alle Spiele</option>
+        <option value="none">alle Spiele</option>
         <option value="team">nach Team</option>
         <option value="group">nach Gruppe</option>
         <option value="stadium">nach Stadion</option>
         <option value="day">nach Tag</option>
       </select>
 
-      <div class="select-value" id="select-value-team">
-        <select name="select-filter-value-team" id="select-filter-value-team" onchange="Semwc.selectFilterValue(this.value);">
-          <% tmp_all_teams.each do |team| %>
-              <option value="<%= team.parameterize %>"><%= team %></option>
-          <% end %>
-        </select>
-      </div>
-      <div class="select-value" id="select-value-group">
-        <select name="select-filter-value-group" id="select-filter-value-group" onchange="Semwc.selectFilterValue(this.value);">
-          <% ("A".."H").each do |group| %>
-              <option value="<%= group.parameterize %>">Gruppe <%= group %></option>
-          <% end %>
-        </select>
-      </div>
-      <div class="select-value" id="select-value-stadium">
-        <select name="select-filter-value-stadium" id="select-filter-value-stadium" onchange="Semwc.selectFilterValue(this.value);">
-          <% tmp_all_stadiums.each do |stadium| %>
-              <option value="<%= stadium.parameterize %>"><%= stadium %></option>
-          <% end %>
-        </select>
-      </div>
-      <div class="select-value" id="select-value-day">
-        <select name="select-filter-value-day" id="select-filter-value-day" onchange="Semwc.selectFilterValue(this.value);">
-          <% (DateTime.new(2014, 6, 12)..DateTime.new(2014, 7, 13)).each do |day| %>
-              <option value="<%= day.to_date.to_s(:number) %>"><%= day.to_date.to_s(:short) %></option>
-          <% end %>
-        </select>
-      </div>
+      <%= render partial: 'select_filter_value', locals: {name: 'team', collection: tmp_all_teams} %>
+      <%= render partial: 'select_filter_value', locals: {name: 'group', collection: 'Gruppe A'..'Gruppe H'} %>
+      <%= render partial: 'select_filter_value', locals: {name: 'stadium', collection: tmp_all_stadiums} %>
+      <%= render partial: 'select_filter_value', locals: {name: 'day', collection: (Date.new(2014, 6, 12)..Date.new(2014, 7, 13))} %>
 
     </div>
 

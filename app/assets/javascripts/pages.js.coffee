@@ -1,14 +1,17 @@
 $(document).one "pagecreate", ".matchday-page", ->
   $("#header").toolbar({ theme: "a" })
   $("#footer").toolbar({ theme: "a" })
+
   # Handler for navigating to the next page
   navnext = (next) ->
+    $('#filter-panel').remove()
     $(":mobile-pagecontainer").pagecontainer "change", next,
       transition: "slide"
     return
 
   # Handler for navigating to the previous page
   navprev = (prev) ->
+    $('#filter-panel').remove()
     $(":mobile-pagecontainer").pagecontainer "change", prev,
       transition: "slide"
       reverse: true
