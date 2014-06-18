@@ -1,5 +1,5 @@
 <div data-role="page" id="<%= @matchdays[@current_index].last.first.first %>" data-title="
-  <% @matchdays[@current_index].last.first.first %>" class="matchday-page" data-dom-cache="true" data-theme="a"
+  <% @matchdays[@current_index].last.first.first %>" class="main-page" data-dom-cache="true" data-theme="a"
      <%= "data-prev=\"#{matches_path(:uri => @matchdays[@current_index-1].last.first.first, filter_uri: params[:filter_uri])}\"".html_safe if @current_index > 0 %>
      <%= "data-next=\"#{matches_path(:uri => @matchdays[@current_index+1].last.first.first, filter_uri: params[:filter_uri])}\"".html_safe if @matchdays.count >= @current_index+2 %>>
 

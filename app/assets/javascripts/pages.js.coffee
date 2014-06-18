@@ -1,4 +1,4 @@
-$(document).one "pagecreate", ".matchday-page", ->
+$(document).one "pagecreate", ".main-page", ->
   $("#header").toolbar({ theme: "a" })
   $("#footer").toolbar({ theme: "a" })
 

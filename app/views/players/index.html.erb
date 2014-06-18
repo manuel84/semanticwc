@@ -1,20 +1,15 @@
-<div data-role="page" id="matchday-page" class="matchday-page" data-dom-cache="true">
-  <div class="swatch">
-    <%= render 'shared/header' %>
+<div data-role="page" id="team-xxx" data-title="team-xxx" class="main-page" data-dom-cache="true" data-theme="a"
+     <%= "data-prev=\"#{teams_path(:uri => 'brasilien', filter_uri: params[:filter_uri])}\"".html_safe %>
+     <%= "data-next=\"#{teams_path(:uri => 'brasilien', filter_uri: params[:filter_uri])}\"".html_safe %>>
 
-    <div class="ui-content ui-page-theme-a page" data-form="ui-page-theme-a" data-theme="a" role="main">
+  <%#= render 'filter' Sturm%>
 
-      <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all">
-        <li data-role="list-divider" data-theme="a" data-swatch="a" data-form="ui-bar-a" role="heading">
-          <div class="big center">Neymar</div>
-        </li>
-      </ul>
-      <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Neymar_FCBarcelona.JPG/172px-Neymar_FCBarcelona.JPG" alt="Neymar" height="200"/>
+  <div role="main" class="ui-content" id="main">
+    <div class="big center">Neymar</div>
+
+    <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Neymar_FCBarcelona.JPG/172px-Neymar_FCBarcelona.JPG" alt="Neymar" height="200"/>
 
 
-    </div>
   </div>
 
-
-  <!-- /content -->
 </div>
