@@ -55,6 +55,7 @@ GEM
       nokogiri (>= 1.4.3)
     erubis (2.7.0)
     execjs (2.0.2)
+    gmaps4rails (2.1.2)
     gyoku (1.1.1)
       builder (>= 2.1.2)
     haml (4.0.5)
@@ -214,6 +215,7 @@ DEPENDENCIES
   binding_of_caller
   coffee-rails (~> 4.0.0)
   equivalent-xml
+  gmaps4rails
   jbuilder (~> 2.0)
   jquery-rails
   pg

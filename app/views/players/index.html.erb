@@ -5,9 +5,18 @@
   <%#= render 'filter' Sturm%>
 
   <div role="main" class="ui-content" id="main">
-    <div class="big center">Neymar</div>
-
-    <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Neymar_FCBarcelona.JPG/172px-Neymar_FCBarcelona.JPG" alt="Neymar" height="200"/>
+    <%= ui_list ['Position: Sturm', 'Alter: 22 (*29.11.1984)', 'Größe: 173 cm', 'Gewicht: 70 kg', 'Verein FC Barcelona'], header: 'Neymar' do |i| %>
+        <%= i %>
+    <% end %>
+    <div class="center">
+      <%= image_tag 'http://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Neymar_FCBarcelona.JPG/172px-Neymar_FCBarcelona.JPG', width: 360 %>
+    </div>
+    <%= ui_list ['Länderspiele: 55', 'Tore: 30'], header: 'Nationalmannschaft' do |i| %>
+        <%= i %>
+    <% end %>
+    <%= ui_list ['FC Barcelona: 06/2011 - heute', 'Fluminese Rio der Janeiro: 04/2010 - 06/2011'], header: 'Vereine' do |i| %>
+        <%= i %>
+    <% end %>
 
 
   </div>
