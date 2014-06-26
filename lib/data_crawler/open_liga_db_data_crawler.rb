@@ -1,4 +1,4 @@
-class OpenLigaDbDataWrapper < DataWrapper
+class OpenLigaDbDataWrapper < DataCrawler
   WSDL = 'http://www.OpenLigaDB.de/Webservices/Sportsdata.asmx?WSDL'
 
   attr_accessor :client

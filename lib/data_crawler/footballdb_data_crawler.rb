@@ -1,4 +1,4 @@
-class FootballdbDataWrapper < DataWrapper
+class FootballdbDataWrapper < DataCrawler
   # football.db doesnt support kickoff times
   # teilweise falsche Datumswerte
 
