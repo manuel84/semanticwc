@@ -1,0 +1,703 @@
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/A> <http://www.bbc.co.uk/ontologies/sport/hasMatch> <http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_CRO>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/MEX_CMR>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/ESP_NED>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/CHI_AUS>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/COL_GRE>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/CIV_JPN>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/URU_CRC>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/ENG_ITA>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/SUI_ECU>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/FRA_HON>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/ARG_BIH>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/IRN_NGA>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/GER_POR>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/GHA_USA>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/BEL_ALG>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/RUS_KOR>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_MEX>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/CMR_CRO>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/ESP_CHI>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/AUS_NED>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/COL_CIV>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/JPN_GRE>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/URU_ENG>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/ITA_CRC>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/SUI_FRA>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/HON_ECU>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/ARG_IRN>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/NGA_BIH>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/GER_GHA>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/USA_POR>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/BEL_RUS>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/KOR_ALG>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/CMR_BRA>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/CRO_MEX>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/AUS_ESP>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/NED_CHI>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/JPN_COL>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/GRE_CIV>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/ITA_URU>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/CRC_ENG>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/HON_SUI>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/ECU_FRA>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/NGA_ARG>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/BIH_IRN>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/USA_GER>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/POR_GHA>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/KOR_BEL>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/ALG_RUS>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_CHI>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/COL_URU>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/NED_MEX>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/CRC_GRE> .
+
+<http://dbpedia.org/resource/FIFA_World_Cup> a <http://www.bbc.co.uk/ontologies/sport/RecurringCompetition>;
+   <http://www.bbc.co.uk/ontologies/event/recurringEvent> <http://dbpedia.org/resource/2014_FIFA_World_Cup> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/ALG_RUS> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 0;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Arena_da_Baixada>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_ALG_RUS>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Russia_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Algeria_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/ARG_BIH> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 2;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Argentina_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Est%C3%A1dio_do_Maracan%C3%A3>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_ARG_BIH>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Bosnia_and_Herzegovina_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Argentina_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/ARG_IRN> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Argentina_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Mineir%C3%A3o>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_ARG_IRN>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Iran_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Argentina_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/AUS_ESP> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 3;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Spain_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Arena_da_Baixada>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_AUS_ESP>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Spain_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Australia_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/AUS_NED> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 3;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 2;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Netherlands_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Est%C3%A1dio_Beira-Rio>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_AUS_NED>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Netherlands_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Australia_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/BEL_ALG> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 2;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Belgium_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Mineir%C3%A3o>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_BEL_ALG>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Algeria_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Belgium_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/BEL_RUS> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Belgium_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Est%C3%A1dio_do_Maracan%C3%A3>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_BEL_RUS>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Russia_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Belgium_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/BIH_IRN> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 3;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Bosnia and Herzegovina_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Arena_Fonte_Nova>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_BIH_IRN>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Iran_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Bosnia_and_Herzegovina_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_CHI> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 0;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Mineir%C3%A3o>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_BRA_CHI>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Chile_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Brazil_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_CRO> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 3;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Brazil_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/S%C3%A3o_Paulo>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_BRA_CRO>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Croatia_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Brazil_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_MEX> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Draw_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Castel%C3%A3o_(Cear%C3%A1)>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_BRA_MEX>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Mexico_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Brazil_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/CHI_AUS> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 3;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Chile_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Arena_Pantanal>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_CHI_AUS>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Australia_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Chile_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/CIV_JPN> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 2;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Ivory Coast_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Recife>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_CIV_JPN>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Japan_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/C%C3%B4te_d%27Ivoire_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/CMR_BRA> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 4;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Brazil_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Est%C3%A1dio_Nacional_Man%C3%A9_Garrincha>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_CMR_BRA>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Brazil_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Cameroon_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/CMR_CRO> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 4;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Croatia_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Arena_Amaz%C3%B4nia>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_CMR_CRO>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Croatia_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Cameroon_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/COL_CIV> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 2;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Colombia_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Est%C3%A1dio_Nacional_Man%C3%A9_Garrincha>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_COL_CIV>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/C%C3%B4te_d%27Ivoire_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Colombia_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/COL_GRE> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 3;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Colombia_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Mineir%C3%A3o>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_COL_GRE>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Greece_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Colombia_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/COL_URU> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 0;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Est%C3%A1dio_do_Maracan%C3%A3>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_COL_URU>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Uruguay_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Colombia_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/CRC_ENG> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Draw_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Mineir%C3%A3o>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_CRC_ENG>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/England_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Costa_Rica_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/CRC_GRE> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 0;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Recife>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_CRC_GRE>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Greece_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Costa_Rica_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/CRO_MEX> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 3;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Mexico_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Recife>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_CRO_MEX>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Mexico_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Croatia_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/ECU_FRA> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Draw_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Est%C3%A1dio_do_Maracan%C3%A3>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_ECU_FRA>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/France_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Ecuador_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/ENG_ITA> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 2;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Italy_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Arena_Amaz%C3%B4nia>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_ENG_ITA>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Italy_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/England_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/ESP_CHI> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 2;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Chile_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Est%C3%A1dio_do_Maracan%C3%A3>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_ESP_CHI>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Chile_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Spain_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/ESP_NED> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 5;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Netherlands_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Arena_Fonte_Nova>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_ESP_NED>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Netherlands_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Spain_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_ALG_RUS> <http://purl.org/vocab/participation/schema#startDate> "2014-06-26T17:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_ARG_BIH> <http://purl.org/vocab/participation/schema#startDate> "2014-06-15T19:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_ARG_IRN> <http://purl.org/vocab/participation/schema#startDate> "2014-06-21T13:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_AUS_ESP> <http://purl.org/vocab/participation/schema#startDate> "2014-06-23T13:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_AUS_NED> <http://purl.org/vocab/participation/schema#startDate> "2014-06-18T13:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_BEL_ALG> <http://purl.org/vocab/participation/schema#startDate> "2014-06-17T13:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_BEL_RUS> <http://purl.org/vocab/participation/schema#startDate> "2014-06-22T13:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_BIH_IRN> <http://purl.org/vocab/participation/schema#startDate> "2014-06-25T13:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_BRA_CHI> <http://purl.org/vocab/participation/schema#startDate> "2014-06-28T13:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_BRA_CRO> <http://purl.org/vocab/participation/schema#startDate> "2014-06-12T17:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_BRA_MEX> <http://purl.org/vocab/participation/schema#startDate> "2014-06-17T16:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_CHI_AUS> <http://purl.org/vocab/participation/schema#startDate> "2014-06-13T19:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_CIV_JPN> <http://purl.org/vocab/participation/schema#startDate> "2014-06-14T22:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_CMR_BRA> <http://purl.org/vocab/participation/schema#startDate> "2014-06-23T17:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_CMR_CRO> <http://purl.org/vocab/participation/schema#startDate> "2014-06-18T19:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_COL_CIV> <http://purl.org/vocab/participation/schema#startDate> "2014-06-19T13:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_COL_GRE> <http://purl.org/vocab/participation/schema#startDate> "2014-06-14T13:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_COL_URU> <http://purl.org/vocab/participation/schema#startDate> "2014-06-28T17:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_CRC_ENG> <http://purl.org/vocab/participation/schema#startDate> "2014-06-24T13:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_CRC_GRE> <http://purl.org/vocab/participation/schema#startDate> "2014-06-29T17:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_CRO_MEX> <http://purl.org/vocab/participation/schema#startDate> "2014-06-23T17:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_ECU_FRA> <http://purl.org/vocab/participation/schema#startDate> "2014-06-25T17:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_ENG_ITA> <http://purl.org/vocab/participation/schema#startDate> "2014-06-14T19:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_ESP_CHI> <http://purl.org/vocab/participation/schema#startDate> "2014-06-18T16:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_ESP_NED> <http://purl.org/vocab/participation/schema#startDate> "2014-06-13T16:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_FRA_HON> <http://purl.org/vocab/participation/schema#startDate> "2014-06-15T16:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_GER_GHA> <http://purl.org/vocab/participation/schema#startDate> "2014-06-21T16:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_GER_POR> <http://purl.org/vocab/participation/schema#startDate> "2014-06-16T13:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_GHA_USA> <http://purl.org/vocab/participation/schema#startDate> "2014-06-16T19:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_GRE_CIV> <http://purl.org/vocab/participation/schema#startDate> "2014-06-24T17:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_HON_ECU> <http://purl.org/vocab/participation/schema#startDate> "2014-06-20T19:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_HON_SUI> <http://purl.org/vocab/participation/schema#startDate> "2014-06-25T17:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_IRN_NGA> <http://purl.org/vocab/participation/schema#startDate> "2014-06-16T16:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_ITA_CRC> <http://purl.org/vocab/participation/schema#startDate> "2014-06-20T13:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_ITA_URU> <http://purl.org/vocab/participation/schema#startDate> "2014-06-24T13:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_JPN_COL> <http://purl.org/vocab/participation/schema#startDate> "2014-06-24T17:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_JPN_GRE> <http://purl.org/vocab/participation/schema#startDate> "2014-06-19T19:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_KOR_ALG> <http://purl.org/vocab/participation/schema#startDate> "2014-06-22T16:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_KOR_BEL> <http://purl.org/vocab/participation/schema#startDate> "2014-06-26T17:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_MEX_CMR> <http://purl.org/vocab/participation/schema#startDate> "2014-06-13T13:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_NED_CHI> <http://purl.org/vocab/participation/schema#startDate> "2014-06-23T13:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_NED_MEX> <http://purl.org/vocab/participation/schema#startDate> "2014-06-29T13:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_NGA_ARG> <http://purl.org/vocab/participation/schema#startDate> "2014-06-25T13:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_NGA_BIH> <http://purl.org/vocab/participation/schema#startDate> "2014-06-21T19:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_POR_GHA> <http://purl.org/vocab/participation/schema#startDate> "2014-06-26T13:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_RUS_KOR> <http://purl.org/vocab/participation/schema#startDate> "2014-06-17T19:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_SUI_ECU> <http://purl.org/vocab/participation/schema#startDate> "2014-06-15T13:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_SUI_FRA> <http://purl.org/vocab/participation/schema#startDate> "2014-06-20T16:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_URU_CRC> <http://purl.org/vocab/participation/schema#startDate> "2014-06-14T16:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_URU_ENG> <http://purl.org/vocab/participation/schema#startDate> "2014-06-19T16:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_USA_GER> <http://purl.org/vocab/participation/schema#startDate> "2014-06-26T13:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Event_USA_POR> <http://purl.org/vocab/participation/schema#startDate> "2014-06-22T19:00:00.000-03:00" .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/FRA_HON> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 3;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/France_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Est%C3%A1dio_Beira-Rio>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_FRA_HON>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Honduras_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/France_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/GER_GHA> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 2;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 2;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Draw_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Castel%C3%A3o_(Cear%C3%A1)>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_GER_GHA>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Ghana_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Germany_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/GER_POR> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 4;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Germany_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Arena_Fonte_Nova>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_GER_POR>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Portugal_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Germany_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/GHA_USA> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 2;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/USA_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Arena_das_Dunas>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_GHA_USA>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/USA_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Ghana_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/GRE_CIV> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 2;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Greece_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Castel%C3%A3o_(Cear%C3%A1)>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_GRE_CIV>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/C%C3%B4te_d%27Ivoire_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Greece_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Group_A> a <http://www.bbc.co.uk/ontologies/sport/KnockoutCompetition>;
+   <http://www.bbc.co.uk/ontologies/sport/hasMember> <http://dbpedia.org/resource/Brazil_national_football_team>,
+     <http://dbpedia.org/resource/Croatia_national_football_team>,
+     <http://dbpedia.org/resource/Mexico_national_football_team>,
+     <http://dbpedia.org/resource/Cameroon_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Group_B> a <http://www.bbc.co.uk/ontologies/sport/KnockoutCompetition>;
+   <http://www.bbc.co.uk/ontologies/sport/hasMember> <http://dbpedia.org/resource/Spain_national_football_team>,
+     <http://dbpedia.org/resource/Netherlands_national_football_team>,
+     <http://dbpedia.org/resource/Chile_national_football_team>,
+     <http://dbpedia.org/resource/Australia_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Group_C> a <http://www.bbc.co.uk/ontologies/sport/KnockoutCompetition>;
+   <http://www.bbc.co.uk/ontologies/sport/hasMember> <http://dbpedia.org/resource/Colombia_national_football_team>,
+     <http://dbpedia.org/resource/Greece_national_football_team>,
+     <http://dbpedia.org/resource/C%C3%B4te_d%27Ivoire_national_football_team>,
+     <http://dbpedia.org/resource/Japan_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Group_D> a <http://www.bbc.co.uk/ontologies/sport/KnockoutCompetition>;
+   <http://www.bbc.co.uk/ontologies/sport/hasMember> <http://dbpedia.org/resource/Uruguay_national_football_team>,
+     <http://dbpedia.org/resource/Costa_Rica_national_football_team>,
+     <http://dbpedia.org/resource/England_national_football_team>,
+     <http://dbpedia.org/resource/Italy_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Group_E> a <http://www.bbc.co.uk/ontologies/sport/KnockoutCompetition>;
+   <http://www.bbc.co.uk/ontologies/sport/hasMember> <http://dbpedia.org/resource/Switzerland_national_football_team>,
+     <http://dbpedia.org/resource/Ecuador_national_football_team>,
+     <http://dbpedia.org/resource/France_national_football_team>,
+     <http://dbpedia.org/resource/Honduras_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Group_F> a <http://www.bbc.co.uk/ontologies/sport/KnockoutCompetition>;
+   <http://www.bbc.co.uk/ontologies/sport/hasMember> <http://dbpedia.org/resource/Argentina_national_football_team>,
+     <http://dbpedia.org/resource/Bosnia_and_Herzegovina_national_football_team>,
+     <http://dbpedia.org/resource/Iran_national_football_team>,
+     <http://dbpedia.org/resource/Nigeria_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Group_G> a <http://www.bbc.co.uk/ontologies/sport/KnockoutCompetition>;
+   <http://www.bbc.co.uk/ontologies/sport/hasMember> <http://dbpedia.org/resource/Germany_national_football_team>,
+     <http://dbpedia.org/resource/Portugal_national_football_team>,
+     <http://dbpedia.org/resource/Ghana_national_football_team>,
+     <http://dbpedia.org/resource/USA_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Group_H> a <http://www.bbc.co.uk/ontologies/sport/KnockoutCompetition>;
+   <http://www.bbc.co.uk/ontologies/sport/hasMember> <http://dbpedia.org/resource/Belgium_national_football_team>,
+     <http://dbpedia.org/resource/Algeria_national_football_team>,
+     <http://dbpedia.org/resource/Russia_national_football_team>,
+     <http://dbpedia.org/resource/North_Korea_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Group_Stage> a <http://www.bbc.co.uk/ontologies/sport/KnockoutCompetition> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/HON_ECU> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 2;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Ecuador_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Arena_da_Baixada>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_HON_ECU>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Ecuador_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Honduras_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/HON_SUI> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 3;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Switzerland_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Arena_Amaz%C3%B4nia>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_HON_SUI>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Switzerland_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Honduras_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/IRN_NGA> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Draw_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Arena_da_Baixada>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_IRN_NGA>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Nigeria_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Iran_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/ITA_CRC> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Costa Rica_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Recife>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_ITA_CRC>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Costa_Rica_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Italy_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/ITA_URU> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Uruguay_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Arena_das_Dunas>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_ITA_URU>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Uruguay_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Italy_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/JPN_COL> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 4;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Colombia_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Arena_Pantanal>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_JPN_COL>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Colombia_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Japan_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/JPN_GRE> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Draw_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Arena_das_Dunas>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_JPN_GRE>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Greece_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Japan_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/KOR_ALG> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 4;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 2;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Algeria_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Est%C3%A1dio_Beira-Rio>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_KOR_ALG>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Algeria_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/North_Korea_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/KOR_BEL> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 0;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/S%C3%A3o_Paulo>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_KOR_BEL>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Belgium_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/North_Korea_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/MEX_CMR> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Mexico_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Arena_das_Dunas>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_MEX_CMR>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Cameroon_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Mexico_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/NED_CHI> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 2;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Netherlands_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/S%C3%A3o_Paulo>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_NED_CHI>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Chile_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Netherlands_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/NED_MEX> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 0;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Castel%C3%A3o_(Cear%C3%A1)>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_NED_MEX>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Mexico_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Netherlands_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/NGA_ARG> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 3;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 2;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Argentina_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Est%C3%A1dio_Beira-Rio>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_NGA_ARG>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Argentina_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Nigeria_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/NGA_BIH> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Nigeria_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Arena_Pantanal>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_NGA_BIH>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Bosnia_and_Herzegovina_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Nigeria_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/POR_GHA> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 0;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Est%C3%A1dio_Nacional_Man%C3%A9_Garrincha>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_POR_GHA>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Ghana_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Portugal_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/RUS_KOR> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Draw_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Arena_Pantanal>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_RUS_KOR>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/North_Korea_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Russia_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/Round_of_16> a <http://www.bbc.co.uk/ontologies/sport/KnockoutCompetition>;
+   <http://www.bbc.co.uk/ontologies/sport/hasMember> <http://dbpedia.org/resource/Brazil_national_football_team>,
+     <http://dbpedia.org/resource/Chile_national_football_team>,
+     <http://dbpedia.org/resource/Colombia_national_football_team>,
+     <http://dbpedia.org/resource/Uruguay_national_football_team>,
+     <http://dbpedia.org/resource/Netherlands_national_football_team>,
+     <http://dbpedia.org/resource/Mexico_national_football_team>,
+     <http://dbpedia.org/resource/Costa_Rica_national_football_team>,
+     <http://dbpedia.org/resource/Greece_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/SUI_ECU> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 2;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Switzerland_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Est%C3%A1dio_Nacional_Man%C3%A9_Garrincha>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_SUI_ECU>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Ecuador_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Switzerland_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/SUI_FRA> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 5;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 2;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/France_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Arena_Fonte_Nova>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_SUI_FRA>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/France_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Switzerland_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/URU_CRC> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 3;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Costa Rica_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Castel%C3%A3o_(Cear%C3%A1)>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_URU_CRC>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Costa_Rica_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Uruguay_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/URU_ENG> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 1;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 2;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Uruguay_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/S%C3%A3o_Paulo>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_URU_ENG>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/England_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/Uruguay_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/USA_GER> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 0;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 0;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Recife>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_USA_GER>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Germany_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/USA_national_football_team> .
+
+<http://cs.hs-rm.de/~mdudd001/semanticwc/USA_POR> <http://cs.hs-rm.de/~mdudd001/semanticwc/awayCompetitorGoals> 2;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/homeCompetitorGoals> 2;
+   <http://cs.hs-rm.de/~mdudd001/semanticwc/winner> <http://dbpedia.org/resource/Draw_national_football_team>;
+   <http://purl.org/hpi/soccer-voc/Stadium> <http://dbpedia.org/resource/Arena_Amaz%C3%B4nia>;
+   <http://purl.org/vocab/participation/schema#startDate> <http://cs.hs-rm.de/~mdudd001/semanticwc/Event_USA_POR>;
+   <http://www.bbc.co.uk/ontologies/sport/awayCompetitor> <http://dbpedia.org/resource/Portugal_national_football_team>;
+   <http://www.bbc.co.uk/ontologies/sport/homeCompetitor> <http://dbpedia.org/resource/USA_national_football_team> .
+
+<http://dbpedia.org/resource/2014_FIFA_World_Cup> <http://www.bbc.co.uk/ontologies/sport/firstStage> <http://cs.hs-rm.de/~mdudd001/semanticwc/Group_Stage>;
+   <http://www.bbc.co.uk/ontologies/sport/hasStage> <http://cs.hs-rm.de/~mdudd001/semanticwc/Group_A>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/Group_B>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/Group_C>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/Group_D>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/Group_E>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/Group_F>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/Group_G>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/Group_H>,
+     <http://cs.hs-rm.de/~mdudd001/semanticwc/Round_of_16> .
+
+<http://dbpedia.org/resource/Australia_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Australia" .
+
+<http://dbpedia.org/resource/Bosnia_and_Herzegovina_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Bosnia and Herzegovina" .
+
+<http://dbpedia.org/resource/C%C3%B4te_d%27Ivoire_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Ivory Coast" .
+
+<http://dbpedia.org/resource/Cameroon_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Cameroon" .
+
+<http://dbpedia.org/resource/England_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "England" .
+
+<http://dbpedia.org/resource/Ghana_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Ghana" .
+
+<http://dbpedia.org/resource/Honduras_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Honduras" .
+
+<http://dbpedia.org/resource/Iran_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Iran" .
+
+<http://dbpedia.org/resource/Japan_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Japan" .
+
+<http://dbpedia.org/resource/North_Korea_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Korea Republic" .
+
+<http://dbpedia.org/resource/Portugal_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Portugal" .
+
+<http://dbpedia.org/resource/Russia_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Russia" .
+
+<http://dbpedia.org/resource/Algeria_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Algeria" .
+
+<http://dbpedia.org/resource/Croatia_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Croatia" .
+
+<http://dbpedia.org/resource/Ecuador_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Ecuador" .
+
+<http://dbpedia.org/resource/Germany_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Germany" .
+
+<http://dbpedia.org/resource/Italy_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Italy" .
+
+<http://dbpedia.org/resource/Nigeria_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Nigeria" .
+
+<http://dbpedia.org/resource/Spain_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Spain" .
+
+<http://dbpedia.org/resource/USA_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "USA" .
+
+<http://dbpedia.org/resource/Belgium_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Belgium" .
+
+<http://dbpedia.org/resource/Costa_Rica_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Costa Rica" .
+
+<http://dbpedia.org/resource/France_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "France" .
+
+<http://dbpedia.org/resource/Switzerland_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Switzerland" .
+
+<http://dbpedia.org/resource/Argentina_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Argentina" .
+
+<http://dbpedia.org/resource/Greece_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Greece" .
+
+<http://dbpedia.org/resource/Brazil_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Brazil" .
+
+<http://dbpedia.org/resource/Chile_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Chile" .
+
+<http://dbpedia.org/resource/Mexico_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Mexico" .
+
+<http://dbpedia.org/resource/Uruguay_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Uruguay" .
+
+<http://dbpedia.org/resource/Colombia_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Colombia" .
+
+<http://dbpedia.org/resource/Netherlands_national_football_team> <http://www.w3.org/2000/01/rdf-schema#label> "Netherlands" .
