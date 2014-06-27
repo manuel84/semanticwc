@@ -24,6 +24,8 @@ module Semanticwc
   end
 end
 
+I18n.config.enforce_available_locales = false
+
 module PREFIX
   WC = 'http://cs.hs-rm.de/mdudd001/wc/'
   BBCEVENT = 'http://www.bbc.co.uk/ontologies/event/'
