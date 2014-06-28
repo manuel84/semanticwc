@@ -75,18 +75,18 @@ module RdfHelper
 
   # guess a team uri by a given team name
   def get_team_uri(name)
-    sparql = "SELECT DISTINCT ?team_uri
-                {
-                ?team_uri <http://dbpedia.org/property/association> ?association .
-                ?team_uri <#{RDF.type}> <http://dbpedia.org/ontology/SoccerClub> .
-                ?team_uri <#{RDF::RDFS.label}> ?label .
-                ?team_uri <#{RDF.type}> <http://schema.org/Organization> .
-                FILTER(regex(str(?label), '(^|\\\\W)#{name}', 'i'))
-              }
-"
-    #solutions = DBPEDIA.query sparql
-    #solutions
-    "http://dbpedia.org/resource/Brazil_national_football_team"
+    sparql = "
+    SELECT DISTINCT ?country_name
+            WHERE {
+              ?country_uri <#{RDF.label}> \"#{name}\"@de .
+    ?country_uri  <#{RDF.label}> ?country_name .
+    ?country_uri <http://dbpedia.org/property/commonName> ?common_name .
+    FILTER ( LANG(?country_name) = 'en' )
+            }
+    "
+    solutions = DBPEDIA.query sparql
+    country_name = solutions.first.country_name.gsub(' ', '_') + '_national_football_team'
+    "http://dbpedia.org/resource/#{country_name}"
   end
 
   # return a team given by a specific uri.
@@ -116,37 +116,38 @@ module RdfHelper
   # guess a player uri by a given name and team
   # @param name [String] the name of the player
   # @return [RDF::Query::Solution] the player
-  def get_player_uri(name, team_uri=nil, fallback=false)
-    name.strip!
-    extension = team_uri ? "?player_uri <http://dbpedia.org/ontology/team> <#{team_uri}> ." : ''
-    label = "\"#{name}\""
-    fallback_filter = ''
-    if fallback
-      label = '?label'
-      fallback_filter = "FILTER(regex(str(?label), '(^|\\\\W)#{name}', 'i'))"
+  def get_player_uri(name, team_uri)
+    if name.include?(',')
+      name = name.split(',').reverse.join(' ')
     end
-
-    sparql = "SELECT DISTINCT ?player_uri
-    WHERE {
-      ?player_uri <#{RDF::RDFS.label}> #{label} .
-      ?player_uri <#{RDF.type}> <http://dbpedia.org/ontology/SoccerPlayer> .
-      #{extension}
-    #{fallback_filter}
-    }"
+    name = name.strip
+    #
+    sparql = "SELECT DISTINCT ?player_uri ?team_uri
+        WHERE {
+          ?player_uri <http://xmlns.com/foaf/0.1/name> \"#{name}\"@en .
+          ?player_uri <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/SoccerPlayer> .
+          ?player_uri <http://dbpedia.org/ontology/team> <#{team_uri}> .
+          ?player_uri <http://dbpedia.org/property/birthDate> ?birth_date .
+          FILTER(?birth_date > \"19700101\"^^xsd:date)
+        }"
     solutions = DBPEDIA.query sparql
     result = case solutions.count
-               when 0 # Fallbacks
-                 if name.include?(',') # reverse order: César, Júlio => Júlio César
-                   name = name.split(',').reverse.join(' ')
-                   get_player_uri(name, team_uri) || get_player_uri(name) # with or without national team
-                 else
-                   get_player_uri(name, team_uri, true) || get_player_uri(name, nil, true) unless fallback
-                 end
+               when 0 # fallback
+                 sparql = "SELECT DISTINCT ?player_uri ?team_uri
+                WHERE {
+                  ?player_uri <http://xmlns.com/foaf/0.1/name> \"#{name}\"@en .
+                  ?player_uri <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/SoccerPlayer> .
+                  ?player_uri <http://dbpedia.org/property/birthDate> ?birth_date .
+                  FILTER(?birth_date > \"19700101\"^^xsd:date)
+                }"
+                 solutions = DBPEDIA.query sparql
+                 solutions.first
                when 1
                  solutions.first
-               else # > 1
-                 solutions.first
+               else
+                 nil
              end
+    result.player_uri.to_s
   end
 
   # return a player given by a specific uri.
