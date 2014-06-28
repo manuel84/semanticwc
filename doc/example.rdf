@@ -9,7 +9,7 @@
               <rdf:Description rdf:about='http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Gruppe_A'>
                 <rdfs:label>Gruppe A</rdfs:label>
                 <ns0:hasMatch>
-                  <rdf:Description rdf:about='http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#Brasilien_.E2.80.93_Kroatien'>
+                  <ns0:Match rdf:about='http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#Brasilien_.E2.80.93_Kroatien'>
                     <ns2:Referee rdf:resource='http://de.dbpedia.org/page/Felix_Brych' />
                     <ns0:awayCompetitor>
                       <rdf:Description rdf:about='http://de.wikipedia.org/wiki/Kroatische_Fußballnationalmannschaft'>
@@ -21,7 +21,7 @@
                         <rdfs:label>Brasilien</rdfs:label>
                       </rdf:Description>
                     </ns0:homeCompetitor>
-                  </rdf:Description>
+                  </ns0:Match>
                 </ns0:hasMatch>
                  <ns0:hasMatch rdf:resource='http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#Mexiko_.E2.80.93_Kamerun_-:-_.28-:-.29' />
                  <ns0:hasMatch rdf:resource='http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#Kroatien_.E2.80.93_Mexiko_-:-_.28-:-.29' />
