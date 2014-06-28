@@ -75,17 +75,19 @@ module RdfHelper
 
   # guess a team uri by a given team name
   def get_team_uri(name)
+    exceptions = {'USA' => 'United States of America'}
+    name = exceptions[name] if exceptions.has_key?(name)
     sparql = "
     SELECT DISTINCT ?country_name
             WHERE {
-              ?country_uri <#{RDF.label}> \"#{name}\"@de .
-    ?country_uri  <#{RDF.label}> ?country_name .
+              ?country_uri <#{RDF::RDFS.label}> \"#{name}\"@de .
+    ?country_uri  <#{RDF::RDFS.label}> ?country_name .
     ?country_uri <http://dbpedia.org/property/commonName> ?common_name .
     FILTER ( LANG(?country_name) = 'en' )
             }
     "
     solutions = DBPEDIA.query sparql
-    country_name = solutions.first.country_name.gsub(' ', '_') + '_national_football_team'
+    country_name = solutions.first ? solutions.first.country_name.to_s.gsub(' ', '_') + '_national_football_team' : ''
     "http://dbpedia.org/resource/#{country_name}"
   end
 

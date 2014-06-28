@@ -15,12 +15,11 @@ describe RdfHelper do
   end
 
   it 'guess the uri of the brazilian national team by the name Brasilien' do
-    teams = {'Brasilien' => ''}
+    teams = {'Algerien' => 'xyz', 'Elfenbeinküste' => 'xyz', 'Ghana' => 'xyz', 'Kamerun' => 'xyz', 'Nigeria' => 'xyz', 'Australien' => 'xyz', 'Iran' => 'xyz', 'Japan' => 'xyz', 'Südkorea' => 'xyz', 'Belgien' => 'xyz', 'Bosnien und Herzegowina' => 'xyz', 'Deutschland' => 'xyz', 'England' => 'xyz', 'Frankreich' => 'xyz', 'Griechenland' => 'xyz', 'Italien' => 'xyz', 'Kroatien' => 'xyz', 'Niederlande' => 'xyz', 'Portugal' => 'xyz', 'Russland' => 'xyz', 'Schweiz' => 'xyz', 'Spanien' => 'xyz', 'Costa Rica' => 'xyz', 'Honduras' => 'xyz', 'Mexiko' => 'xyz', 'USA' => 'xyz', 'Argentinien' => 'xyz', 'Brasilien' => 'xyz', 'Chile' => 'xyz', 'Ecuador' => 'xyz', 'Kolumbien' => 'xyz', 'Uruguay' => 'xyz'}
     team_uris = teams.keys.map do |team_name|
       helper.get_team_uri team_name
     end
     expect(team_uris).to eql(teams.values)
-
   end
 
   it 'guess the uri of all brazilian players by their names and the team uri' do
