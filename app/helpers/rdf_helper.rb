@@ -116,16 +116,37 @@ module RdfHelper
   # guess a player uri by a given name and team
   # @param name [String] the name of the player
   # @return [RDF::Query::Solution] the player
-  def get_player_uri(name, team_uri)
+  def get_player_uri(name, team_uri=nil, fallback=false)
+    name.strip!
+    extension = team_uri ? "?player_uri <http://dbpedia.org/ontology/team> <#{team_uri}> ." : ''
+    label = "\"#{name}\""
+    fallback_filter = ''
+    if fallback
+      label = '?label'
+      fallback_filter = "FILTER(regex(str(?label), '(^|\\\\W)#{name}', 'i'))"
+    end
+
     sparql = "SELECT DISTINCT ?player_uri
     WHERE {
-      ?player_uri <#{RDF::RDFS.label}> ?label .
+      ?player_uri <#{RDF::RDFS.label}> #{label} .
       ?player_uri <#{RDF.type}> <http://dbpedia.org/ontology/SoccerPlayer> .
-      ?player_uri <http://dbpedia.org/ontology/team> <#{team_uri}> .
-      FILTER(regex(str(?label), '(^|\\\\W)#{name}', 'i'))
+      #{extension}
+    #{fallback_filter}
     }"
     solutions = DBPEDIA.query sparql
-
+    result = case solutions.count
+               when 0 # Fallbacks
+                 if name.include?(',') # reverse order: César, Júlio => Júlio César
+                   name = name.split(',').reverse.join(' ')
+                   get_player_uri(name, team_uri) || get_player_uri(name) # with or without national team
+                 else
+                   get_player_uri(name, team_uri, true) || get_player_uri(name, nil, true) unless fallback
+                 end
+               when 1
+                 solutions.first
+               else # > 1
+                 solutions.first
+             end
   end
 
   # return a player given by a specific uri.
@@ -195,4 +216,5 @@ module RdfHelper
       writer << graph
     end
   end
+
 end

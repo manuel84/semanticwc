@@ -19,9 +19,34 @@ describe RdfHelper do
     expect(team_uri).to eql('http/sonstwas')
   end
 
-  it 'guess the uri of all brazilian players by their names and the team uri'do
+  it 'guess the uri of all brazilian players by their names and the team uri' do
     team_uri = 'http://dbpedia.org/resource/Brazil_national_football_team'
-
+    player_uris = ['Jefferson',
+                   'César, Júlio',
+                   'Victor',
+                   'Alves, Dani',
+                   'Silva, Thiago (C)',
+                   'Luiz, David',
+                   'Marcelo',
+                   'Dante',
+                   'Maxwell',
+                   'Henrique',
+                   'Maicon',
+                   'Fernandinho',
+                   'Paulinho',
+                   'Oscar',
+                   'Ramires',
+                   'Gustavo, Luiz',
+                   'Hernanes',
+                   'Willian',
+                   'Hulk',
+                   'Fred',
+                   'Neymar',
+                   'Bernard',
+                   'Jô'].map do |player_name|
+      get_player_uri(player_name, team_uri)
+    end
+    expect(player_uris).to eql(["hallo Welt"])
   end
 
 end
