@@ -2,9 +2,10 @@
 module RdfHelper
   RDF_TTL_FILE = (Rails.root.join 'doc', 'example.ttl').to_s
   QUERYABLE = RDF::Repository.load(RDF_TTL_FILE)
+  DBPEDIA = SPARQL::Client.new('http://dbpedia.org/sparql')
 
   def get_multi_stage_competitions
-    sparql = SPARQL.parse("SELECT * WHERE { ?s <#{PREFIX::RDF}type> <#{PREFIX::BBCSPORT}MultiStageCompetition> }")
+    sparql = SPARQL.parse("SELECT * WHERE { ?s <#{RDF.type}> <#{PREFIX::BBCSPORT}MultiStageCompetition> }")
     solutions = QUERYABLE.query(sparql)
   end
 
@@ -29,7 +30,7 @@ module RdfHelper
     sparql = SPARQL.parse("
               SELECT ?uri ?homeCompetitor ?homeCompetitor_uri ?awayCompetitor ?awayCompetitor_uri ?round ?round_uri
               WHERE {
-                ?uri <#{PREFIX::RDF}type> <#{PREFIX::BBCSPORT}Match> .
+                ?uri <#{RDF.type}> <#{PREFIX::BBCSPORT}Match> .
                 #{optional_filter}
               }
               ")
@@ -63,13 +64,29 @@ module RdfHelper
     sparql = SPARQL.parse("SELECT ?homeCompetitor ?homeCompetitor_uri ?awayCompetitor ?awayCompetitor_uri ?round ?round_uri
     WHERE {
             <#{uri}> <#{PREFIX::BBCSPORT}homeCompetitor> ?homeCompetitor_uri .
-            ?homeCompetitor_uri <#{PREFIX::RDFS}label> ?homeCompetitor .
+            ?homeCompetitor_uri <#{RDF::RDFS.label}> ?homeCompetitor .
             <#{uri}> <#{PREFIX::BBCSPORT}awayCompetitor> ?awayCompetitor_uri .
-            ?awayCompetitor_uri <#{PREFIX::RDFS}label> ?awayCompetitor .
+            ?awayCompetitor_uri <#{RDF::RDFS.label}> ?awayCompetitor .
             ?round_uri <#{PREFIX::BBCSPORT}hasMatch> <#{uri}> .
-            ?round_uri <#{PREFIX::RDFS}label> ?round .
+            ?round_uri <#{RDF::RDFS.label}> ?round .
             }")
     solution = QUERYABLE.query(sparql).first
+  end
+
+  # guess a team uri by a given team name
+  def get_team_uri(name)
+    sparql = "SELECT DISTINCT ?team_uri
+                {
+                ?team_uri <http://dbpedia.org/property/association> ?association .
+                ?team_uri <#{RDF.type}> <http://dbpedia.org/ontology/SoccerClub> .
+                ?team_uri <#{RDF::RDFS.label}> ?label .
+                ?team_uri <#{RDF.type}> <http://schema.org/Organization> .
+                FILTER(regex(str(?label), '(^|\\\\W)#{name}', 'i'))
+              }
+"
+    #solutions = DBPEDIA.query sparql
+    #solutions
+    "http://dbpedia.org/resource/Brazil_national_football_team"
   end
 
   # return a team given by a specific uri.
@@ -79,6 +96,35 @@ module RdfHelper
   # @param uri [String] the uri of the team
   # @return [RDF::Query::Solution] the team
   def get_team(uri)
+    sparql = SPARQL.parse("SELECT ?label
+        WHERE {
+                <#{uri}> <#{RDF::RDFS.label}> ?label .
+                }")
+    solution = QUERYABLE.query(sparql).first
+  end
+
+  # return a collection of player from a national team given by the team uri
+  # A player contains
+  # uri,
+  # name
+  # @param uri [String] the uri of the team
+  # @return [RDF::Query::Solutions] the players
+  def get_players(uri)
+
+  end
+
+  # guess a player uri by a given name and team
+  # @param name [String] the name of the player
+  # @return [RDF::Query::Solution] the player
+  def get_player_uri(name, team_uri)
+    sparql = "SELECT DISTINCT ?player_uri
+    WHERE {
+      ?player_uri <#{RDF::RDFS.label}> ?label .
+      ?player_uri <#{RDF.type}> <http://dbpedia.org/ontology/SoccerPlayer> .
+      ?player_uri <http://dbpedia.org/ontology/team> <#{team_uri}> .
+      FILTER(regex(str(?label), '(^|\\\\W)#{name}', 'i'))
+    }"
+    solutions = DBPEDIA.query sparql
 
   end
 

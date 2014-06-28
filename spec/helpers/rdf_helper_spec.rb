@@ -14,4 +14,14 @@ describe RdfHelper do
     bra_cro.round.to_s.should be_eql("Gruppe A")
   end
 
+  it 'guess the uri of the brazilian national team by the name Brasilien' do
+    team_uri = helper.get_team_uri('Brasil')
+    expect(team_uri).to eql('http/sonstwas')
+  end
+
+  it 'guess the uri of all brazilian players by their names and the team uri'do
+    team_uri = 'http://dbpedia.org/resource/Brazil_national_football_team'
+
+  end
+
 end
