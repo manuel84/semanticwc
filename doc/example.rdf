@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<rdf:RDF xmlns:ns0='http://www.bbc.co.uk/ontologies/sport/' xmlns:ns1='http://www.bbc.co.uk/ontologies/event/' xmlns:ns2='http://purl.org/hpi/soccer-voc/' xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#' xmlns:rdfs='http://www.w3.org/2000/01/rdf-schema#'>
+  <ns0:RecurringCompetition rdf:about='http://de.dbpedia.org/page/Fußball-Weltmeisterschaft'>
+    <ns1:recurringEvent>
+      <ns0:MultiStageCompetition rdf:about='http://de.dbpedia.org/page/Fußball-Weltmeisterschaft_2014'>
+        <ns0:firstStage>
+          <ns0:GroupCompetition rdf:about='http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Vorrunde'>
+            <ns0:hasGroup>
+              <rdf:Description rdf:about='http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Gruppe_A'>
+                <rdfs:label>Gruppe A</rdfs:label>
+                <ns0:hasMatch>
+                  <ns0:Match rdf:about='http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#Brasilien_.E2.80.93_Kroatien'>
+                    <ns2:Referee rdf:resource='http://de.dbpedia.org/page/Felix_Brych' />
+                    <ns0:awayCompetitor>
+                      <rdf:Description rdf:about='http://de.wikipedia.org/wiki/Kroatische_Fußballnationalmannschaft'>
+                        <rdfs:label>Kroatien</rdfs:label>
+                      </rdf:Description>
+                    </ns0:awayCompetitor>
+                    <ns0:homeCompetitor>
+                      <rdf:Description rdf:about='http://de.wikipedia.org/wiki/Brasilianische_Fußballnationalmannschaft'>
+                        <rdfs:label>Brasilien</rdfs:label>
+                      </rdf:Description>
+                    </ns0:homeCompetitor>
+                  </ns0:Match>
+                </ns0:hasMatch>
+                 <ns0:hasMatch rdf:resource='http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#Mexiko_.E2.80.93_Kamerun_-:-_.28-:-.29' />
+                 <ns0:hasMatch rdf:resource='http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014/Gruppe_A#Kroatien_.E2.80.93_Mexiko_-:-_.28-:-.29' />
+              </rdf:Description>
+            </ns0:hasGroup>
+             <ns0:hasGroup rdf:resource='http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Gruppe_B' />
+             <ns0:hasGroup rdf:resource='http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Gruppe_G' />
+             <ns0:hasGroup rdf:resource='http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Gruppe_H' />
+          </ns0:GroupCompetition>
+        </ns0:firstStage>
+        <ns0:hasStage>
+          <ns0:KnockoutCompetition rdf:about='http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Achtelfinale'>
+          </ns0:KnockoutCompetition>
+        </ns0:hasStage>
+         <ns0:hasStage>
+          <ns0:KnockoutCompetition rdf:about='http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Viertelfinale'>
+          </ns0:KnockoutCompetition>
+        </ns0:hasStage>
+         <ns0:hasStage>
+          <ns0:KnockoutCompetition rdf:about='http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Halbfinale'>
+          </ns0:KnockoutCompetition>
+        </ns0:hasStage>
+         <ns0:hasStage>
+          <ns0:KnockoutCompetition rdf:about='http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Spiel_um_Platz_3'>
+            <ns0:hasRound rdf:resource='http://cs.hs-rm.de/~mdudd001/wc/Spiel_um_PLatz_3' />
+          </ns0:KnockoutCompetition>
+        </ns0:hasStage>
+        <ns0:lastStage>
+          <ns0:KnockoutCompetition rdf:about='http://de.wikipedia.org/wiki/Fußball-Weltmeisterschaft_2014#Finale'>
+            <ns0:hasRound rdf:resource='http://cs.hs-rm.de/~mdudd001/wc/Finalspiel' />
+          </ns0:KnockoutCompetition>
+        </ns0:lastStage>
+      </ns0:MultiStageCompetition>
+    </ns1:recurringEvent>
+  </ns0:RecurringCompetition>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+</rdf:RDF>

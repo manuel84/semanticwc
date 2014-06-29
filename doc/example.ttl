@@ -43,7 +43,8 @@ wc14:Gruppe_A bbcsport:hasMatch wc14a:Brasilien_.E2.80.93_Kroatien ,
 wc14:Gruppe_A rdfs:label "Gruppe A" .
 
 # Konkrete Spiele
-wc14a:Brasilien_.E2.80.93_Kroatien bbcsport:homeCompetitor wiki:Brasilianische_Fußballnationalmannschaft ;
+wc14a:Brasilien_.E2.80.93_Kroatien  rdf:type bbcsport:Match;
+                                    bbcsport:homeCompetitor wiki:Brasilianische_Fußballnationalmannschaft ;
                                     smm:Referee db:Felix_Brych ;
                                     bbcsport:awayCompetitor wiki:Kroatische_Fußballnationalmannschaft .
 
