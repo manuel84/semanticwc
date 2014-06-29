@@ -75,7 +75,7 @@ module RdfHelper
 
   # guess a team uri by a given team name
   def get_team_uri(name)
-    exceptions = {'USA' => 'United States of America'}
+    exceptions = {'USA' => 'Vereinigte Staaten'}
     name = exceptions[name] if exceptions.has_key?(name)
     sparql = "
     SELECT DISTINCT ?country_name
