@@ -14,10 +14,10 @@
       <li data-form="ui-body-a" data-swatch="a" data-theme="a">
         <div class="big center">
 
-          <%= link_to(image_tag(@matchday.last.select { |t| t[1].eql?("team1_icon") }.first.last, height: 40), teams_path(:uri => "#{PREFIX::WC}"+@matchday.last.select { |t| t[1].eql?("team1") }.first.last), class: [:img], 'data-prefetch'.to_sym => true) %>
+          <%= link_to(image_tag(@matchday.last.select { |t| t[1].eql?('team1_icon') }.first.last, height: 40), teams_path(:uri => get_team_uri(@matchday.last.select { |t| t[1].eql?('team1') }.first.last)), class: [:img], 'data-prefetch'.to_sym => true) %>
           -:-
 
-          <%= link_to(image_tag(@matchday.last.select { |t| t[1].eql?("team2_icon") }.first.last, height: 40), teams_path(:uri => "#{PREFIX::WC}"+@matchday.last.select { |t| t[1].eql?("team2") }.first.last), class: [:img], 'data-prefetch'.to_sym => true) %>
+          <%= link_to(image_tag(@matchday.last.select { |t| t[1].eql?('team2_icon') }.first.last, height: 40), teams_path(:uri => get_team_uri(@matchday.last.select { |t| t[1].eql?('team2') }.first.last)), class: [:img], 'data-prefetch'.to_sym => true) %>
           <br/>
 
           <%= @matchday.last.select { |t| t[1].eql?("team1") }.first.last %>

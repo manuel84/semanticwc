@@ -98,11 +98,13 @@ module RdfHelper
   # @param uri [String] the uri of the team
   # @return [RDF::Query::Solution] the team
   def get_team(uri)
-    sparql = SPARQL.parse("SELECT ?label
+    sparql = "SELECT ?uri ?label
         WHERE {
+                ?uri <#{RDF::RDFS.label}> ?label .
                 <#{uri}> <#{RDF::RDFS.label}> ?label .
-                }")
-    solution = QUERYABLE.query(sparql).first
+              FILTER ( LANG(?label) = 'de' )
+                }"
+    solution = DBPEDIA.query(sparql).first
   end
 
   # return a collection of player from a national team given by the team uri
@@ -112,7 +114,29 @@ module RdfHelper
   # @param uri [String] the uri of the team
   # @return [RDF::Query::Solutions] the players
   def get_players(uri)
-
+    ['Jefferson',
+     'César, Júlio',
+     'Victor',
+     'Alves, Dani',
+     'Silva, Thiago',
+     'Luiz, David',
+     'Marcelo',
+     'Dante',
+     'Maxwell',
+     'Henrique',
+     'Maicon',
+     'Fernandinho',
+     'Paulinho',
+     'Oscar',
+     'Ramires',
+     'Gustavo, Luiz',
+     'Hernanes',
+     'Willian',
+     'Hulk',
+     'Fred',
+     'Neymar',
+     'Bernard',
+     'Jô']
   end
 
   # guess a player uri by a given name and team
@@ -123,7 +147,6 @@ module RdfHelper
       name = name.split(',').reverse.join(' ')
     end
     name = name.strip
-    #
     sparql = "SELECT DISTINCT ?player_uri ?team_uri
         WHERE {
           ?player_uri <http://xmlns.com/foaf/0.1/name> \"#{name}\"@en .
@@ -147,9 +170,10 @@ module RdfHelper
                when 1
                  solutions.first
                else
-                 nil
+                 puts solutions.count
+                 solutions.first
              end
-    result.player_uri.to_s
+    result.player_uri.to_s if result
   end
 
   # return a player given by a specific uri.
@@ -165,7 +189,21 @@ module RdfHelper
   # @param uri [String] the uri of the player
   # @return [RDF::Query::Solution] the player
   def get_player(uri)
+    sparql = "SELECT DISTINCT ?uri ?fullname ?position ?birth_date ?current_club_uri ?current_club ?image_url ?thumbnail_url ?abstract
+           WHERE {
+             <#{uri}> <http://dbpedia.org/property/fullname> ?fullname .
+             OPTIONAL {<#{uri}> <http://dbpedia.org/ontology/position> ?position .
+             <#{uri}> <http://dbpedia.org/property/birthDate> ?birth_date .
+             <#{uri}> <http://dbpedia.org/property/currentclub> ?current_club_uri .
+             ?current_club_uri <#{RDF::RDFS.label}> ?current_club .
+             <#{uri}> <http://xmlns.com/foaf/0.1/depiction> ?image_url .
+             <#{uri}> <http://dbpedia.org/ontology/thumbnail> ?thumbnail_url .
+             <#{uri}> <http://dbpedia.org/ontology/abstract> ?abstract .
+            FILTER ( LANG(?current_club) = 'de' && LANG(?abstract) = 'de' )
+}
 
+           }"
+    solution = DBPEDIA.query(sparql).first
   end
 
   # return a stadium given by a specific uri.

@@ -9,9 +9,9 @@
         <option value="day">nach Tag</option>
       </select>
 
-      <%= render partial: 'select_filter_value', locals: {name: 'team', collection: tmp_all_teams} %>
+      <%= render partial: 'select_filter_value', locals: {name: 'team', collection: ["Brasilien"]} %>
       <%= render partial: 'select_filter_value', locals: {name: 'group', collection: 'Gruppe A'..'Gruppe H'} %>
-      <%= render partial: 'select_filter_value', locals: {name: 'stadium', collection: tmp_all_stadiums} %>
+      <%= render partial: 'select_filter_value', locals: {name: 'stadium', collection: ["Belo Horizonte"]} %>
       <%= render partial: 'select_filter_value', locals: {name: 'day', collection: (Date.new(2014, 6, 12)..Date.new(2014, 7, 13))} %>
 
     </div>
