@@ -1,11 +1,19 @@
-.center{
+.center {
   text-align: center;
 }
 
-.big{
+.big {
   font-size: 1.5em;
 }
 
-a.img{
+a.img {
   text-decoration: none;
+}
+
+.select-value {
+  display: none;
+}
+
+#main {
+  padding-top: 64px;
 }

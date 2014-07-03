@@ -1,94 +1,23 @@
-<div data-role="page" id="matchday-page" class="matchday-page" data-dom-cache="true">
-  <div class="swatch">
-    <%= render 'shared/header' %>
+<div data-role="page" id="team-xxx" data-title="<%= @team.label %>" class="main-page" data-dom-cache="true" data-theme="a"
+     <%= "data-prev=\"#{teams_path(:uri => 'brasilien', filter_uri: params[:filter_uri])}\"".html_safe %>
+     <%= "data-next=\"#{teams_path(:uri => 'brasilien', filter_uri: params[:filter_uri])}\"".html_safe %>>
 
-    <div class="ui-content ui-page-theme-a page" data-form="ui-page-theme-a" data-theme="a" role="main">
+  <%#= render 'filter' Gruppe, Kontinent%>
 
-      <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all">
-        <li data-role="list-divider" data-theme="a" data-swatch="a" data-form="ui-bar-a" role="heading">
-          <div class="big center">Brasilien
-            <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/20px-Flag_of_Brazil.svg.png" alt="Brasilien" height="20"/>
-          </div>
-        </li>
-        <li data-form="ui-body-a" data-swatch="a" data-theme="a">
-          <div class="big center">Kader</div>
-        </li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">Júlio
-            César</a></li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">Jefferson</a>
-        </li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">Victor</a>
-        </li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">Dani
-            Alves</a></li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">Maicon</a>
-        </li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">Marcelo</a>
-        </li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">Maxwell</a>
-        </li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">Dante</a>
-        </li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">David
-            Luiz</a></li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">Henrique</a>
-        </li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">Thiago
-            Silva</a></li>
+  <div role="main" class="ui-content" id="main">
 
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">Fernandinho</a>
-        </li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">Hernanes</a>
-        </li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">Luiz
-            Gustavo</a></li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">Oscar</a>
-        </li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">Paulinho</a>
-        </li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">Ramires</a>
-        </li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">Willian</a>
-        </li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">Bernard</a>
-        </li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">Fred</a>
-        </li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">Hulk</a>
-        </li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">Jô</a>
-        </li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= players_path(:uri => "player_pele") %>">Neymar</a>
-        </li>
-      </ul>
-
-
+    <div class="big center"><%= @team.label %>
+      <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/20px-Flag_of_Brazil.svg.png" alt="Brasilien" height="20"/>
     </div>
+
+    <%= ui_list @players, header: 'Kader' do |i| %>
+        <%= ui_list_link_to i, players_path(:uri => get_player_uri(i.to_s, @team.uri)) %>
+    <% end %>
+
+    <%= ui_list ['Felipe Scolari'], header: 'Trainer' do |i| %>
+        <%= ui_list_link_to i, trainers_path(:uri => i.to_s.parameterize) %>
+    <% end %>
+
+
   </div>
-
-
-  <!-- /content -->
 </div>

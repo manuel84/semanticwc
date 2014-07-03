@@ -1,41 +1,38 @@
-<div data-role="page" id="matchday-page" class="matchday-page" data-dom-cache="true"
-     <%= "data-prev=\"#{matches_path(:uri => @matchdays[@current_index-1].last.first.first)}\"".html_safe if @current_index > 0 %>
-     <%= "data-next=\"#{matches_path(:uri => @matchdays[@current_index+1].last.first.first)}\"".html_safe if @matchdays.count >= @current_index+2 %>>
-  <div class="swatch">
-    <%= render 'shared/header' %>
+<div data-role="page" id="<%= @matchdays[@current_index].last.first.first %>" data-title="
+  <% @matchdays[@current_index].last.first.first %>" class="main-page" data-dom-cache="true" data-theme="a"
+     <%= "data-prev=\"#{matches_path(:uri => @matchdays[@current_index-1].last.first.first, filter_uri: params[:filter_uri])}\"".html_safe if @current_index > 0 %>
+     <%= "data-next=\"#{matches_path(:uri => @matchdays[@current_index+1].last.first.first, filter_uri: params[:filter_uri])}\"".html_safe if @matchdays.count >= @current_index+2 %>>
 
-    <div class="ui-content ui-page-theme-a page" data-form="ui-page-theme-a" data-theme="a" role="main">
+  <%= render 'filter' %>
 
-      <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all">
-        <li data-role="list-divider" data-theme="a" data-swatch="a" data-form="ui-bar-a" role="heading">
-          <div class="big center"><%= @matchday.last.select { |t| t[1].eql?("time") }.first.last.to_s(:db) %> Uhr</div>
-        </li>
-        <li data-form="ui-body-a" data-swatch="a" data-theme="a">
-          <div class="big center">
+  <div role="main" class="ui-content" id="main">
 
-            <%= link_to(image_tag(@matchday.last.select { |t| t[1].eql?("team1_icon") }.first.last, height: 40), teams_path(:uri => "#{PREFIX::WC}"+@matchday.last.select { |t| t[1].eql?("team1") }.first.last), class: [:img]) %>
-            -:-
+    <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all">
+      <li data-role="list-divider" data-theme="a" data-swatch="a" data-form="ui-bar-a" role="heading">
+        <div class="big center"><%= @matchday.last.select { |t| t[1].eql?("time") }.first.last.to_s(:db) %> Uhr</div>
+      </li>
+      <li data-form="ui-body-a" data-swatch="a" data-theme="a">
+        <div class="big center">
 
-            <%= link_to(image_tag(@matchday.last.select { |t| t[1].eql?("team2_icon") }.first.last, height: 40), teams_path(:uri => "#{PREFIX::WC}"+@matchday.last.select { |t| t[1].eql?("team2") }.first.last), class: [:img]) %>
-            <br/>
+          <%= link_to(image_tag(@matchday.last.select { |t| t[1].eql?('team1_icon') }.first.last, height: 40), teams_path(:uri => get_team_uri(@matchday.last.select { |t| t[1].eql?('team1') }.first.last)), class: [:img], 'data-prefetch'.to_sym => true) %>
+          -:-
 
-            <%= @matchday.last.select { |t| t[1].eql?("team1") }.first.last %>
-            - <%= @matchday.last.select { |t| t[1].eql?("team2") }.first.last %>
+          <%= link_to(image_tag(@matchday.last.select { |t| t[1].eql?('team2_icon') }.first.last, height: 40), teams_path(:uri => get_team_uri(@matchday.last.select { |t| t[1].eql?('team2') }.first.last)), class: [:img], 'data-prefetch'.to_sym => true) %>
+          <br/>
 
-          </div>
+          <%= @matchday.last.select { |t| t[1].eql?("team1") }.first.last %>
+          - <%= @matchday.last.select { |t| t[1].eql?("team2") }.first.last %>
 
-        </li>
-        <li>
-          <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a"
-             href="<%= stadiums_path(:uri => "team_"+@matchday.last.select { |t| t[1].eql?("team1") }.first.last) %>">
-            <%= @matchday.last.select { |t| t[1].eql?("stadium") }.first.last %>
-            (<%= @matchday.last.select { |t| t[1].eql?("city") }.first.last %>)</a></li>
-      </ul>
+        </div>
 
-
-    </div>
+      </li>
+      <li>
+        <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" data-prefetch="true"
+           href="<%= stadiums_path(:uri => "team_"+@matchday.last.select { |t| t[1].eql?("team1") }.first.last) %>">
+          <%= @matchday.last.select { |t| t[1].eql?("stadium") }.first.last %>
+          (<%= @matchday.last.select { |t| t[1].eql?("city") }.first.last %>)</a></li>
+    </ul>
+    <%= render 'js_after_loaded' %>
   </div>
 
-
-  <!-- /content -->
 </div>

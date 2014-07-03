@@ -1,0 +1,20 @@
+<div data-role="panel" data-position="right" data-theme="a" id="filter-panel" data-display="overlay">
+  <form action="#" onsubmit="return false;" id="filter">
+    <div class="ui-field-contain">
+      <select name="select-filter-type" id="select-filter-type" onchange="Semwc.selectFilterType(this.value);">
+        <option value="none">alle Spiele</option>
+        <option value="team">nach Team</option>
+        <option value="group">nach Gruppe</option>
+        <option value="stadium">nach Stadion</option>
+        <option value="day">nach Tag</option>
+      </select>
+
+      <%= render partial: 'select_filter_value', locals: {name: 'team', collection: ["Brasilien"]} %>
+      <%= render partial: 'select_filter_value', locals: {name: 'group', collection: 'Gruppe A'..'Gruppe H'} %>
+      <%= render partial: 'select_filter_value', locals: {name: 'stadium', collection: ["Belo Horizonte"]} %>
+      <%= render partial: 'select_filter_value', locals: {name: 'day', collection: (Date.new(2014, 6, 12)..Date.new(2014, 7, 13))} %>
+
+    </div>
+    <input type="button" data-theme="b" data-icon="delete" data-iconshadow="true" value="schließen" data-rel="close">
+  </form>
+</div>

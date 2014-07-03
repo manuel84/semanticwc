@@ -3,6 +3,9 @@ class MatchesController < ApplicationController
   def index
     #http://localhost:3000/pages?uri=2014-06-13_Mexiko_Kamerun
     #&filter_type=group&filter_value=a
+    @filter_value = params[:filter_uri]
+    @filter_type = 'stadium' # get from params[:filter_uri]
+
     o = OpenLigaDbDataWrapper.new
     @matchdays = o.brasil_matches o.brasil_rounds.first
     if params[:uri] && params[:uri].starts_with?('team_')

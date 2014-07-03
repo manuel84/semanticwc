@@ -1,20 +1,36 @@
-<div data-role="page" id="matchday-page" class="matchday-page" data-dom-cache="true">
-  <div class="swatch">
-    <%= render 'shared/header' %>
+<div data-role="page" id="<%= @player.fullname.to_s.parameterize %>" data-title="<%= @player.fullname %>" class="main-page" data-dom-cache="true" data-theme="a">
 
-    <div class="ui-content ui-page-theme-a page" data-form="ui-page-theme-a" data-theme="a" role="main">
+  <%#= render 'filter' Sturm%>
 
-      <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all">
-        <li data-role="list-divider" data-theme="a" data-swatch="a" data-form="ui-bar-a" role="heading">
-          <div class="big center">Neymar</div>
-        </li>
-      </ul>
-      <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Neymar_FCBarcelona.JPG/172px-Neymar_FCBarcelona.JPG" alt="Neymar" height="200"/>
+  <div role="main" class="ui-content" id="main">
+    <% infos = [] %>
+    <% infos << "Position: #{@player.position}" if @player.has_variables? [:position] %>
+    <% infos << "Alter: #{distance_of_time_in_words_hash(Time.now, Date.parse(@player.birth_date.to_s))[:years]} Jahre (*#{Date.parse(@player.birth_date.to_s).to_formatted_s(:rfc822) })" if @player.has_variables? [:birth_date] %>
+    <% infos << "Größe: #{@player.height}" if @player.has_variables? [:height] %>
+    <% infos << "Gewicht: #{@player.weight}" if @player.has_variables? [:weight] %>
+    <% infos << "Verein: #{@player.current_club}" if @player.has_variables? [:current_club] %>
+
+    <%= ui_list infos, header: @player.fullname do |i| %>
+        <%= i %>
+    <% end %>
+    <% if @player.has_variables? [:image_url] %>
+        <div class="center">
+          <%= image_tag @player.image_url, width: 360 %>
+        </div>
+    <% end %>
+    <% if @player.has_variables? [:abstract] %>
+        <div class="abstract center">
+          <%= @player.abstract %>
+        </div>
+    <% end %>
+    <%= ui_list ['Länderspiele: 55', 'Tore: 30'], header: 'Nationalmannschaft' do |i| %>
+        <%= i %>
+    <% end %>
+    <%= ui_list ['FC Barcelona: 06/2011 - heute', 'Fluminese Rio der Janeiro: 04/2010 - 06/2011'], header: 'Vereine' do |i| %>
+        <%= i %>
+    <% end %>
 
 
-    </div>
   </div>
 
-
-  <!-- /content -->
 </div>

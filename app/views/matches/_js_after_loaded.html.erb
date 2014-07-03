@@ -1,0 +1,7 @@
+<%= javascript_tag '
+  $(function() {
+    $("#select-filter-type option[value=\''+@filter_type+'\']").attr("selected", true)
+    $("#select-filter-type").change()
+    $("#select-filter-value-'+@filter_type+' option[value=\''+@filter_type+'\']").attr("selected", true)
+    $("#select-filter-value-'+@filter_type+'-button span").html("'+@filter_type+'")
+    });' %>

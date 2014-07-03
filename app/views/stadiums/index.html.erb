@@ -1,0 +1,47 @@
+<div data-role="page" id="team-xxx" data-title="stadium-xxx" class="main-page" data-dom-cache="true" data-theme="a"
+     <%= "data-prev=\"#{teams_path(:uri => 'brasilien', filter_uri: params[:filter_uri])}\"".html_safe %>
+     <%= "data-next=\"#{teams_path(:uri => 'brasilien', filter_uri: params[:filter_uri])}\"".html_safe %>>
+
+  <%#= render 'filter' %>
+
+  <div role="main" class="ui-content" id="main">
+    <%= ui_list ['Kapazität: 62.160', 'São Paulo'], header: 'Arena de São Paulo (São Paulo)' do |i| %>
+        <%= i %>
+    <% end %>
+    <div class="center">
+      <%= image_tag('http://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Novo_mineir%C3%A3o_a%C3%A9rea.jpg/300px-Novo_mineir%C3%A3o_a%C3%A9rea.jpg', width: 360) %>
+    </div>
+    <div class="center">
+      <div style="width: 320px">
+        <div id="map" style="width: 320px; height: 320px;"></div>
+      </div>
+      <%= javascript_tag do %>
+          handler = Gmaps.build('Google');
+          handler.buildMap({ provider: { maxZoom: 5 }, internal: {id: 'map'}}, function(){
+          markers = handler.addMarkers([
+          {
+          "lat": 50,
+          "lng": 130,
+          "picture": {
+          "url":
+          "http://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Novo_mineir%C3%A3o_a%C3%A9rea.jpg/300px-Novo_mineir%C3%A3o_a%C3%A9rea.jpg",
+          "width": 36,
+          "height": 36
+          }
+          }
+          ]);
+          handler.bounds.extendWith(markers);
+          handler.fitMapToBounds();
+          });
+      <% end %>
+    </div>
+    <%= ui_list [['Mexiko - Kamerun', 'http://localhost:3000/matches?uri=2014-06-13_Mexiko_Kamerun'],
+                 ['Spanien - Niederlande', 'http://localhost:3000/matches?uri=2014-06-13_Mexiko_Kamerun'],
+                 ['Deutschland - Ghana', 'http://localhost:3000/matches?uri=2014-06-13_Mexiko_Kamerun']], header: 'Spiele' do |i| %>
+        <%= ui_list_link_to i[0], matches_path(:uri => i[1].to_s.parameterize, :filter_uri => 'Arena de São Paulo (São Paulo)'.parameterize) %>
+    <% end %>
+
+
+  </div>
+
+</div>
