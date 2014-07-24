@@ -1,7 +1,32 @@
-<div data-role="page" id="" data-title="" class="main-page" data-dom-cache="true" data-theme="a">
+<div data-role="page" id="<%= @trainer.fullname.to_s.parameterize %>" data-title="<%= @trainer.fullname %>" class="main-page" data-dom-cache="true" data-theme="a">
+
+  <%#= render 'filter' Sturm%>
 
   <div role="main" class="ui-content" id="main">
-    Trainer
+    <% infos = [] %>
+    <% infos << "Alter: #{distance_of_time_in_words_hash(Time.now, Date.parse(@trainer.birth_date.to_s))[:years]} Jahre (*#{Date.parse(@trainer.birth_date.to_s).to_formatted_s(:rfc822) })" if @trainer.has_variables? [:birth_date] %>
+
+    <%= ui_list infos, header: @trainer.fullname do |i| %>
+        <%= i %>
+    <% end %>
+    <% if @trainer.has_variables? [:image_url] %>
+        <div class="center">
+          <%= image_tag @trainer.image_url, width: 360 %>
+        </div>
+    <% end %>
+    <% if @trainer.has_variables? [:abstract] %>
+        <div class="abstract center">
+          <%= @trainer.abstract %>
+        </div>
+    <% end %>
+    <%= ui_list ['Länderspiele: 55', 'Siege: 30', 'Unentschieden: 20', 'Niederlagen: 5'], header: 'Nationalmannschaft' do |i| %>
+        <%= i %>
+    <% end %>
+    <%= ui_list ['VfB Stuttgart: 07/1996 - 09/2002'], header: 'Trainerstationen' do |i| %>
+        <%= i %>
+    <% end %>
+
+
   </div>
 
 </div>

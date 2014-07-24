@@ -19,8 +19,13 @@
         <% end %>
     <% end %>
 
-    <%= ui_list ['Felipe Scolari'], header: 'Trainer' do |i| %>
-        <%= ui_list_link_to i, trainers_path(:uri => i.to_s.parameterize) %>
+    <%= ui_list [@trainer], header: 'Trainer' do |i| %>
+        <% trainer_uri = get_trainer_uri(i.to_s, @team.uri) %>
+        <% if trainer_uri %>
+            <%= ui_list_link_to i, trainers_path(:uri => trainer_uri) %>
+        <% else %>
+            <%= ui_list_link_to "no link", "" %>
+        <% end %>
     <% end %>
 
 
