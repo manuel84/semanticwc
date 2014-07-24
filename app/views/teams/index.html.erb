@@ -11,7 +11,12 @@
     </div>
 
     <%= ui_list @players, header: 'Kader' do |i| %>
-        <%= ui_list_link_to i, players_path(:uri => get_player_uri(i.to_s, @team.uri)) %>
+        <% player_uri = get_player_uri(i.to_s, @team.uri) %>
+        <% if player_uri %>
+            <%= ui_list_link_to i, players_path(:uri => player_uri) %>
+        <% else %>
+            <%= ui_list_link_to "no link", "" %>
+        <% end %>
     <% end %>
 
     <%= ui_list ['Felipe Scolari'], header: 'Trainer' do |i| %>
