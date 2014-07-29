@@ -39,7 +39,7 @@ class SfgCrawler < DataCrawler
     #stadium mapping,
     stadium_mappings = {"Arena da Baixada" => "Arena_da_Baixada",
                         "Estadio do Maracana" => "Est%C3%A1dio_do_Maracan%C3%A3",
-                        "Arena de Sao Paulo" => "S%C3%A3o_Paulo",
+                        "Arena de Sao Paulo" => "Arena_de_S%C3%A3o_Paulo",
                         "Arena Fonte Nova" => "Arena_Fonte_Nova",
                         "Arena Pantanal" => "Arena_Pantanal",
                         "Estadio das Dunas" => "Arena_das_Dunas",
@@ -48,7 +48,7 @@ class SfgCrawler < DataCrawler
                         "Estadio Castelao" => "Castel%C3%A3o_(Cear%C3%A1)",
                         "Estadio Mineirao" => "Mineir%C3%A3o",
                         "Estadio Nacional" => "Est%C3%A1dio_Nacional_Man%C3%A9_Garrincha",
-                        "Arena Pernambuco" => "Recife",}
+                        "Arena Pernambuco" => "Arena_Cidade_da_Copa",}
 
     matches.each do |match|
         #gruppenphase nachbauen
