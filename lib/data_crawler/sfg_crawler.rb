@@ -9,6 +9,7 @@ class SfgCrawler < DataCrawler
     swc14 = RDF::Vocabulary.new("http://cs.hs-rm.de/~mdudd001/semanticwc/")
     dbpedia = RDF::Vocabulary.new("http://dbpedia.org/resource/")
     ev = RDF::Vocabulary.new("http://purl.org/NET/c4dm/event.owl#")
+    foaf = RDF::Vocabulary.new("http://xmlns.com/foaf/0.1/")
     time = RDF::Vocabulary.new("http://www.w3.org/2006/time#")
     timeline = RDF::Vocabulary.new("http://purl.org/NET/c4dm/timeline.owl#")
     part = RDF::Vocabulary.new("http://purl.org/vocab/participation/schema#")
@@ -112,13 +113,13 @@ class SfgCrawler < DataCrawler
         #graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], swc14.awayCompetitorGoals, match['away_team']['goals']]
 
         #TODO: Winner gibt es nciht
-        if match['winner'] != "Draw"
-          if team_mappings[match['winner']]
-            graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], swc14.winner, dbpedia[team_mappings[match['winner']]]]
-          else
-            graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], swc14.winner, dbpedia[match['winner']+"_national_football_team"]]
-          end
-        end
+        #if match['winner'] != "Draw"
+        #  if team_mappings[match['winner']]
+        #    graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], swc14.winner, dbpedia[team_mappings[match['winner']]]]
+        #  else
+        #    graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], swc14.winner, dbpedia[match['winner']+"_national_football_team"]]
+        #  end
+        #end
 
         #graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], part.startDate, swc14["Event_"+match['home_team']['code']+"_"+match['away_team']['code']]]
         #graph << [swc14["Event_"+match['home_team']['code']+"_"+match['away_team']['code']], part.startDate, match['datetime']]
@@ -128,9 +129,8 @@ class SfgCrawler < DataCrawler
               graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.Referee, swc14[URI.encode(event['player'])]]
               graph << [swc14[URI.encode(event['player'])], RDF.type, soccer.Referee]
             elsif event['type_of_event'] == "coach"
-              #TODO: Manager gibt es nicht
-              graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.Manager, swc14[URI.encode(event['player'])]]
-              graph << [swc14[URI.encode(event['player'])], RDF.type, soccer.SoccerManager]
+              graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], dbpedia.coach, swc14[URI.encode(event['player'])]]
+              graph << [swc14[URI.encode(event['player'])], RDF.type, foaf.agent]
             elsif event['type_of_event'] == "player"
               graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.startPlayer, swc14[URI.encode(event['player'])]]
               graph << [swc14[URI.encode(event['player'])], RDF.type, soccer.SoccerPlayer]
@@ -141,10 +141,12 @@ class SfgCrawler < DataCrawler
               timeEvent = match['home_team']['code']+"_"+match['away_team']['code']+"_Time_"+SecureRandom.random_number(36**12).to_s(36).rjust(12, "0")
               #calc date
               dateTime = RDF::Literal.new(event['time'], :datatype => RDF::XSD.int)
+              goalLiteral = RDF::Literal.new(event['type_of_event'])
               graph << [swc14[goalEvent], soccer.match, swc14[match['home_team']['code']+"_"+match['away_team']['code']]]
               graph << [swc14[goalEvent], RDF.type, soccer.Goal]
               graph << [swc14[goalEvent], ev.agent, swc14[URI.encode(event['player'])]]
               graph << [swc14[goalEvent], ev.time, swc14[timeEvent]]
+              graph << [swc14[goalEvent], ev.literal_factor, goalLiteral]
               graph << [swc14[timeEvent], RDF.type, timeline.Instant]
               graph << [swc14[timeEvent], timeline.atInt, dateTime]
             end
@@ -155,9 +157,8 @@ class SfgCrawler < DataCrawler
             graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.Referee, swc14[URI.encode(event['player'])]]
             graph << [swc14[URI.encode(event['player'])], RDF.type, soccer.Referee]
           elsif event['type_of_event'] == "coach"
-            #TODO: Manager gibt es nicht
-            graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.Manager, swc14[URI.encode(event['player'])]]
-            graph << [swc14[URI.encode(event['player'])], RDF.type, soccer.SoccerManager]
+            graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], dbpedia.coach, swc14[URI.encode(event['player'])]]
+            graph << [swc14[URI.encode(event['player'])], RDF.type, foaf.agent]
           elsif event['type_of_event'] == "player"
             graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.startPlayer, swc14[URI.encode(event['player'])]]
             graph << [swc14[URI.encode(event['player'])], RDF.type, soccer.SoccerPlayer]
@@ -168,10 +169,12 @@ class SfgCrawler < DataCrawler
             timeEvent = match['home_team']['code']+"_"+match['away_team']['code']+"_Time_"+SecureRandom.random_number(36**12).to_s(36).rjust(12, "0")
             #calc date
             dateTime = RDF::Literal.new(event['time'], :datatype => RDF::XSD.int)
+            goalLiteral = RDF::Literal.new(event['type_of_event'])
             graph << [swc14[goalEvent], soccer.match, swc14[match['home_team']['code']+"_"+match['away_team']['code']]]
             graph << [swc14[goalEvent], RDF.type, soccer.Goal]
             graph << [swc14[goalEvent], ev.agent, swc14[URI.encode(event['player'])]]
             graph << [swc14[goalEvent], ev.time, swc14[timeEvent]]
+            graph << [swc14[goalEvent], ev.literal_factor, goalLiteral]
             graph << [swc14[timeEvent], RDF.type, timeline.Instant]
             graph << [swc14[timeEvent], timeline.atInt, dateTime]
           end
