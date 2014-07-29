@@ -9,15 +9,15 @@
 
     <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all">
       <li data-role="list-divider" data-theme="a" data-swatch="a" data-form="ui-bar-a" role="heading">
-        <div class="big center"><%= Time.new.to_s(:db) %> Uhr</div>
+        <div class="big center"><%= Time.parse(@matchday.time.to_s).to_s(:db) %> Uhr</div>
       </li>
       <li data-form="ui-body-a" data-swatch="a" data-theme="a">
         <div class="big center">
 
-          <%= link_to(image_tag(@home.image_url, height: 40), teams_path(:uri => @home.uri), class: [:img], 'data-prefetch'.to_sym => true) %>
+          <%= link_to(image_tag(img_url(@home), height: 40), teams_path(:uri => @home.uri), class: [:img], 'data-prefetch'.to_sym => true) %>
           -:-
 
-          <%= link_to(image_tag(@away.image_url, height: 40), teams_path(:uri => @away.uri), class: [:img], 'data-prefetch'.to_sym => true) %>
+          <%= link_to(image_tag(img_url(@away), height: 40), teams_path(:uri => @away.uri), class: [:img], 'data-prefetch'.to_sym => true) %>
           <br/>
 
           <%= @matchday.homeCompetitor %>

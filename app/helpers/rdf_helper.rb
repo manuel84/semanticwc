@@ -2,7 +2,7 @@
 module RdfHelper
   RDF_TTL_FILE = (Rails.root.join 'db', 'worldcup.ttl').to_s
   QUERYABLE = RDF::Repository.load(RDF_TTL_FILE)
-  DBPEDIA = SPARQL::Client.new('http://dbpedia.org/sparql')
+  DBPEDIA = SPARQL::Client.new('http://de.dbpedia.org/sparql')
 
   def get_multi_stage_competitions
     sparql = SPARQL.parse("SELECT * WHERE { ?s <#{RDF.type}> <#{PREFIX::BBCSPORT}MultiStageCompetition> }")
@@ -18,6 +18,8 @@ module RdfHelper
   # awayCompetitor_uri,
   # round,
   # round_uri
+  # venue    (todo)
+  # venue_uri
   #
   # @param filter_uri [String] the filter type, can be a group, day, stadium, team or none filter
   # @return [RDF::Query::Solutions] the array-similar object of RDF::Query::Solution
@@ -28,7 +30,7 @@ module RdfHelper
                         ""
                       end
     sparql = SPARQL.parse("
-              SELECT ?uri ?homeCompetitor ?homeCompetitor_uri ?awayCompetitor ?awayCompetitor_uri ?round ?round_uri ?venue_uri
+              SELECT ?uri ?homeCompetitor ?homeCompetitor_uri ?awayCompetitor ?awayCompetitor_uri ?round ?round_uri ?venue ?venue_uri ?time
               WHERE {
                 ?uri <#{RDF.type}> <#{PREFIX::BBCSPORT}Match> .
                 ?uri <#{PREFIX::BBCSPORT}homeCompetitor> ?homeCompetitor_uri .
@@ -38,6 +40,7 @@ module RdfHelper
 
 
                 ?uri <#{PREFIX::BBCSPORT}Venue> ?venue_uri .
+                ?uri <http://purl.org/NET/c4dm/event.owl#time> ?time
                 #{optional_filter}
               }
               ")
@@ -83,6 +86,8 @@ module RdfHelper
 
   # guess a team uri by a given team name
   def get_team_uri(name)
+    #sparql = "SELECT ?uri WHERE { ?uri <http://dbpedia.org/property/fifaTrigramme> \"#{name}\" . }"
+    #solution = DBPEDIA.query(sparql).first
     exceptions = {'USA' => 'Vereinigte Staaten'}
     name = exceptions[name] if exceptions.has_key?(name)
     sparql = "
@@ -105,18 +110,23 @@ module RdfHelper
   #
   # @param uri [String] the uri of the team
   # @return [RDF::Query::Solution] the team
-  def get_team(uri)
+  def get_team(uri, lang_filter=true)
+    optional_filter = lang_filter ? "FILTER ( LANG(?label) = 'de')" : ''
     sparql = "SELECT ?uri ?label ?name ?image_url ?thumbnail_url ?abstract
         WHERE {
                 ?uri <#{RDF::RDFS.label}> ?label .
                 <#{uri}> <#{RDF::RDFS.label}> ?label .
-                <#{uri}> <http://xmlns.com/foaf/0.1/depiction> ?image_url .
-                <#{uri}> <http://dbpedia.org/ontology/thumbnail> ?thumbnail_url .
-                <#{uri}> <http://dbpedia.org/ontology/abstract> ?abstract .
-                OPTIONAL {<#{uri}> <http://xmlns.com/foaf/0.1/name> ?name . FILTER ( LANG(?name) = 'de') }
-              FILTER ( LANG(?label) = 'de' && LANG(?abstract) = 'de' )
+                OPTIONAL {
+                  <#{uri}> <http://xmlns.com/foaf/0.1/depiction> ?image_url .
+                  <#{uri}> <http://dbpedia.org/ontology/thumbnail> ?thumbnail_url .
+                  <#{uri}> <http://dbpedia.org/ontology/abstract> ?abstract .
+                  <#{uri}> <http://xmlns.com/foaf/0.1/name> ?name .
+                  FILTER ( LANG(?name) = 'de' )
+                }
+                #{optional_filter}
                 }"
     solution = DBPEDIA.query(sparql).first
+    solution ||= get_team(uri, false) if lang_filter
   end
 
   # return a collection of player from a national team given by the team uri
@@ -319,6 +329,14 @@ module RdfHelper
     graph = RDF::Graph.load RDF_TTL_FILE
     RDF::RDFXML::Writer.open((Rails.root.join 'doc', 'example.rdf').to_s, format: :xml) do |writer|
       writer << graph
+    end
+  end
+
+  def img_url(sol)
+    if sol && sol.has_attributes?(['image_url'])
+      sol.image_url
+    else
+      lorem_img
     end
   end
 

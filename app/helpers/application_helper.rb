@@ -33,4 +33,8 @@ module ApplicationHelper
     link_to name, options, {'class' => %w(ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r),
                             'data-form' => 'ui-btn-up-a'}.merge(html_options), &block
   end
+
+  def lorem_img
+    'http://lorempixel.com/400/200/cats/'
+  end
 end
