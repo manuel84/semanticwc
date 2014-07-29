@@ -1,7 +1,7 @@
-<div data-role="page" id="<%= @matchdays[@current_index].last.first.first %>" data-title="
-  <% @matchdays[@current_index].last.first.first %>" class="main-page" data-dom-cache="true" data-theme="a"
-     <%= "data-prev=\"#{matches_path(:uri => @matchdays[@current_index-1].last.first.first, filter_uri: params[:filter_uri])}\"".html_safe if @current_index > 0 %>
-     <%= "data-next=\"#{matches_path(:uri => @matchdays[@current_index+1].last.first.first, filter_uri: params[:filter_uri])}\"".html_safe if @matchdays.count >= @current_index+2 %>>
+<div data-role="page" id="<%= @matchday.homeCompetitor %>_<%= @matchday.awayCompetitor %><%= @current_index %>" data-title="
+  <% @matchday.uri %>" class="main-page" data-dom-cache="true" data-theme="a"
+     <%= "data-prev=\"#{matches_path(:uri => @matchdays[@current_index-1].uri, filter_uri: params[:filter_uri])}\"".html_safe if @current_index > 0 %>
+     <%= "data-next=\"#{matches_path(:uri => @matchdays[@current_index+1].uri, filter_uri: params[:filter_uri])}\"".html_safe if @matchdays.count >= @current_index+2 %>>
 
   <%= render 'filter' %>
 
@@ -9,28 +9,28 @@
 
     <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all">
       <li data-role="list-divider" data-theme="a" data-swatch="a" data-form="ui-bar-a" role="heading">
-        <div class="big center"><%= @matchday.last.select { |t| t[1].eql?("time") }.first.last.to_s(:db) %> Uhr</div>
+        <div class="big center"><%= Time.new.to_s(:db) %> Uhr</div>
       </li>
       <li data-form="ui-body-a" data-swatch="a" data-theme="a">
         <div class="big center">
 
-          <%= link_to(image_tag(@matchday.last.select { |t| t[1].eql?('team1_icon') }.first.last, height: 40), teams_path(:uri => get_team_uri(@matchday.last.select { |t| t[1].eql?('team1') }.first.last)), class: [:img], 'data-prefetch'.to_sym => true) %>
+          <%= link_to(image_tag(@home.image_url, height: 40), teams_path(:uri => @home.uri), class: [:img], 'data-prefetch'.to_sym => true) %>
           -:-
 
-          <%= link_to(image_tag(@matchday.last.select { |t| t[1].eql?('team2_icon') }.first.last, height: 40), teams_path(:uri => get_team_uri(@matchday.last.select { |t| t[1].eql?('team2') }.first.last)), class: [:img], 'data-prefetch'.to_sym => true) %>
+          <%= link_to(image_tag(@away.image_url, height: 40), teams_path(:uri => @away.uri), class: [:img], 'data-prefetch'.to_sym => true) %>
           <br/>
 
-          <%= @matchday.last.select { |t| t[1].eql?("team1") }.first.last %>
-          - <%= @matchday.last.select { |t| t[1].eql?("team2") }.first.last %>
+          <%= @matchday.homeCompetitor %>
+          - <%= @matchday.awayCompetitor %>
 
         </div>
 
       </li>
       <li>
         <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" data-prefetch="true"
-           href="<%= stadiums_path(:uri => "team_"+@matchday.last.select { |t| t[1].eql?("team1") }.first.last) %>">
-          <%= @matchday.last.select { |t| t[1].eql?("stadium") }.first.last %>
-          (<%= @matchday.last.select { |t| t[1].eql?("city") }.first.last %>)</a></li>
+           href="<%= stadiums_path(:uri => @matchday.venue_uri) %>">
+          <%= @matchday.venue_uri %>
+          (<%= @matchday.venue_uri %>)</a></li>
     </ul>
     <%= render 'js_after_loaded' %>
   </div>

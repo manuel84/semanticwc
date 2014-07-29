@@ -1,6 +1,6 @@
 # @author Manuel Dudda <dudda@redpeppix.de>
 module RdfHelper
-  RDF_TTL_FILE = (Rails.root.join 'doc', 'example.ttl').to_s
+  RDF_TTL_FILE = (Rails.root.join 'db', 'worldcup.ttl').to_s
   QUERYABLE = RDF::Repository.load(RDF_TTL_FILE)
   DBPEDIA = SPARQL::Client.new('http://dbpedia.org/sparql')
 
@@ -28,9 +28,16 @@ module RdfHelper
                         ""
                       end
     sparql = SPARQL.parse("
-              SELECT ?uri ?homeCompetitor ?homeCompetitor_uri ?awayCompetitor ?awayCompetitor_uri ?round ?round_uri
+              SELECT ?uri ?homeCompetitor ?homeCompetitor_uri ?awayCompetitor ?awayCompetitor_uri ?round ?round_uri ?venue_uri
               WHERE {
                 ?uri <#{RDF.type}> <#{PREFIX::BBCSPORT}Match> .
+                ?uri <#{PREFIX::BBCSPORT}homeCompetitor> ?homeCompetitor_uri .
+                ?homeCompetitor_uri <#{RDF::RDFS.label}> ?homeCompetitor .
+                ?uri <#{PREFIX::BBCSPORT}awayCompetitor> ?awayCompetitor_uri .
+                ?awayCompetitor_uri <#{RDF::RDFS.label}> ?awayCompetitor .
+
+
+                ?uri <#{PREFIX::BBCSPORT}Venue> ?venue_uri .
                 #{optional_filter}
               }
               ")
@@ -61,8 +68,9 @@ module RdfHelper
   # @param uri [String] the uri of the match
   # @return [RDF::Query::Solution] the match
   def get_match(uri)
-    sparql = SPARQL.parse("SELECT ?homeCompetitor ?homeCompetitor_uri ?awayCompetitor ?awayCompetitor_uri ?round ?round_uri
+    sparql = SPARQL.parse("SELECT ?uri ?homeCompetitor ?homeCompetitor_uri ?awayCompetitor ?awayCompetitor_uri ?round ?round_uri
     WHERE {
+            ?uri <#{PREFIX::BBCSPORT}homeCompetitor> ?homeCompetitor_uri .
             <#{uri}> <#{PREFIX::BBCSPORT}homeCompetitor> ?homeCompetitor_uri .
             ?homeCompetitor_uri <#{RDF::RDFS.label}> ?homeCompetitor .
             <#{uri}> <#{PREFIX::BBCSPORT}awayCompetitor> ?awayCompetitor_uri .
@@ -94,15 +102,19 @@ module RdfHelper
   # return a team given by a specific uri.
   # A team contains
   # uri,
-  # TODO...
+  #
   # @param uri [String] the uri of the team
   # @return [RDF::Query::Solution] the team
   def get_team(uri)
-    sparql = "SELECT ?uri ?label
+    sparql = "SELECT ?uri ?label ?name ?image_url ?thumbnail_url ?abstract
         WHERE {
                 ?uri <#{RDF::RDFS.label}> ?label .
                 <#{uri}> <#{RDF::RDFS.label}> ?label .
-              FILTER ( LANG(?label) = 'de' )
+                <#{uri}> <http://xmlns.com/foaf/0.1/depiction> ?image_url .
+                <#{uri}> <http://dbpedia.org/ontology/thumbnail> ?thumbnail_url .
+                <#{uri}> <http://dbpedia.org/ontology/abstract> ?abstract .
+                OPTIONAL {<#{uri}> <http://xmlns.com/foaf/0.1/name> ?name . FILTER ( LANG(?name) = 'de') }
+              FILTER ( LANG(?label) = 'de' && LANG(?abstract) = 'de' )
                 }"
     solution = DBPEDIA.query(sparql).first
   end

@@ -7,7 +7,7 @@
   <div role="main" class="ui-content" id="main">
 
     <div class="big center"><%= @team.label %>
-      <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/20px-Flag_of_Brazil.svg.png" alt="Brasilien" height="20"/>
+      <%= image_tag(@team.image_url, height: 20) %>
     </div>
 
     <%= ui_list @players, header: 'Kader' do |i| %>

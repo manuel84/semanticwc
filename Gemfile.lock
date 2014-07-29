@@ -133,6 +133,8 @@ GEM
       rdf (~> 1.1)
     rdoc (4.1.1)
       json (~> 1.4)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rspec-core (3.0.3)
       rspec-support (~> 3.0.0)
     rspec-expectations (3.0.3)
@@ -228,6 +230,7 @@ DEPENDENCIES
   rdf-raptor
   rdf-rdfxml
   rdf-turtle
+  rest-client
   rspec-rails
   sass-rails (~> 4.0.3)
   savon
