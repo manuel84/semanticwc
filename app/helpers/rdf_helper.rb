@@ -94,9 +94,9 @@ module RdfHelper
     SELECT DISTINCT ?country_name
             WHERE {
               ?country_uri <#{RDF::RDFS.label}> \"#{name}\"@de .
-    ?country_uri  <#{RDF::RDFS.label}> ?country_name .
-    ?country_uri <http://dbpedia.org/property/commonName> ?common_name .
-    FILTER ( LANG(?country_name) = 'en' )
+              ?country_uri  <#{RDF::RDFS.label}> ?country_name .
+              ?country_uri <http://dbpedia.org/property/commonName> ?common_name .
+              FILTER ( LANG(?country_name) = 'en' )
             }
     "
     solutions = DBPEDIA.query sparql
