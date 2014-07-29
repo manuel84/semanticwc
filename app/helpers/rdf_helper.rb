@@ -113,7 +113,7 @@ module RdfHelper
   # name
   # @param uri [String] the uri of the team
   # @return [RDF::Query::Solutions] the players
-  def get_players(uri)
+  def get_players_for_team(uri)
     ['Jefferson',
      'César, Júlio',
      'Victor',
@@ -227,8 +227,60 @@ module RdfHelper
   # TODO...
   # @param uri [String] the uri of the trainer
   # @return [RDF::Query::Solution] the trainer
-  def get_trainer(uri)
+  def get_trainer_for_team(uri)
+    ['Luiz Felipe Scolari', 'Joachim Löw'].last
+  end
 
+  def get_trainer(uri)
+    sparql = "SELECT DISTINCT ?fullname ?birth_date ?image_url ?thumbnail_url ?abstract
+           WHERE {
+             <#{uri}> <http://dbpedia.org/property/fullname> ?fullname .
+             OPTIONAL { <#{uri}> <http://dbpedia.org/property/birthDate> ?birth_date .
+             <#{uri}> <http://xmlns.com/foaf/0.1/depiction> ?image_url .
+             <#{uri}> <http://dbpedia.org/ontology/thumbnail> ?thumbnail_url .
+             <#{uri}> <http://dbpedia.org/ontology/abstract> ?abstract .
+            FILTER ( LANG(?abstract) = 'de' )
+}
+
+           }"
+    solution = DBPEDIA.query(sparql).first
+  end
+
+  # guess a trainer uri by a given name and team
+  # @param name [String] the name of the trainer
+  # @return [RDF::Query::Solution] the trainer
+  def get_trainer_uri(name, team_uri)
+    if name.include?(',')
+      name = name.split(',').reverse.join(' ')
+    end
+    name = name.strip
+    sparql = "SELECT DISTINCT ?trainer_uri ?team_uri
+        WHERE {
+          ?trainer_uri <http://xmlns.com/foaf/0.1/name> \"#{name}\"@en .
+          ?trainer_uri <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/SoccerManager> .
+          ?trainer_uri <http://dbpedia.org/ontology/coach> <#{team_uri}> .
+          ?trainer_uri <http://dbpedia.org/property/birthDate> ?birth_date .
+          FILTER(?birth_date > \"19000101\"^^xsd:date)
+        }"
+    solutions = DBPEDIA.query sparql
+    result = case solutions.count
+               when 0 # fallback
+                 sparql = "SELECT DISTINCT ?trainer_uri ?team_uri
+                WHERE {
+                  ?trainer_uri <http://xmlns.com/foaf/0.1/name> \"#{name}\"@en .
+                  ?trainer_uri <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/SoccerManager> .
+                  ?trainer_uri <http://dbpedia.org/property/birthDate> ?birth_date .
+                  FILTER(?birth_date > \"19000101\"^^xsd:date)
+                }"
+                 solutions = DBPEDIA.query sparql
+                 solutions.first
+               when 1
+                 solutions.first
+               else
+                 puts solutions.count
+                 solutions.first
+             end
+    result.trainer_uri.to_s if result
   end
 
   # return all team stations with time period a player participated in descendant order given by a specific uri.
