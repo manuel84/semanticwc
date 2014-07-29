@@ -111,6 +111,7 @@ class SfgCrawler < DataCrawler
         #graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], swc14.homeCompetitorGoals, match['home_team']['goals']]
         #graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], swc14.awayCompetitorGoals, match['away_team']['goals']]
 
+        #TODO: Winner gibt es nciht
         if match['winner'] != "Draw"
           if team_mappings[match['winner']]
             graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], swc14.winner, dbpedia[team_mappings[match['winner']]]]
@@ -124,31 +125,56 @@ class SfgCrawler < DataCrawler
 
         match['home_team_events'].each do |event|
             if event['type_of_event'] == "referee"
-              graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.Referee, swc14[event['player']]]
-              graph << [swc14[event['player']], RDF.type, soccer.Referee]
+              graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.Referee, swc14[URI.encode(event['player'])]]
+              graph << [swc14[URI.encode(event['player'])], RDF.type, soccer.Referee]
             elsif event['type_of_event'] == "coach"
               #TODO: Manager gibt es nicht
-              graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.Manager, swc14[event['player']]]
-              graph << [swc14[event['player']], RDF.type, soccer.SoccerManager]
+              graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.Manager, swc14[URI.encode(event['player'])]]
+              graph << [swc14[URI.encode(event['player'])], RDF.type, soccer.SoccerManager]
             elsif event['type_of_event'] == "player"
               graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.startPlayer, swc14[URI.encode(event['player'])]]
               graph << [swc14[URI.encode(event['player'])], RDF.type, soccer.SoccerPlayer]
               graph << [swc14[URI.encode(event['player'])], soccer.playsFor, homeTeam]
               graph << [swc14[URI.encode(event['player'])], rdfs.label, event['player']]
             elsif event['type_of_event'] == "goal-own" || event['type_of_event'] == "goal"
-              puts event
               goalEvent = match['home_team']['code']+"_"+match['away_team']['code']+"_Goal"+SecureRandom.random_number(36**12).to_s(36).rjust(12, "0")
               timeEvent = match['home_team']['code']+"_"+match['away_team']['code']+"_Time"+SecureRandom.random_number(36**12).to_s(36).rjust(12, "0")
               #calc date
               dateTime = RDF::Literal.new(event['time'], :datatype => RDF::XSD.int)
-              #prädikat raus suchen
-              graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.hasGoal, swc14[goalEvent]]
+              graph << [swc14[goalEvent], soccer.match, swc14[match['home_team']['code']+"_"+match['away_team']['code']]]
               graph << [swc14[goalEvent], RDF.type, soccer.Goal]
               graph << [swc14[goalEvent], ev.agent, swc14[URI.encode(event['player'])]]
               graph << [swc14[goalEvent], ev.time, swc14[timeEvent]]
               graph << [swc14[timeEvent], RDF.type, timeline.Instant]
               graph << [swc14[timeEvent], timeline.atInt, dateTime]
             end
+        end
+
+        match['away_team_events'].each do |event|
+          if event['type_of_event'] == "referee"
+            graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.Referee, swc14[URI.encode(event['player'])]]
+            graph << [swc14[URI.encode(event['player'])], RDF.type, soccer.Referee]
+          elsif event['type_of_event'] == "coach"
+            #TODO: Manager gibt es nicht
+            graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.Manager, swc14[URI.encode(event['player'])]]
+            graph << [swc14[URI.encode(event['player'])], RDF.type, soccer.SoccerManager]
+          elsif event['type_of_event'] == "player"
+            graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.startPlayer, swc14[URI.encode(event['player'])]]
+            graph << [swc14[URI.encode(event['player'])], RDF.type, soccer.SoccerPlayer]
+            graph << [swc14[URI.encode(event['player'])], soccer.playsFor, homeTeam]
+            graph << [swc14[URI.encode(event['player'])], rdfs.label, event['player']]
+          elsif event['type_of_event'] == "goal-own" || event['type_of_event'] == "goal"
+            goalEvent = match['home_team']['code']+"_"+match['away_team']['code']+"_Goal"+SecureRandom.random_number(36**12).to_s(36).rjust(12, "0")
+            timeEvent = match['home_team']['code']+"_"+match['away_team']['code']+"_Time"+SecureRandom.random_number(36**12).to_s(36).rjust(12, "0")
+            #calc date
+            dateTime = RDF::Literal.new(event['time'], :datatype => RDF::XSD.int)
+            graph << [swc14[goalEvent], soccer.match, swc14[match['home_team']['code']+"_"+match['away_team']['code']]]
+            graph << [swc14[goalEvent], RDF.type, soccer.Goal]
+            graph << [swc14[goalEvent], ev.agent, swc14[URI.encode(event['player'])]]
+            graph << [swc14[goalEvent], ev.time, swc14[timeEvent]]
+            graph << [swc14[timeEvent], RDF.type, timeline.Instant]
+            graph << [swc14[timeEvent], timeline.atInt, dateTime]
+          end
         end
       #end
     end
