@@ -137,8 +137,8 @@ class SfgCrawler < DataCrawler
               graph << [swc14[URI.encode(event['player'])], soccer.playsFor, homeTeam]
               graph << [swc14[URI.encode(event['player'])], rdfs.label, event['player']]
             elsif event['type_of_event'] == "goal-own" || event['type_of_event'] == "goal"
-              goalEvent = match['home_team']['code']+"_"+match['away_team']['code']+"_Goal"+SecureRandom.random_number(36**12).to_s(36).rjust(12, "0")
-              timeEvent = match['home_team']['code']+"_"+match['away_team']['code']+"_Time"+SecureRandom.random_number(36**12).to_s(36).rjust(12, "0")
+              goalEvent = match['home_team']['code']+"_"+match['away_team']['code']+"_Goal_"+SecureRandom.random_number(36**12).to_s(36).rjust(12, "0")
+              timeEvent = match['home_team']['code']+"_"+match['away_team']['code']+"_Time_"+SecureRandom.random_number(36**12).to_s(36).rjust(12, "0")
               #calc date
               dateTime = RDF::Literal.new(event['time'], :datatype => RDF::XSD.int)
               graph << [swc14[goalEvent], soccer.match, swc14[match['home_team']['code']+"_"+match['away_team']['code']]]
@@ -164,8 +164,8 @@ class SfgCrawler < DataCrawler
             graph << [swc14[URI.encode(event['player'])], soccer.playsFor, homeTeam]
             graph << [swc14[URI.encode(event['player'])], rdfs.label, event['player']]
           elsif event['type_of_event'] == "goal-own" || event['type_of_event'] == "goal"
-            goalEvent = match['home_team']['code']+"_"+match['away_team']['code']+"_Goal"+SecureRandom.random_number(36**12).to_s(36).rjust(12, "0")
-            timeEvent = match['home_team']['code']+"_"+match['away_team']['code']+"_Time"+SecureRandom.random_number(36**12).to_s(36).rjust(12, "0")
+            goalEvent = match['home_team']['code']+"_"+match['away_team']['code']+"_Goal_"+SecureRandom.random_number(36**12).to_s(36).rjust(12, "0")
+            timeEvent = match['home_team']['code']+"_"+match['away_team']['code']+"_Time_"+SecureRandom.random_number(36**12).to_s(36).rjust(12, "0")
             #calc date
             dateTime = RDF::Literal.new(event['time'], :datatype => RDF::XSD.int)
             graph << [swc14[goalEvent], soccer.match, swc14[match['home_team']['code']+"_"+match['away_team']['code']]]
