@@ -64,8 +64,8 @@
 			<integer>43</integer>
 			<key>Points</key>
 			<array>
-				<string>{149.72014905086496, 204}</string>
-				<string>{203, 138}</string>
+				<string>{199.10654851678143, 201.95635283565494}</string>
+				<string>{252.38639946591647, 135.95635283565494}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -88,7 +88,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{14, 182}, {136.21823120117188, 103.79332733154297}}</string>
+			<string>{{63.386399465916476, 179.95635283565494}, {136.21823120117188, 103.79332733154297}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -106,8 +106,8 @@
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
 \f0\fs24 \cf0 BBC-Sport\
-BBC-Event\
-Soccer Voc\
+Event\
+Soccer-Voc\
 ...}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
@@ -115,7 +115,7 @@ Soccer Voc\
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{339, 120}, {52.496723175048828, 36}}</string>
+			<string>{{388.38639946591627, 117.95635283565497}, {52.496723175048828, 36}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -153,8 +153,8 @@ Soccer Voc\
 			<integer>40</integer>
 			<key>Points</key>
 			<array>
-				<string>{204.99999999999977, 108}</string>
-				<string>{140, 108}</string>
+				<string>{254.38639946591624, 105.95635283565497}</string>
+				<string>{189.38639946591647, 105.95635283565497}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -177,7 +177,7 @@ Soccer Voc\
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{17.666237734661745, 70.967906737583306}, {128, 85}}</string>
+			<string>{{7.3863926937422733, 68.924259573238274}, {187.66624450683594, 85}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -194,8 +194,7 @@ Soccer Voc\
 {\colortbl;\red255\green255\blue255;}
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
-\f0\fs24 \cf0 footballdata\
-...}</string>
+\f0\fs24 \cf0 sfgapi.herokuapp.com}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
 			</dict>
@@ -209,8 +208,8 @@ Soccer Voc\
 			<integer>38</integer>
 			<key>Points</key>
 			<array>
-				<string>{618.3600745254322, 111.07958975803436}</string>
-				<string>{528.36007452543242, 111.07958975803436}</string>
+				<string>{667.74647399134847, 109.03594259368933}</string>
+				<string>{577.74647399134869, 109.03594259368933}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -238,7 +237,7 @@ Soccer Voc\
 			<array>
 				<dict>
 					<key>Bounds</key>
-					<string>{{624.3600745254322, 146.57959334690145}, {54, 18}}</string>
+					<string>{{673.74647399134847, 144.53594618255642}, {54, 18}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>ID</key>
@@ -290,8 +289,8 @@ Soccer Voc\
 							<integer>5</integer>
 							<key>Points</key>
 							<array>
-								<string>{669.3600745254322, 102.07959334690156}</string>
-								<string>{651.3600745254322, 102.07959334690156}</string>
+								<string>{718.74647399134847, 100.03594618255651}</string>
+								<string>{700.74647399134847, 100.03594618255651}</string>
 							</array>
 							<key>Style</key>
 							<dict>
@@ -315,8 +314,8 @@ Soccer Voc\
 							<integer>6</integer>
 							<key>Points</key>
 							<array>
-								<string>{651.3600745254322, 102.07959334690156}</string>
-								<string>{633.3600745254322, 102.07959334690156}</string>
+								<string>{700.74647399134847, 100.03594618255651}</string>
+								<string>{682.74647399134847, 100.03594618255651}</string>
 							</array>
 							<key>Style</key>
 							<dict>
@@ -340,8 +339,8 @@ Soccer Voc\
 							<integer>7</integer>
 							<key>Points</key>
 							<array>
-								<string>{651.3600745254322, 120.07959334690145}</string>
-								<string>{660.3600745254322, 147.07959334690145}</string>
+								<string>{700.74647399134847, 118.03594618255642}</string>
+								<string>{709.74647399134847, 145.03594618255642}</string>
 							</array>
 							<key>Style</key>
 							<dict>
@@ -365,8 +364,8 @@ Soccer Voc\
 							<integer>8</integer>
 							<key>Points</key>
 							<array>
-								<string>{651.3600745254322, 120.07959334690145}</string>
-								<string>{642.3600745254322, 147.07959334690145}</string>
+								<string>{700.74647399134847, 118.03594618255642}</string>
+								<string>{691.74647399134847, 145.03594618255642}</string>
 							</array>
 							<key>Style</key>
 							<dict>
@@ -394,8 +393,8 @@ Soccer Voc\
 							<integer>9</integer>
 							<key>Points</key>
 							<array>
-								<string>{651.3600745254322, 93.079593346901561}</string>
-								<string>{651.3600745254322, 120.07959334690156}</string>
+								<string>{700.74647399134847, 91.035946182556515}</string>
+								<string>{700.74647399134847, 118.03594618255651}</string>
 							</array>
 							<key>Style</key>
 							<dict>
@@ -412,7 +411,7 @@ Soccer Voc\
 						</dict>
 						<dict>
 							<key>Bounds</key>
-							<string>{{642.3600745254322, 75.079593346901561}, {18, 18}}</string>
+							<string>{{691.74647399134847, 73.035946182556515}, {18, 18}}</string>
 							<key>Class</key>
 							<string>ShapedGraphic</string>
 							<key>ID</key>
@@ -428,7 +427,7 @@ Soccer Voc\
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{624.3600745254322, 66.079593346901561}, {54, 99}}</string>
+					<string>{{673.74647399134847, 64.035946182556515}, {54, 99}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>ID</key>
@@ -467,8 +466,8 @@ Soccer Voc\
 			<integer>34</integer>
 			<key>Points</key>
 			<array>
-				<string>{446.36007452543254, 167.0795897580343}</string>
-				<string>{446.36007452543254, 225.0795897580343}</string>
+				<string>{495.74647399134881, 165.03594259368924}</string>
+				<string>{495.74647399134881, 223.03594259368924}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -498,8 +497,8 @@ Soccer Voc\
 			<integer>33</integer>
 			<key>Points</key>
 			<array>
-				<string>{438.36007452543254, 172.0795897580343}</string>
-				<string>{265.36007452543248, 222.0795897580343}</string>
+				<string>{487.74647399134881, 170.03594259368924}</string>
+				<string>{314.74647399134881, 220.03594259368924}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -529,8 +528,8 @@ Soccer Voc\
 			<integer>20</integer>
 			<key>Points</key>
 			<array>
-				<string>{258.36007452543248, 170.0795897580343}</string>
-				<string>{258.36007452543248, 223.0795897580343}</string>
+				<string>{307.74647399134881, 168.03594259368924}</string>
+				<string>{307.74647399134881, 221.03594259368924}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -558,7 +557,7 @@ Soccer Voc\
 			<array>
 				<dict>
 					<key>Bounds</key>
-					<string>{{457, 119.07958975803427}, {53.614669799804688, 36}}</string>
+					<string>{{506.38639946591627, 117.03594259368924}, {53.614669799804688, 36}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>ID</key>
@@ -589,7 +588,7 @@ Soccer Voc\
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{398, 120}, {52.496723175048828, 36}}</string>
+					<string>{{447.38639946591627, 117.95635283565497}, {52.496723175048828, 36}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>ID</key>
@@ -620,7 +619,7 @@ Soccer Voc\
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{329.99999762113578, 60.079591955299975}, {187.86007690429659, 105}}</string>
+					<string>{{379.38639708705205, 58.035944790954943}, {187.86007690429659, 105}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>ID</key>
@@ -662,7 +661,7 @@ Soccer Voc\
 			<array>
 				<dict>
 					<key>Bounds</key>
-					<string>{{229.86007452543254, 119.07958975803427}, {54, 36}}</string>
+					<string>{{279.24647399134898, 117.03594259368924}, {54, 36}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>ID</key>
@@ -693,7 +692,7 @@ Soccer Voc\
 				</dict>
 				<dict>
 					<key>Bounds</key>
-					<string>{{211.86007452543254, 60.079589758034331}, {90, 105}}</string>
+					<string>{{261.24647399134898, 58.035942593689299}, {90, 105}}</string>
 					<key>Class</key>
 					<string>ShapedGraphic</string>
 					<key>ID</key>
@@ -730,7 +729,7 @@ Soccer Voc\
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{421.36007452543254, 228.0795897580343}, {54, 54}}</string>
+			<string>{{470.74647399134881, 226.03594259368924}, {54, 54}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -761,7 +760,7 @@ Soccer Voc\
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{229.86007452543254, 228.0795897580343}, {54, 54}}</string>
+			<string>{{279.24647399134892, 226.03594259368924}, {54, 54}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>ID</key>
@@ -842,9 +841,9 @@ Soccer Voc\
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2014-06-03 17:05:23 +0000</string>
+	<string>2014-07-29 15:28:57 +0000</string>
 	<key>Modifier</key>
-	<string>Frank</string>
+	<string>frank</string>
 	<key>NotesVisible</key>
 	<string>NO</string>
 	<key>Orientation</key>
@@ -875,7 +874,7 @@ Soccer Voc\
 		<key>NSPaperSize</key>
 		<array>
 			<string>size</string>
-			<string>{595.27556419372559, 841.86138916015625}</string>
+			<string>{595, 842}</string>
 		</array>
 		<key>NSPrintReverseOrientation</key>
 		<array>
@@ -922,7 +921,7 @@ Soccer Voc\
 		<key>FitInWindow</key>
 		<true/>
 		<key>Frame</key>
-		<string>{{274, 143}, {919, 865}}</string>
+		<string>{{325, 13}, {919, 865}}</string>
 		<key>ListView</key>
 		<false/>
 		<key>OutlineWidth</key>
