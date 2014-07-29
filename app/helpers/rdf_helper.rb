@@ -2,7 +2,7 @@
 module RdfHelper
   RDF_TTL_FILE = (Rails.root.join 'db', 'worldcup.ttl').to_s
   QUERYABLE = RDF::Repository.load(RDF_TTL_FILE)
-  DBPEDIA = SPARQL::Client.new('http://de.dbpedia.org/sparql')
+  DBPEDIA = SPARQL::Client.new('http://dbpedia.org/sparql')
 
   def get_multi_stage_competitions
     sparql = SPARQL.parse("SELECT * WHERE { ?s <#{RDF.type}> <#{PREFIX::BBCSPORT}MultiStageCompetition> }")
@@ -10,6 +10,7 @@ module RdfHelper
   end
 
   # returns all matches filtered by a specific filter.
+  # The matches will be ordered by time ascending .
   # Each match contains
   # uri,
   # homeCompetitor,
@@ -18,31 +19,33 @@ module RdfHelper
   # awayCompetitor_uri,
   # round,
   # round_uri
-  # venue    (todo)
   # venue_uri
+  # time
   #
   # @param filter_uri [String] the filter type, can be a group, day, stadium, team or none filter
   # @return [RDF::Query::Solutions] the array-similar object of RDF::Query::Solution
-  def get_matches(filter_uri)
-    optional_filter = if filter_uri
-                        ""
+  def get_matches(filter_uri=nil, filter_type=nil)
+    optional_filter = if filter_uri && filter_type
+                        case filter_type
+                          when 'stadium'
+                            "?uri <#{PREFIX::BBCSPORT}Venue> <#{filter_uri}> ."
+                        end
                       else
-                        ""
+                        ''
                       end
     sparql = SPARQL.parse("
-              SELECT ?uri ?homeCompetitor ?homeCompetitor_uri ?awayCompetitor ?awayCompetitor_uri ?round ?round_uri ?venue ?venue_uri ?time
+              SELECT ?uri ?homeCompetitor ?homeCompetitor_uri ?awayCompetitor ?awayCompetitor_uri ?round ?round_uri ?venue_uri ?time
               WHERE {
                 ?uri <#{RDF.type}> <#{PREFIX::BBCSPORT}Match> .
                 ?uri <#{PREFIX::BBCSPORT}homeCompetitor> ?homeCompetitor_uri .
                 ?homeCompetitor_uri <#{RDF::RDFS.label}> ?homeCompetitor .
                 ?uri <#{PREFIX::BBCSPORT}awayCompetitor> ?awayCompetitor_uri .
                 ?awayCompetitor_uri <#{RDF::RDFS.label}> ?awayCompetitor .
-
-
                 ?uri <#{PREFIX::BBCSPORT}Venue> ?venue_uri .
-                ?uri <http://purl.org/NET/c4dm/event.owl#time> ?time
+                ?uri <http://purl.org/NET/c4dm/event.owl#time> ?time .
                 #{optional_filter}
               }
+              ORDER BY ASC(?time)
               ")
     solutions = QUERYABLE.query(sparql)
   end
@@ -111,22 +114,24 @@ module RdfHelper
   # @param uri [String] the uri of the team
   # @return [RDF::Query::Solution] the team
   def get_team(uri, lang_filter=true)
-    optional_filter = lang_filter ? "FILTER ( LANG(?label) = 'de')" : ''
-    sparql = "SELECT ?uri ?label ?name ?image_url ?thumbnail_url ?abstract
+    filter = "FILTER (str(?uri) = '#{uri}'"
+    filter += lang_filter ? "&& LANG(?label) = 'de')" : ')'
+    sparql = "SELECT ?uri ?label ?name ?image_url ?thumbnail_url ?abstract ?coach ?coach_uri
         WHERE {
                 ?uri <#{RDF::RDFS.label}> ?label .
                 <#{uri}> <#{RDF::RDFS.label}> ?label .
-                OPTIONAL {
-                  <#{uri}> <http://xmlns.com/foaf/0.1/depiction> ?image_url .
-                  <#{uri}> <http://dbpedia.org/ontology/thumbnail> ?thumbnail_url .
-                  <#{uri}> <http://dbpedia.org/ontology/abstract> ?abstract .
-                  <#{uri}> <http://xmlns.com/foaf/0.1/name> ?name .
-                  FILTER ( LANG(?name) = 'de' )
-                }
-                #{optional_filter}
+                OPTIONAL { <#{uri}> <http://xmlns.com/foaf/0.1/depiction> ?image_url } .
+                OPTIONAL { <#{uri}> <http://dbpedia.org/ontology/thumbnail> ?thumbnail_url } .
+                OPTIONAL { <#{uri}> <http://dbpedia.org/ontology/abstract> ?abstract } .
+                OPTIONAL { <#{uri}> <http://xmlns.com/foaf/0.1/name> ?name FILTER ( LANG(?name) = 'de' ) } .
+                OPTIONAL { <#{uri}> <http://dbpedia.org/ontology/coach> ?coach_uri .
+                  ?coach_uri <http://xmlns.com/foaf/0.1/name> ?coach }.
+                #{filter}
                 }"
+    puts sparql
     solution = DBPEDIA.query(sparql).first
     solution ||= get_team(uri, false) if lang_filter
+    return solution
   end
 
   # return a collection of player from a national team given by the team uri
@@ -236,21 +241,26 @@ module RdfHelper
   # @param uri [String] the uri of the stadium
   # @return [RDF::Query::Solution] the stadium
   def get_stadium(uri)
-
-  end
-
-  # return a trainer given by a specific uri.
-  # A trainer contains
-  # uri,
-  # firstName         FOAF
-  # firstName_uri     FOAF
-  # familyName        FOAF
-  # familyName_uri    FOAF
-  # TODO...
-  # @param uri [String] the uri of the trainer
-  # @return [RDF::Query::Solution] the trainer
-  def get_trainer_for_team(uri)
-    ['Luiz Felipe Scolari', 'Joachim Löw'].last
+    sparql = "
+    SELECT DISTINCT ?uri ?name ?city_uri ?city ?population ?lat ?long ?capacity ?seatingCapacity ?image_url ?thumbnail_url ?abstract
+            WHERE {
+              ?uri  <#{RDF::RDFS.label}> ?name .
+              <#{uri}> <#{RDF::RDFS.label}> ?name .
+              <#{uri}> <http://dbpedia.org/ontology/location> ?city_uri .
+              ?city_uri <#{RDF::RDFS.label}> ?city .
+              ?city_uri <http://dbpedia.org/ontology/populationTotal> ?population .
+              <#{uri}> <http://www.w3.org/2003/01/geo/wgs84_pos#lat> ?lat .
+              <#{uri}> <http://www.w3.org/2003/01/geo/wgs84_pos#long> ?long .
+              OPTIONAL { <#{uri}> <http://dbpedia.org/property/capacity> ?capacity }.
+              OPTIONAL { <#{uri}> <http://dbpedia.org/property/seatingCapacity> ?seatingCapacity }.
+              OPTIONAL { <#{uri}> <http://xmlns.com/foaf/0.1/depiction> ?image_url }.
+              OPTIONAL { <#{uri}> <http://dbpedia.org/ontology/thumbnail> ?thumbnail_url }.
+              OPTIONAL { <#{uri}> <http://dbpedia.org/ontology/abstract> ?abstract }.
+              FILTER (str(?uri) = '#{uri}' && lang(?city) = 'en' && ?population > 5000)
+            }
+    "
+    puts sparql
+    solutions = DBPEDIA.query(sparql).find_all { |sol| !sol.city_uri.to_s.eql?('http://dbpedia.org/resource/Brazil') }.first
   end
 
   def get_trainer(uri)
@@ -329,14 +339,6 @@ module RdfHelper
     graph = RDF::Graph.load RDF_TTL_FILE
     RDF::RDFXML::Writer.open((Rails.root.join 'doc', 'example.rdf').to_s, format: :xml) do |writer|
       writer << graph
-    end
-  end
-
-  def img_url(sol)
-    if sol && sol.has_attributes?(['image_url'])
-      sol.image_url
-    else
-      lorem_img
     end
   end
 

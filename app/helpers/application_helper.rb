@@ -37,4 +37,26 @@ module ApplicationHelper
   def lorem_img
     'http://lorempixel.com/400/200/cats/'
   end
+
+  def img_url(sol)
+    if sol && sol.has_variables?(['image_url'])
+      sol.image_url
+    else
+      lorem_img
+    end
+  end
+
+  def match_name(match)
+    "#{match.homeCompetitor} - #{match.awayCompetitor}"
+  end
+
+  def capacity(stadium)
+    if stadium.has_variables?(['capacity'])
+      stadium.capacity
+    elsif stadium.has_variables?(['seatingCapacity'])
+      stadium.seatingCapacity
+    else
+      "n.A."
+    end
+  end
 end

@@ -6,11 +6,12 @@ class MatchesController < ApplicationController
     @filter_value = params[:filter_uri] || ''
     @filter_type = params[:filter_type] || ''
 
-    @matchdays = get_matches(@filter_type)
+    @matchdays = get_matches(@filter_value, @filter_type)
     @current_index = @matchdays.index { |matchday| matchday.uri.to_s.eql?(params[:uri]) } || 0
     @matchday = @matchdays[@current_index]
     @home = get_team(@matchday.homeCompetitor_uri)
     @away = get_team(@matchday.awayCompetitor_uri)
+    @stadium = get_stadium(@matchday.venue_uri)
     #o = OpenLigaDbDataWrapper.new
     #@matchdays = o.brasil_matches o.brasil_rounds.first
 

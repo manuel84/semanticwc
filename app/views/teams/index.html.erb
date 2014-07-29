@@ -7,7 +7,7 @@
   <div role="main" class="ui-content" id="main">
 
     <div class="big center"><%= @team.label %>
-      <%= image_tag(@team.image_url, height: 20) %>
+      <%= image_tag(img_url(@team), height: 20) %>
     </div>
 
     <%= ui_list @players, header: 'Kader' do |i| %>
@@ -20,9 +20,8 @@
     <% end %>
 
     <%= ui_list [@trainer], header: 'Trainer' do |i| %>
-        <% trainer_uri = get_trainer_uri(i.to_s, @team.uri) %>
-        <% if trainer_uri %>
-            <%= ui_list_link_to i, trainers_path(:uri => trainer_uri) %>
+        <% if @team.has_variables? ['coach_uri'] %>
+            <%= ui_list_link_to @team.coach, trainers_path(:uri => @team.coach_uri) %>
         <% else %>
             <%= ui_list_link_to "no link", "" %>
         <% end %>

@@ -1,10 +1,21 @@
 require 'spec_helper'
 describe RdfHelper do
+
+  describe 'connection' do
+    it 'to dbpedia sparql endpoint' do
+      simple_sparql = "SELECT ?capital WHERE { <http://dbpedia.org/resource/Germany> <http://dbpedia.org/ontology/capital> ?capital . }"
+      dbpedia = SPARQL::Client.new('http://dbpedia.org/sparql')
+      solution = dbpedia.query(simple_sparql).first
+      expect(solution).to be_present
+      #expect(solution.capital.to_s).to eql('http://dbpedia.org/resource/Berlin')
+    end
+  end
+
   describe '#ttl file' do
     it 'Fußball-Weltmeisterschaft_2014 has as MultiStageCompetition' do
       divisional_competitions = get_multi_stage_competitions
       divisional_competitions.filter { |solution| solution.s.eql?(RDF::URI.new 'http://de.dbpedia.org/page/Fußball-Weltmeisterschaft_2014') }
-      divisional_competitions.should_not be_empty
+      expect(divisional_competitions).not_to be_empty
       #helper.write_to_xml
     end
   end
