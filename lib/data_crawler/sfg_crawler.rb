@@ -32,7 +32,8 @@ class SfgCrawler < DataCrawler
     team_mappings = {"CIV" => "C%C3%B4te_d%27Ivoire_national_football_team",
                      "CRC" => "Costa_Rica_national_football_team",
                      "KOR" => "North_Korea_national_football_team",
-                     "BIH" => "Bosnia_and_Herzegovina_national_football_team"}
+                     "BIH" => "Bosnia_and_Herzegovina_national_football_team",
+                     "USA" => "United_States_national_soccer_team"}
 
 
     #stadium mapping,
@@ -107,6 +108,9 @@ class SfgCrawler < DataCrawler
 
         #für jedes spiel stadion hinzufügen
         graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], bbcsport.Venue, dbpedia[stadium_mappings[match['location']]]]
+        #datetime
+        dateTimeMatch = RDF::Literal.new(match['datetime'], :datatype => RDF::XSD.dateTime)
+        graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], ev.time, dateTimeMatch]
 
         #goals für jedes tem hinzufügen TODO: im moment ausgedachte ontology
         #graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], swc14.homeCompetitorGoals, match['home_team']['goals']]
