@@ -1,6 +1,9 @@
 require 'uri'
+include RdfHelper
 
 class SfgCrawler < DataCrawler
+
+
   def self.crawl
     #pfad zur datei und vocab uri in klassenvariablen auslagern
     bbcsport = RDF::Vocabulary.new("http://www.bbc.co.uk/ontologies/sport/")
@@ -63,7 +66,7 @@ class SfgCrawler < DataCrawler
         graph << [swc14[match['stage'].gsub(/ /,"_")], RDF.type, bbcsport.KnockoutCompetition]
       end
 
-      #zu jeder gruppe die dazugehörigen teams hinzufügen 
+      #zu jeder gruppe die dazugehörigen teams hinzufügen
       if team_mappings[match['home_team']['code']]
         homeTeam = dbpedia[team_mappings[match['home_team']['code']]]
         graph << [swc14[match['stage'].gsub(/ /,"_")], bbcsport.hasCompetitor, dbpedia[team_mappings[match['home_team']['code']]]]
@@ -121,11 +124,22 @@ class SfgCrawler < DataCrawler
           graph << [homeTeam, dbpedia.coach, swc14[URI.encode(event['player'])]]
           graph << [swc14[URI.encode(event['player'])], RDF.type, foaf.agent]
         elsif event['type_of_event'] == "player"
-          graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.startPlayer, swc14[URI.encode(event['player'])]]
-          graph << [swc14[URI.encode(event['player'])], RDF.type, soccer.SoccerPlayer]
-          graph << [swc14[URI.encode(event['player'])], soccer.playsFor, homeTeam]
-          graph << [swc14[URI.encode(event['player'])], rdfs.label, event['player']]
-          graph << [swc14[URI.encode(event['player'])], foaf.name, event['player']]
+          player = get_player_uri(event['player'], homeTeam)
+          if player
+            player.gsub!(/http:\/\/dbpedia.org\/resource\//,'')
+            graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.startPlayer, dbpedia["#{player}"]]
+            graph << [dbpedia["#{player}"], RDF.type, soccer.SoccerPlayer]
+            graph << [dbpedia["#{player}"], soccer.playsFor, homeTeam]
+            graph << [dbpedia["#{player}"], rdfs.label, event['player']]
+            graph << [dbpedia["#{player}"], foaf.name, event['player']]
+          else
+            graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.startPlayer, swc14[URI.encode(event['player'])]]
+            graph << [swc14[URI.encode(event['player'])], RDF.type, soccer.SoccerPlayer]
+            graph << [swc14[URI.encode(event['player'])], soccer.playsFor, homeTeam]
+            graph << [swc14[URI.encode(event['player'])], rdfs.label, event['player']]
+            graph << [swc14[URI.encode(event['player'])], foaf.name, event['player']]
+          end
+
         elsif event['type_of_event'] == "goal-own" || event['type_of_event'] == "goal" || event['type_of_event'] == "goal-penalty"
           goalEvent = match['home_team']['code']+"_"+match['away_team']['code']+"_Goal_"+SecureRandom.random_number(36**12).to_s(36).rjust(12, "0")
           timeEvent = match['home_team']['code']+"_"+match['away_team']['code']+"_Time_"+SecureRandom.random_number(36**12).to_s(36).rjust(12, "0")
@@ -134,7 +148,13 @@ class SfgCrawler < DataCrawler
           goalLiteral = RDF::Literal.new(event['type_of_event'])
           graph << [swc14[goalEvent], soccer.match, swc14[match['home_team']['code']+"_"+match['away_team']['code']]]
           graph << [swc14[goalEvent], RDF.type, soccer.Goal]
-          graph << [swc14[goalEvent], ev.agent, swc14[URI.encode(event['player'])]]
+          player = get_player_uri(event['player'], homeTeam)
+          if player
+            player.gsub!(/http:\/\/dbpedia.org\/resource\//,'')
+            graph << [swc14[goalEvent], ev.agent, dbpedia["#{player}"]]
+          else
+            graph << [swc14[goalEvent], ev.agent, swc14[URI.encode(event['player'])]]
+          end
           graph << [swc14[goalEvent], ev.time, swc14[timeEvent]]
           graph << [swc14[goalEvent], ev.literal_factor, goalLiteral]
           graph << [swc14[timeEvent], RDF.type, timeline.Instant]
@@ -147,7 +167,13 @@ class SfgCrawler < DataCrawler
           goalLiteral = RDF::Literal.new(event['type_of_event'])
           graph << [swc14[goalEvent], soccer.match, swc14[match['home_team']['code']+"_"+match['away_team']['code']]]
           graph << [swc14[goalEvent], RDF.type, soccer.InGameEvent]
-          graph << [swc14[goalEvent], ev.agent, swc14[URI.encode(event['player'])]]
+          player = get_player_uri(event['player'], homeTeam)
+          if player
+            player.gsub!(/http:\/\/dbpedia.org\/resource\//,'')
+            graph << [swc14[goalEvent], ev.agent, dbpedia["#{player}"]]
+          else
+            graph << [swc14[goalEvent], ev.agent, swc14[URI.encode(event['player'])]]
+          end
           graph << [swc14[goalEvent], ev.time, swc14[timeEvent]]
           graph << [swc14[goalEvent], ev.literal_factor, goalLiteral]
           graph << [swc14[timeEvent], RDF.type, timeline.Instant]
@@ -160,14 +186,33 @@ class SfgCrawler < DataCrawler
           goalLiteral = RDF::Literal.new(event['type_of_event'])
           graph << [swc14[goalEvent], soccer.match, swc14[match['home_team']['code']+"_"+match['away_team']['code']]]
           graph << [swc14[goalEvent], RDF.type, soccer.InGameEvent]
-          graph << [swc14[goalEvent], ev.agent, swc14[URI.encode(event['player'])]]
+          player = get_player_uri(event['player'], homeTeam)
+          if player
+            player.gsub!(/http:\/\/dbpedia.org\/resource\//,'')
+            graph << [swc14[goalEvent], ev.agent, dbpedia["#{player}"]]
+          else
+            graph << [swc14[goalEvent], ev.agent, swc14[URI.encode(event['player'])]]
+          end
           graph << [swc14[goalEvent], ev.time, swc14[timeEvent]]
           graph << [swc14[goalEvent], ev.literal_factor, goalLiteral]
           graph << [swc14[timeEvent], RDF.type, timeline.Instant]
           graph << [swc14[timeEvent], timeline.atInt, dateTime]
-          graph << [swc14[URI.encode(event['player'])], RDF.type, soccer.SoccerPlayer]
-          graph << [swc14[URI.encode(event['player'])], soccer.playsFor, homeTeam]
-          graph << [swc14[URI.encode(event['player'])], rdfs.label, event['player']]
+
+          player = get_player_uri(event['player'], homeTeam)
+          if player
+            player.gsub!(/http:\/\/dbpedia.org\/resource\//,'')
+            graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.startPlayer, dbpedia["#{player}"]]
+            graph << [dbpedia["#{player}"], RDF.type, soccer.SoccerPlayer]
+            graph << [dbpedia["#{player}"], soccer.playsFor, homeTeam]
+            graph << [dbpedia["#{player}"], rdfs.label, event['player']]
+            graph << [dbpedia["#{player}"], foaf.name, event['player']]
+          else
+            graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.startPlayer, swc14[URI.encode(event['player'])]]
+            graph << [swc14[URI.encode(event['player'])], RDF.type, soccer.SoccerPlayer]
+            graph << [swc14[URI.encode(event['player'])], soccer.playsFor, homeTeam]
+            graph << [swc14[URI.encode(event['player'])], rdfs.label, event['player']]
+            graph << [swc14[URI.encode(event['player'])], foaf.name, event['player']]
+          end
         end
       end
 
@@ -179,11 +224,21 @@ class SfgCrawler < DataCrawler
           graph << [awayTeam, dbpedia.coach, swc14[URI.encode(event['player'])]]
           graph << [swc14[URI.encode(event['player'])], RDF.type, foaf.agent]
         elsif event['type_of_event'] == "player"
-          graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.startPlayer, swc14[URI.encode(event['player'])]]
-          graph << [swc14[URI.encode(event['player'])], RDF.type, soccer.SoccerPlayer]
-          graph << [swc14[URI.encode(event['player'])], soccer.playsFor, awayTeam]
-          graph << [swc14[URI.encode(event['player'])], rdfs.label, event['player']]
-          graph << [swc14[URI.encode(event['player'])], foaf.name, event['player']]
+          player = get_player_uri(event['player'], awayTeam)
+          if player
+            player.gsub!(/http:\/\/dbpedia.org\/resource\//,'')
+            graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.startPlayer, dbpedia["#{player}"]]
+            graph << [dbpedia["#{player}"], RDF.type, soccer.SoccerPlayer]
+            graph << [dbpedia["#{player}"], soccer.playsFor, awayTeam]
+            graph << [dbpedia["#{player}"], rdfs.label, event['player']]
+            graph << [dbpedia["#{player}"], foaf.name, event['player']]
+          else
+            graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.startPlayer, swc14[URI.encode(event['player'])]]
+            graph << [swc14[URI.encode(event['player'])], RDF.type, soccer.SoccerPlayer]
+            graph << [swc14[URI.encode(event['player'])], soccer.playsFor, awayTeam]
+            graph << [swc14[URI.encode(event['player'])], rdfs.label, event['player']]
+            graph << [swc14[URI.encode(event['player'])], foaf.name, event['player']]
+          end
         elsif event['type_of_event'] == "goal-own" || event['type_of_event'] == "goal" || event['type_of_event'] == "goal-penalty"
           goalEvent = match['home_team']['code']+"_"+match['away_team']['code']+"_Goal_"+SecureRandom.random_number(36**12).to_s(36).rjust(12, "0")
           timeEvent = match['home_team']['code']+"_"+match['away_team']['code']+"_Time_"+SecureRandom.random_number(36**12).to_s(36).rjust(12, "0")
@@ -192,7 +247,13 @@ class SfgCrawler < DataCrawler
           goalLiteral = RDF::Literal.new(event['type_of_event'])
           graph << [swc14[goalEvent], soccer.match, swc14[match['home_team']['code']+"_"+match['away_team']['code']]]
           graph << [swc14[goalEvent], RDF.type, soccer.Goal]
-          graph << [swc14[goalEvent], ev.agent, swc14[URI.encode(event['player'])]]
+          player = get_player_uri(event['player'], awayTeam)
+          if player
+            player.gsub!(/http:\/\/dbpedia.org\/resource\//,'')
+            graph << [swc14[goalEvent], ev.agent, dbpedia["#{player}"]]
+          else
+            graph << [swc14[goalEvent], ev.agent, swc14[URI.encode(event['player'])]]
+          end
           graph << [swc14[goalEvent], ev.time, swc14[timeEvent]]
           graph << [swc14[goalEvent], ev.literal_factor, goalLiteral]
           graph << [swc14[timeEvent], RDF.type, timeline.Instant]
@@ -205,7 +266,13 @@ class SfgCrawler < DataCrawler
           goalLiteral = RDF::Literal.new(event['type_of_event'])
           graph << [swc14[goalEvent], soccer.match, swc14[match['home_team']['code']+"_"+match['away_team']['code']]]
           graph << [swc14[goalEvent], RDF.type, soccer.InGameEvent]
-          graph << [swc14[goalEvent], ev.agent, swc14[URI.encode(event['player'])]]
+          player = get_player_uri(event['player'], awayTeam)
+          if player
+            player.gsub!(/http:\/\/dbpedia.org\/resource\//,'')
+            graph << [swc14[goalEvent], ev.agent, dbpedia["#{player}"]]
+          else
+            graph << [swc14[goalEvent], ev.agent, swc14[URI.encode(event['player'])]]
+          end
           graph << [swc14[goalEvent], ev.time, swc14[timeEvent]]
           graph << [swc14[goalEvent], ev.literal_factor, goalLiteral]
           graph << [swc14[timeEvent], RDF.type, timeline.Instant]
@@ -218,14 +285,32 @@ class SfgCrawler < DataCrawler
           goalLiteral = RDF::Literal.new(event['type_of_event'])
           graph << [swc14[goalEvent], soccer.match, swc14[match['home_team']['code']+"_"+match['away_team']['code']]]
           graph << [swc14[goalEvent], RDF.type, soccer.InGameEvent]
-          graph << [swc14[goalEvent], ev.agent, swc14[URI.encode(event['player'])]]
+          player = get_player_uri(event['player'], awayTeam)
+          if player
+            player.gsub!(/http:\/\/dbpedia.org\/resource\//,'')
+            graph << [swc14[goalEvent], ev.agent, dbpedia["#{player}"]]
+          else
+            graph << [swc14[goalEvent], ev.agent, swc14[URI.encode(event['player'])]]
+          end
           graph << [swc14[goalEvent], ev.time, swc14[timeEvent]]
           graph << [swc14[goalEvent], ev.literal_factor, goalLiteral]
           graph << [swc14[timeEvent], RDF.type, timeline.Instant]
           graph << [swc14[timeEvent], timeline.atInt, dateTime]
-          graph << [swc14[URI.encode(event['player'])], RDF.type, soccer.SoccerPlayer]
-          graph << [swc14[URI.encode(event['player'])], soccer.playsFor, awayTeam]
-          graph << [swc14[URI.encode(event['player'])], rdfs.label, event['player']]
+          player = get_player_uri(event['player'], awayTeam)
+          if player
+            player.gsub!(/http:\/\/dbpedia.org\/resource\//,'')
+            graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.startPlayer, dbpedia["#{player}"]]
+            graph << [dbpedia["#{player}"], RDF.type, soccer.SoccerPlayer]
+            graph << [dbpedia["#{player}"], soccer.playsFor, awayTeam]
+            graph << [dbpedia["#{player}"], rdfs.label, event['player']]
+            graph << [dbpedia["#{player}"], foaf.name, event['player']]
+          else
+            graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], soccer.startPlayer, swc14[URI.encode(event['player'])]]
+            graph << [swc14[URI.encode(event['player'])], RDF.type, soccer.SoccerPlayer]
+            graph << [swc14[URI.encode(event['player'])], soccer.playsFor, awayTeam]
+            graph << [swc14[URI.encode(event['player'])], rdfs.label, event['player']]
+            graph << [swc14[URI.encode(event['player'])], foaf.name, event['player']]
+          end
         end
       end
       #end
