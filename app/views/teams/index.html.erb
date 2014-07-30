@@ -11,7 +11,11 @@
     </div>
 
     <%= ui_list @players, header: 'Kader' do |player| %>
-        <%= ui_list_link_to player.label, players_path(:uri => player.uri) %>
+        <% if player.uri.to_s.include?('http://cs.hs-rm.de/~mdudd001/semanticwc/') %>
+            <%= ui_list_link_to player.label, 'javascript:void(0);', class: 'disabled' %>
+        <% else %>
+            <%= ui_list_link_to player.label, players_path(:uri => player.uri) %>
+        <% end %>
     <% end %>
 
     <%= ui_list [@trainer], header: 'Trainer' do |i| %>

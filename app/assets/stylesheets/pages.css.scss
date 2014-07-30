@@ -17,3 +17,7 @@ a.img {
 #main {
   padding-top: 64px;
 }
+
+a.disabled::after {
+  background-image: none;
+}

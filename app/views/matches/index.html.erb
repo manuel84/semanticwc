@@ -14,10 +14,10 @@
       <li data-form="ui-body-a" data-swatch="a" data-theme="a">
         <div class="big center">
 
-          <%= link_to(image_tag(img_url(@home), height: 40), teams_path(:uri => @home.uri), class: [:img], 'data-prefetch'.to_sym => true) %>
+          <%= link_to(image_tag(img_url(@home), height: 40), teams_path(:uri => @matchday.homeCompetitor_uri), class: [:img], 'data-prefetch'.to_sym => true) %>
           -:-
 
-          <%= link_to(image_tag(img_url(@away), height: 40), teams_path(:uri => @away.uri), class: [:img], 'data-prefetch'.to_sym => true) %>
+          <%= link_to(image_tag(img_url(@away), height: 40), teams_path(:uri => @matchday.awayCompetitor_uri), class: [:img], 'data-prefetch'.to_sym => true) %>
           <br/>
 
           <%= @matchday.homeCompetitor %>

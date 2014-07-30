@@ -1,4 +1,4 @@
-<div data-role="page" id="<%= name(@player).to_s.parameterize %>" data-title="<%= name(@player) %>" class="main-page" data-dom-cache="true" data-theme="a">
+<div data-role="page" id="<%= get_name(@player).to_s.parameterize %>" data-title="<%= get_name(@player) %>" class="main-page" data-dom-cache="true" data-theme="a">
 
   <%#= render 'filter' Sturm%>
 
@@ -10,14 +10,12 @@
     <% infos << "Gewicht: #{@player.weight}" if @player.has_variables? [:weight] %>
     <% infos << "Verein: #{@player.current_club}" if @player.has_variables? [:current_club] %>
 
-    <%= ui_list infos, header: name(@player) do |i| %>
+    <%= ui_list infos, header: get_name(@player) do |i| %>
         <%= i %>
     <% end %>
-    <% if @player.has_variables? [:image_url] %>
-        <div class="center">
-          <%= image_tag @player.image_url, width: 360 %>
-        </div>
-    <% end %>
+    <div class="center">
+      <%= image_tag img_url(@player), width: 360 %>
+    </div>
     <% if @player.has_variables? [:abstract] %>
         <div class="abstract center">
           <%= @player.abstract %>

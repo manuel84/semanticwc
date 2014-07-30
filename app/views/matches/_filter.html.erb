@@ -9,10 +9,10 @@
         <option value="day">nach Tag</option>
       </select>
 
-      <%= render partial: 'select_filter_value', locals: {name: 'team', collection: ["Brasilien"]} %>
-      <%= render partial: 'select_filter_value', locals: {name: 'group', collection: 'Gruppe A'..'Gruppe H'} %>
-      <%= render partial: 'select_filter_value', locals: {name: 'stadium', collection: ["Belo Horizonte"]} %>
-      <%= render partial: 'select_filter_value', locals: {name: 'day', collection: (Date.new(2014, 6, 12)..Date.new(2014, 7, 13))} %>
+      <%= render partial: 'select_filter_value', locals: {name: 'team', collection: {'BAR' => "Brasilien"}} %>
+      <%= render partial: 'select_filter_value', locals: {name: 'group', collection: {'huhu' => 'huhu1'}} %>
+      <%#= render partial: 'select_filter_value', locals: {name: 'stadium', collection: Hash[*get_stadiums.map { |stadium| [stadium.uri, staidum.label] }]} %>
+      <%= render partial: 'select_filter_value', locals: {name: 'day', collection: Hash[*(Date.new(2014, 6, 12)..Date.new(2014, 7, 13))]} %>
 
     </div>
     <input type="button" data-theme="b" data-icon="delete" data-iconshadow="true" value="schließen" data-rel="close">

@@ -116,7 +116,7 @@ module RdfHelper
   def get_team(uri, lang_filter=true)
     filter = "FILTER (str(?uri) = '#{uri}'"
     filter += lang_filter ? "&& LANG(?label) = 'de')" : ')'
-    sparql = "SELECT ?uri ?label ?name ?image_url ?thumbnail_url ?abstract ?coach ?coach_uri
+    sparql = "SELECT ?uri ?label ?name ?image_url ?thumbnail_url ?abstract ?coach ?coach_uri ?wiki_uri
         WHERE {
                 ?uri <#{RDF::RDFS.label}> ?label .
                 <#{uri}> <#{RDF::RDFS.label}> ?label .
@@ -124,6 +124,7 @@ module RdfHelper
                 OPTIONAL { <#{uri}> <http://dbpedia.org/ontology/thumbnail> ?thumbnail_url } .
                 OPTIONAL { <#{uri}> <http://dbpedia.org/ontology/abstract> ?abstract } .
                 OPTIONAL { <#{uri}> <http://xmlns.com/foaf/0.1/name> ?name FILTER ( LANG(?name) = 'de' ) } .
+                OPTIONAL { <#{uri}> <http://xmlns.com/foaf/0.1/isPrimaryTopicOf> ?wiki_uri }.
                 OPTIONAL { <#{uri}> <http://dbpedia.org/ontology/coach> ?coach_uri .
                   ?coach_uri <http://xmlns.com/foaf/0.1/name> ?coach }.
                 #{filter}
@@ -170,38 +171,37 @@ module RdfHelper
       name = name.split(',').reverse.join(' ')
     end
     name = name.strip
-    sparql = "SELECT DISTINCT ?player_uri
+    sparql = "SELECT DISTINCT ?player_uri ?team_uri
         WHERE {
           { ?player_uri <http://xmlns.com/foaf/0.1/name> \"#{name}\"@en . }
           UNION
+          { ?player_uri <http://xmlns.com/foaf/0.1/fullname> \"#{name}\"@en . }
+          UNION
           { ?player_uri <http://xmlns.com/foaf/0.1/surname> \"#{name}\"@en . }
+          UNION
+          { ?player_uri <http://xmlns.com/foaf/0.1/name> \"#{name.split(' ').first}\"@en . }
+          UNION
+          { ?player_uri <http://xmlns.com/foaf/0.1/fullname> \"#{name.split(' ').first}\"@en . }
+          UNION
+          { ?player_uri <http://xmlns.com/foaf/0.1/surname> \"#{name.split(' ').first}\"@en . }
+          UNION
+          { ?player_uri <http://xmlns.com/foaf/0.1/name> \"#{name.split(' ').last}\"@en . }
+          UNION
+          { ?player_uri <http://xmlns.com/foaf/0.1/fullname> \"#{name.split(' ').last}\"@en . }
+          UNION
+          { ?player_uri <http://xmlns.com/foaf/0.1/surname> \"#{name.split(' ').last}\"@en . }
           ?player_uri <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/SoccerPlayer> .
           ?player_uri <http://dbpedia.org/property/nationalteam> <#{team_uri}> .
+          OPTIONAL { ?player_uri <http://dbpedia.org/property/nationalcaps> ?caps }.
+          OPTIONAL { ?player_uri <http://dbpedia.org/property/nationalgoals> ?goals }.
           ?player_uri <http://dbpedia.org/property/birthDate> ?birth_date .
           FILTER(?birth_date > \"19700101\"^^xsd:date)
         }
-"
+        ORDER BY DESC(?caps) DESC(?goals)"
     solutions = DBPEDIA.query sparql
-    result = case solutions.count
-               when 0 # fallback without nationteam
-                 sparql = "SELECT DISTINCT ?player_uri
-                WHERE {
-                  { ?player_uri <http://xmlns.com/foaf/0.1/name> \"#{name}\"@en . }
-                  UNION
-                  { ?player_uri <http://xmlns.com/foaf/0.1/surname> \"#{name}\"@en . }
-                  ?player_uri <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/SoccerPlayer> .
-                  ?player_uri <http://dbpedia.org/property/birthDate> ?birth_date .
-                  FILTER(?birth_date > \"19700101\"^^xsd:date)
-                }"
-                 solutions = DBPEDIA.query sparql
-                 solutions.first
-               when 1
-                 solutions.first
-               else
-                 puts solutions.count
-                 solutions.first
-             end
-    result.player_uri.to_s if result
+    result = solutions.first
+    puts "#{name} : #{result.player_uri.to_s}" if result
+    result.present? ? result.player_uri.to_s : nil
   end
 
   # return a player given by a specific uri.
@@ -224,24 +224,44 @@ module RdfHelper
             OPTIONAL { <#{uri}> <http://dbpedia.org/property/surname> ?surname }.
             OPTIONAL { <#{uri}> <http://dbpedia.org/property/givenName> ?givenName }.
             OPTIONAL { <#{uri}> <http://dbpedia.org/property/fullname> ?fullname }.
-            OPTIONAL {<#{uri}> <http://dbpedia.org/ontology/position> ?position .
-              <#{uri}> <http://dbpedia.org/property/birthDate> ?birth_date .
-              <#{uri}> <http://dbpedia.org/property/currentclub> ?current_club_uri .
-              ?current_club_uri <#{RDF::RDFS.label}> ?current_club .
-              <#{uri}> <http://xmlns.com/foaf/0.1/depiction> ?image_url .
-              <#{uri}> <http://dbpedia.org/ontology/thumbnail> ?thumbnail_url .
-              <#{uri}> <http://dbpedia.org/ontology/abstract> ?abstract .
-              <#{uri}> <http://dbpedia.org/property/nationalteam> ?team_uri .
-              ?team_uri <#{RDF::RDFS.label}> ?team .
-              ?team_uri <http://dbpedia.org/property/fifaRank> ?fifa_rank .
-              <#{uri}> <http://dbpedia.org/property/nationalcaps> ?caps .
-              <#{uri}> <http://dbpedia.org/property/nationalgoals> ?goals .
-              FILTER ( LANG(?current_club) = 'de' && LANG(?abstract) = 'de' && LANG(?team) = 'de') .
-            }
+            OPTIONAL { <#{uri}> <http://dbpedia.org/property/nationalcaps> ?caps }.
+            OPTIONAL { <#{uri}> <http://dbpedia.org/property/nationalgoals> ?goals }.
+            OPTIONAL {  <#{uri}> <http://dbpedia.org/property/nationalteam> ?team_uri .
+                        ?team_uri <#{RDF::RDFS.label}> ?team .
+                        ?team_uri <http://dbpedia.org/property/fifaRank> ?fifa_rank .
+                        FILTER(LANG(?team) = 'de')
+                      }.
+            OPTIONAL { <#{uri}> <http://dbpedia.org/ontology/position> ?position }.
+            OPTIONAL { <#{uri}> <http://dbpedia.org/property/birthDate> ?birth_date }.
+            OPTIONAL { <#{uri}> <http://dbpedia.org/property/currentclub> ?current_club_uri .
+                      ?current_club_uri <#{RDF::RDFS.label}> ?current_club
+                      FILTER ( LANG(?current_club) = 'de')
+                      }.
+            OPTIONAL { <#{uri}> <http://xmlns.com/foaf/0.1/depiction> ?image_url }.
+            OPTIONAL { <#{uri}> <http://dbpedia.org/ontology/thumbnail> ?thumbnail_url }.
+            OPTIONAL { <#{uri}> <http://dbpedia.org/ontology/abstract> ?abstract .
+                       FILTER(LANG(?abstract) = 'de') .
+                      }.
           }
           ORDER BY DESC(?caps) DESC(?goals)"
-    puts sparql
     solution = DBPEDIA.query(sparql).first
+  end
+
+  def get_stadiums
+    cache do
+      sparql = SPARQL.parse('SELECT DISTINCT ?uri
+              WHERE {
+                ?match <http://www.bbc.co.uk/ontologies/sport/Venue> ?uri .
+              }')
+      uris = QUERYABLE.query(sparql).map { |sol| " str(?uri) = '#{sol.uri}' " }
+      sparql = "SELECT DISTINCT ?uri ?label
+             WHERE {
+              ?uri <#{RDF::RDFS.label}> ?label .
+              FILTER(LANG(?label) = 'de' && ( #{uris.join('||')} )) .
+            }"
+      puts sparql
+      solutions = DBPEDIA.query(sparql)
+    end
   end
 
   # return a stadium given by a specific uri.
@@ -267,7 +287,7 @@ module RdfHelper
               OPTIONAL { <#{uri}> <http://xmlns.com/foaf/0.1/depiction> ?image_url }.
               OPTIONAL { <#{uri}> <http://dbpedia.org/ontology/thumbnail> ?thumbnail_url }.
               OPTIONAL { <#{uri}> <http://dbpedia.org/ontology/abstract> ?abstract }.
-              FILTER (str(?uri) = '#{uri}' && lang(?city) = 'en' && ?population > 5000)
+              FILTER (str(?uri) = '#{uri}' && lang(?city) = 'en' && lang(?name) = 'en' && ?population > 5000)
             }
     "
     puts sparql
