@@ -141,29 +141,25 @@ module RdfHelper
   # @param uri [String] the uri of the team
   # @return [RDF::Query::Solutions] the players
   def get_players_for_team(uri)
-    ['Jefferson',
-     'César, Júlio',
-     'Victor',
-     'Alves, Dani',
-     'Silva, Thiago',
-     'Luiz, David',
-     'Marcelo',
-     'Dante',
-     'Maxwell',
-     'Henrique',
-     'Maicon',
-     'Fernandinho',
-     'Paulinho',
-     'Oscar',
-     'Ramires',
-     'Gustavo, Luiz',
-     'Hernanes',
-     'Willian',
-     'Hulk',
-     'Fred',
-     'Neymar',
-     'Bernard',
-     'Jô']
+    sparql = SPARQL.parse("SELECT DISTINCT ?uri ?label ?team_uri ?team
+          WHERE {
+            ?uri <http://purl.org/hpi/soccer-voc/playsFor> <#{uri}> .
+            ?uri <#{RDF::RDFS.label}> ?label .
+            ?uri <http://purl.org/hpi/soccer-voc/playsFor> ?team_uri .
+            ?team_uri <#{RDF::RDFS.label}> ?team .
+          }")
+    solutions = QUERYABLE.query(sparql)
+  end
+
+
+  def tmp_get_player(uri)
+    sparql = SPARQL.parse("SELECT DISTINCT ?uri ?label ?team_uri ?team
+          WHERE {
+            <#{uri}> <#{RDF::RDFS.label}> ?label .
+            <#{uri}> <http://purl.org/hpi/soccer-voc/playsFor> ?team_uri .
+            ?team_uri <#{RDF::RDFS.label}> ?team .
+          }")
+    solutions = QUERYABLE.query(sparql).first
   end
 
   # guess a player uri by a given name and team
@@ -174,20 +170,25 @@ module RdfHelper
       name = name.split(',').reverse.join(' ')
     end
     name = name.strip
-    sparql = "SELECT DISTINCT ?player_uri ?team_uri
+    sparql = "SELECT DISTINCT ?player_uri
         WHERE {
-          ?player_uri <http://xmlns.com/foaf/0.1/name> \"#{name}\"@en .
+          { ?player_uri <http://xmlns.com/foaf/0.1/name> \"#{name}\"@en . }
+          UNION
+          { ?player_uri <http://xmlns.com/foaf/0.1/surname> \"#{name}\"@en . }
           ?player_uri <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/SoccerPlayer> .
-          ?player_uri <http://dbpedia.org/ontology/team> <#{team_uri}> .
+          ?player_uri <http://dbpedia.org/property/nationalteam> <#{team_uri}> .
           ?player_uri <http://dbpedia.org/property/birthDate> ?birth_date .
           FILTER(?birth_date > \"19700101\"^^xsd:date)
-        }"
+        }
+"
     solutions = DBPEDIA.query sparql
     result = case solutions.count
-               when 0 # fallback
-                 sparql = "SELECT DISTINCT ?player_uri ?team_uri
+               when 0 # fallback without nationteam
+                 sparql = "SELECT DISTINCT ?player_uri
                 WHERE {
-                  ?player_uri <http://xmlns.com/foaf/0.1/name> \"#{name}\"@en .
+                  { ?player_uri <http://xmlns.com/foaf/0.1/name> \"#{name}\"@en . }
+                  UNION
+                  { ?player_uri <http://xmlns.com/foaf/0.1/surname> \"#{name}\"@en . }
                   ?player_uri <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/SoccerPlayer> .
                   ?player_uri <http://dbpedia.org/property/birthDate> ?birth_date .
                   FILTER(?birth_date > \"19700101\"^^xsd:date)
@@ -216,20 +217,30 @@ module RdfHelper
   # @param uri [String] the uri of the player
   # @return [RDF::Query::Solution] the player
   def get_player(uri)
-    sparql = "SELECT DISTINCT ?uri ?fullname ?position ?birth_date ?current_club_uri ?current_club ?image_url ?thumbnail_url ?abstract
-           WHERE {
-             <#{uri}> <http://dbpedia.org/property/fullname> ?fullname .
-             OPTIONAL {<#{uri}> <http://dbpedia.org/ontology/position> ?position .
-             <#{uri}> <http://dbpedia.org/property/birthDate> ?birth_date .
-             <#{uri}> <http://dbpedia.org/property/currentclub> ?current_club_uri .
-             ?current_club_uri <#{RDF::RDFS.label}> ?current_club .
-             <#{uri}> <http://xmlns.com/foaf/0.1/depiction> ?image_url .
-             <#{uri}> <http://dbpedia.org/ontology/thumbnail> ?thumbnail_url .
-             <#{uri}> <http://dbpedia.org/ontology/abstract> ?abstract .
-            FILTER ( LANG(?current_club) = 'de' && LANG(?abstract) = 'de' )
-}
-
-           }"
+    sparql = "SELECT DISTINCT ?uri ?name ?surname ?givenName ?fullname ?position ?birth_date ?current_club_uri ?current_club ?image_url ?thumbnail_url ?abstract ?team ?team_uri ?caps ?goals
+          WHERE {
+            ?uri <http://dbpedia.org/property/name> ?name .
+            <#{uri}> <http://dbpedia.org/property/name> ?name .
+            OPTIONAL { <#{uri}> <http://dbpedia.org/property/surname> ?surname }.
+            OPTIONAL { <#{uri}> <http://dbpedia.org/property/givenName> ?givenName }.
+            OPTIONAL { <#{uri}> <http://dbpedia.org/property/fullname> ?fullname }.
+            OPTIONAL {<#{uri}> <http://dbpedia.org/ontology/position> ?position .
+              <#{uri}> <http://dbpedia.org/property/birthDate> ?birth_date .
+              <#{uri}> <http://dbpedia.org/property/currentclub> ?current_club_uri .
+              ?current_club_uri <#{RDF::RDFS.label}> ?current_club .
+              <#{uri}> <http://xmlns.com/foaf/0.1/depiction> ?image_url .
+              <#{uri}> <http://dbpedia.org/ontology/thumbnail> ?thumbnail_url .
+              <#{uri}> <http://dbpedia.org/ontology/abstract> ?abstract .
+              <#{uri}> <http://dbpedia.org/property/nationalteam> ?team_uri .
+              ?team_uri <#{RDF::RDFS.label}> ?team .
+              ?team_uri <http://dbpedia.org/property/fifaRank> ?fifa_rank .
+              <#{uri}> <http://dbpedia.org/property/nationalcaps> ?caps .
+              <#{uri}> <http://dbpedia.org/property/nationalgoals> ?goals .
+              FILTER ( LANG(?current_club) = 'de' && LANG(?abstract) = 'de' && LANG(?team) = 'de') .
+            }
+          }
+          ORDER BY DESC(?caps) DESC(?goals)"
+    puts sparql
     solution = DBPEDIA.query(sparql).first
   end
 

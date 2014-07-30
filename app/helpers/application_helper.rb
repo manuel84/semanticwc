@@ -59,4 +59,16 @@ module ApplicationHelper
       "n.A."
     end
   end
+
+  def name(sol)
+    if sol.has_variables?(['fullname'])
+      sol.fullname
+    elsif sol.has_variables?(['surname', 'givenName'])
+      "#{sol.surname} #{sol.givenName}"
+    elsif sol.has_variables?(['name'])
+      sol.name
+    else
+      ''
+    end
+  end
 end
