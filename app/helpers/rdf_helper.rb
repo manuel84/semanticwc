@@ -24,14 +24,35 @@ module RdfHelper
   #
   # @param filter_uri [String] the filter type, can be a group, day, stadium, team or none filter
   # @return [RDF::Query::Solutions] the array-similar object of RDF::Query::Solution
-  def get_matches(filter_uri=nil, filter_type=nil)
-    optional_filter = if filter_uri && filter_type
-                        case filter_type
-                          when 'stadium'
+  def get_matches(filter_uri=nil)
+    filter_type = ''
+    optional_filter = if filter_uri
+                        if filter_uri =~ /\d{4}\-\d{2}\-\d{2}/
+                          filter_type = 'day'
+                          "FILTER(?time >= \"#{filter_uri}T00:00:00.000-03:00\"^^<http://www.w3.org/2001/XMLSchema#dateTime> && ?time <= \"#{filter_uri}T23:59:59.000-03:00\"^^<http://www.w3.org/2001/XMLSchema#dateTime>)"
+                        else
+                          sparql = SPARQL.parse("SELECT ?stadium ?type ?group WHERE {
+                                  ?s ?p ?o .
+                                  OPTIONAL { ?stadium <http://www.bbc.co.uk/ontologies/sport/Venue> <#{filter_uri}> . }.
+                                  OPTIONAL { <#{filter_uri}> <#{RDF.type}> ?type . }.
+                                  OPTIONAL { <#{filter_uri}> <http://www.bbc.co.uk/ontologies/sport/hasMatch> ?group . }.
+                        }")
+                          solution = QUERYABLE.query(sparql).first
+                          if solution.has_variables? ['stadium']
+                            filter_type = 'stadium'
                             "?uri <#{PREFIX::BBCSPORT}Venue> <#{filter_uri}> ."
+                          elsif solution.has_variables? ['group']
+                            filter_type = 'group'
+                            "<#{filter_uri}> <http://www.bbc.co.uk/ontologies/sport/hasMatch> ?uri ."
+                          elsif solution.has_variables? ['type']
+                            if solution.type.to_s.eql?('http://purl.org/hpi/soccer-voc/SoccerClub')
+                              filter_type = 'team'
+                              "{ ?uri <#{PREFIX::BBCSPORT}homeCompetitor> <#{filter_uri}> . } UNION { ?uri <#{PREFIX::BBCSPORT}awayCompetitor> <#{filter_uri}> . }"
+                            end
+                          else
+                            ''
+                          end
                         end
-                      else
-                        ''
                       end
     sparql = SPARQL.parse("
               SELECT ?uri ?homeCompetitor ?homeCompetitor_uri ?awayCompetitor ?awayCompetitor_uri ?round ?round_uri ?venue_uri ?time
@@ -48,6 +69,41 @@ module RdfHelper
               ORDER BY ASC(?time)
               ")
     solutions = QUERYABLE.query(sparql)
+    return solutions, filter_type
+  end
+
+  def get_teams
+    sparql = SPARQL.parse("SELECT DISTINCT ?uri ?name
+                    WHERE {
+                      ?group_uri <http://www.bbc.co.uk/ontologies/sport/hasCompetitor> ?uri .
+                      ?uri <#{RDF::RDFS.label}> ?name .
+                    }")
+    solutions = QUERYABLE.query(sparql)
+  end
+
+  def get_stadiums
+    sparql = SPARQL.parse('SELECT DISTINCT ?uri
+                WHERE {
+                  ?match <http://www.bbc.co.uk/ontologies/sport/Venue> ?uri .
+                }')
+    results = QUERYABLE.query(sparql).map { |sol| get_stadium(sol.uri) }
+  end
+
+  def get_groups
+    sparql = SPARQL.parse('SELECT DISTINCT ?uri
+                    WHERE {
+                      ?uri <http://www.bbc.co.uk/ontologies/sport/hasMatch> ?match_uri .
+                    }')
+    results = QUERYABLE.query(sparql)
+  end
+
+  def get_days
+    sparql = SPARQL.parse("SELECT DISTINCT ?time
+                    WHERE {
+                      ?match <#{RDF.type}> <http://www.bbc.co.uk/ontologies/sport/Match> .
+                      ?match <http://purl.org/NET/c4dm/event.owl#time> ?time .
+                    }")
+    results = QUERYABLE.query(sparql).map { |sol| Date.parse(sol.time.to_s) }.uniq
   end
 
   # return a match given by a specific uri.
@@ -129,7 +185,6 @@ module RdfHelper
                   ?coach_uri <http://xmlns.com/foaf/0.1/name> ?coach }.
                 #{filter}
                 }"
-    puts sparql
     solution = DBPEDIA.query(sparql).first
     solution ||= get_team(uri, false) if lang_filter
     return solution
@@ -247,23 +302,6 @@ module RdfHelper
     solution = DBPEDIA.query(sparql).first
   end
 
-  def get_stadiums
-    cache do
-      sparql = SPARQL.parse('SELECT DISTINCT ?uri
-              WHERE {
-                ?match <http://www.bbc.co.uk/ontologies/sport/Venue> ?uri .
-              }')
-      uris = QUERYABLE.query(sparql).map { |sol| " str(?uri) = '#{sol.uri}' " }
-      sparql = "SELECT DISTINCT ?uri ?label
-             WHERE {
-              ?uri <#{RDF::RDFS.label}> ?label .
-              FILTER(LANG(?label) = 'de' && ( #{uris.join('||')} )) .
-            }"
-      puts sparql
-      solutions = DBPEDIA.query(sparql)
-    end
-  end
-
   # return a stadium given by a specific uri.
   # A stadium contains
   # uri,
@@ -290,7 +328,6 @@ module RdfHelper
               FILTER (str(?uri) = '#{uri}' && lang(?city) = 'en' && lang(?name) = 'en' && ?population > 5000)
             }
     "
-    puts sparql
     solutions = DBPEDIA.query(sparql).find_all { |sol| !sol.city_uri.to_s.eql?('http://dbpedia.org/resource/Brazil') }.first
   end
 
@@ -340,7 +377,6 @@ module RdfHelper
                when 1
                  solutions.first
                else
-                 puts solutions.count
                  solutions.first
              end
     result.trainer_uri.to_s if result

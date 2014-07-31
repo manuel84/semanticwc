@@ -79,8 +79,15 @@ module ApplicationHelper
       "#{sol.surname} #{sol.givenName}"
     elsif sol.has_variables?(['name'])
       sol.name
+    elsif sol.has_variables?(['label'])
+      sol.label
     else
       ''
     end
   end
+
+  def get_result(match)
+    "0:0"
+  end
+
 end

@@ -4,9 +4,8 @@ class MatchesController < ApplicationController
     #http://localhost:3000/pages?uri=2014-06-13_Mexiko_Kamerun
     #&filter_type=group&filter_value=a
     @filter_value = params[:filter_uri] || ''
-    @filter_type = params[:filter_type] || ''
 
-    @matchdays = get_matches(@filter_value, @filter_type)
+    @matchdays, @filter_type = get_matches(@filter_value)
     @current_index = @matchdays.index { |matchday| matchday.uri.to_s.eql?(params[:uri]) } || 0
     @matchday = @matchdays[@current_index]
     @home = get_team(@matchday.homeCompetitor_uri)

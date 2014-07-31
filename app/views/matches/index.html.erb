@@ -3,7 +3,9 @@
      <%= "data-prev=\"#{matches_path(:uri => @matchdays[@current_index-1].uri, filter_uri: params[:filter_uri])}\"".html_safe if @current_index > 0 %>
      <%= "data-next=\"#{matches_path(:uri => @matchdays[@current_index+1].uri, filter_uri: params[:filter_uri])}\"".html_safe if @matchdays.count >= @current_index+2 %>>
 
-  <%= render 'filter' %>
+  <% cache 'matches_filter' do %>
+      <%= render 'filter' %>
+  <% end %>
 
   <div role="main" class="ui-content" id="main">
 
@@ -14,10 +16,9 @@
       <li data-form="ui-body-a" data-swatch="a" data-theme="a">
         <div class="big center">
 
-          <%= link_to(image_tag(img_url(@home), height: 40), teams_path(:uri => @matchday.homeCompetitor_uri), class: [:img], 'data-prefetch'.to_sym => true) %>
-          -:-
-
-          <%= link_to(image_tag(img_url(@away), height: 40), teams_path(:uri => @matchday.awayCompetitor_uri), class: [:img], 'data-prefetch'.to_sym => true) %>
+          <%= link_to(image_tag(img_url(@home), height: 80), teams_path(:uri => @matchday.homeCompetitor_uri), class: [:img], 'data-prefetch'.to_sym => true) %>
+          <span class="ultra-big"><%= get_result(@matchday) %></span>
+          <%= link_to(image_tag(img_url(@away), height: 80), teams_path(:uri => @matchday.awayCompetitor_uri), class: [:img], 'data-prefetch'.to_sym => true) %>
           <br/>
 
           <%= @matchday.homeCompetitor %>
