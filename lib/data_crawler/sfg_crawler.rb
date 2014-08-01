@@ -57,6 +57,8 @@ class SfgCrawler < DataCrawler
       #gruppenphase nachbauen
       if match['stage'].include? "Group"
         graph << [swc14['Group_Stage'], bbcsport.hasGroup, swc14[match['stage'].gsub(/ /,"_")]]
+        groupLabel = RDF::Literal.new(match['stage'].gsub(/ /,"_"))
+        graph << [swc14[match['stage'].gsub(/ /,"_")], rdfs.label, groupLabel]
       else
         if match['stage'].gsub(/ /,"_") == "Final"
           graph << [dbpedia["2014_FIFA_World_Cup"], bbcsport.lastStage, swc14[match['stage'].gsub(/ /,"_")]]
