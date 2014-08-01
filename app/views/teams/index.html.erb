@@ -6,8 +6,8 @@
 
   <div role="main" class="ui-content" id="main">
 
-    <div class="big center"><%= @team.label %>
-      <%= image_tag(img_url(@team), height: 20) %>
+    <div class="center"><span class="big"><%= @team.label %></span>
+      <%= image_tag(img_url(@team), height: 40) %>
     </div>
 
     <%= ui_list @players, header: 'Kader' do |player| %>

@@ -13,5 +13,12 @@
       return "#{key}=#{v}"
     )
     newHref = window.location.origin + window.location.pathname + "?" + queryParamsArr.join("&")
+    $("#close-button").click()
+    $.mobile.loading('show', {
+      text: '',
+      textVisible: '',
+      textonly: false,
+      html: ''
+    });
     window.location.href = newHref
     return

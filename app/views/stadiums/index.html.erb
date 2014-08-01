@@ -3,28 +3,26 @@
   <%#= render 'filter' %>
 
   <div role="main" class="ui-content" id="main">
+    <div class="center">
+      <%= image_tag(img_url(@stadium), width: img_width) %>
+    </div>
     <%= ui_list ["Kapazität: #{capacity(@stadium)}", @stadium.city], header: @stadium.name do |i| %>
         <%= i %>
     <% end %>
     <div class="center">
-      <%= image_tag(img_url(@stadium), width: 360) %>
-    </div>
-    <div class="center">
-      <div style="width: 320px">
-        <div id="map" style="width: 320px; height: 320px;"></div>
-      </div>
+      <div id="map" class="map"></div>
       <%= javascript_tag do %>
           handler = Gmaps.build('Google');
-          handler.buildMap({ provider: { maxZoom: 5 }, internal: {id: 'map'}}, function(){
+          handler.buildMap({ provider: { maxZoom: 3 }, internal: {id: 'map'}}, function(){
           markers = handler.addMarkers([
           {
           "lat": <%= @stadium.lat %>,
           "lng": <%= @stadium.long %>,
           "picture": {
           "url":
-          "<%= img_url(@stadium) %>",
-          "width": 5,
-          "height": 5
+          "/assets/pin.png",
+          "width": 24,
+          "height": 40
           }
           }
           ]);

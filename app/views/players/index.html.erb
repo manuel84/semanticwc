@@ -14,7 +14,7 @@
         <%= i %>
     <% end %>
     <div class="center">
-      <%= image_tag img_url(@player), width: 360 %>
+      <%= image_tag img_url(@player), width: img_width %>
     </div>
     <% if @player.has_variables? [:abstract] %>
         <div class="abstract center">

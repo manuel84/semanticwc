@@ -90,4 +90,8 @@ module ApplicationHelper
     "0:0"
   end
 
+  def img_width
+    340
+  end
+
 end
