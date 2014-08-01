@@ -1,4 +1,4 @@
-<div data-role="page" id="<%= @trainer.fullname.to_s.parameterize %>" data-title="<%= @trainer.fullname %>" class="main-page" data-dom-cache="true" data-theme="a">
+<div data-role="page" id="<%= get_name(@trainer).parameterize %>" data-title="<%= get_name(@trainer) %>" class="main-page" data-dom-cache="true" data-theme="a" data-prev="<%= request.referer && URI(request.referer).path.start_with?('/teams') ? "#{URI(request.referer).path}?#{URI(request.referer).query}" : teams_path(:uri => @player.team_uri) %>">
 
   <%#= render 'filter' Sturm%>
 
@@ -6,14 +6,12 @@
     <% infos = [] %>
     <% infos << "Alter: #{distance_of_time_in_words_hash(Time.now, Date.parse(@trainer.birth_date.to_s))[:years]} Jahre (*#{Date.parse(@trainer.birth_date.to_s).to_formatted_s(:rfc822) })" if @trainer.has_variables? [:birth_date] %>
 
-    <%= ui_list infos, header: @trainer.fullname do |i| %>
+    <%= ui_list infos, header: get_name(@trainer) do |i| %>
         <%= i %>
     <% end %>
-    <% if @trainer.has_variables? [:image_url] %>
-        <div class="center">
-          <%= image_tag @trainer.image_url, width: 360 %>
-        </div>
-    <% end %>
+    <div class="center">
+      <%= image_tag img_url(@trainer), width: img_width %>
+    </div>
     <% if @trainer.has_variables? [:abstract] %>
         <div class="abstract center">
           <%= @trainer.abstract %>

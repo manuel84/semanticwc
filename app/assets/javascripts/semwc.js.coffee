@@ -1,4 +1,12 @@
 @Semwc =
+  getSelectionText: ->
+    if window.getSelection
+      window.getSelection().toString()
+    else if document.selection and document.selection.type isnt "Control"
+      document.selection.createRange().text
+    else
+      ""
+
   selectFilterType: (type) ->
     $(".select-value").hide()
     $("#select-filter-type option[value='#{type}']").attr("selected", true)

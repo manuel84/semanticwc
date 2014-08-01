@@ -1,5 +1,4 @@
-<div data-role="page" id="<%= get_name(@player).to_s.parameterize %>" data-title="<%= get_name(@player) %>" class="main-page" data-dom-cache="true" data-theme="a">
-
+<div data-role="page" id="<%= get_name(@player).to_s.parameterize %>" data-title="<%= get_name(@player) %>" class="main-page" data-dom-cache="true" data-theme="a" data-prev="<%= request.referer && URI(request.referer).path.start_with?('/teams') ? "#{URI(request.referer).path}?#{URI(request.referer).query}" : teams_path(:uri => @player.team_uri) %>">
   <%#= render 'filter' Sturm%>
 
   <div role="main" class="ui-content" id="main">

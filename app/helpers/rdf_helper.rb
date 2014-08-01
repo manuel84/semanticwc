@@ -332,16 +332,18 @@ module RdfHelper
   end
 
   def get_trainer(uri)
-    sparql = "SELECT DISTINCT ?fullname ?birth_date ?image_url ?thumbnail_url ?abstract
+    sparql = "SELECT DISTINCT ?name ?surname ?givenName ?fullname ?birth_date ?image_url ?thumbnail_url ?abstract
            WHERE {
-             <#{uri}> <http://dbpedia.org/property/fullname> ?fullname .
-             OPTIONAL { <#{uri}> <http://dbpedia.org/property/birthDate> ?birth_date .
-             <#{uri}> <http://xmlns.com/foaf/0.1/depiction> ?image_url .
-             <#{uri}> <http://dbpedia.org/ontology/thumbnail> ?thumbnail_url .
-             <#{uri}> <http://dbpedia.org/ontology/abstract> ?abstract .
+             ?uri <http://dbpedia.org/property/name> ?name .
+             <#{uri}> <http://dbpedia.org/property/name> ?name .
+             OPTIONAL { <#{uri}> <http://dbpedia.org/property/surname> ?surname }.
+             OPTIONAL { <#{uri}> <http://dbpedia.org/property/givenName> ?givenName }.
+             OPTIONAL { <#{uri}> <http://dbpedia.org/property/fullname> ?fullname }.
+             OPTIONAL { <#{uri}> <http://dbpedia.org/property/birthDate> ?birth_date . }.
+             OPTIONAL { <#{uri}> <http://xmlns.com/foaf/0.1/depiction> ?image_url . }.
+             OPTIONAL { <#{uri}> <http://dbpedia.org/ontology/thumbnail> ?thumbnail_url . }.
+             OPTIONAL { <#{uri}> <http://dbpedia.org/ontology/abstract> ?abstract .  }.
             FILTER ( LANG(?abstract) = 'de' )
-}
-
            }"
     solution = DBPEDIA.query(sparql).first
   end

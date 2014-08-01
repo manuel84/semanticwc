@@ -27,7 +27,7 @@ $(document).one "pagecreate", ".main-page", ->
     # Check if there is a next page and
     # swipes may also happen when the user highlights text, so ignore those.
     # We're only interested in swipes on the page.
-    navnext next  if next and (event.target is $(this)[0])
+    navnext next  if next and Semwc.getSelectionText() == ""
     return
 
 
@@ -43,7 +43,8 @@ $(document).one "pagecreate", ".main-page", ->
   # The same for the navigating to the previous page
   $(document).on "swiperight", ".ui-page", (event) ->
     prev = $(this).jqmData("prev")
-    navprev prev  if prev and (event.target is $(this)[0])
+    console.log event.target
+    navprev prev  if prev and Semwc.getSelectionText() == ""
     return
 
   $(document).on "click", ".prev", ->

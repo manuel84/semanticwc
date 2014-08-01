@@ -73,14 +73,15 @@ module ApplicationHelper
   end
 
   def get_name(sol)
+    return '' unless sol
     if sol.has_variables?(['fullname'])
-      sol.fullname
+      sol.fullname.to_s
     elsif sol.has_variables?(['surname', 'givenName'])
       "#{sol.surname} #{sol.givenName}"
     elsif sol.has_variables?(['name'])
-      sol.name
+      sol.name.to_s
     elsif sol.has_variables?(['label'])
-      sol.label
+      sol.label.to_s
     else
       ''
     end
@@ -91,7 +92,7 @@ module ApplicationHelper
   end
 
   def img_width
-    340
+    300
   end
 
 end

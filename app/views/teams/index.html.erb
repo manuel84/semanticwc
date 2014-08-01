@@ -1,6 +1,4 @@
-<div data-role="page" id="team-xxx" data-title="<%= @team.label %>" class="main-page" data-dom-cache="true" data-theme="a"
-     <%= "data-prev=\"#{teams_path(:uri => 'brasilien', filter_uri: params[:filter_uri])}\"".html_safe %>
-     <%= "data-next=\"#{teams_path(:uri => 'brasilien', filter_uri: params[:filter_uri])}\"".html_safe %>>
+<div data-role="page" id="<%= get_name(@team).parameterize %>" data-title="<%= @team.label %>" class="main-page" data-dom-cache="true" data-theme="a" data-prev="<%= request.referer && URI(request.referer).path.start_with?('/matches')? "#{URI(request.referer).path}?#{URI(request.referer).query}" : matches_path %>">>
 
   <%#= render 'filter' Gruppe, Kontinent%>
 
