@@ -1,17 +1,19 @@
-<div data-role="page" id="team-xxx" data-title="<%= @team.label %>" class="main-page" data-dom-cache="true" data-theme="a"
-     <%= "data-prev=\"#{teams_path(:uri => 'brasilien', filter_uri: params[:filter_uri])}\"".html_safe %>
-     <%= "data-next=\"#{teams_path(:uri => 'brasilien', filter_uri: params[:filter_uri])}\"".html_safe %>>
+<div data-role="page" id="<%= get_name(@team).parameterize %>" data-title="<%= @team.label %>" class="main-page" data-dom-cache="true" data-theme="a" data-prev="<%= request.referer && URI(request.referer).path.start_with?('/matches')? "#{URI(request.referer).path}?#{URI(request.referer).query}" : matches_path %>">>
 
   <%#= render 'filter' Gruppe, Kontinent%>
 
   <div role="main" class="ui-content" id="main">
 
-    <div class="big center"><%= @team.label %>
-      <%= image_tag(img_url(@team), height: 20) %>
+    <div class="center"><span class="big"><%= @team.label %></span>
+      <%= image_tag(img_url(@team), height: 40) %>
     </div>
 
     <%= ui_list @players, header: 'Kader' do |player| %>
-        <%= ui_list_link_to player.label, players_path(:uri => player.uri) %>
+        <% if player.uri.to_s.include?('http://cs.hs-rm.de/~mdudd001/semanticwc/') %>
+            <%= ui_list_link_to player.label, 'javascript:void(0);', class: 'disabled' %>
+        <% else %>
+            <%= ui_list_link_to player.label, players_path(:uri => player.uri) %>
+        <% end %>
     <% end %>
 
     <%= ui_list [@trainer], header: 'Trainer' do |i| %>

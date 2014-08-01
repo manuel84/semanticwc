@@ -1,9 +1,11 @@
-<div data-role="page" id="<%= @matchday.homeCompetitor %>_<%= @matchday.awayCompetitor %><%= @current_index %>" data-title="
+<div data-role="page" id="<%= "#{@matchday.time.to_s}-#{@matchday.homeCompetitor}-#{@matchday.awayCompetitor}".parameterize %>" data-title="
   <% @matchday.uri %>" class="main-page" data-dom-cache="true" data-theme="a"
      <%= "data-prev=\"#{matches_path(:uri => @matchdays[@current_index-1].uri, filter_uri: params[:filter_uri])}\"".html_safe if @current_index > 0 %>
      <%= "data-next=\"#{matches_path(:uri => @matchdays[@current_index+1].uri, filter_uri: params[:filter_uri])}\"".html_safe if @matchdays.count >= @current_index+2 %>>
 
-  <%= render 'filter' %>
+  <% cache 'matches_filter' do %>
+      <%= render 'filter' %>
+  <% end %>
 
   <div role="main" class="ui-content" id="main">
 
@@ -14,14 +16,14 @@
       <li data-form="ui-body-a" data-swatch="a" data-theme="a">
         <div class="big center">
 
-          <%= link_to(image_tag(img_url(@home), height: 40), teams_path(:uri => @home.uri), class: [:img], 'data-prefetch'.to_sym => true) %>
-          -:-
-
-          <%= link_to(image_tag(img_url(@away), height: 40), teams_path(:uri => @away.uri), class: [:img], 'data-prefetch'.to_sym => true) %>
+          <%= link_to(image_tag(img_url(@home), width: 60), teams_path(:uri => @matchday.homeCompetitor_uri), class: ['img', 'team-name', 'right'], 'data-prefetch'.to_sym => true) %>
+          <div class="ultra-big team-spacer"><%= get_result(@matchday) %></div>
+          <%= link_to(image_tag(img_url(@away), width: 60), teams_path(:uri => @matchday.awayCompetitor_uri), class: ['img', 'team-name', 'left'], 'data-prefetch'.to_sym => true) %>
           <br/>
 
-          <%= @matchday.homeCompetitor %>
-          - <%= @matchday.awayCompetitor %>
+          <span class="team-name right"><%= @matchday.homeCompetitor %></span>
+          <span class="team-spacer"> -</span>
+          <span class="team-name left"><%= @matchday.awayCompetitor %></span>
 
         </div>
 

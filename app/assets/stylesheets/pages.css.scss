@@ -2,8 +2,33 @@
   text-align: center;
 }
 
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.team-name {
+  display: inline-block;
+  width: 34%;
+  white-space: normal;
+}
+
+.team-spacer {
+  width: 32%;
+  display: inline-block;
+}
+
 .big {
-  font-size: 1.5em;
+  font-size: 1.2em;
+  vertical-align: text-bottom;
+}
+
+.ultra-big {
+  font-size: 2.4em;
+  vertical-align: text-bottom;
 }
 
 a.img {
@@ -16,4 +41,14 @@ a.img {
 
 #main {
   padding-top: 64px;
+}
+
+a.disabled::after {
+  background-image: none;
+}
+
+.map {
+  width: 300px;
+  height: 300px;
+  display: inline-block
 }
