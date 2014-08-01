@@ -176,4 +176,11 @@ smm:playsFor a rdfs:Property ;
 	rdfs:domain smm:SoccerTeam ;
 	rdfs:range smm:Club .
 
+smm:homeCompetitorGoals a rdfs:Property ;
+	rdfs:domain bbcsport:Match ;
+	rdfs:range rdf:xsd.int .
+
+smm:awayCompetitorGoals a rdfs:Property ;
+	rdfs:domain bbcsport:Match ;
+	rdfs:range rdf:xsd.int .
 ## Datatypes ##

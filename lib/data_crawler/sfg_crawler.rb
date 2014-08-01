@@ -109,6 +109,12 @@ class SfgCrawler < DataCrawler
         graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], bbcsport.awayCompetitor, dbpedia[match['away_team']['country']+"_national_football_team"]]
       end
 
+      #add goals to match
+      homeGoals = RDF::Literal.new(match['home_team']['goals'], :datatype => RDF::XSD.int)
+      graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], bbcsport.homeCompetitorGoals, homeGoals]
+      awayGoals = RDF::Literal.new(match['away_team']['goals'], :datatype => RDF::XSD.int)
+      graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], bbcsport.awayCompetitorGoals, awayGoals]
+
       #für jedes spiel stadion hinzufügen
       graph << [swc14[match['home_team']['code']+"_"+match['away_team']['code']], bbcsport.Venue, dbpedia[stadium_mappings[match['location']]]]
       #datetime
