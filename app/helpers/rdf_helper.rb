@@ -342,8 +342,7 @@ module RdfHelper
              OPTIONAL { <#{uri}> <http://dbpedia.org/property/birthDate> ?birth_date . }.
              OPTIONAL { <#{uri}> <http://xmlns.com/foaf/0.1/depiction> ?image_url . }.
              OPTIONAL { <#{uri}> <http://dbpedia.org/ontology/thumbnail> ?thumbnail_url . }.
-             OPTIONAL { <#{uri}> <http://dbpedia.org/ontology/abstract> ?abstract .  }.
-            FILTER ( LANG(?abstract) = 'de' )
+             OPTIONAL { <#{uri}> <http://dbpedia.org/ontology/abstract> ?abstract . FILTER ( LANG(?abstract) = 'de' ) }.
            }"
     solution = DBPEDIA.query(sparql).first
   end

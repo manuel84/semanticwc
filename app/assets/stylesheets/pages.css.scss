@@ -11,8 +11,9 @@
 }
 
 .team-name {
-  width: 34%;
   display: inline-block;
+  width: 34%;
+  white-space: normal;
 }
 
 .team-spacer {
@@ -21,13 +22,13 @@
 }
 
 .big {
-  font-size: 1.5em;
-  vertical-align: top;
+  font-size: 1.2em;
+  vertical-align: text-bottom;
 }
 
 .ultra-big {
-  font-size: 3em;
-  vertical-align: top;
+  font-size: 2.4em;
+  vertical-align: text-bottom;
 }
 
 a.img {
