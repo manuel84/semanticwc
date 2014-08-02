@@ -23,7 +23,7 @@
     <%= ui_list ["Länderspiele: #{@player.caps}", "Tore: #{@player.goals}"], header: @player.team do |i| %>
         <%= i %>
     <% end %>
-    <%= ui_list ['FC Barcelona: 06/2011 - heute', 'Fluminese Rio der Janeiro: 04/2010 - 06/2011'], header: 'Vereine' do |i| %>
+    <%= ui_list @team_stations.map { |team_station| "#{DateTime.parse(team_station.years.to_s).year}: #{get_name(team_station)}" }, header: 'Vereine' do |i| %>
         <%= i %>
     <% end %>
 

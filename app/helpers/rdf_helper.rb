@@ -361,7 +361,7 @@ module RdfHelper
   end
 
   def get_trainer(uri)
-    sparql = "SELECT DISTINCT ?name ?surname ?givenName ?fullname ?birth_date ?image_url ?thumbnail_url ?abstract ?team_uri
+    sparql = "SELECT DISTINCT ?uri ?name ?surname ?givenName ?fullname ?birth_date ?image_url ?thumbnail_url ?abstract ?team_uri
            WHERE {
              ?uri <http://dbpedia.org/property/name> ?name .
              <#{uri}> <http://dbpedia.org/property/name> ?name .
@@ -420,7 +420,25 @@ module RdfHelper
   # @param uri [String] the uri of the player
   # @return [RDF::Query::Solutions] the team stations
   def get_player_team_stations(uri)
-
+    sparql = "SELECT DISTINCT ?uri ?career_station_uri ?years ?team_uri ?clubname ?name ?nickname ?label ?altname
+        WHERE {
+          {
+            ?uri <http://dbpedia.org/ontology/careerStation> ?career_station_uri .
+            <#{uri}> <http://dbpedia.org/ontology/careerStation> ?career_station_uri .
+            ?career_station_uri <http://dbpedia.org/ontology/years> ?years .
+            ?career_station_uri <http://dbpedia.org/ontology/team> ?team_uri .
+            OPTIONAL { ?team_uri <http://dbpedia.org/property/clubname> ?clubname . FILTER(LANG(?clubname) = 'en')}.
+            OPTIONAL { ?team_uri <http://dbpedia.org/property/nickname> ?nickname . FILTER(LANG(?nickname) = 'en')}.
+            OPTIONAL { ?team_uri <http://xmlns.com/foaf/0.1/name> ?name . FILTER(LANG(?name) = 'en')}.
+            OPTIONAL { ?team_uri <#{RDF::RDFS.label}> ?label . FILTER(LANG(?label) = 'en') }.
+            OPTIONAL { ?team_uri <http://dbpedia.org/property/fullname> ?altname . FILTER(LANG(?altname) = 'en') }.
+          }
+          MINUS { ?team_uri <http://dbpedia.org/property/association> ?association . }.
+        }
+        ORDER BY DESC(?years)"
+    solutions = DBPEDIA.query sparql
+    # do uniq
+    Hash[solutions.reverse.map { |sol| [sol.career_station_uri.to_s, sol] }].values.reverse
   end
 
   # return all team stations with time period a player participated in descendant order given by a specific uri.
@@ -430,7 +448,24 @@ module RdfHelper
   # @param uri [String] the uri of the player
   # @return [RDF::Query::Solutions] the team stations
   def get_trainer_team_stations(uri)
-
+    sparql = "SELECT DISTINCT ?uri ?career_station_uri ?years ?team_uri ?clubname ?name ?nickname ?label ?altname
+            WHERE {
+              {
+                ?uri <http://dbpedia.org/ontology/careerStation> ?career_station_uri .
+                <#{uri}> <http://dbpedia.org/ontology/careerStation> ?career_station_uri .
+                ?career_station_uri <http://dbpedia.org/ontology/years> ?years .
+                ?career_station_uri <http://dbpedia.org/ontology/team> ?team_uri .
+                OPTIONAL { ?team_uri <http://dbpedia.org/property/clubname> ?clubname . FILTER(LANG(?clubname) = 'en')}.
+                OPTIONAL { ?team_uri <http://dbpedia.org/property/nickname> ?nickname . FILTER(LANG(?nickname) = 'en')}.
+                OPTIONAL { ?team_uri <http://xmlns.com/foaf/0.1/name> ?name . FILTER(LANG(?name) = 'en')}.
+                OPTIONAL { ?team_uri <#{RDF::RDFS.label}> ?label . FILTER(LANG(?label) = 'en') }.
+                OPTIONAL { ?team_uri <http://dbpedia.org/property/fullname> ?altname . FILTER(LANG(?altname) = 'en') }.
+              }
+            }
+            ORDER BY DESC(?years)"
+    solutions = DBPEDIA.query(sparql)
+    # do uniq
+    Hash[solutions.reverse.map { |sol| [sol.career_station_uri.to_s, sol] }].values.reverse
   end
 
   def write_to_xml

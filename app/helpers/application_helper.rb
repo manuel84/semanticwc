@@ -82,6 +82,10 @@ module ApplicationHelper
       sol.name.to_s
     elsif sol.has_variables?(['label'])
       sol.label.to_s
+    elsif sol.has_variables?(['clubname'])
+      sol.clubname.to_s
+    elsif sol.has_variables?(['altname'])
+      sol.clubname.to_s
     else
       ''
     end
