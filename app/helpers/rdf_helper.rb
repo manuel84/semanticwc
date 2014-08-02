@@ -361,7 +361,7 @@ module RdfHelper
   end
 
   def get_trainer(uri)
-    sparql = "SELECT DISTINCT ?name ?surname ?givenName ?fullname ?birth_date ?image_url ?thumbnail_url ?abstract
+    sparql = "SELECT DISTINCT ?name ?surname ?givenName ?fullname ?birth_date ?image_url ?thumbnail_url ?abstract ?team_uri
            WHERE {
              ?uri <http://dbpedia.org/property/name> ?name .
              <#{uri}> <http://dbpedia.org/property/name> ?name .
@@ -372,6 +372,7 @@ module RdfHelper
              OPTIONAL { <#{uri}> <http://xmlns.com/foaf/0.1/depiction> ?image_url . }.
              OPTIONAL { <#{uri}> <http://dbpedia.org/ontology/thumbnail> ?thumbnail_url . }.
              OPTIONAL { <#{uri}> <http://dbpedia.org/ontology/abstract> ?abstract . FILTER ( LANG(?abstract) = 'de' ) }.
+             OPTIONAL { ?team_uri <http://dbpedia.org/ontology/coach> <#{uri}> . }.
            }"
     solution = DBPEDIA.query(sparql).first
   end
