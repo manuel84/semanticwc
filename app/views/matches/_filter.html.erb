@@ -10,9 +10,9 @@
       </select>
 
       <%= render partial: 'select_filter_value', locals: {name: 'team', collection: Hash[get_teams.compact.sort { |a, b| get_name(a) <=> get_name(b) }.map { |team| [URI.encode(team.uri.to_s), get_name(team)] }]} %>
-      <%= render partial: 'select_filter_value', locals: {name: 'group', collection: Hash[get_groups.compact.sort { |a, b| a.uri.to_s <=> b.uri.to_s }.map { |group| [URI.encode(group.uri.to_s), group.uri.to_s] }]} %>
+      <%= render partial: 'select_filter_value', locals: {name: 'group', collection: Hash[get_groups.compact.sort { |a, b| a.uri.to_s <=> b.uri.to_s }.map { |group| [URI.encode(group.uri.to_s), get_name(group)] }]} %>
       <%= render partial: 'select_filter_value', locals: {name: 'stadium', collection: Hash[get_stadiums.compact.sort { |a, b| get_name(a) <=> get_name(b) }.map { |stadium| [URI.encode(stadium.uri.to_s), get_name(stadium)] }]} %>
-      <%= render partial: 'select_filter_value', locals: {name: 'day', collection: Hash[get_days.compact.sort.map { |day| [day.to_s, day.to_s] }]} %>
+      <%= render partial: 'select_filter_value', locals: {name: 'day', collection: Hash[get_days.compact.sort.map { |day| [day.to_s, day.to_s(:short)] }]} %>
 
     </div>
     <input type="button" data-theme="b" data-icon="delete" data-iconshadow="true" value="schließen" data-rel="close" id="close-button">

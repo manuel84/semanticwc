@@ -88,11 +88,30 @@ module ApplicationHelper
   end
 
   def get_result(match)
-    "0:0"
+    if match.has_variables?(['homeCompetitorGoals', 'awayCompetitorGoals'])
+      "#{match.homeCompetitorGoals}:#{match.awayCompetitorGoals}"
+    else
+      '-:-'
+    end
   end
 
   def img_width
-    300
+    280
+  end
+
+  def get_filter_name(filter_type, filter_value)
+    case filter_type
+      when 'stadium'
+        "Spiele im #{get_name(get_stadium(filter_value))}"
+      when 'day'
+        "Spiele am #{Date.parse(filter_value).to_s(:short)}"
+      when 'group'
+        "Spiele aus der Gruppe #{get_name(get_group(filter_value))}"
+      when 'team'
+        "Spiele von #{get_name(get_team(filter_value))}"
+      else
+        'alle Spiele'
+    end
   end
 
 end

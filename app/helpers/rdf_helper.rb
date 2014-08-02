@@ -55,7 +55,7 @@ module RdfHelper
                         end
                       end
     sparql = SPARQL.parse("
-              SELECT ?uri ?homeCompetitor ?homeCompetitor_uri ?awayCompetitor ?awayCompetitor_uri ?round ?round_uri ?venue_uri ?time
+              SELECT ?uri ?homeCompetitor ?homeCompetitor_uri ?awayCompetitor ?awayCompetitor_uri ?round ?round_uri ?venue_uri ?time ?homeCompetitorGoals ?awayCompetitorGoals
               WHERE {
                 ?uri <#{RDF.type}> <#{PREFIX::BBCSPORT}Match> .
                 ?uri <#{PREFIX::BBCSPORT}homeCompetitor> ?homeCompetitor_uri .
@@ -64,6 +64,8 @@ module RdfHelper
                 ?awayCompetitor_uri <#{RDF::RDFS.label}> ?awayCompetitor .
                 ?uri <#{PREFIX::BBCSPORT}Venue> ?venue_uri .
                 ?uri <http://purl.org/NET/c4dm/event.owl#time> ?time .
+                OPTIONAL { ?uri <http://www.bbc.co.uk/ontologies/sport/homeCompetitorGoals> ?homeCompetitorGoals . }.
+                OPTIONAL { ?uri <http://www.bbc.co.uk/ontologies/sport/awayCompetitorGoals> ?awayCompetitorGoals . }.
                 #{optional_filter}
               }
               ORDER BY ASC(?time)
@@ -90,10 +92,11 @@ module RdfHelper
   end
 
   def get_groups
-    sparql = SPARQL.parse('SELECT DISTINCT ?uri
+    sparql = SPARQL.parse("SELECT DISTINCT ?uri ?label
                     WHERE {
                       ?uri <http://www.bbc.co.uk/ontologies/sport/hasMatch> ?match_uri .
-                    }')
+                      ?uri <#{RDF::RDFS.label}> ?label .
+                    }")
     results = QUERYABLE.query(sparql)
   end
 
@@ -141,6 +144,32 @@ module RdfHelper
             ?round_uri <#{RDF::RDFS.label}> ?round .
             }")
     solution = QUERYABLE.query(sparql).first
+  end
+
+  def get_group(uri)
+    sparql = SPARQL.parse("SELECT ?uri ?label
+      WHERE {
+              ?uri <#{RDF::RDFS.label}> ?label .
+              <#{uri}> <#{RDF::RDFS.label}> ?label .
+              }")
+    solution = QUERYABLE.query(sparql).first
+  end
+
+
+  def get_goals(uri)
+    sparql = SPARQL.parse("SELECT DISTINCT ?goal_uri ?player_uri ?player ?factor ?time_uri ?time
+          WHERE {
+            ?goal_uri <http://purl.org/hpi/soccer-voc/match> <#{uri}> .
+            ?goal_uri <#{RDF.type}> <http://purl.org/hpi/soccer-voc/Goal> .
+            ?goal_uri <http://purl.org/NET/c4dm/event.owl#agent> ?player_uri .
+            ?player_uri <#{RDF::RDFS.label}> ?player .
+            ?goal_uri <http://purl.org/NET/c4dm/event.owl#literal_factor> ?factor .
+            ?goal_uri <http://purl.org/NET/c4dm/event.owl#time> ?time_uri .
+            ?time_uri <http://purl.org/NET/c4dm/timeline.owl#atInt> ?time .
+      }
+      ORDER BY ASC(?time)
+")
+    solutions = QUERYABLE.query(sparql)
   end
 
   # guess a team uri by a given team name

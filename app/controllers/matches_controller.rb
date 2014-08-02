@@ -8,6 +8,7 @@ class MatchesController < ApplicationController
     @matchdays, @filter_type = get_matches(@filter_value)
     @current_index = @matchdays.index { |matchday| matchday.uri.to_s.eql?(params[:uri]) } || 0
     @matchday = @matchdays[@current_index]
+    @goals = get_goals(@matchday.uri)
     @home = get_team(@matchday.homeCompetitor_uri)
     @away = get_team(@matchday.awayCompetitor_uri)
     @stadium = get_stadium(@matchday.venue_uri)

@@ -11,7 +11,7 @@
 
     <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all">
       <li data-role="list-divider" data-theme="a" data-swatch="a" data-form="ui-bar-a" role="heading">
-        <div class="big center"><%= Time.parse(@matchday.time.to_s).to_s(:db) %> Uhr</div>
+        <div class="big center"><%= Time.parse(@matchday.time.to_s).to_s(:short) %> Uhr</div>
       </li>
       <li data-form="ui-body-a" data-swatch="a" data-theme="a">
         <div class="big center">
@@ -24,8 +24,10 @@
           <span class="team-name right"><%= @matchday.homeCompetitor %></span>
           <span class="team-spacer"> -</span>
           <span class="team-name left"><%= @matchday.awayCompetitor %></span>
-
         </div>
+        <%= ui_list @goals.map { |goal| "#{goal.time}' #{goal.player}" }, header: '' do |i| %>
+            <%= i %>
+        <% end %>
 
       </li>
       <% if @stadium %>
@@ -37,6 +39,10 @@
           </li>
       <% end %>
     </ul>
+    <div class="footer">
+      <div class="left"><%= get_filter_name(@filter_type, @filter_value) %></div>
+      <div class="right"><%= @current_index+1 %>/<%= @matchdays.count %></div>
+    </div>
     <%= render 'js_after_loaded' %>
   </div>
 
