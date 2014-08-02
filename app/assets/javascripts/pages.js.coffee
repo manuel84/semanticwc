@@ -43,7 +43,9 @@ $(document).one "pagecreate", ".main-page", ->
   # The same for the navigating to the previous page
   $(document).on "swiperight", ".ui-page", (event) ->
     prev = $(this).jqmData("prev")
-    console.log event.target
+    if prev == 'back'
+      window.history.back()
+      return
     navprev prev  if prev and Semwc.getSelectionText() == ""
     return
 
