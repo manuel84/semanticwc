@@ -118,4 +118,28 @@ module ApplicationHelper
     end
   end
 
+  def get_goal_infos(goals, matchday)
+    home_player_uris = get_players_for_team(matchday.homeCompetitor_uri).map { |player| player.uri.to_s }
+    #away_player_uris = get_players_for_team(matchday.awayCompetitor_uri).map { |player| player.uri.to_s }
+    result= [0, 0]
+    result = @goals.map do |goal|
+      txt = "#{goal.time}' #{goal.player}"
+      i = case goal.factor.to_s
+            when 'goal', 'goal-penalty'
+              i = home_player_uris.include?(goal.player_uri.to_s) ? 0 : 1
+            when 'goal-own'
+              i = home_player_uris.include?(goal.player_uri.to_s) ? 1 : 0
+            else
+              nil
+          end
+      if i
+        result[i]+=1
+        "#{result[0]}:#{result[1]} #{txt}"
+      else
+        nil
+      end
+    end
+    result.compact
+  end
+
 end
