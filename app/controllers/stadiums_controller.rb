@@ -1,5 +1,4 @@
 class StadiumsController < ApplicationController
-  caches_action :index
 
   def index
     @stadium = get_stadium(params[:uri])

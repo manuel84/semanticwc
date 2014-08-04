@@ -1,5 +1,4 @@
 class PlayersController < ApplicationController
-  caches_action :index
 
   def index
     @player = get_player(params[:uri])
