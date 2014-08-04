@@ -1,4 +1,5 @@
 class TeamsController < ApplicationController
+  caches_action :index
 
   def index
     @team = get_team(params[:uri]) #includes trainer info

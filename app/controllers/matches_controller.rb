@@ -1,4 +1,5 @@
 class MatchesController < ApplicationController
+  caches_action :index
 
   def index
     @filter_value = params[:filter_uri] || ''

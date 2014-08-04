@@ -1,4 +1,5 @@
 class TrainersController < ApplicationController
+  caches_action :index
 
   def index
     @trainer = get_trainer(params[:uri])
