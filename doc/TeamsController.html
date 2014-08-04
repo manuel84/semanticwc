@@ -168,7 +168,7 @@
   
   
   <h3 class="inherited">Methods included from <span class='object_link'><a href="RdfHelper.html" title="RdfHelper (module)">RdfHelper</a></span></h3>
-  <p class="inherited"><span class='object_link'><a href="RdfHelper.html#get_match-instance_method" title="RdfHelper#get_match (method)">#get_match</a></span>, <span class='object_link'><a href="RdfHelper.html#get_matches-instance_method" title="RdfHelper#get_matches (method)">#get_matches</a></span>, <span class='object_link'><a href="RdfHelper.html#get_multi_stage_competitions-instance_method" title="RdfHelper#get_multi_stage_competitions (method)">#get_multi_stage_competitions</a></span>, <span class='object_link'><a href="RdfHelper.html#get_player-instance_method" title="RdfHelper#get_player (method)">#get_player</a></span>, <span class='object_link'><a href="RdfHelper.html#get_player_team_stations-instance_method" title="RdfHelper#get_player_team_stations (method)">#get_player_team_stations</a></span>, <span class='object_link'><a href="RdfHelper.html#get_player_uri-instance_method" title="RdfHelper#get_player_uri (method)">#get_player_uri</a></span>, <span class='object_link'><a href="RdfHelper.html#get_players-instance_method" title="RdfHelper#get_players (method)">#get_players</a></span>, <span class='object_link'><a href="RdfHelper.html#get_stadium-instance_method" title="RdfHelper#get_stadium (method)">#get_stadium</a></span>, <span class='object_link'><a href="RdfHelper.html#get_team-instance_method" title="RdfHelper#get_team (method)">#get_team</a></span>, <span class='object_link'><a href="RdfHelper.html#get_team_uri-instance_method" title="RdfHelper#get_team_uri (method)">#get_team_uri</a></span>, <span class='object_link'><a href="RdfHelper.html#get_trainer-instance_method" title="RdfHelper#get_trainer (method)">#get_trainer</a></span>, <span class='object_link'><a href="RdfHelper.html#get_trainer_team_stations-instance_method" title="RdfHelper#get_trainer_team_stations (method)">#get_trainer_team_stations</a></span>, <span class='object_link'><a href="RdfHelper.html#write_to_xml-instance_method" title="RdfHelper#write_to_xml (method)">#write_to_xml</a></span></p>
+  <p class="inherited"><span class='object_link'><a href="RdfHelper.html#get_days-instance_method" title="RdfHelper#get_days (method)">#get_days</a></span>, <span class='object_link'><a href="RdfHelper.html#get_goals-instance_method" title="RdfHelper#get_goals (method)">#get_goals</a></span>, <span class='object_link'><a href="RdfHelper.html#get_group-instance_method" title="RdfHelper#get_group (method)">#get_group</a></span>, <span class='object_link'><a href="RdfHelper.html#get_groups-instance_method" title="RdfHelper#get_groups (method)">#get_groups</a></span>, <span class='object_link'><a href="RdfHelper.html#get_match-instance_method" title="RdfHelper#get_match (method)">#get_match</a></span>, <span class='object_link'><a href="RdfHelper.html#get_matches-instance_method" title="RdfHelper#get_matches (method)">#get_matches</a></span>, <span class='object_link'><a href="RdfHelper.html#get_multi_stage_competitions-instance_method" title="RdfHelper#get_multi_stage_competitions (method)">#get_multi_stage_competitions</a></span>, <span class='object_link'><a href="RdfHelper.html#get_player-instance_method" title="RdfHelper#get_player (method)">#get_player</a></span>, <span class='object_link'><a href="RdfHelper.html#get_player_team_stations-instance_method" title="RdfHelper#get_player_team_stations (method)">#get_player_team_stations</a></span>, <span class='object_link'><a href="RdfHelper.html#get_player_uri-instance_method" title="RdfHelper#get_player_uri (method)">#get_player_uri</a></span>, <span class='object_link'><a href="RdfHelper.html#get_players_for_team-instance_method" title="RdfHelper#get_players_for_team (method)">#get_players_for_team</a></span>, <span class='object_link'><a href="RdfHelper.html#get_stadium-instance_method" title="RdfHelper#get_stadium (method)">#get_stadium</a></span>, <span class='object_link'><a href="RdfHelper.html#get_stadiums-instance_method" title="RdfHelper#get_stadiums (method)">#get_stadiums</a></span>, <span class='object_link'><a href="RdfHelper.html#get_team-instance_method" title="RdfHelper#get_team (method)">#get_team</a></span>, <span class='object_link'><a href="RdfHelper.html#get_team_uri-instance_method" title="RdfHelper#get_team_uri (method)">#get_team_uri</a></span>, <span class='object_link'><a href="RdfHelper.html#get_teams-instance_method" title="RdfHelper#get_teams (method)">#get_teams</a></span>, <span class='object_link'><a href="RdfHelper.html#get_trainer-instance_method" title="RdfHelper#get_trainer (method)">#get_trainer</a></span>, <span class='object_link'><a href="RdfHelper.html#get_trainer_team_stations-instance_method" title="RdfHelper#get_trainer_team_stations (method)">#get_trainer_team_stations</a></span>, <span class='object_link'><a href="RdfHelper.html#get_trainer_uri-instance_method" title="RdfHelper#get_trainer_uri (method)">#get_trainer_uri</a></span>, <span class='object_link'><a href="RdfHelper.html#tmp_get_player-instance_method" title="RdfHelper#tmp_get_player (method)">#tmp_get_player</a></span></p>
 
   
 
@@ -195,16 +195,18 @@
 4
 5
 6
-7</pre>
+7
+8</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'app/controllers/teams_controller.rb', line 3</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_index'>index</span>
-  <span class='ivar'>@team</span> <span class='op'>=</span> <span class='id identifier rubyid_get_team'>get_team</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:uri</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-  <span class='ivar'>@title</span> <span class='op'>=</span> <span class='ivar'>@team</span><span class='period'>.</span><span class='id identifier rubyid_label'>label</span>
-  <span class='ivar'>@players</span> <span class='op'>=</span> <span class='id identifier rubyid_get_players'>get_players</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:uri</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
+  <span class='ivar'>@team</span> <span class='op'>=</span> <span class='id identifier rubyid_get_team'>get_team</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:uri</span><span class='rbracket'>]</span><span class='rparen'>)</span> <span class='comment'>#includes trainer info
+</span>  <span class='ivar'>@title</span> <span class='op'>=</span> <span class='ivar'>@team</span><span class='period'>.</span><span class='id identifier rubyid_label'>label</span>
+  <span class='ivar'>@players</span> <span class='op'>=</span> <span class='id identifier rubyid_get_players_for_team'>get_players_for_team</span><span class='lparen'>(</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:uri</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='comment'>#@trainer = get_trainer(@team.coach_uri)
+</span><span class='kw'>end</span></pre>
     </td>
   </tr>
 </table>
@@ -215,7 +217,7 @@
 </div>
 
     <div id="footer">
-  Generated on Wed Jul  2 12:20:24 2014 by
+  Generated on Mon Aug  4 16:35:42 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.4 (ruby-2.1.2).
 </div>

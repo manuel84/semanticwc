@@ -1,7 +1,7 @@
-<div data-role="page" id="<%= "#{@matchday.time.to_s}-#{@matchday.homeCompetitor}-#{@matchday.awayCompetitor}".parameterize %>" data-title="
-  <% @matchday.uri %>" class="main-page" data-dom-cache="true" data-theme="a"
-     <%= "data-prev=\"#{matches_path(:uri => @matchdays[@current_index-1].uri, filter_uri: params[:filter_uri])}\"".html_safe if @current_index > 0 %>
-     <%= "data-next=\"#{matches_path(:uri => @matchdays[@current_index+1].uri, filter_uri: params[:filter_uri])}\"".html_safe if @matchdays.count >= @current_index+2 %>>
+<div data-role="page" id="<%= "#{@match.time.to_s}-#{@match.homeCompetitor}-#{@match.awayCompetitor}".parameterize %>" data-title="
+  <% @match.uri %>" class="main-page" data-dom-cache="true" data-theme="a"
+     <%= "data-prev=\"#{matches_path(:uri => @matches[@current_index-1].uri, filter_uri: params[:filter_uri])}\"".html_safe if @current_index > 0 %>
+     <%= "data-next=\"#{matches_path(:uri => @matches[@current_index+1].uri, filter_uri: params[:filter_uri])}\"".html_safe if @matches.count >= @current_index+2 %>>
 
   <% cache 'matches_filter' do %>
       <%= render 'filter' %>
@@ -11,21 +11,21 @@
 
     <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all">
       <li data-role="list-divider" data-theme="a" data-swatch="a" data-form="ui-bar-a" role="heading">
-        <div class="big center"><%= Time.parse(@matchday.time.to_s).to_s(:short) %> Uhr</div>
+        <div class="big center"><%= Time.parse(@match.time.to_s).to_s(:short) %> Uhr</div>
       </li>
       <li data-form="ui-body-a" data-swatch="a" data-theme="a">
         <div class="big center">
 
-          <%= link_to(image_tag(img_url(@home), width: 60), teams_path(:uri => @matchday.homeCompetitor_uri), class: ['img', 'team-name', 'right'], 'data-prefetch'.to_sym => true) %>
-          <div class="ultra-big team-spacer"><%= get_result(@matchday) %></div>
-          <%= link_to(image_tag(img_url(@away), width: 60), teams_path(:uri => @matchday.awayCompetitor_uri), class: ['img', 'team-name', 'left'], 'data-prefetch'.to_sym => true) %>
+          <%= link_to(image_tag(img_url(@home), width: 60), teams_path(:uri => @match.homeCompetitor_uri), class: ['img', 'team-name', 'right'], 'data-prefetch'.to_sym => true) %>
+          <div class="ultra-big team-spacer"><%= get_result(@match) %></div>
+          <%= link_to(image_tag(img_url(@away), width: 60), teams_path(:uri => @match.awayCompetitor_uri), class: ['img', 'team-name', 'left'], 'data-prefetch'.to_sym => true) %>
           <br/>
 
-          <span class="team-name right"><%= @matchday.homeCompetitor %></span>
+          <span class="team-name right"><%= @match.homeCompetitor %></span>
           <span class="team-spacer"> -</span>
-          <span class="team-name left"><%= @matchday.awayCompetitor %></span>
+          <span class="team-name left"><%= @match.awayCompetitor %></span>
         </div>
-        <%= ui_list get_goal_infos(@goals, @matchday), header: '' do |i| %>
+        <%= ui_list get_goal_infos(@goals, @match), header: '' do |i| %>
             <%= i %>
         <% end %>
 
@@ -41,7 +41,7 @@
     </ul>
     <div class="footer">
       <div class="left"><%= get_filter_name(@filter_type, @filter_value) %></div>
-      <div class="right"><%= @current_index+1 %>/<%= @matchdays.count %></div>
+      <div class="right"><%= @current_index+1 %>/<%= @matches.count %></div>
     </div>
     <%= render 'js_after_loaded' %>
   </div>
