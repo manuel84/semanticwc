@@ -73,318 +73,25 @@ Campus Unter den Eichen 5
 
 \begin{abstract}
 Große Sportereignisse haben schon immer große Menschenmaßen begeistert. So auch die Events die die Disziplin Fußball betreffen. Dieses Paper beschreibt ein Projekt, das sich als Ziel die Vorstellung der Ereignisse der diesjährigen Fußballweltmeisterschaft gesetzt hat. Der Fokus dieser Anwendung liegt auf der Aktualität der präsentierten Daten sowie einer auf die Mobilen-Endgeräte angepassten Repräsentation. Für die Vielfalt der präsentierten Daten sowie deren Richtigkeit sorgte eine Informationssynthese aus mehreren Quellen. Um die Informationen weitestgehend für automatische Weiterverarbeitung vorzubereiten wurden alle Daten um semantische Bedeutung aus gängigen Sport-Ontologien ergänzt.
-
 \end{abstract}
 
 \section{Pitch}
 
 \section{Introduction}
 
-You are strongly encouraged to use \LaTeXe{} for the
-preparation of your camera-ready manuscript together with the
-corresponding Springer class file \verb+llncs.cls+. Only if you use
-\LaTeXe{} can hyperlinks be generated in the online version
-of your manuscript.
+\newpage
+\section{Bestimmung der Informationsquellen}\label{infoQuell}
 
-The \LaTeX{} source of this instruction file for \LaTeX{} users may be
-used as a template. This is
-located in the ``authors'' subdirectory in
-\url{ftp://ftp.springer.de/pub/tex/latex/llncs/latex2e/instruct/} and
-entitled \texttt{typeinst.tex}. There is a separate package for Word 
-users. Kindly send the final and checked source
-and PDF files of your paper to the Contact Volume Editor. This is
-usually one of the organizers of the conference. You should make sure
-that the \LaTeX{} and the PDF files are identical and correct and that
-only one version of your paper is sent. It is not possible to update
-files at a later stage. Please note that we do not need the printed
-paper.
+Die Fußballweltmeisterschaft ist allgemein ein belebtes Thema in der digitalen Welt. Um geeignete Quellen für die gesuchte Informationen zu finden wurde eine tiefgründige Recherche durchgeführt. Die unten aufgeführte Tabelle zeigt ein Ausschnitt aus der Zusammenstellung in der die geeigneten Quellen aufgeführt wurden. Wie man an der Zusammenstellung erkennen kann verfügen nicht alle Quellen über die gleiche Informationsfülle. Dabei ist die Open Football \cite{url_openfootball} Datenbank aufgrund der nicht aktuellen Informationen für weitere Verwendung uninteressant. Die Football Data \cite{url_footballdata} sowie die World Cup \cite{url_worldcup} Datenbank zeigen beide eine sehr gute Fülle an brauchbaren Informationen. Bei einer weiteren Recherche zu der Word Cup Datenbank wurde die offengelegte API gefunden die einen direkten Zugriff auf die offizielle Seite der FIFA ermöglicht. Wie die letzte Spalte der Zusammenstellung zu entnehmen ist, ist die offizielle Seite des Internationalen Fußballverbandes die beste Informationsquelle. Im Entschluss wurde die Word Cup API mit Anpassungen auf ein REST\footnote{\textbf{Re}presentational \textbf{S}tate \textbf{T}ransfer} JSON\footnote{\textbf{J}ava\textbf{S}cript \textbf{O}bject \textbf{N}otation} Server aufgesetzt. Das Ergebnis ist eine JSON Datei mit allen relevanten Informationen.
 
-We would like to draw your attention to the fact that it is not possible
-to modify a paper in any way, once it has been published. This applies
-to both the printed book and the online version of the publication.
-Every detail, including the order of the names of the authors, should
-be checked before the paper is sent to the Volume Editors.
-
-\subsection{Checking the PDF File}
-
-Kindly assure that the Contact Volume Editor is given the name and email
-address of the contact author for your paper. The Contact Volume Editor
-uses these details to compile a list for our production department at
-SPS in India. Once the files have been worked upon, SPS sends a copy of
-the final pdf of each paper to its contact author. The contact author is
-asked to check through the final pdf to make sure that no errors have
-crept in during the transfer or preparation of the files. This should
-not be seen as an opportunity to update or copyedit the papers, which is
-not possible due to time constraints. Only errors introduced during the
-preparation of the files will be corrected.
-
-This round of checking takes place about two weeks after the files have
-been sent to the Editorial by the Contact Volume Editor, i.e., roughly
-seven weeks before the start of the conference for conference
-proceedings, or seven weeks before the volume leaves the printer's, for
-post-proceedings. If SPS does not receive a reply from a particular
-contact author, within the timeframe given, then it is presumed that the
-author has found no errors in the paper. The tight publication schedule
-of LNCS does not allow SPS to send reminders or search for alternative
-email addresses on the Internet.
-
-In some cases, it is the Contact Volume Editor that checks all the final
-pdfs. In such cases, the authors are not involved in the checking phase.
-
-\subsection{Additional Information Required by the Volume Editor}
-
-If you have more than one surname, please make sure that the Volume Editor
-knows how you are to be listed in the author index.
-
-\subsection{Copyright Forms}
-
-The copyright form may be downloaded from the ``For Authors"
-(Information for LNCS Authors) section of the LNCS Website:
-\texttt{www.springer.com/lncs}. Please send your signed copyright form
-to the Contact Volume Editor, either as a scanned pdf or by fax or by
-courier. One author may sign on behalf of all of the other authors of a
-particular paper. Digital signatures are acceptable.
-
-\section{Paper Preparation}
-
-Springer provides you with a complete integrated \LaTeX{} document class
-(\texttt{llncs.cls}) for multi-author books such as those in the LNCS
-series. Papers not complying with the LNCS style will be reformatted.
-This can lead to an increase in the overall number of pages. We would
-therefore urge you not to squash your paper.
-
-Please always cancel any superfluous definitions that are
-not actually used in your text. If you do not, these may conflict with
-the definitions of the macro package, causing changes in the structure
-of the text and leading to numerous mistakes in the proofs.
-
-If you wonder what \LaTeX{} is and where it can be obtained, see the
-``\textit{LaTeX project site}'' (\url{http://www.latex-project.org})
-and especially the webpage ``\textit{How to get it}''
-(\url{http://www.latex-project.org/ftp.html}) respectively.
-
-When you use \LaTeX\ together with our document class file,
-\texttt{llncs.cls},
-your text is typeset automatically in Computer Modern Roman (CM) fonts.
-Please do
-\emph{not} change the preset fonts. If you have to use fonts other
-than the preset fonts, kindly submit these with your files.
-
-Please use the commands \verb+\label+ and \verb+\ref+ for
-cross-references and the commands \verb+\bibitem+ and \verb+\cite+ for
-references to the bibliography, to enable us to create hyperlinks at
-these places.
-
-For preparing your figures electronically and integrating them into
-your source file we recommend using the standard \LaTeX{} \verb+graphics+ or
-\verb+graphicx+ package. These provide the \verb+\includegraphics+ command.
-In general, please refrain from using the \verb+\special+ command.
-
-Remember to submit any further style files and
-fonts you have used together with your source files.
-
-\subsubsection{Headings.}
-
-Headings should be capitalized
-(i.e., nouns, verbs, and all other words
-except articles, prepositions, and conjunctions should be set with an
-initial capital) and should,
-with the exception of the title, be aligned to the left.
-Words joined by a hyphen are subject to a special rule. If the first
-word can stand alone, the second word should be capitalized.
-
-Here are some examples of headings: ``Criteria to Disprove
-Context-Freeness of Collage Language", ``On Correcting the Intrusion of
-Tracing Non-deterministic Programs by Software", ``A User-Friendly and
-Extendable Data Distribution System", ``Multi-flip Networks:
-Parallelizing GenSAT", ``Self-determinations of Man".
-
-\subsubsection{Lemmas, Propositions, and Theorems.}
-
-The numbers accorded to lemmas, propositions, and theorems, etc. should
-appear in consecutive order, starting with Lemma 1, and not, for
-example, with Lemma 11.
-
-\subsection{Figures}
-
-For \LaTeX\ users, we recommend using the \emph{graphics} or \emph{graphicx}
-package and the \verb+\includegraphics+ command.
-
-Please check that the lines in line drawings are not
-interrupted and are of a constant width. Grids and details within the
-figures must be clearly legible and may not be written one on top of
-the other. Line drawings should have a resolution of at least 800 dpi
-(preferably 1200 dpi). The lettering in figures should have a height of
-2~mm (10-point type). Figures should be numbered and should have a
-caption which should always be positioned \emph{under} the figures, in
-contrast to the caption belonging to a table, which should always appear
-\emph{above} the table; this is simply achieved as matter of sequence in
-your source.
-
-Please center the figures or your tabular material by using the \verb+\centering+
-declaration. Short captions are centered by default between the margins
-and typeset in 9-point type (Fig.~\ref{fig:example} shows an example).
-The distance between text and figure is preset to be about 8~mm, the
-distance between figure and caption about 6~mm.
-
-To ensure that the reproduction of your illustrations is of a reasonable
-quality, we advise against the use of shading. The contrast should be as
-pronounced as possible.
-
-If screenshots are necessary, please make sure that you are happy with
-the print quality before you send the files.
-\begin{figure}
-\centering
-\includegraphics[height=6.2cm]{buchsen}
-\caption{One kernel at $x_s$ (\emph{dotted kernel}) or two kernels at
-$x_i$ and $x_j$ (\textit{left and right}) lead to the same summed estimate
-at $x_s$. This shows a figure consisting of different types of
-lines. Elements of the figure described in the caption should be set in
-italics, in parentheses, as shown in this sample caption.}
-\label{fig:example}
-\end{figure}
-
-Please define figures (and tables) as floating objects. Please avoid
-using optional location parameters like ``\verb+[h]+" for ``here".
-
-\paragraph{Remark 1.}
-
-In the printed volumes, illustrations are generally black and white
-(halftones), and only in exceptional cases, and if the author is
-prepared to cover the extra cost for color reproduction, are colored
-pictures accepted. Colored pictures are welcome in the electronic
-version free of charge. If you send colored figures that are to be
-printed in black and white, please make sure that they really are
-legible in black and white. Some colors as well as the contrast of
-converted colors show up very poorly when printed in black and white.
-
-\subsection{Formulas}
-
-Displayed equations or formulas are centered and set on a separate
-line (with an extra line or halfline space above and below). Displayed
-expressions should be numbered for reference. The numbers should be
-consecutive within each section or within the contribution,
-with numbers enclosed in parentheses and set on the right margin --
-which is the default if you use the \emph{equation} environment, e.g.,
-\begin{equation}
-  \psi (u) = \int_{o}^{T} \left[\frac{1}{2}
-  \left(\Lambda_{o}^{-1} u,u\right) + N^{\ast} (-u)\right] dt \;  .
-\end{equation}
-
-Equations should be punctuated in the same way as ordinary
-text but with a small space before the end punctuation mark.
-
-\subsection{Footnotes}
-
-The superscript numeral used to refer to a footnote appears in the text
-either directly after the word to be discussed or -- in relation to a
-phrase or a sentence -- following the punctuation sign (comma,
-semicolon, or period). Footnotes should appear at the bottom of
-the
-normal text area, with a line of about 2~cm set
-immediately above them.\footnote{The footnote numeral is set flush left
-and the text follows with the usual word spacing.}
-
-\subsection{Program Code}
-
-Program listings or program commands in the text are normally set in
-typewriter font, e.g., CMTT10 or Courier.
-
-\medskip
-
-\noindent
-{\it Example of a Computer Program}
-\begin{verbatim}
-program Inflation (Output)
-  {Assuming annual inflation rates of 7%, 8%, and 10%,...
-   years};
-   const
-     MaxYears = 10;
-   var
-     Year: 0..MaxYears;
-     Factor1, Factor2, Factor3: Real;
-   begin
-     Year := 0;
-     Factor1 := 1.0; Factor2 := 1.0; Factor3 := 1.0;
-     WriteLn('Year  7% 8% 10%'); WriteLn;
-     repeat
-       Year := Year + 1;
-       Factor1 := Factor1 * 1.07;
-       Factor2 := Factor2 * 1.08;
-       Factor3 := Factor3 * 1.10;
-       WriteLn(Year:5,Factor1:7:3,Factor2:7:3,Factor3:7:3)
-     until Year = MaxYears
-end.
-\end{verbatim}
-%
-\noindent
-{\small (Example from Jensen K., Wirth N. (1991) Pascal user manual and
-report. Springer, New York)}
-
-\subsection{Citations}
-
-For citations in the text please use
-square brackets and consecutive numbers: \cite{jour}, \cite{lncschap},
-\cite{proceeding1} -- provided automatically
-by \LaTeX 's \verb|\cite| \dots\verb|\bibitem| mechanism.
-
-\subsection{Page Numbering and Running Heads}
-
-There is no need to include page numbers. If your paper title is too
-long to serve as a running head, it will be shortened. Your suggestion
-as to how to shorten it would be most welcome.
-
-\section{LNCS Online}
-
-The online version of the volume will be available in LNCS Online.
-Members of institutes subscribing to the Lecture Notes in Computer
-Science series have access to all the pdfs of all the online
-publications. Non-subscribers can only read as far as the abstracts. If
-they try to go beyond this point, they are automatically asked, whether
-they would like to order the pdf, and are given instructions as to how
-to do so.
-
-Please note that, if your email address is given in your paper,
-it will also be included in the meta data of the online version.
-
-\section{BibTeX Entries}
-
-The correct BibTeX entries for the Lecture Notes in Computer Science
-volumes can be found at the following Website shortly after the
-publication of the book:
-\url{http://www.informatik.uni-trier.de/~ley/db/journals/lncs.html}
-
-\subsubsection*{Acknowledgments.} The heading should be treated as a
-subsubsection heading and should not be assigned a number.
-
-\section{The References Section}\label{references}
-
-In order to permit cross referencing within LNCS-Online, and eventually
-between different publishers and their online databases, LNCS will,
-from now on, be standardizing the format of the references. This new
-feature will increase the visibility of publications and facilitate
-academic research considerably. Please base your references on the
-examples below. References that don't adhere to this style will be
-reformatted by Springer. You should therefore check your references
-thoroughly when you receive the final pdf of your paper.
-The reference section must be complete. You may not omit references.
-Instructions as to where to find a fuller version of the references are
-not permissible.
-
-We only accept references written using the latin alphabet. If the title
-of the book you are referring to is in Russian or Chinese, then please write
-(in Russian) or (in Chinese) at the end of the transcript or translation
-of the title.
-
-The following section shows a sample reference list with entries for
-journal articles \cite{jour}, an LNCS chapter \cite{lncschap}, a book
-\cite{book}, proceedings without editors \cite{proceeding1} and
-\cite{proceeding2}, as well as a URL \cite{url}.
-Please note that proceedings published in LNCS are not cited with their
-full titles, but with their acronyms!
+\begin{center}
+%\begin{table}
 
 \begin{tabular}{|l|c|c|c|c|c|}   \hline 
-
+ & Football Data 	& Open Football 	& Footbal DB  &	World Cup  & FIFA  \\ \hline
+References & \cite{url_footballdata} & \cite{url_openfootball} &  \cite{url_footballdb} &
+ \cite{url_worldcup} & \cite{url_fifa} \\ \hline
+ 
 Teams				& + & + & +	& + & +		\\ \hline
 Gruppen				& - & + & -	& + & +		\\ \hline
 Spiele				& + & + & -	& + & +		\\ \hline
@@ -396,62 +103,116 @@ Torschützen/min		& +/+ & 	+/+ & - & + & +/+ 	\\ \hline
 Schiedsrichter		& - & - & - & - & +		\\ \hline
 Trainer				& - & - & - & - & +		\\ \hline
 Spieltag 			& + & + & + & + & +		\\ \hline
-Aktuell				& - & (last update +1 month) & + & + & +  \\ \hline
+Aktuell				& - & - & + & + & +  \\ \hline
 Besucherzahl			& + & - & - & - & +		\\ \hline
-				 
+			 
+\end{tabular}
+%\end{table}
+
+%\label{tab:tab1} 
+
+%\caption{Zusammenstellung der wichtigsten Informationsquellen}	
+\end{center}
+
+
+Eine wichtige Rolle bei der Wahl der API hat letztendlich auch der Finanzielleaspekt gespielt. Es gibt eine ganze Reihe an gut organisierten und stets aktuellen Datenbanken, die jedoch eine monatliche Gebühr mit sich tragen. Für dieses Projekt wurde jedoch eine Vereinbarung getroffen, rein Quelloffene Lösungen zu verwenden. Dadurch sind Finanziellabhängige Projekte direkt bei der Recherche ausgeschlossen worden. 
   
-  
-  
-\end{tabular} 
+\newpage
+\section{Ontologien}
+
+
+
+Bei der Recherche nach geeigneten Sport-Ontologien hat sich unsere Aufmerksamkeit auf zwei Quellen gerichtet, die Sport-Ontologie\footnote{\url{http://www.bbc.co.uk/ontologies/sport}} der BBC und die Soccer Voc Ontology\footnote{\url{http://purl.org/hpi/soccer-voc/}} des Hasso-Plattner-Institut. Die Future Media and Technologie Abteilung der BBC setzt semantische Technologien um die intern relevanten Inhalte hinsichtlich der Veröffentlichungen automatisch verwalten zu können. Der erste große Einsatz der semantischen Technologien war die Gestaltung der Internetseite\footnote{\url{http://news.bbc.co.uk/sport2/hi/football/world_cup_2010/default.stm}} mit Informationen zu dem FIFA World Cup 2010. Die dabei eingesetzte Ontologie ist seither frei zugänglich. \\
+Die Arbeitsgruppe "`Semantic Technologies"'\footnote{\url{http://hpi.de/meinel/knowledge_tech/semantics.html}} an dem Hasso-Plattner-Institut im Potsdam veröffentlichte 2012 ein Paper zu Linked Soccer Data\cite{url_lsd}. Im Rahmen dieses Papers wurde ein Datensatz mit Fußballinformationen vorgestellt, der mit der LOD Cloud\footnote{\url{http://linkeddata.org/}} verknüpft wurde. Die dabei verwendete Ontologie kann frei verwendet werden und stellt eine gute Ergänzung der Sport-Ontologie der BBC dar.\\
+Die Abbildung \ref{fig:example} zeigt einem Graphen, der für einem exemplarischen Ausschnitt aus der mit dem Ontologien vorbereiteten Daten, aufgebaut wurde. An diesem Beispiel ist die Verflechtung der beiden Ontologien sehr gut sichtbar.
+
+\begin{figure}
+\centering
+\includegraphics[height=7.2cm]{graph_manus}
+\caption{Exemplarische Ausschnitt aus der RDF.}
+\label{fig:example}
+\end{figure}
+
+\newpage
+\section{Application // Implemetierung}
+
+
+Bei der Wahl des Framework für diese Anwendung fiel die Entscheidung zu Gunsten von Ruby on Rails \footnote{http://www.rubyonrails.org/}. Dieses quelloffenes Web Application Framework bietet sehr gute Unterstützung bei Entwicklung von Semantik Web Applikationen um die RDF Datenbank oder den SPARQL Client zu nennen . Als Unterstützung für die Mobilen-Endgeräte, z.B. für den Swipe-Efect,  wurde die jQuery mobile\footnote{http://www.jquerymobile.com/} Bibliothek eingesetzt. 
+
+Die Abbildung \ref{fig:example} zeigt eine Übersicht über den Technick-stack. Um die Daten aus der FIFA Seite zu beziehen wurde ein REST Server aufgestellt der auch separat über \texttt{sfgapi.herokuapp.com} abrufbar ist. Die so vorbereiteten Daten werden folglich mit den zuvor beschriebenen Ontologien aufbereitet. Da die Anwendung sich zunächst auf ein Sportliches Ereignis beschränkt, in diesem Fall die Fußballweltmeisterschaft, wurde hierfür keine zusätzliche Datenbank angelegt. Stattdessen werden alle Datensätze als RDF-Trippel in einer Datei gespeichert.
+\begin{figure}
+\centering
+\includegraphics[height=4.2cm]{technik-stack}
+\caption{Technik-stack.}
+\label{fig:example}
+\end{figure}
+
+
+Als Abfragesprache für die so vorbereiteten Informationen wurde SPARQL ausgewählt. Neben der RDF-Datei, die als primäre Endpoint fungiert, wird für zusätzliche Informationen die DBpedia als sekundäre Endpoint eingesetzt. 
+
+Die Abbildung \ref{fig:screenshots} zeigt drei Screenshots der fertigen Anwendung. Oben link ist die Startseite zu sehen, die immer den aktuellen Spieltag anzeigt. Links unten ist ein Ausschnitt aus den Informationen die über einer der Stadien zu sehen ist. Der Screenshot links zeigt wiederum Informationen die zu einem Trainer einer Mannschaft angezeigt werden können. Bei dem Aufbau der Ansichten wurde ein große Wert auf Übersichtlichkeit gelegt.   
+\begin{figure}
+\centering
+\includegraphics[height=8.2cm]{screenshots}
+\caption{Screenshots der Anwendung.}
+\label{fig:screenshots}
+\end{figure}
+
+\newpage
+\section{Zusammenfassung und Ausblick}
+
+Im Rahmen dieses Projekts wurde eine Anwendung entwickelt, die alle wichtigen Informationen, zu der 2014 in Brasilien stattfindenden Fußball Weltmeisterschaft, bereithält. Als Informationsquelle dient hierbei die offizielle FIFA Webseite, die mit Daten aus der DPpedia ergänzt wurde. Die semantische Aufbereitung wurde mit Hilfe der BBC Sport sowie der Socker Voc Ontologie gestaltet.  
+
+Unsere Anwendung bietet eine solide Grundlage für Weiterentwicklungen die nicht nur den Bereich Fußball betreffen. Bezogen auf die Fußballereignisse kann eine leichte Portierung auf die nächste Weltmeisterschaft oder Europameisterschaft stattfinden. Denkbar ist aber auch eine Abwandlung zur Informationspräsentation der Spiele der Bundesliga Mannschaften. 
+
+
 
 \begin{thebibliography}{4}
 
-\bibitem{url_bbc}BBC ONTOLOGIES,\\
-Letzte Zugriff: 26. Juni 2014\\
+\bibitem{url_lsd}Linked Soccer Data,
+Tanja Bergmann, Stefan Bunk, Johannes Eschrig, Christian Hentschel, Magnus Knuth, Harald Sack, and Ricarda Schüler\\
+Hasso Plattner Institute for Software Systems Engineering, Potsdam, Germany\\
+Letzter Zugriff: 22. Juni 2014\\
+\url{http://ceur-ws.org/Vol-1026/paper6.pdf}
+
+\bibitem{url_bbc}BBC ONTOLOGIES,
+Letzter Zugriff: 26. Juni 2014\\
 \url{http://www.bbc.co.uk/ontologies}
 
-\bibitem{url_footballdata}More Football Data Projects,\\
-Letzte Zugriff: 16. Juli 2014\\
-\url{https://github.com/footballdata}
-
-\bibitem{url_jquery}jQuery mobile,\\
-Letzte Zugriff: 26. Mai 2014\\
+\bibitem{url_jquery}jQuery mobile,
+Letzter Zugriff: 26. Mai 2014\\
 \url{https://demos.jquerymobile.com/1.4.2/}
 
-\bibitem{url_smm}Semantic Media Mining,\\
-Letzte Zugriff: 22. Juli 2014\\
+\bibitem{url_smm}Semantic Media Mining,
+Letzter Zugriff: 22. Juli 2014\\
 \url{https://smm2013.blogspot.de/2012/11/soccer-voc.html}
 
-\bibitem{url_dbpedia}DBpedia,\\
-Letzte Zugriff: 22. Juli 2014\\
+\bibitem{url_dbpedia}DBpedia,
+Letzter Zugriff: 22. Juli 2014\\
 \url{http://http://dbpedia.org}
 
-\bibitem{url_ruby}Ruby. Der beste Freund eines Programmierers,\\
-Letzte Zugriff: 22. Juli 2014\\
+\bibitem{url_ruby}Ruby. Der beste Freund eines Programmierers,
+Letzter Zugriff: 22. Juli 2014\\
 \url{https://www.ruby-lang.org/de/}
 
-\bibitem{url_footballdata}Scraping FIFA World Cup Data,\\
+\bibitem{url_footballdata}Scraping FIFA World Cup Data,
 Letzte Zugriff: 12. Juli 2014\\
 \url{https://github.com/footballdata/fifadata}
 
-\bibitem{url_openfootball}Open Footbal,\\
-Letzte Zugriff: 12. Juli 2014\\
+\bibitem{url_openfootball}Open Football,
+Letzter Zugriff: 12. Juli 2014\\
 \url{https://github.com/openfootball/world-cup}
 
-\bibitem{url_footballdb}Footbal DB,\\
-Letzte Zugriff: 12. Juli 2014\\
+\bibitem{url_footballdb}Footbal DB,
+Letzter Zugriff: 12. Juli 2014\\
 \url{http://footballdb.herokuapp.com/api/v1/}
 
-\bibitem{url_openligadb}Open Liga DB,\\
-Letzte Zugriff: 12. Juli 2014\\
-\url{http://www.openligadb.de/Sports}
-
-\bibitem{url_worldcup}World Cup ... in JSON,\\
-Letzte Zugriff: 12. Juli 2014\\
+\bibitem{url_worldcup}World Cup ... in JSON,
+Letzter Zugriff: 12. Juli 2014\\
 \url{http://www.http://worldcup.sfg.io/}
 
-\bibitem{url_fifa}FIFA com,\\
-Letzte Zugriff: 12. Juli 2014\\
+\bibitem{url_fifa}FIFA com,
+Letzter Zugriff: 12. Juli 2014\\
 \url{http://http://www.fifa.com/}
 
 \end{thebibliography}
