@@ -161,6 +161,7 @@ module ApplicationHelper
         'Wing Back',
         'Midfielder / Defender',
         'Midfielder/Defender',
+        'Defender / Defensive Midfielder',
         'Defensive Midfielder',
         'Defensive Midfielder / Central Midfielder',
         'Defensive Midfielder/Central Midfielder',
