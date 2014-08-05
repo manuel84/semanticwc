@@ -1,9 +1,18 @@
 <%= javascript_tag '
   $(function() {
-    $("#select-filter-type option[value=\''+@filter_type+'\']").attr("selected", true);
+    $("#select-filter-value-'+@filter_type+'").show();
+    //$("#select-filter-value-'+@filter_type+' option:selected).removeAttr("selected");
+    $("#select-filter-type").val("'+@filter_type+'"); //option[value=\''+@filter_type+'\']").attr("selected", true);
     $("#select-filter-type").change();
-    $("#select-filter-value-'+@filter_type+' option[value=\''+@filter_value+'\']").attr("selected", true);
+    $("#select-filter-value-'+@filter_type+'.select-type option[value=\''+@filter_value+'\']").attr("selected", true);
+    var selectText = $("#select-filter-type-button span").text();
+    selectText = selectText.replace(/alle Spiele, /, "").trim();
+    if(selectText == ""){
+        selectText = "alle Spiele";
+    }
+    $("#select-filter-type-button span").html(selectText);
     $("#select-filter-value-'+@filter_type+'-button span").html($("#select-filter-value-'+@filter_type+' option[value=\''+@filter_value+'\']").text());
+    Semwc.selectFilterType("'+@filter_type+'");
     $("#select-filter-type").change(function() {
         Semwc.goToAll($("#select-filter-type").val());
     });

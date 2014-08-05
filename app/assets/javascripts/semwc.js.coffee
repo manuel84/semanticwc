@@ -32,6 +32,7 @@
     return
 
   goToAll: (value) ->
+    console.log(value)
     if(value == 'none')
       $("#close-button").click()
       $.mobile.loading('show', {
