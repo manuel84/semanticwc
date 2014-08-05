@@ -25,7 +25,7 @@ class SfgCrawler < DataCrawler
     graph << [dbpedia["FIFA_World_Cup"], bbcevent.recurringEvent, dbpedia["2014_FIFA_World_Cup"]]
     graph << [dbpedia["2014_FIFA_World_Cup"], RDF.type, bbcsport.MultiStageCompetition]
     graph << [dbpedia["2014_FIFA_World_Cup"], bbcsport.firstStage, swc14['Group_Stage']]
-    graph << [swc14['Group_Stage'], RDF.type, bbcsport.KnockoutCompetition]
+    graph << [swc14['Group_Stage'], RDF.type, bbcsport.MultiRoundCompetition]
 
 
     result = RestClient.get "http://sfgapi.herokuapp.com/matches", {:accept => :json}
@@ -59,6 +59,7 @@ class SfgCrawler < DataCrawler
         graph << [swc14['Group_Stage'], bbcsport.hasGroup, swc14[match['stage'].gsub(/ /,"_")]]
         groupLabel = RDF::Literal.new(match['stage'])
         graph << [swc14[match['stage'].gsub(/ /,"_")], rdfs.label, groupLabel]
+        graph << [swc14[match['stage'].gsub(/ /,"_")], RDF.type, bbcsport.Round]
       else
         if match['stage'].gsub(/ /,"_") == "Final"
           graph << [dbpedia["2014_FIFA_World_Cup"], bbcsport.lastStage, swc14[match['stage'].gsub(/ /,"_")]]
