@@ -75,7 +75,7 @@ Große Sportereignisse haben schon immer große Menschenmaßen begeistert. So au
 
 \section{Introduction}
 
-In den vielen Informationsseiten, die die diesjährige Fußballweltmeisterchat in Brasilien präsentieren, such man oft vergeblich nach gut strukturierten und leichtgewichtigen Applikationen, die schnell mit mobilen Endgeräten zu erreichen sind. Zu dem werden viele Seiten nicht aktuell gehalten, was gerade bei so ereignisreicher Sportdisziplin wie Fußball unerlässlich ist. Beim unseren Projekt haben diese Aspekte die höchste Priorität erhalten. Um einem aktuellen Trend in der Webentwicklung zu folgen wurde unsere Applikation mit Konzepten des semantisches Web entwickelt. Dabei werden alle Informationen mit einer für die Maschine verständlicher Syntax ergänzt. Die           
+In den vielen Informationsseiten, die die diesjährige Fußballweltmeisterchat in Brasilien präsentieren, such man oft vergeblich nach gut strukturierten und leichtgewichtigen Applikationen, die schnell mit mobilen Endgeräten zu erreichen sind. Zu dem werden viele Seiten nicht aktuell gehalten, was gerade bei so ereignisreicher Sportdisziplin wie Fußball unerlässlich ist. Beim unseren Projekt haben diese Aspekte die höchste Priorität erhalten. Um einem aktuellen Trend in der Webentwicklung zu folgen wurde unsere Applikation mit Konzepten des semantisches Web entwickelt. Dabei werden alle Informationen mit einer für die Maschine verständlicher Syntax ergänzt. Dazu wurden die Informationen der FIFA Homepage extrahiert und mit der Ontologie von BBC-Sport und der Ontologie Soccer-Voc des Hasso PLatners Instituts versehen. Für die Darstellung dieser Daten wurde eine Ruby on Rails Web Application, welche zur Präsentation JQuery Mobile einsetzt, entwickelt. Des weiteren werden weiter führende Informationen, durch die einbeziehung von DBpedia Einträgen, eigeblendet.    
 
 
 \section{Related Work}
@@ -135,7 +135,7 @@ Um die Daten semantisch korrekt darzustellen wurden verschiedene Ontologien verw
 \end{figure}
 
 Die Abbildung \ref{fig:example} zeigt einem Graphen, der für einem exemplarischen Ausschnitt aus der mit den Ontologien versehenen Daten, aufgebaut wurde. An diesem Beispiel ist die Verflechtung der Ontologien sehr gut sichtbar.
-Aus dem Graph ist ersichtlich, dass für jedes Spiel ein eigener Knoten mit den Länderkürzeln der Spielteilnehmer erstellt wurde (GER_POR). Dieser Knoten ist vom Typ \textit{bbcsport:Match} und hat als \textit{bbcsport:homeCompetitior} Attribut den Knoten der deutschen Nationalmannschaft. 
+Aus dem Graph ist ersichtlich, dass für jedes Spiel ein eigener Knoten mit den Länderkürzeln der Spielteilnehmer erstellt wurde \(GER_POR\). Dieser Knoten ist vom Typ \textit{bbcsport:Match} und hat als \textit{bbcsport:homeCompetitior} Attribut den Knoten der deutschen Nationalmannschaft. 
 Des weiteren gibt es einen Knoten für jeden Spieler, welche vom Typ \textit{soccer-voc:SoccerPlayer} sind. Diese sind mit dem Attribut \textit{soccer-voc:playsFor} mit den Mannschaften verbunden. Das zuletzt genannte Attribut und der zuletzt genannte Typ stammen von der Soccer-voc Ontologie. Da \textit{SoccerPlayer} eine Unterklasse von \textit{foaf:Agent} ist, kann ein SoccerPlayer mit einem Attribut für einen Namen versehen werden.
 \newpage
 \section{Application // Implemetierung}
