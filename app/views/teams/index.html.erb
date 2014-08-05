@@ -8,12 +8,16 @@
       <%= image_tag(img_url(@team), height: 40) %>
     </div>
 
-    <%# sorting_list = %w(Goalkeeper )%>
-    <%= ui_list @players, header: 'Kader' do |player| %>
+    <% player_infos = {} %>
+    <% @players.each do |player| %>
+        <% player_infos[player.uri.to_s] = get_player(player.uri) %>
+        <% player_infos[player.uri.to_s] ||= {position: 'n.A.'} %>
+    <% end %>
+    <%= ui_list sort_players!(@players, player_infos), header: 'Kader' do |player| %>
         <% if player.uri.to_s.include?('http://cs.hs-rm.de/~mdudd001/semanticwc/') %>
-            <%= ui_list_link_to player.label, 'javascript:void(0);', class: 'disabled' %>
+            <%= ui_list_link_to "#{player.label} (#{player_infos[player.uri.to_s][:position].to_s.titlecase})", 'javascript:void(0);', class: 'disabled' %>
         <% else %>
-            <%= ui_list_link_to player.label, players_path(:uri => player.uri) %>
+            <%= ui_list_link_to "#{player.label} (#{player_infos[player.uri.to_s][:position].to_s.titlecase})", players_path(:uri => player.uri) %>
         <% end %>
     <% end %>
 

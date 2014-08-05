@@ -144,4 +144,66 @@ module ApplicationHelper
     result.compact
   end
 
+  def get_position_sortings
+    [
+        'Goalkeeper',
+        'Defender',
+        'Centre Back',
+        'Full Back',
+        'Left Back',
+        'Left Back / Winger',
+        'Left Back/Winger',
+        'Left Wing Back',
+        'Right Back',
+        'Right Back / Winger',
+        'Right Back/Winger',
+        'Right Wing Back',
+        'Wing Back',
+        'Midfielder / Defender',
+        'Midfielder/Defender',
+        'Defensive Midfielder',
+        'Defensive Midfielder / Central Midfielder',
+        'Defensive Midfielder/Central Midfielder',
+        'Centre Back / Defensive Midfielder',
+        'Centre Back/Defensive Midfielder',
+        'Central Midfielder',
+        'Central Midfielder / Winger',
+        'Central Midfielder/Winger',
+        'Midfielder',
+        'Winger',
+        'Attacking Midfielder / Winger',
+        'Attacking Midfielder/Winger',
+        'Attacking Midfielder',
+        'Forward',
+        'Forward / Right Winger',
+        'Forward/Right Winger',
+        'Forward / Left Winger',
+        'Forward/Left Winger',
+        'Striker / Winger',
+        'Winger / Striker',
+        'Striker',
+        'Winger, Second Striker',
+        'Second Striker',
+        'N.A.',
+        ''
+    ]
+  end
+
+  def sort_players!(players, player_infos)
+    sorting_list = get_position_sortings
+    players.sort! do |a, b|
+      i1 = if sorting_list.include?(player_infos[a.uri.to_s][:position].to_s.titlecase)
+             sorting_list.index(player_infos[a.uri.to_s][:position].to_s.titlecase).to_i
+           else
+             sorting_list.count+2
+           end
+      i2 = if sorting_list.include?(player_infos[b.uri.to_s][:position].to_s.titlecase)
+             sorting_list.index(player_infos[b.uri.to_s][:position].to_s.titlecase).to_i
+           else
+             sorting_list.count+2
+           end
+      i1 <=> i2
+    end
+  end
+
 end
