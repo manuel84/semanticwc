@@ -75,15 +75,13 @@ Campus Unter den Eichen 5
 Große Sportereignisse haben schon immer große Menschenmaßen begeistert. So auch die Events die die Disziplin Fußball betreffen. Dieses Paper beschreibt ein Projekt, das sich als Ziel die Vorstellung der Ereignisse der diesjährigen Fußballweltmeisterschaft gesetzt hat. Der Fokus dieser Anwendung liegt auf der Aktualität der präsentierten Daten sowie einer auf die Mobilen-Endgeräte angepassten Repräsentation. Für die Vielfalt der präsentierten Daten sowie deren Richtigkeit sorgte eine Informationssynthese aus mehreren Quellen. Um die Informationen weitestgehend für automatische Weiterverarbeitung vorzubereiten wurden alle Daten um semantische Bedeutung aus gängigen Sport-Ontologien ergänzt.
 \end{abstract}
 
-\section{Pitch}
-
 \section{Introduction}
-\newpage
+
 \section{Related Work}
 
 Bei der Recherche in dem Bereich der Fußbaleregnisse mit semantischen Hintergrund hat sich unsere Aufmerksamkeit auf drei Quellen gerichtet, die Sport-Ontologie\footnote{\url{http://www.bbc.co.uk/ontologies/sport}} der BBC, die Soccer Voc Ontology\footnote{\url{http://purl.org/hpi/soccer-voc/}} des Hasso-Plattner-Institut sowie der World Cup\footnote{\url{http://www.http://worldcup.sfg.io/}} JSON API.\\ Die Future Media and Technologie Abteilung der BBC setzt semantische Technologien um die intern relevanten Inhalte automatisch verwalten zu können. Der erste große Einsatz der semantischen Technologien war die Gestaltung der Internetseite\footnote{\url{http://news.bbc.co.uk/sport2/hi/football/world_cup_2010/default.stm}} mit Informationen zu dem FIFA World Cup 2010. Die dabei eingesetzte Ontologie ist seither frei zugänglich. \\
 Die Arbeitsgruppe "`Semantic Technologies"'\footnote{\url{http://hpi.de/meinel/knowledge_tech/semantics.html}} an dem Hasso-Plattner-Institut im Potsdam veröffentlichte 2012 ein Paper zu Linked Soccer Data\cite{url_lsd}. Im Rahmen dieses Papers wurde ein Datensatz mit Fußballinformationen vorgestellt, der mit der LOD Cloud\footnote{\url{http://linkeddata.org/}} verknüpft wurde. Die dabei verwendete Ontologie kann frei verwendet werden und stellt eine gute Ergänzung der Sport-Ontologie der BBC dar.\\
-Bei der World Cup API handelt sich um ein von Eric Stiens\footnote{\url{http://softwareforgood.com/soccer-good/}} betreutes Projekt. Dessen Ziel ist es die aktuellen Fußballereignisse für jeden frei verfügbar zu machen. Neben der frei verfügbaren Informationen, die als JSON Dateien vorliegen, ist auch die API selbst frei verfügbar. 
+Bei der World Cup API handelt sich um ein von Eric Stiens\footnote{\url{http://softwareforgood.com/soccer-good/}} betreutes Projekt. Dessen Ziel ist es die aktuellen Fußballereignisse für jeden frei verfügbar zu machen. Neben der frei verfügbaren Informationen, die als JSON Dateien vorliegen, ist auch die API selbst für Weiterentwicklung frei gegeben. 
 
 \newpage
 \section{Bestimmung der Informationsquellen}\label{infoQuell}
@@ -121,7 +119,7 @@ Besucherzahl			& + & - & - & - & +		\\ \hline
 \end{center}
 
 
-Eine wichtige Rolle bei der Wahl der API hat letztendlich auch der Finanzielleaspekt gespielt. Es gibt eine ganze Reihe an gut organisierten und stets aktuellen Datenbanken, die jedoch eine monatliche Gebühr mit sich tragen. Für dieses Projekt wurde jedoch eine Vereinbarung getroffen, rein Quelloffene Lösungen zu verwenden. Dadurch sind Finanziellabhängige Projekte direkt bei der Recherche ausgeschlossen worden. 
+Eine wichtige Rolle bei der Wahl der API hat letztendlich auch der Finanzielleraspekt gespielt. Es gibt eine ganze Reihe an gut organisierten und stets aktuellen Datenbanken, die jedoch eine monatliche Gebühr mit sich tragen. Für dieses Projekt wurde jedoch eine Vereinbarung getroffen, rein Quelloffene Lösungen zu verwenden. Dadurch sind Finanziellabhängige Projekte direkt bei der Recherche ausgeschlossen worden. 
   
 \newpage
 \section{Ontologien}
@@ -142,7 +140,7 @@ Die Abbildung \ref{fig:example} zeigt einem Graphen, der für einem exemplarisch
 \section{Application // Implemetierung}
 
 
-Bei der Wahl des Framework für diese Anwendung fiel die Entscheidung zu Gunsten von Ruby on Rails \footnote{http://www.rubyonrails.org/}. Dieses quelloffenes Web Application Framework bietet sehr gute Unterstützung bei Entwicklung von Semantik Web Applikationen um die RDF Datenbank oder den SPARQL Client zu nennen . Als Unterstützung für die Mobilen-Endgeräte, z.B. für den Swipe-Efect,  wurde die jQuery mobile\footnote{http://www.jquerymobile.com/} Bibliothek eingesetzt. 
+Bei der Wahl des Framework für diese Anwendung fiel die Entscheidung zu Gunsten von Ruby on Rails \footnote{http://www.rubyonrails.org/}. Dieses quelloffenes Web Application Framework bietet sehr gute Unterstützung bei Entwicklung von Semantik Web Applikationen um die RDF Datenbank oder den SPARQL Client zu nennen. Für Gestaltung der Seiten sowie als Unterstützung für die Mobilen-Endgeräte, z.B. für den Swipe-Efect,  wurde die jQuery mobile\footnote{http://www.jquerymobile.com/} Bibliothek eingesetzt. 
 
 Die Abbildung \ref{fig:example} zeigt eine Übersicht über den Technick-stack. Um die Daten aus der FIFA Seite zu beziehen wurde ein REST Server aufgestellt der auch separat über \texttt{sfgapi.herokuapp.com} abrufbar ist. Die so vorbereiteten Daten werden folglich mit den zuvor beschriebenen Ontologien aufbereitet. Da die Anwendung sich zunächst auf ein Sportliches Ereignis beschränkt, in diesem Fall die Fußballweltmeisterschaft, wurde hierfür keine zusätzliche Datenbank angelegt. Stattdessen werden alle Datensätze als RDF-Trippel in einer Datei gespeichert.
 \begin{figure}
@@ -155,7 +153,10 @@ Die Abbildung \ref{fig:example} zeigt eine Übersicht über den Technick-stack. 
 
 Als Abfragesprache für die so vorbereiteten Informationen wurde SPARQL ausgewählt. Neben der RDF-Datei, die als primäre Endpoint fungiert, wird für zusätzliche Informationen die DBpedia als sekundäre Endpoint eingesetzt. 
 
-Die Abbildung \ref{fig:screenshots} zeigt drei Screenshots der fertigen Anwendung. Oben link ist die Startseite zu sehen, die immer den aktuellen Spieltag anzeigt. Links unten ist ein Ausschnitt aus den Informationen die über einer der Stadien zu sehen ist. Der Screenshot links zeigt wiederum Informationen die zu einem Trainer einer Mannschaft angezeigt werden können. Bei dem Aufbau der Ansichten wurde ein große Wert auf Übersichtlichkeit gelegt.   
+\newpage
+Die Abbildung \ref{fig:screenshots} zeigt drei Screenshots der fertigen Anwendung. Oben links ist die Startseite zu sehen, auf der immer der aktuelle Spieltag anzeigt wird. Links unten ist ein Ausschnitt aus der Ansich die Informationen zu dem Stadien präsentiert. Die Rechtehälfte des Screenshots zeigt wiederum eine Ansicht die die Informationen zu einem Trainer einer Mannschaft präsentiert. Da die Anwendung vorwiegend auf Mobile-Endgeräte ausgelegt ist, wurde bei der Gestaltung der einzelnen Ansichten ein große Wert auf die Übersichtlichkeit gelegt. Für eine schnelle Navigation wurden zudem zwei Buttons eingepflegt. Der 'Home' Button, der in jeder Ansicht in der oberen linke Ecke zu sehen ist, führt immer zu der Seite mit den aktuellen Spieltag. Mit dem 'Bar' Button, in oberen rechten Ecke jeder Ansicht, kann eine Seitenansicht mit mehreren Filteroptionen eingeblendet werden. Dabei kann der Inhalt nach dem Team, der Gruppe, dem austragenden Stadion oder dem Spieltag sortiert werden.
+
+       
 \begin{figure}
 \centering
 \includegraphics[height=8.2cm]{screenshots}
@@ -164,6 +165,7 @@ Die Abbildung \ref{fig:screenshots} zeigt drei Screenshots der fertigen Anwendun
 \end{figure}
 
 \newpage
+
 \section{Zusammenfassung und Ausblick}
 
 Im Rahmen dieses Projekts wurde eine Anwendung entwickelt, die alle wichtigen Informationen, zu der 2014 in Brasilien stattfindenden Fußball Weltmeisterschaft, bereithält. Als Informationsquelle dient hierbei die offizielle FIFA Webseite, die mit Daten aus der DPpedia ergänzt wurde. Die semantische Aufbereitung wurde mit Hilfe der BBC Sport sowie der Socker Voc Ontologie gestaltet.  
@@ -223,29 +225,4 @@ Letzter Zugriff: 12. Juli 2014\\
 \end{thebibliography}
 
 
-\section*{Appendix: Springer-Author Discount}
-
-LNCS authors are entitled to a 33.3\% discount off all Springer
-publications. Before placing an order, the author should send an email, 
-giving full details of his or her Springer publication,
-to \url{orders-HD-individuals@springer.com} to obtain a so-called token. This token is a
-number, which must be entered when placing an order via the Internet, in
-order to obtain the discount.
-
-\section{Checklist of Items to be Sent to Volume Editors}
-Here is a checklist of everything the volume editor requires from you:
-
-
-\begin{itemize}
-\settowidth{\leftmargin}{{\Large$\square$}}\advance\leftmargin\labelsep
-\itemsep8pt\relax
-\renewcommand\labelitemi{{\lower1.5pt\hbox{\Large$\square$}}}
-
-\item The final \LaTeX{} source files
-\item A final PDF file
-\item A copyright form, signed by one author on behalf of all of the
-authors of the paper.
-\item A readme giving the name and email address of the
-corresponding author.
-\end{itemize}
 \end{document}
