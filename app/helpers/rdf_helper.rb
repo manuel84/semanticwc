@@ -257,7 +257,7 @@ module RdfHelper
       }
       ORDER BY ASC(?time)
 ")
-    solutions = QUERYABLE.query(sparql)
+    solutions = QUERYABLE.query(sparql).sort { |g1, g2| g1.time.to_s.gsub('+', '.').to_f <=> g2.time.to_s.gsub('+', '.').to_f }
   end
 
   # guess a team uri by a given team name
