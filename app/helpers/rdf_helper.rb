@@ -358,9 +358,13 @@ module RdfHelper
           UNION
           { ?player_uri <http://xmlns.com/foaf/0.1/surname> \"#{name}\"@en . }
           UNION
+          { ?player_uri <http://xmlns.com/foaf/0.1/givenName> \"#{name}\"@en . }
+          UNION
           { ?player_uri <http://xmlns.com/foaf/0.1/name> \"#{name.split(' ').first}\"@en . }
           UNION
           { ?player_uri <http://xmlns.com/foaf/0.1/fullname> \"#{name.split(' ').first}\"@en . }
+          UNION
+          { ?player_uri <http://xmlns.com/foaf/0.1/givenName> \"#{name.split(' ').first}\"@en . }
           UNION
           { ?player_uri <http://xmlns.com/foaf/0.1/surname> \"#{name.split(' ').first}\"@en . }
           UNION
@@ -369,8 +373,11 @@ module RdfHelper
           { ?player_uri <http://xmlns.com/foaf/0.1/fullname> \"#{name.split(' ').last}\"@en . }
           UNION
           { ?player_uri <http://xmlns.com/foaf/0.1/surname> \"#{name.split(' ').last}\"@en . }
+          UNION
+          { ?player_uri <http://xmlns.com/foaf/0.1/givenName> \"#{name.split(' ').last}\"@en . }
           ?player_uri <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://dbpedia.org/ontology/SoccerPlayer> .
           ?player_uri <http://dbpedia.org/property/nationalteam> <#{team_uri}> .
+          ?player_uri <http://dbpedia.org/property/nationalteam> ?team_uri
           OPTIONAL { ?player_uri <http://dbpedia.org/property/nationalcaps> ?caps }.
           OPTIONAL { ?player_uri <http://dbpedia.org/property/nationalgoals> ?goals }.
           ?player_uri <http://dbpedia.org/property/birthDate> ?birth_date .
