@@ -48,7 +48,7 @@ module ApplicationHelper
         img.present? ? img.attributes['src'].value : lorem_img
       else
         if sol.has_variables?(['image_url'])
-          sol.image_url
+          sol.image_url if RestClient.get sol.image_url rescue lorem_img
         elsif sol.has_variables?(['thumbnail_url'])
           sol.thumbnail_url
         end

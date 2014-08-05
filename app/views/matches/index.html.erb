@@ -16,9 +16,9 @@
       <li data-form="ui-body-a" data-swatch="a" data-theme="a">
         <div class="big center">
 
-          <%= link_to(image_tag(img_url(@home), width: 60, onerror: "this.src='#{lorem_img}';"), teams_path(:uri => @match.homeCompetitor_uri), class: ['img', 'team-name', 'right'], 'data-prefetch'.to_sym => true) %>
+          <%= link_to(image_tag(img_url(@home), width: 60, onerror: "this.src='#{lorem_img}';"), teams_path(:uri => @match.homeCompetitor_uri), class: ['img', 'team-name', 'right']) %>
           <div class="ultra-big team-spacer"><%= get_result(@match) %></div>
-          <%= link_to(image_tag(img_url(@away), width: 60, onerror: "this.src='#{lorem_img}';"), teams_path(:uri => @match.awayCompetitor_uri), class: ['img', 'team-name', 'left'], 'data-prefetch'.to_sym => true) %>
+          <%= link_to(image_tag(img_url(@away), width: 60, onerror: "this.src='#{lorem_img}';"), teams_path(:uri => @match.awayCompetitor_uri), class: ['img', 'team-name', 'left']) %>
           <br/>
 
           <span class="team-name right"><%= @match.homeCompetitor %></span>
