@@ -14,7 +14,7 @@
       <%= javascript_tag do %>
           handler = Gmaps.build('Google');
           handler.buildMap({ provider: { zoom: 4, maxZoom: 14 }, internal: {id: 'map'}}, function(){
-          markers = handler.addMarkers([
+          markers = handler.addMarker(
           {
           "lat": <%= @stadium.lat %>,
           "lng": <%= @stadium.long %>,
@@ -25,9 +25,10 @@
           "height": 40
           }
           }
-          ]);
+          );
           handler.bounds.extendWith(markers);
-          handler.fitMapToBounds();
+          handler.map.centerOn(markers);
+          //handler.fitMapToBounds();
           });
       <% end %>
     </div>
