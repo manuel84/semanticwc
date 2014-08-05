@@ -13,10 +13,11 @@
       <div id="map" class="map"></div>
       <%= javascript_tag do %>
           handler = Gmaps.build('Google');
-          handler.buildMap({ provider: { maxZoom: 14, zoom: 8 }, internal: {id: 'map'}}, function(){
+          handler.buildMap({ provider: { maxZoom: 14 }, internal: {id: 'map'}}, function(){
           markers = handler.addMarkers([
           {
           "lat": <%= @stadium.lat %>,
+          "zoom": 8,
           "lng": <%= @stadium.long %>,
           "picture": {
           "url":
