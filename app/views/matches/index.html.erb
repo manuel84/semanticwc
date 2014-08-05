@@ -1,5 +1,5 @@
 <div data-role="page" id="<%= "#{@match.time.to_s}-#{@match.homeCompetitor}-#{@match.awayCompetitor}".parameterize %>" data-title="
-  <% @match.uri %>" class="main-page" data-dom-cache="true" data-theme="a"
+  <% @match.uri %>" class="main-page matches" data-dom-cache="true" data-theme="a"
      <%= "data-prev=\"#{matches_path(:uri => @matches[@current_index-1].uri, filter_uri: params[:filter_uri])}\"".html_safe if @current_index > 0 %>
      <%= "data-next=\"#{matches_path(:uri => @matches[@current_index+1].uri, filter_uri: params[:filter_uri])}\"".html_safe if @matches.count >= @current_index+2 %>>
 

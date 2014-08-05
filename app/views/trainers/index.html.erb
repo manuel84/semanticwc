@@ -18,12 +18,11 @@
         </div>
     <% end %>
     <%#= ui_list ['Länderspiele: 55', 'Siege: 30', 'Unentschieden: 20', 'Niederlagen: 5'], header: 'Nationalmannschaft' do |i| %>
-        <%#= i %>
+    <%#= i %>
     <%# end %>
     <%= ui_list @team_stations.map { |team_station| "#{DateTime.parse(team_station.years.to_s).year}: #{get_name(team_station)}" }, header: 'Vereine' do |i| %>
         <%= i %>
     <% end %>
-
 
   </div>
 

@@ -29,6 +29,6 @@
     <%= ui_list @matches.map { |match| [match_name(match), match.uri] }, header: "Spiele (#{@matches.count})" do |i| %>
         <%= ui_list_link_to i[0], matches_path(:uri => i[1], :filter_uri => @team.uri) %>
     <% end %>
-    <%= javascript_tag '$(function(){$("#filter-icon").hide();});' %>
+
   </div>
 </div>

@@ -43,3 +43,13 @@
       });
       window.location.href = ''
     return
+
+  initPage: () ->
+    if $('.matches').is(':visible')
+      console.log("visible")
+      $("#filter-icon").show()
+    else
+      console.log("invisible")
+      $("#filter-icon").hide()
+    setTimeout(Semwc.initPage, 2000)
+    return
