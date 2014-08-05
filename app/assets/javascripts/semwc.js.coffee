@@ -32,7 +32,6 @@
     return
 
   goToAll: (value) ->
-    console.log(value)
     if(value == 'none')
       $("#close-button").click()
       $.mobile.loading('show', {
@@ -46,10 +45,8 @@
 
   initPage: () ->
     if $('.matches').is(':visible')
-      console.log("visible")
-      $("#filter-icon").show()
+      $("#filter-icon").fadeIn()
     else
-      console.log("invisible")
-      $("#filter-icon").hide()
+      $("#filter-icon").fadeOut()
     setTimeout(Semwc.initPage, 2000)
     return
