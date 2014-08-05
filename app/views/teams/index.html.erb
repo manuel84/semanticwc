@@ -5,7 +5,7 @@
   <div role="main" class="ui-content" id="main">
 
     <div class="center"><span class="big"><%= @team.label %></span>
-      <%= image_tag(img_url(@team), height: 40) %>
+      <%= image_tag(img_url(@team), height: 40, onerror: "this.src='#{lorem_img}';") %>
     </div>
 
     <% player_infos = {} %>

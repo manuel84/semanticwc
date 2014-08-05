@@ -4,7 +4,7 @@
 
   <div role="main" class="ui-content" id="main">
     <div class="center">
-      <%= image_tag(img_url(@stadium), width: img_width) %>
+      <%= image_tag(img_url(@stadium), width: img_width, onerror: "this.src='#{lorem_img}';") %>
     </div>
     <%= ui_list ["Kapazität: #{capacity(@stadium)}", @stadium.city], header: @stadium.name do |i| %>
         <%= i %>

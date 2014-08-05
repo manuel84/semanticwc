@@ -10,7 +10,7 @@
         <%= i %>
     <% end %>
     <div class="center">
-      <%= image_tag img_url(@trainer), width: img_width %>
+      <%= image_tag img_url(@trainer), width: img_width, onerror: "this.src='#{lorem_img}';" %>
     </div>
     <% if @trainer.has_variables? [:abstract] %>
         <div class="abstract center">
