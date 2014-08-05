@@ -12,7 +12,8 @@
     <div class="center">
       <div id="map" class="map"></div>
       <%= javascript_tag do %>
-          $(function(){
+          function onFinish(){
+
           handler = Gmaps.build('Google');
           handler.buildMap({ provider: { zoom: 4, maxZoom: 14 }, internal: {id: 'map'}}, function(){
           markers = handler.addMarker(
@@ -31,6 +32,10 @@
           handler.map.centerOn(markers);
           //handler.fitMapToBounds();
           });
+          }
+
+          $(function(){
+            setTimeout(onFinish, 2000);
           });
       <% end %>
     </div>
