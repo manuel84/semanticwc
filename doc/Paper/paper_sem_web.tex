@@ -127,8 +127,6 @@ Eine wichtige Rolle bei der Wahl der API hat letztendlich auch der Finanziellera
 \section{Ontologien}
 Um die Daten semantisch korrekt darzustellen wurden verschiedene Ontologien verwendet. Für die Darstellung des FIFA World-Cups wurde die BBC-Sport-Ontologie verwendet. Mit dieser wurden die verschiedenen Gruppenphasen, Spieltypen, Spiele sowie die zugehörigen Stadien abgebildet. Für die Fußball spezifischen Daten wie Spielevents (Tore, Ein- und Auswechselungen sowie Karten) wurde die Soccer-voc-Ontologie des Hasso-Platner Instituts verwendet. Diese erweitert die Friend of a Friend Ontolgie. Außerdem wurde die Event-Ontologie verwendet, für die zeitliche Einordnung der Spielevents.
 
-Die Abbildung \ref{fig:example} zeigt einem Graphen, der für einem exemplarischen Ausschnitt aus der mit dem Ontologien vorbereiteten Daten, aufgebaut wurde. An diesem Beispiel ist die Verflechtung der beiden Ontologien sehr gut sichtbar.
-
 \begin{figure}
 \centering
 \includegraphics[height=7.2cm]{graph_manus}
@@ -136,6 +134,9 @@ Die Abbildung \ref{fig:example} zeigt einem Graphen, der für einem exemplarisch
 \label{fig:example}
 \end{figure}
 
+Die Abbildung \ref{fig:example} zeigt einem Graphen, der für einem exemplarischen Ausschnitt aus der mit den Ontologien versehenen Daten, aufgebaut wurde. An diesem Beispiel ist die Verflechtung der Ontologien sehr gut sichtbar.
+Aus dem Graph ist ersichtlich, dass für jedes Spiel ein eigener Knoten mit den Länderkürzeln der Spielteilnehmer erstellt wurde (GER_POR). Dieser Knoten ist vom Typ \textit{bbcsport:Match} und hat als \textit{bbcsport:homeCompetitior} Attribut den Knoten der deutschen Nationalmannschaft. 
+Des weiteren gibt es einen Knoten für jeden Spieler, welche vom Typ \textit{soccer-voc:SoccerPlayer} sind. Diese sind mit dem Attribut \textit{soccer-voc:playsFor} mit den Mannschaften verbunden. Das zuletzt genannte Attribut und der zuletzt genannte Typ stammen von der Soccer-voc Ontologie. Da \textit{SoccerPlayer} eine Unterklasse von \textit{foaf:Agent} ist, kann ein SoccerPlayer mit einem Attribut für einen Namen versehen werden.
 \newpage
 \section{Application // Implemetierung}
 
