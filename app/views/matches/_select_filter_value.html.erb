@@ -1,5 +1,6 @@
 <div class="select-value" id="select-value-<%= name %>">
   <select name="select-filter-value-<%= name %>" id="select-filter-value-<%= name %>" onchange="Semwc.selectFilterValue(this.value);">
+    <option>-- auswählen --</option>
     <% collection.each do |uri, label| %>
         <option value="<%= uri %>"><%= label %></option>
     <% end %>

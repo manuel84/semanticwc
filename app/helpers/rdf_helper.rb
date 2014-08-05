@@ -132,19 +132,22 @@ module RdfHelper
   #
   # @return [Array<RDF::Query::Solution>] Array of rounds
   def get_rounds
-    sparql = SPARQL.parse("SELECT DISTINCT ?uri ?label
+    sparql = SPARQL.parse("SELECT DISTINCT ?uri ?label ?time
                       WHERE {
                         {
                           ?uri <#{RDF.type}> <http://www.bbc.co.uk/ontologies/sport/KnockoutCompetition> .
                           ?uri <#{RDF::RDFS.label}> ?label .
+                          ?uri <http://www.bbc.co.uk/ontologies/sport/hasMatch> ?match_uri .
+                          ?match_uri <http://purl.org/NET/c4dm/event.owl#time> ?time .
                         }
                         UNION
                         {
                           ?uri <http://www.bbc.co.uk/ontologies/sport/hasMatch> ?match_uri .
                           ?uri <#{RDF::RDFS.label}> ?label .
+                          ?match_uri <http://purl.org/NET/c4dm/event.owl#time> ?time .
                         }
                       }
-                  ORDER BY ASC(?label)
+                  ORDER BY ASC(?time)
             ")
     results = QUERYABLE.query(sparql)
   end
