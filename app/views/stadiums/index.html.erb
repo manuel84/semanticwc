@@ -1,4 +1,4 @@
-<div data-role="page" id="<%= get_name(@stadium).parameterize %>" data-title="<%= @stadium.name %>" class="main-page" data-dom-cache="true" data-theme="a" data-prev="<%= request.referer && URI(request.referer).path.start_with?('/matches')? "#{URI(request.referer).path}?#{URI(request.referer).query}" : matches_path %>">>
+<div data-role="page" id="<%= get_name(@stadium).parameterize %>" data-title="<%= @stadium.name %>" class="main-page" data-dom-cache="true" data-theme="a" data-prev="<%= request.referer && URI(request.referer).path.start_with?('/matches') ? "#{URI(request.referer).path}?#{URI(request.referer).query}" : matches_path %>">>
 
   <%#= render 'filter' %>
 
@@ -12,6 +12,7 @@
     <div class="center">
       <div id="map" class="map"></div>
       <%= javascript_tag do %>
+          $(function(){
           handler = Gmaps.build('Google');
           handler.buildMap({ provider: { zoom: 4, maxZoom: 14 }, internal: {id: 'map'}}, function(){
           markers = handler.addMarker(
@@ -29,6 +30,7 @@
           handler.bounds.extendWith(markers);
           handler.map.centerOn(markers);
           //handler.fitMapToBounds();
+          });
           });
       <% end %>
     </div>

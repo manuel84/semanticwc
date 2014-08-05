@@ -40,7 +40,7 @@
         textonly: false,
         html: ''
       });
-      window.location.href = ''
+      window.location.href = '/'
     return
 
   initPage: () ->

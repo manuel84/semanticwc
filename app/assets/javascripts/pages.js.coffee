@@ -7,6 +7,8 @@ $(document).one "pagecreate", ".main-page", ->
     $('#filter-panel').remove()
     $(":mobile-pagecontainer").pagecontainer "change", next,
       transition: "slide"
+    $("#select-filter-type").change ->
+      Semwc.goToAll $("#select-filter-type").val()
     return
 
   # Handler for navigating to the previous page
@@ -15,6 +17,8 @@ $(document).one "pagecreate", ".main-page", ->
     $(":mobile-pagecontainer").pagecontainer "change", prev,
       transition: "slide"
       reverse: true
+    $("#select-filter-type").change ->
+      Semwc.goToAll $("#select-filter-type").val()
     return
 
   # Navigate to the next page on swipeleft
