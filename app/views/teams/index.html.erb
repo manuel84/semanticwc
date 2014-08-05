@@ -13,12 +13,11 @@
         <% player_infos[player.uri.to_s] = get_player(player.uri) %>
         <% player_infos[player.uri.to_s] ||= {position: 'n.A.'} %>
     <% end %>
-    <% sorting_list = ['Goalkeeper', 'Central Midfielder / Winger', 'n.A.'] %>
-    <%= ui_list @players.sort! { |a, b| sorting_list.index(player_infos[a.uri.to_s][:position]) <=> sorting_list.index(player_infos[b.uri.to_s][:position]) }, header: 'Kader' do |player| %>
+    <%= ui_list sort_players!(@players, player_infos), header: 'Kader' do |player| %>
         <% if player.uri.to_s.include?('http://cs.hs-rm.de/~mdudd001/semanticwc/') %>
-            <%= ui_list_link_to "player.label (#{player_infos[player.uri].position})", 'javascript:void(0);', class: 'disabled' %>
+            <%= ui_list_link_to "#{player.label} (#{player_infos[player.uri.to_s][:position].to_s.titlecase})", 'javascript:void(0);', class: 'disabled' %>
         <% else %>
-            <%= ui_list_link_to "player.label (#{player_infos[player.uri].position})", players_path(:uri => player.uri) %>
+            <%= ui_list_link_to "#{player.label} (#{player_infos[player.uri.to_s][:position].to_s.titlecase})", players_path(:uri => player.uri) %>
         <% end %>
     <% end %>
 
