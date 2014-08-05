@@ -64,6 +64,8 @@ module RdfHelper
                 ?homeCompetitor_uri <#{RDF::RDFS.label}> ?homeCompetitor .
                 ?uri <#{PREFIX::BBCSPORT}awayCompetitor> ?awayCompetitor_uri .
                 ?awayCompetitor_uri <#{RDF::RDFS.label}> ?awayCompetitor .
+                ?round_uri <#{PREFIX::BBCSPORT}hasMatch> ?uri .
+                ?round_uri <#{RDF::RDFS.label}> ?round .
                 ?uri <#{PREFIX::BBCSPORT}Venue> ?venue_uri .
                 ?uri <http://purl.org/NET/c4dm/event.owl#time> ?time .
                 OPTIONAL { ?uri <http://www.bbc.co.uk/ontologies/sport/homeCompetitorGoals> ?homeCompetitorGoals . }.
