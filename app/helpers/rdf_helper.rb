@@ -80,12 +80,11 @@ module RdfHelper
   # The teams will be ordered by name ascending .
   # Each team contains
   # - uri
-  # - group_uri
   # - name
   #
   # @return [Array<RDF::Query::Solution>] Array of teams
   def get_teams
-    sparql = SPARQL.parse("SELECT DISTINCT ?uri ?group_uri ?name
+    sparql = SPARQL.parse("SELECT DISTINCT ?uri ?name
                     WHERE {
                       ?group_uri <http://www.bbc.co.uk/ontologies/sport/hasCompetitor> ?uri .
                       ?uri <#{RDF::RDFS.label}> ?name .
@@ -122,6 +121,31 @@ module RdfHelper
                     }
                 ORDER BY ASC(?label)
           ")
+    results = QUERYABLE.query(sparql)
+  end
+
+  # returns all rounds.
+  # The groups will be ordered by label ascending .
+  # Each rounds contains
+  # - uri
+  # - label
+  #
+  # @return [Array<RDF::Query::Solution>] Array of rounds
+  def get_rounds
+    sparql = SPARQL.parse("SELECT DISTINCT ?uri ?label
+                      WHERE {
+                        {
+                          ?uri <#{RDF.type}> <http://www.bbc.co.uk/ontologies/sport/KnockoutCompetition> .
+                          ?uri <#{RDF::RDFS.label}> ?label .
+                        }
+                        UNION
+                        {
+                          ?uri <http://www.bbc.co.uk/ontologies/sport/hasMatch> ?match_uri .
+                          ?uri <#{RDF::RDFS.label}> ?label .
+                        }
+                      }
+                  ORDER BY ASC(?label)
+            ")
     results = QUERYABLE.query(sparql)
   end
 

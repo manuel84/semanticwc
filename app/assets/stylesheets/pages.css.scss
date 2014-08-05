@@ -4,10 +4,20 @@
 
 .left {
   text-align: left;
+  .filter-links {
+    display: none;
+  }
+  div {
+    vertical-align: top;
+    width: auto !important;
+  }
 }
 
 .right {
   text-align: right;
+  .navi-links {
+    display: none;
+  }
 }
 
 .team-name {
@@ -70,4 +80,12 @@ a.disabled::after {
   width: 280px;
   height: 280px;
   display: inline-block;
+}
+
+.navi-links {
+  vertical-align: sub;
+}
+
+.filter-links {
+
 }
