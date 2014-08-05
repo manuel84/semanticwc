@@ -459,12 +459,13 @@ module RdfHelper
   # - image_url (if present)
   # - thumbnail_url (if present)
   # - abstract (if present)
+  # - wiki_uri (if present)
   #
   # @param uri [String] the uri of the stadium
   # @return [RDF::Query::Solution] the stadium
   def get_stadium(uri)
     sparql = "
-    SELECT DISTINCT ?uri ?name ?city_uri ?city ?population ?lat ?long ?capacity ?seatingCapacity ?image_url ?thumbnail_url ?abstract
+    SELECT DISTINCT ?uri ?name ?city_uri ?city ?population ?lat ?long ?capacity ?seatingCapacity ?image_url ?thumbnail_url ?abstract ?wiki_uri
             WHERE {
               ?uri  <#{RDF::RDFS.label}> ?name .
               <#{uri}> <#{RDF::RDFS.label}> ?name .
@@ -478,6 +479,7 @@ module RdfHelper
               OPTIONAL { <#{uri}> <http://xmlns.com/foaf/0.1/depiction> ?image_url }.
               OPTIONAL { <#{uri}> <http://dbpedia.org/ontology/thumbnail> ?thumbnail_url }.
               OPTIONAL { <#{uri}> <http://dbpedia.org/ontology/abstract> ?abstract }.
+              OPTIONAL { <#{uri}> <http://xmlns.com/foaf/0.1/isPrimaryTopicOf> ?wiki_uri }.
               FILTER (str(?uri) = '#{uri}' && lang(?city) = 'en' && lang(?name) = 'en' && ?population > 5000)
             }
     "
