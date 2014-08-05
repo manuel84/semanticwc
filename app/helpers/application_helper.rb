@@ -125,19 +125,21 @@ module ApplicationHelper
     result = @goals.map do |goal|
       txt = "#{goal.time}' #{goal.player}"
       i = case goal.factor.to_s
-            when 'goal', 'goal-penalty'
+            when 'goal'
               i = home_player_uris.include?(goal.player_uri.to_s) ? 0 : 1
+              result[i]+=1
+              "#{txt} (#{result[0]}:#{result[1]})"
+            when 'goal-penalty'
+              i = home_player_uris.include?(goal.player_uri.to_s) ? 0 : 1
+              result[i]+=1
+              "#{txt} [P] (#{result[0]}:#{result[1]})"
             when 'goal-own'
               i = home_player_uris.include?(goal.player_uri.to_s) ? 1 : 0
+              result[i]+=1
+              "#{txt} [OG] (#{result[0]}:#{result[1]})"
             else
               nil
           end
-      if i
-        result[i]+=1
-        "#{result[0]}:#{result[1]} #{txt}"
-      else
-        nil
-      end
     end
     result.compact
   end
