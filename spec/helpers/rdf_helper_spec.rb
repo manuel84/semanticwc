@@ -40,4 +40,17 @@ describe RdfHelper do
     end
   end
 
+  describe 'ttl new' do
+    it 'count groups' do
+      RDF_TTL_FILE = (Rails.root.join 'db', 'worldcup.ttl').to_s
+      QUERYABLE = RDF::Repository.load(RDF_TTL_FILE)
+      sparql = SPARQL.parse("SELECT * WHERE { ?s <#{RDF.type}> <#{PREFIX::SOCCER}SoccerClub> }")
+      solutions = QUERYABLE.query(sparql)
+      puts solutions.count
+      expect(solutions.count).to eql(32)
+    end
+
+  end
+
+
 end

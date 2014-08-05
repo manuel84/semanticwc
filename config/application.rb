@@ -39,4 +39,5 @@ module PREFIX
   XML = 'http://www.w3.org/XML/1998/namespace'
   XSD = 'http://www.w3.org/2001/XMLSchema#'
   WIKI = 'http://de.wikipedia.org/wiki/'
+  SOCCER = 'http://purl.org/hpi/soccer-voc/'
 end
