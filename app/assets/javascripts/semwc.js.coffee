@@ -32,7 +32,8 @@
     return
 
   goToAll: (value) ->
-    if(value == 'none' && window.location.search != '')
+    console.log(value)
+    if(value == 'none')
       $("#close-button").click()
       $.mobile.loading('show', {
         text: '',

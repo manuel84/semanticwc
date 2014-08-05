@@ -1,7 +1,12 @@
 <%= javascript_tag '
   $(function() {
-    $("#select-filter-type option[value=\''+@filter_type+'\']").attr("selected", true)
-    $("#select-filter-type").change()
-    $("#select-filter-value-'+@filter_type+' option[value=\''+@filter_value+'\']").attr("selected", true)
-    $("#select-filter-value-'+@filter_type+'-button span").html($("#select-filter-value-'+@filter_type+' option[value=\''+@filter_value+'\']").text())
-    });' %>
+    $("#select-filter-type option[value=\''+@filter_type+'\']").attr("selected", true);
+    $("#select-filter-type").change();
+    $("#select-filter-value-'+@filter_type+' option[value=\''+@filter_value+'\']").attr("selected", true);
+    $("#select-filter-value-'+@filter_type+'-button span").html($("#select-filter-value-'+@filter_type+' option[value=\''+@filter_value+'\']").text());
+    $("#select-filter-type").change(function() {
+        Semwc.goToAll($("#select-filter-type").val());
+    });
+  });
+    '
+%>
