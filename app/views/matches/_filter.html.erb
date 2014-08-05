@@ -1,7 +1,7 @@
 <div data-role="panel" data-position="right" data-theme="a" id="filter-panel" data-display="overlay">
   <form action="#" onsubmit="return false;" id="filter">
     <div class="ui-field-contain">
-      <select name="select-filter-type" id="select-filter-type" onchange="Semwc.selectFilterType(this.value);if(this.value == 'none'){location.href='/'}">
+      <select name="select-filter-type" id="select-filter-type" onchange="Semwc.selectFilterType(this.value);Semwc.goToAll(this.value)">
         <option value="none">alle Spiele</option>
         <option value="team">nach Team</option>
         <option value="group">nach Gruppe/Runde</option>

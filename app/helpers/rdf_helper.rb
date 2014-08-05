@@ -125,10 +125,11 @@ module RdfHelper
   end
 
   # returns all rounds.
-  # The groups will be ordered by label ascending .
+  # The groups will be ordered by time ascending .
   # Each rounds contains
   # - uri
   # - label
+  # - time
   #
   # @return [Array<RDF::Query::Solution>] Array of rounds
   def get_rounds

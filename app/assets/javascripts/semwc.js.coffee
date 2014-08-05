@@ -31,13 +31,14 @@
     window.location.href = newHref
     return
 
-  goToAll: () ->
-    $("#close-button").click()
-    $.mobile.loading('show', {
-      text: '',
-      textVisible: '',
-      textonly: false,
-      html: ''
-    });
-    window.location.href = ''
+  goToAll: (value) ->
+    if(value == 'none' && window.location.search != '')
+      $("#close-button").click()
+      $.mobile.loading('show', {
+        text: '',
+        textVisible: '',
+        textonly: false,
+        html: ''
+      });
+      window.location.href = ''
     return
