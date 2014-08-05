@@ -40,8 +40,32 @@
       <% end %>
     </ul>
     <div class="footer">
-      <div class="left"><%= get_filter_name(@filter_type, @filter_value) %></div>
-      <div class="right"><%= @current_index+1 %>/<%= @matches.count %></div>
+      <div class="left">
+        <div><%= get_filter_name(@filter_type, @filter_value) %></div>
+        <span class="filter-links">
+          <div class="filter-teams">
+            <%= get_teams.compact.sort { |a, b| get_name(a) <=> get_name(b) }.map { |team| link_to(get_name(team), URI.encode(team.uri.to_s)) }.join('<br/>').html_safe %>
+          </div>
+          <div class="filter-rounds">
+            <%= get_rounds.compact.sort { |a, b| a.uri.to_s <=> b.uri.to_s }.map { |group| link_to(get_name(group), URI.encode(group.uri.to_s)) }.join('<br/>').html_safe %>
+          </div>
+          <div class="filter-stadiums">
+            <%= get_stadiums.compact.sort { |a, b| get_name(a) <=> get_name(b) }.map { |stadium| link_to(get_name(stadium), URI.encode(stadium.uri.to_s)) }.join('<br/>').html_safe %>
+          </div>
+          <div class="filter-days">
+            <%= get_days.compact.sort.map { |day| link_to(day.to_s(:short), day.to_s) }.join('<br/>').html_safe %>
+          </div>
+        </span>
+      </div>
+      <div class="right">
+        <span class="navi-links">
+          <%= link_to image_tag('/assets/images/icons-png/arrow-l-black.png'), matches_path(:uri => @matches[@current_index-1].uri, filter_uri: params[:filter_uri]) if @current_index > 0 %>
+        </span>
+        <%= @current_index+1 %>/<%= @matches.count %>
+        <span class="navi-links">
+          <%= link_to image_tag('/assets/images/icons-png/arrow-r-black.png'), matches_path(:uri => @matches[@current_index+1].uri, filter_uri: params[:filter_uri]) if @matches.count >= @current_index+2 %>
+        </span>
+      </div>
     </div>
     <%= render 'js_after_loaded' %>
   </div>
