@@ -23,6 +23,7 @@
 \usepackage{graphicx}
 \usepackage{footnote}
 \usepackage{url}
+\usepackage{subfigure} 
 \urldef{\mailsa}\path|{manuel.b.dudda, robert.c.brylka, frank.b.reichwein,}@student.hs-rm.de|    
 \newcommand{\keywords}[1]{\par\addvspace\baselineskip
 \noindent\keywordname\enspace\ignorespaces#1}
@@ -158,17 +159,30 @@ Die Abbildung \ref{fig:example} zeigt eine Übersicht über den Technick-Stack. 
 Als Abfragesprache für die so vorbereiteten Informationen wurde SPARQL ausgewählt. Neben der RDF-Datei, die als primäres Repository fungiert, wird für zusätzliche Informationen der DBpedia Public SPARQL Endpoint eingesetzt. 
 
 \newpage
-In der Abbildung \ref{fig:screenshots} sind mehrere Screenshots aus unterschiedlichen Ansichten der Anwendung zu sehen. In Abb. x ist die Startseite zu sehen, auf der immer der aktuelle Spieltag anzeigt wird. Abb. xx ist ein Ausschnitt aus der Ansicht, die Informationen zu Stadien präsentiert. Abb. xxx zeigt wiederum eine Ansicht die die Informationen zu einem Trainer einer Mannschaft präsentiert. Da die Anwendung vorwiegend auf mobile Endgeräte ausgelegt ist, wurde bei der Gestaltung der einzelnen Ansichten ein großer Wert auf die Übersichtlichkeit gelegt. Für eine schnelle Navigation wurden zudem zwei Buttons eingepflegt. Der 'Home' Button, der in jeder Ansicht in der oberen linke Ecke zu sehen ist, führt immer zu der Seite mit den aktuellen Spieltag. Mit dem 'Bar' Button, in oberen rechten Ecke der Spiele Ansicht, kann eine Seitenansicht mit mehreren Filteroptionen eingeblendet werden. Dabei kann der Inhalt nach dem Team, der Gruppe/Runde, dem austragenden Stadion oder dem Datum sortiert werden.
+In den folgenden Abbildungen sind mehrere Screenshots aus unterschiedlichen Ansichten der Anwendung zu sehen. In Abbildung \ref{fig:matches_view} ist die Startseite zu sehen, auf der immer der aktuelle Spieltag anzeigt wird. Abb. \ref{fig:stadium_view} ist ein Ausschnitt aus der Ansicht, die Informationen zu Stadien präsentiert. Abb. \ref{fig:trainer_view} zeigt wiederum eine Ansicht die die Informationen zu einem Trainer einer Mannschaft präsentiert. Da die Anwendung vorwiegend auf mobile Endgeräte ausgelegt ist, wurde bei der Gestaltung der einzelnen Ansichten ein großer Wert auf die Übersichtlichkeit gelegt. Für eine schnelle Navigation wurden zudem zwei Buttons eingepflegt. Der 'Home' Button, der in jeder Ansicht in der oberen linke Ecke zu sehen ist, führt immer zu der Seite mit den aktuellen Spieltag. Mit dem 'Bar' Button, in oberen rechten Ecke der Spiele Ansicht, kann eine Seitenansicht mit mehreren Filteroptionen eingeblendet werden (Abb. \ref{fig:matches_filter_view}). Dabei kann der Inhalt nach dem Team, der Gruppe/Runde, dem austragenden Stadion oder dem Datum sortiert werden.
 
        
 \begin{figure}
 \centering
-\includegraphics[height=8.8cm]{screenshots}
-\caption{Screenshots der Anwendung.}
+\subfigure[Spiele-Ansicht]{\includegraphics[height=6.19cm]{screenshots/matches_view}\label{fig:matches_view}} 
+\subfigure[Spiele-Filter]{\includegraphics[height=6.19cm]{screenshots/matches_filter_view}\label{fig:matches_filter_view}}
+\subfigure[App im Einsatz]{\includegraphics[height=6.19cm]{screenshots/android}\label{fig:android}}
+\caption{Multi-Views}
 \label{fig:screenshots}
 \end{figure}
 
+\begin{figure}
+\centering
+\subfigure[Stadion-Ansicht]{\includegraphics[height=6.19cm]{screenshots/stadium_view}\label{fig:stadium_view}} 
+\subfigure[Team-Ansicht]{\includegraphics[height=6.19cm]{screenshots/team_view}\label{fig:team_view}}
+\subfigure[Spieler-Ansicht]{\includegraphics[height=6.19cm]{screenshots/player_view}\label{fig:player_view}}
+\subfigure[Trainer-Ansicht]{\includegraphics[height=6.19cm]{screenshots/trainer_view}\label{fig:trainer_view}}
+\caption{Single-Views}
+\label{fig:screenshots2}
+\end{figure}
+
 Aus der Hauptansicht, in der immer der aktuelle Spieltag angezeigt wird, kann mit einer Wischgeste nach links oder rechts zu den bereits stattgefundenen, respektive in der Zukunft liegenden Spielen gewechselt werden. Die gleiche Funktionalität liegt auch bei der Ansicht, die durch Anwenden der Filteroperation \textit{nach Team}, \textit{nach Stadion}, \textit{nach Gruppe/Runde} sowie \textit{nach Tag} gewählt wird.
+In den Single-Views (Abb. \ref{fig:screenshots2}) kann mit einer Wischgeste von links nach rechts zurück navigiert werden.
 
 \newpage
 
