@@ -178,7 +178,7 @@ Im Rahmen dieses Projekts wurde eine Anwendung entwickelt, die alle wichtigen In
 
 Unsere Anwendung bietet eine solide Grundlage für Weiterentwicklungen die nicht nur den Bereich Fußball betreffen. Bezogen auf die Fußballereignisse kann eine leichte Portierung auf die nächste Weltmeisterschaft oder Europameisterschaft stattfinden. Denkbar ist aber auch eine Abwandlung zur Informationspräsentation der Spiele der nationalen Meisterschaften, beispielsweise der Fußball-Bundesliga.
 
-Die Struktur- und Spieldaten der Weltmeisterschaft umfasst über 
+Die Struktur- und Spieldaten der Weltmeisterschaft umfasst über 10000 RDF-Tripel. Diese sind weitestgehenst mit DBpedia-URIs verknüpft. Für die Datenabfragen wurden über 200 Zeilen Sparqlcode implementiert. Leider ist eine Zuverlässigkeit von DBpedia nicht garantiert. Während der Implementierungsphase mussten wir Änderungen am Sparql-Enpoint feststellen, die zum Ausfall der Applikation führte. Des Weiteren hat man immer wieder mit unangekündigten Wartungsarbeiten sowie Performanceproblemen seitens DBpedia zu kämpfen. Unserer Einschätzung steht dieses Projekt noch in den Kinderschuhen - die Daten sind veraltet, Attribute werden inkonsistent mit Prädikaten versehen, Sprachattribute sind oftmals falsch. So enstanden große, unübersichtliche SPARQL-Abfragen, die auf viele optionale Prädikate der gleichen Semantik abzielen. Dieser Umstand ist insbesondere bei Namen zu beobachten, die bis zu 10 verschiedene Prädikate aus 5 Ontologien berücksichtigen. Die Qualität und Verfügbarkeit der Daten ist inkonsistent und führt nur durch heuristische Mittel zu akzeptablen Ergebnissen.
 
 
 
