@@ -135,19 +135,18 @@ Um die Daten semantisch korrekt darzustellen wurden verschiedene Ontologien verw
 \centering
 \includegraphics[height=7.2cm]{graph_manus}
 \caption{Exemplarische Ausschnitt aus der RDF.}
-\label{fig:example}
+\label{fig:onto}
 \end{figure}
 
-Die Abbildung \ref{fig:example} zeigt einen Tripel-Graphen, der mit einen exemplarischen Ausschnitt aus der mit den Ontologien versehenen Daten, aufgebaut wurde. An diesem Beispiel ist die Verflechtung der Ontologien sehr gut sichtbar.
+Die Abbildung \ref{fig:onto} zeigt einen Tripel-Graphen, der mit einen exemplarischen Ausschnitt aus der mit den Ontologien versehenen Daten, aufgebaut wurde. An diesem Beispiel ist die Verflechtung der Ontologien sehr gut sichtbar.
 Aus den Tripeln ist ersichtlich, dass für jedes Spiel ein eigener Knoten mit den Länderkürzeln der Spielteilnehmer erstellt wurde \(GER\_POR\). Diese Subjekte sind vom Typ \textit{bbcsport:Match} und haben als \textit{bbcsport:homeCompetitior}-Prädikate die Objekte der jeweiligen Nationalmannschaft \(Germany\_national\_football\_team\). 
 Des Weiteren gibt es einen Knoten für jeden Spieler, welche vom Typ \textit{soccer-voc:SoccerPlayer} sind. Diese sind mit dem Prädikat \textit{soccer-voc:playsFor} mit den Mannschaften verbunden. Das zuletzt genannte Prädikat und der zuletzt genannte Typ stammen von der Soccer-voc Ontologie. Da \textit{SoccerPlayer} eine Unterklasse von \textit{foaf:Agent} ist, kann ein SoccerPlayer mit einem Prädikat der FOAF-Ontolgie für einen Namen versehen werden.
 \newpage
-\section{Application // Implemetierung}
+\section{Application \& Implemetierung}
 
 
-Bei der Wahl des Framework für diese Anwendung fiel die Entscheidung zu Gunsten von Ruby on Rails \footnote{http://www.rubyonrails.org/}. Dieses quelloffene Web Application Framework bietet sehr gute Unterstützung bei Entwicklung von Semantik Web Applikationen um die RDF Datenbank oder den SPARQL Client zu nennen. Für Gestaltung der Seiten sowie als Unterstützung für die Mobilen-Endgeräte, z.B. für den Swipe-Efect, wurde das jQuery Mobile\footnote{http://www.jquerymobile.com/} Bibliothek eingesetzt. 
+Bei der Wahl des Framework für diese Anwendung fiel die Entscheidung zu Gunsten von Ruby on Rails \footnote{http://www.rubyonrails.org/} aus. Durch die verfügbaren Erweiterungen bietet es eine sehr gute Unterstützung bei Entwicklung von Semantik Web Applikationen. Sei es bei dem erzeugen von RDF Daten oder den SPARQL-Abfragen. Für die Gestaltung der Seiten sowie als Unterstützung für die Mobilen-Endgeräte wurde die jQuery Mobile\footnote{http://www.jquerymobile.com/} Bibliothek eingesetzt. Durch diese Bibliotheck werden auf Mobilen-Endgeräten z.B. Swipe-Gesten unterstützt. 
 
-Die Abbildung \ref{fig:example} zeigt eine Übersicht über den Technick-Stack. Für die immer aktuellsten und vollständigen Informationen aus der FIFA Seite wurde ein REST Server aufgestellt, der die bereits angesprochene und an dieses Projekt angepasste Word Cup API ausführt. Dieser Server ist auch separat über \texttt{sfgapi.herokuapp.com} erreichbar. Die so vorbereiteten Daten werden mit den zuvor beschriebenen Ontologien aufbereitet. Da die Anwendung sich zunächst auf ein Sportliches Ereignis beschränkt, in diesem Fall die Fußballweltmeisterschaft, wurde hierfür keine zusätzliche Datenbank angelegt. Stattdessen werden alle Datensätze als RDF-Tripel in einer Datei gespeichert. Für die Serialisierung der Datenbestände wurde hierbei Turtle Syntax verwendet.
 \begin{figure}
 \centering
 \includegraphics[height=4.2cm]{technik-stack}
@@ -155,13 +154,16 @@ Die Abbildung \ref{fig:example} zeigt eine Übersicht über den Technick-Stack. 
 \label{fig:example}
 \end{figure}
 
+Die Abbildung \ref{fig:example} zeigt eine Übersicht über den Technik-Stack. Die Applikation wurde in drei Bereiche eingeteilt. Ein REST-Endpunkt, ein Crawler und die Ruby on Rails Applikation welche für die Präsentation der Daten zuständig ist.
 
-Als Abfragesprache für die so vorbereiteten Informationen wurde SPARQL ausgewählt. Neben der RDF-Datei, die als primäres Repository fungiert, wird für zusätzliche Informationen der DBpedia Public SPARQL Endpoint eingesetzt. 
+Die Ruby on Rails Applikation welche die Informationen der FIFA-Seite crawlt und diese in einem REST-Endpunkt zuverfügung stellt, ist ein Fork des Soccer for good\footnote{\url{https://github.com/estiens/world_cup_json/}} Projektes. Der entwickelte REST-Endpunkt ist auch separat über \texttt{sfgapi.herokuapp.com} erreichbar. Der Service wurde erweitert, indem die Aufstellung der Mannschaften, Trainer sowie die Schiedsrichter für jedes Spiel angezeigt werden. 
 
+Als zweiter Teil der Anwendung wurde ein Crawler implementiert. Der Crawler benutzt die Informationen der REST-API, versieht diese mit den passenden Ontologien und erstellt einen Graphen. Für die Erstellung des Graphen wird das Ruby Gem rdf.rb\footnote{\url{https://github.com/ruby-rdf/rdf}} benutzt. Da die Anwendung sich zunächst auf ein Sportliches Ereignis beschränkt, in diesem Fall die Fußballweltmeisterschaft, wurde für speicherung keine zusätzliche Datenbank verwendet. Stattdessen werden alle Datensätze als RDF-Tripel in einer Datei (\textit{worldcup.ttl})gespeichert. Für die Serialisierung der Datenbestände wurde hierbei Turtle Syntax verwendet. Diese Datei enthält über 10.000 Triple und ist ca. 900 KB groß, da durch kann der komplette Datenbestand, ohne Probleme, im RAM gehalten werden.
 \newpage
 In den folgenden Abbildungen sind mehrere Screenshots aus unterschiedlichen Ansichten der Anwendung zu sehen. In Abbildung \ref{fig:matches_view} ist die Startseite zu sehen, auf der immer der aktuelle Spieltag anzeigt wird. Abb. \ref{fig:stadium_view} ist ein Ausschnitt aus der Ansicht, die Informationen zu Stadien präsentiert. Abb. \ref{fig:trainer_view} zeigt wiederum eine Ansicht die die Informationen zu einem Trainer einer Mannschaft präsentiert. Da die Anwendung vorwiegend auf mobile Endgeräte ausgelegt ist, wurde bei der Gestaltung der einzelnen Ansichten ein großer Wert auf die Übersichtlichkeit gelegt. Für eine schnelle Navigation wurden zudem zwei Buttons eingepflegt. Der 'Home' Button, der in jeder Ansicht in der oberen linke Ecke zu sehen ist, führt immer zu der Seite mit den aktuellen Spieltag. Mit dem 'Bar' Button, in oberen rechten Ecke der Spiele Ansicht, kann eine Seitenansicht mit mehreren Filteroptionen eingeblendet werden (Abb. \ref{fig:matches_filter_view}). Dabei kann der Inhalt nach dem Team, der Gruppe/Runde, dem austragenden Stadion oder dem Datum sortiert werden.
 
-       
+Für die Präsentation der Ergebnisse ist eine Ruby on Rails App entwickelt worden, die zur Darstellng jQuery-Mobile verwendet. Für die Darstellung wurden verschiedene SPARQL-Abfragen erstellt, um die entsprechenden Informationen aus der Datei zu extrahieren. Da die Informationen in der Datei mit DBpedia verknüpft sind, mussten außerdem SPARQL-Abfragen für den SPARQL-Endpunkt von DBpedia entwickelt werden. Die Anwendung stellt alle Spiele mit Ergebnissen, Toren und Torschützen da. Außerdem gibt es für jede Mannschaft eine Ansicht welche den Kader darstellt. Die Informationen zu den jeweiligen Spieler kommen von DBpedia. Des weiteren gibt es eine Ansicht der Stadien, welche die Position des Stadions mittels Google-Maps darstellt. Die Geo-Position der Stadien wirde ebenfalls bei DBpedia abgefragt.
+
 \begin{figure}
 \centering
 \subfigure[Spiele-Ansicht]{\includegraphics[height=6.19cm]{screenshots/matches_view}\label{fig:matches_view}} 
@@ -180,6 +182,10 @@ In den folgenden Abbildungen sind mehrere Screenshots aus unterschiedlichen Ansi
 \caption{Single-Views}
 \label{fig:screenshots2}
 \end{figure}
+
+In der Abbildung \ref{fig:screenshots} sind mehrere Screenshots aus unterschiedlichen Ansichten der Anwendung zu sehen. In Abb. x ist die Startseite zu sehen, auf der immer der aktuelle Spieltag anzeigt wird. Abb. xx ist ein Ausschnitt aus der Ansicht, die Informationen zu Stadien präsentiert. Abb. xxx zeigt wiederum eine Ansicht die die Informationen zu einem Trainer einer Mannschaft präsentiert. Da die Anwendung vorwiegend auf mobile Endgeräte ausgelegt ist, wurde bei der Gestaltung der einzelnen Ansichten ein großer Wert auf die Übersichtlichkeit gelegt. Für eine schnelle Navigation wurden zudem zwei Buttons eingepflegt. Der 'Home' Button, der in jeder Ansicht in der oberen linke Ecke zu sehen ist, führt immer zu der Seite mit den aktuellen Spieltag. Mit dem 'Bar' Button, in oberen rechten Ecke der Spiele Ansicht, kann eine Seitenansicht mit mehreren Filteroptionen eingeblendet werden. Dabei kann der Inhalt nach dem Team, der Gruppe/Runde, dem austragenden Stadion oder dem Datum sortiert werden.
+
+       
 
 Aus der Hauptansicht, in der immer der aktuelle Spieltag angezeigt wird, kann mit einer Wischgeste nach links oder rechts zu den bereits stattgefundenen, respektive in der Zukunft liegenden Spielen gewechselt werden. Die gleiche Funktionalität liegt auch bei der Ansicht, die durch Anwenden der Filteroperation \textit{nach Team}, \textit{nach Stadion}, \textit{nach Gruppe/Runde} sowie \textit{nach Tag} gewählt wird.
 In den Single-Views (Abb. \ref{fig:screenshots2}) kann mit einer Wischgeste von links nach rechts zurück navigiert werden.
