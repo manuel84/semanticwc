@@ -184,7 +184,16 @@ module RdfHelper
   #
   # @example
   #   match = get_match "http://cs.hs-rm.de/~mdudd001/semanticwc/ALG_RUS"
-  #   #=>  #<RDF::Query::Solution:0x84789194({:uri=>#<RDF::URI:0x849e823c URI:http://cs.hs-rm.de/~mdudd001/semanticwc/ALG_RUS>, :awayCompetitorGoals=>#<RDF::Literal::Int:0x8492cbb8("1"^^<http://www.w3.org/2001/XMLSchema#int>)>, :homeCompetitorGoals=>#<RDF::Literal::Int:0x84918168("1"^^<http://www.w3.org/2001/XMLSchema#int>)>, :homeCompetitor_uri=>#<RDF::URI:0x84924bac URI:http://dbpedia.org/resource/Algeria_national_football_team>, :homeCompetitor=>#<RDF::Literal:0x812a7fc0("Algeria")>, :awayCompetitor_uri=>#<RDF::URI:0x84939660 URI:http://dbpedia.org/resource/Russia_national_football_team>, :awayCompetitor=>#<RDF::Literal:0x83640e3c("Russia")>, :round_uri=>#<RDF::URI:0x80976c1c URI:http://cs.hs-rm.de/~mdudd001/semanticwc/Group_H>, :round=>#<RDF::Literal:0x809638b0("Group_H")>, :venue_uri=>#<RDF::URI:0x84941d4c URI:http://dbpedia.org/resource/Arena_da_Baixada>, :time=>#<RDF::Literal::DateTime:0x849d5bb4("2014-06-26T17:00:00.000-03:00"^^<http://www.w3.org/2001/XMLSchema#dateTime>)>})>
+  #   #=>  #<RDF::Query::Solution:0x8090bf98({:uri=>#<RDF::URI:0x80a26a90 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/ALG_RUS>,
+  #           :awayCompetitorGoals=>#<RDF::Literal::Int:0x8196a2a4("1"^^<http://www.w3.org/2001/XMLSchema#int>)>,
+  #           :homeCompetitorGoals=>#<RDF::Literal::Int:0x82b7b254("1"^^<http://www.w3.org/2001/XMLSchema#int>)>,
+  #           :homeCompetitor_uri=>#<RDF::URI:0x82b8a22c URI:http://dbpedia.org/resource/Algeria_national_football_team>,
+  #           :homeCompetitor=>#<RDF::Literal:0x848cce34("Algeria")>,
+  #           :awayCompetitor_uri=>#<RDF::URI:0x81976bbc URI:http://dbpedia.org/resource/Russia_national_football_team>,
+  #           :awayCompetitor=>#<RDF::Literal:0x838d673c("Russia")>,
+  #           :round_uri=>#<RDF::URI:0x80ec405c URI:http://cs.hs-rm.de/~mdudd001/semanticwc/Group_H>, :round=>#<RDF::Literal:0x80e941b8("Group H")>,
+  #           :venue_uri=>#<RDF::URI:0x8197f758 URI:http://dbpedia.org/resource/Arena_da_Baixada>,
+  #           :time=>#<RDF::Literal::DateTime:0x82bb213c("2014-06-26T17:00:00.000-03:00"^^<http://www.w3.org/2001/XMLSchema#dateTime>)>})>
   #
   # @param uri [String] the uri of the match
   # @return [RDF::Query::Solution] the match
@@ -213,7 +222,8 @@ module RdfHelper
   #
   # @example
   #   group = get_group "http://cs.hs-rm.de/~mdudd001/semanticwc/Group_A"
-  #   => #<RDF::Query::Solution:0x85db4d24({:uri=>#<RDF::URI:0x82fbace8 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/Group_A>, :label=>#<RDF::Literal:0x82fae6c8("Group_A")>})>
+  #   => #<RDF::Query::Solution:0x86029dd4({:uri=>#<RDF::URI:0x8386387c URI:http://cs.hs-rm.de/~mdudd001/semanticwc/Group_A>,
+  #         :label=>#<RDF::Literal:0x8384fbd8("Group A")>})>
   #
   # @param uri [String] the uri of the group
   # @return [RDF::Query::Solution] the group
@@ -233,20 +243,49 @@ module RdfHelper
   #
   # @example
   #   get_goals "http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER"
-  #   => [#<RDF::Query::Solution:0x811eaa60({:goal_uri=>#<RDF::URI:0x8340cd00 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Goal_6n5btfo5mboh>, :player_uri=>#<RDF::URI:0x82fee8a4 URI:http://dbpedia.org/resource/Miroslav_Klose>, :player=>#<RDF::Literal:0x8360d578("Klose")>,
-  #         :factor=>#<RDF::Literal:0x82fdfbb0("goal")>, :time_uri=>#<RDF::URI:0x82fbeb18 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Time_apxm5qkpsabb>, :time=>#<RDF::Literal::Int:0x82dc4fb0("23"^^<http://www.w3.org/2001/XMLSchema#int>)>})>,
-  #       #<RDF::Query::Solution:0x81232f18({:goal_uri=>#<RDF::URI:0x82f0e3f8 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Goal_sdhr1m0idmhf>, :player_uri=>#<RDF::URI:0x82effdd0 URI:http://dbpedia.org/resource/Toni_Kroos>, :player=>#<RDF::Literal:0x849b8a64("Kroos")>,
-  #         :factor=>#<RDF::Literal:0x82ef6ce4("goal")>, :time_uri=>#<RDF::URI:0x82ecfb44 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Time_nc8d8k09ne8d>, :time=>#<RDF::Literal::Int:0x82d3c304("24"^^<http://www.w3.org/2001/XMLSchema#int>)>})>,
-  #       #<RDF::Query::Solution:0x81233a44({:goal_uri=>#<RDF::URI:0x82f626c4 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Goal_okeofvexrx5m>, :player_uri=>#<RDF::URI:0x82f4bc6c URI:http://dbpedia.org/resource/Toni_Kroos>, :player=>#<RDF::Literal:0x849b8a64("Kroos")>,
-  #         :factor=>#<RDF::Literal:0x82f42c34("goal")>, :time_uri=>#<RDF::URI:0x82f1ebf4 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Time_8vnkbjpsleto>, :time=>#<RDF::Literal::Int:0x82e27318("26"^^<http://www.w3.org/2001/XMLSchema#int>)>})>,
-  #       #<RDF::Query::Solution:0x811e2360({:goal_uri=>#<RDF::URI:0x834c11c4 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Goal_242d66ss06ce>, :player_uri=>#<RDF::URI:0x8154e92c URI:http://dbpedia.org/resource/Sami_Khedira>, :player=>#<RDF::Literal:0x8453c738("Khedira")>,
-  #         :factor=>#<RDF::Literal:0x8154c190("goal")>, :time_uri=>#<RDF::URI:0x834b14f4 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Time_8k489q705ea9>, :time=>#<RDF::Literal::Int:0x82e48e28("29"^^<http://www.w3.org/2001/XMLSchema#int>)>})>,
-  #       #<RDF::Query::Solution:0x811eb7bc({:goal_uri=>#<RDF::URI:0x834a1720 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Goal_4d2c99v16pfl>, :player_uri=>#<RDF::URI:0x834959e8 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/Sch%C3%9Crrle>, :player=>#<RDF::Literal:0x84981898("SchÜrrle")>,
-  #         :factor=>#<RDF::Literal:0x834914c4("goal")>, :time_uri=>#<RDF::URI:0x83470440 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Time_fj7qnfsj35uo>, :time=>#<RDF::Literal::Int:0x82da81f8("69"^^<http://www.w3.org/2001/XMLSchema#int>)>})>,
-  #       #<RDF::Query::Solution:0x811e2ec8({:goal_uri=>#<RDF::URI:0x80da7a98 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Goal_21fpfwboblr0>, :player_uri=>#<RDF::URI:0x834ecc48 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/Sch%C3%9Crrle>, :player=>#<RDF::Literal:0x84981898("SchÜrrle")>,
-  #         :factor=>#<RDF::Literal:0x834e1a8c("goal")>, :time_uri=>#<RDF::URI:0x834d13a8 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Time_27mptbfwku0l>, :time=>#<RDF::Literal::Int:0x82e87a10("79"^^<http://www.w3.org/2001/XMLSchema#int>)>})>,
-  #       #<RDF::Query::Solution:0x8122f700({:goal_uri=>#<RDF::URI:0x82fab6a8 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Goal_7fzbfo4erac0>, :player_uri=>#<RDF::URI:0x82f9bf3c URI:http://dbpedia.org/resource/Oscar_(footballer_born_1991)>, :player=>#<RDF::Literal:0x83630d84("Oscar")>,
-  #         :factor=>#<RDF::Literal:0x82f93544("goal")>, :time_uri=>#<RDF::URI:0x82f72768 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Time_iai5lf3rvwdf>, :time=>#<RDF::Literal::Int:0x82d7d714("90"^^<http://www.w3.org/2001/XMLSchema#int>)>})>]
+  #   => [#<RDF::Query::Solution:0x860c679c({:goal_uri=>#<RDF::URI:0x831af3c8 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Goal_3bhpwas9e4b6>,
+  #         :player_uri=>#<RDF::URI:0x831a2678 URI:http://dbpedia.org/resource/Thomas_M%C3%BCller>, :player=>#<RDF::Literal:0x83bc086c("Müller")>,
+  #         :factor=>#<RDF::Literal:0x83197534("goal")>,
+  #         :time_uri=>#<RDF::URI:0x831775f4 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Time_od8u0wuqirmt>,
+  #         :time=>#<RDF::Literal::Int:0x832f6920("11"^^<http://www.w3.org/2001/XMLSchema#int>)>})>,
+  #       #<RDF::Query::Solution:0x860cb904({:goal_uri=>#<RDF::URI:0x80fd098c URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Goal_t68cap7hb3gh>,
+  #         :player_uri=>#<RDF::URI:0x80fb4a84 URI:http://dbpedia.org/resource/Miroslav_Klose>, :player=>#<RDF::Literal:0x828da5e0("Klose")>,
+  #         :factor=>#<RDF::Literal:0x80fa0e94("goal")>,
+  #         :time_uri=>#<RDF::URI:0x80f45f1c URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Time_byzvwsirjwqb>,
+  #         :time=>#<RDF::Literal::Int:0x8333772c("23"^^<http://www.w3.org/2001/XMLSchema#int>)>})>,
+  #       #<RDF::Query::Solution:0x860c61d4({:goal_uri=>#<RDF::URI:0x83112eec URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Goal_i3zsj16i95y8>,
+  #         :player_uri=>#<RDF::URI:0x831037a8 URI:http://dbpedia.org/resource/Toni_Kroos>, :player=>#<RDF::Literal:0x80a567e0("Kroos")>,
+  #         :factor=>#<RDF::Literal:0x830f7ed0("goal")>,
+  #         :time_uri=>#<RDF::URI:0x830d6b90 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Time_01slv8jy3mzy>,
+  #         :time=>#<RDF::Literal::Int:0x838237a4("24"^^<http://www.w3.org/2001/XMLSchema#int>)>})>,
+  #       #<RDF::Query::Solution:0x860c64b8({:goal_uri=>#<RDF::URI:0x8315edd8 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Goal_d0led6akvjgf>,
+  #         :player_uri=>#<RDF::URI:0x831522cc URI:http://dbpedia.org/resource/Toni_Kroos>, :player=>#<RDF::Literal:0x80a567e0("Kroos")>,
+  #         :factor=>#<RDF::Literal:0x831472a0("goal")>,
+  #         :time_uri=>#<RDF::URI:0x831261f4 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Time_ols7mjl5ozbj>,
+  #         :time=>#<RDF::Literal::Int:0x832d60d0("26"^^<http://www.w3.org/2001/XMLSchema#int>)>})>,
+  #       #<RDF::Query::Solution:0x860cbecc({:goal_uri=>#<RDF::URI:0x830c64ac URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Goal_kuidlkio4jfc>,
+  #         :player_uri=>#<RDF::URI:0x830b6480 URI:http://dbpedia.org/resource/Sami_Khedira>, :player=>#<RDF::Literal:0x83b017b4("Khedira")>,
+  #         :factor=>#<RDF::Literal:0x830abd14("goal")>,
+  #         :time_uri=>#<RDF::URI:0x8308b67c URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Time_0zt3w2rmqtpk>,
+  #         :time=>#<RDF::Literal::Int:0x833c7804("29"^^<http://www.w3.org/2001/XMLSchema#int>)>})>,
+  #       #<RDF::Query::Solution:0x860cb620({:goal_uri=>#<RDF::URI:0x80f1d7c4 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Goal_u28m6giqlph2>,
+  #         :player_uri=>#<RDF::URI:0x80efdec4 URI:http://dbpedia.org/resource/Andr%C3%A9_Sch%C3%BCrrle>,
+  #         :player=>#<RDF::Literal:0x83372e58("Schürrle")>,
+  #         :factor=>#<RDF::Literal:0x80ee516c("goal")>,
+  #         :time_uri=>#<RDF::URI:0x80e98aec URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Time_2v07xr0lohba>,
+  #         :time=>#<RDF::Literal::Int:0x833b6284("69"^^<http://www.w3.org/2001/XMLSchema#int>)>})>,
+  #       #<RDF::Query::Solution:0x860cbbe8({:goal_uri=>#<RDF::URI:0x8306feb8 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Goal_otyy0lotrj3e>,
+  #         :player_uri=>#<RDF::URI:0x8305e730 URI:http://dbpedia.org/resource/Andr%C3%A9_Sch%C3%BCrrle>,
+  #         :player=>#<RDF::Literal:0x83372e58("Schürrle")>,
+  #         :factor=>#<RDF::Literal:0x83053e0c("goal")>,
+  #         :time_uri=>#<RDF::URI:0x80ff15d8 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Time_2yb8uyxkmj9d>,
+  #         :time=>#<RDF::Literal::Int:0x83397924("79"^^<http://www.w3.org/2001/XMLSchema#int>)>})>,
+  #       #<RDF::Query::Solution:0x860c6a80({:goal_uri=>#<RDF::URI:0x831fe874 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Goal_17nr98dozoes>,
+  #         :player_uri=>#<RDF::URI:0x831ebddc URI:http://dbpedia.org/resource/Oscar_(footballer_born_1991)>,
+  #         :player=>#<RDF::Literal:0x828de3fc("Oscar")>,
+  #         :factor=>#<RDF::Literal:0x831e2e30("goal")>,
+  #         :time_uri=>#<RDF::URI:0x831c2784 URI:http://cs.hs-rm.de/~mdudd001/semanticwc/BRA_GER_Time_0fxn56muoech>,
+  #         :time=>#<RDF::Literal::Int:0x83805a10("90"^^<http://www.w3.org/2001/XMLSchema#int>)>})>]
   #
   # @param uri [String] the uri of the match
   # @return [Array<RDF::Query::Solution>] Array of goals

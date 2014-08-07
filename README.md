@@ -9,6 +9,8 @@ Die zugehörige Web-Anwendung ist mobil optimiert: [http://semanticwc.herokuapp.
 ## Dokumentation
 Man kann die Dokumentation einsehen unter "/doc/index.html".
 
+Die Sparql-Abfragen sind im {RdfHelper}.
+
 ## Getting started
 Semanticwc ist ein [Ruby on Rails](https://github.com/rails/rails)-Projekt. Es gelten daher die üblichen Installationsanweisungen.
 Das Projekt arbeitet allerdings ohne Datenbank. Man muss lediglich das RDF-Repository bilden mit:

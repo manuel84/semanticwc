@@ -62,16 +62,47 @@
     <iframe id="search_frame"></iframe>
 
     <div id="content"><div id='filecontents'>
-<h2 id="label-README">README</h2>
+<h1 id="label-Eine+Anwendung+f%C3%BCr+die+FIFA+Fu%C3%9Fball-Weltmeisterschaft+mit+%E2%80%9DSemantic+Web%E2%80%9D-Technologien">Eine Anwendung für die FIFA Fußball-Weltmeisterschaft mit ”Semantic Web”-Technologien</h1>
 
-<p>Semantic World Cup is an open source project for modelling an information
-mobile soccer app using linked open data.</p>
+<p>Dies ist ein Projekt, gestartet im Rahmen der Lehrveranstaltung
+“Informationsverarbeitung im Semantic Web” der Hochschule RheinMain.</p>
 
-<p>Look at <span class='object_link'><a href="RdfHelper.html" title="RdfHelper (module)">RdfHelper</a></span> for the internal sparql-fetcher module.</p>
+<p>Das zugehörige Paper findet man unter <a
+href="https://github.com/manuel84/semanticwc/blob/master/doc/Paper/paper_sem_web.pdf">github.com/manuel84/semanticwc/blob/master/doc/Paper/paper_sem_web.pdf</a>.</p>
+
+<p>Die zugehörige Web-Anwendung ist mobil optimiert: <a
+href="http://semanticwc.herokuapp.com/">semanticwc.herokuapp.com/</a>.</p>
+
+<h2 id="label-Dokumentation">Dokumentation</h2>
+
+<p>Man kann die Dokumentation einsehen unter “/doc/index.html”.</p>
+
+<p>Die Sparql-Abfragen sind im <span class='object_link'><a href="RdfHelper.html" title="RdfHelper (module)">RdfHelper</a></span>.</p>
+
+<h2 id="label-Getting+started">Getting started</h2>
+
+<p>Semanticwc ist ein on Rails[https://github.com/rails/rails]-Projekt.
+Es gelten daher die üblichen Installationsanweisungen. Das Projekt arbeitet
+allerdings ohne Datenbank. Man muss lediglich das RDF-Repository bilden
+mit:</p>
+
+<p><code>rake semanticwc:build</code></p>
+
+<h2 id="label-Team">Team</h2>
+<ul><li>
+<p>Entwickler: <a href="http://manuel.dudda-und-dudda.de">Manuel Dudda</a>, <a
+href="mailto:robert.brylka@email.de">Robert Brylka</a>, <a
+href="mailto:frank.reichwein@gmail.com">Frank Reichwein</a></p>
+</li></ul>
+
+<h2 id="label-License">License</h2>
+
+<p>Ruby on Rails is released under the <a
+href="http://opensource.org/licenses/MIT">MIT License</a>.</p>
 </div></div>
 
     <div id="footer">
-  Generated on Tue Aug  5 18:23:12 2014 by
+  Generated on Thu Aug  7 23:15:54 2014 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.8.7.4 (ruby-2.1.2).
 </div>
