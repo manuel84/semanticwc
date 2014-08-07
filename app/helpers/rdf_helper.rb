@@ -1,4 +1,4 @@
-# @author Manuel Dudda <dudda@redpeppix.de>
+# @author Manuel Dudda <manueldudda@redpeppix.de>
 module RdfHelper
   RDF_TTL_FILE = (Rails.root.join 'db', 'worldcup.ttl').to_s
   QUERYABLE = RDF::Repository.load(RDF_TTL_FILE)
