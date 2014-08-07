@@ -1,4 +1,4 @@
-# Eine Anwendung fü̈r die FIFA Fußball-Weltmeisterschaft mit ”Semantic Web”-Technologien
+# Eine Anwendung für die FIFA Fußball-Weltmeisterschaft mit ”Semantic Web”-Technologien
 
 Dies ist ein Projekt, gestartet im Rahmen der Lehrveranstaltung "Informationsverarbeitung im Semantic Web" der Hochschule RheinMain.
 
