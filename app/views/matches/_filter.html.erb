@@ -1,20 +1,20 @@
 <div data-role="panel" data-position="right" data-theme="a" id="filter-panel" data-display="overlay">
   <form action="#" onsubmit="return false;" id="filter">
     <div class="ui-field-contain">
-      <select name="select-filter-type" id="select-filter-type" onchange="Semwc.selectFilterType(this.value);">
+      <select class="select-type" name="select-filter-type" id="select-filter-type" onchange="Semwc.selectFilterType(this.value);">
         <option value="none">alle Spiele</option>
         <option value="team">nach Team</option>
-        <option value="group">nach Gruppe</option>
+        <option value="group">nach Gruppe/Runde</option>
         <option value="stadium">nach Stadion</option>
         <option value="day">nach Tag</option>
       </select>
 
-      <%= render partial: 'select_filter_value', locals: {name: 'team', collection: ["Brasilien"]} %>
-      <%= render partial: 'select_filter_value', locals: {name: 'group', collection: 'Gruppe A'..'Gruppe H'} %>
-      <%= render partial: 'select_filter_value', locals: {name: 'stadium', collection: ["Belo Horizonte"]} %>
-      <%= render partial: 'select_filter_value', locals: {name: 'day', collection: (Date.new(2014, 6, 12)..Date.new(2014, 7, 13))} %>
+      <%= render partial: 'select_filter_value', locals: {name: 'team', collection: Hash[get_teams.compact.sort { |a, b| get_name(a) <=> get_name(b) }.map { |team| [URI.encode(team.uri.to_s), get_name(team)] }]} %>
+      <%= render partial: 'select_filter_value', locals: {name: 'group', collection: Hash[get_rounds.compact.map { |group| [URI.encode(group.uri.to_s), get_name(group)] }]} %>
+      <%= render partial: 'select_filter_value', locals: {name: 'stadium', collection: Hash[get_stadiums.compact.sort { |a, b| get_name(a) <=> get_name(b) }.map { |stadium| [URI.encode(stadium.uri.to_s), get_name(stadium)] }]} %>
+      <%= render partial: 'select_filter_value', locals: {name: 'day', collection: Hash[get_days.compact.sort.map { |day| [day.to_s, day.to_s(:short)] }]} %>
 
     </div>
-    <input type="button" data-theme="b" data-icon="delete" data-iconshadow="true" value="schließen" data-rel="close">
+    <input type="button" data-theme="b" data-icon="delete" data-iconshadow="true" value="schließen" data-rel="close" id="close-button">
   </form>
 </div>

@@ -1,37 +1,71 @@
-<div data-role="page" id="<%= @matchdays[@current_index].last.first.first %>" data-title="
-  <% @matchdays[@current_index].last.first.first %>" class="main-page" data-dom-cache="true" data-theme="a"
-     <%= "data-prev=\"#{matches_path(:uri => @matchdays[@current_index-1].last.first.first, filter_uri: params[:filter_uri])}\"".html_safe if @current_index > 0 %>
-     <%= "data-next=\"#{matches_path(:uri => @matchdays[@current_index+1].last.first.first, filter_uri: params[:filter_uri])}\"".html_safe if @matchdays.count >= @current_index+2 %>>
+<div data-role="page" id="<%= "#{@match.time.to_s}-#{@match.homeCompetitor}-#{@match.awayCompetitor}".parameterize %>" data-title="
+  <% @match.uri %>" class="main-page matches" data-dom-cache="true" data-theme="a"
+     <%= "data-prev=\"#{matches_path(:uri => @matches[@current_index-1].uri, filter_uri: params[:filter_uri])}\"".html_safe if @current_index > 0 %>
+     <%= "data-next=\"#{matches_path(:uri => @matches[@current_index+1].uri, filter_uri: params[:filter_uri])}\"".html_safe if @matches.count >= @current_index+2 %>>
 
-  <%= render 'filter' %>
+  <% cache 'matches_filter' do %>
+      <%= render 'filter' %>
+  <% end %>
 
   <div role="main" class="ui-content" id="main">
 
     <ul data-role="listview" data-inset="true" class="ui-listview ui-listview-inset ui-corner-all">
       <li data-role="list-divider" data-theme="a" data-swatch="a" data-form="ui-bar-a" role="heading">
-        <div class="big center"><%= @matchday.last.select { |t| t[1].eql?("time") }.first.last.to_s(:db) %> Uhr</div>
+        <div class="big center"><%= @match.round %> - <%= Time.parse(@match.time.to_s).to_s(:short) %> Uhr</div>
       </li>
       <li data-form="ui-body-a" data-swatch="a" data-theme="a">
         <div class="big center">
 
-          <%= link_to(image_tag(@matchday.last.select { |t| t[1].eql?('team1_icon') }.first.last, height: 40), teams_path(:uri => get_team_uri(@matchday.last.select { |t| t[1].eql?('team1') }.first.last)), class: [:img], 'data-prefetch'.to_sym => true) %>
-          -:-
-
-          <%= link_to(image_tag(@matchday.last.select { |t| t[1].eql?('team2_icon') }.first.last, height: 40), teams_path(:uri => get_team_uri(@matchday.last.select { |t| t[1].eql?('team2') }.first.last)), class: [:img], 'data-prefetch'.to_sym => true) %>
+          <%= link_to(image_tag(img_url(@home), width: 60, onerror: "this.src='#{lorem_img}';"), teams_path(:uri => @match.homeCompetitor_uri), class: ['img', 'team-name', 'right']) %>
+          <div class="ultra-big team-spacer"><%= get_result(@match) %></div>
+          <%= link_to(image_tag(img_url(@away), width: 60, onerror: "this.src='#{lorem_img}';"), teams_path(:uri => @match.awayCompetitor_uri), class: ['img', 'team-name', 'left']) %>
           <br/>
 
-          <%= @matchday.last.select { |t| t[1].eql?("team1") }.first.last %>
-          - <%= @matchday.last.select { |t| t[1].eql?("team2") }.first.last %>
-
+          <span class="team-name right"><%= @match.homeCompetitor %></span>
+          <span class="team-spacer"> -</span>
+          <span class="team-name left"><%= @match.awayCompetitor %></span>
         </div>
+        <%= ui_list get_goal_infos(@goals, @match), header: '' do |i| %>
+            <%= i %>
+        <% end %>
 
       </li>
-      <li>
-        <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" data-prefetch="true"
-           href="<%= stadiums_path(:uri => "team_"+@matchday.last.select { |t| t[1].eql?("team1") }.first.last) %>">
-          <%= @matchday.last.select { |t| t[1].eql?("stadium") }.first.last %>
-          (<%= @matchday.last.select { |t| t[1].eql?("city") }.first.last %>)</a></li>
+      <% if @stadium %>
+          <li>
+            <a class="ui-btn-a ui-btn ui-btn-icon-right ui-icon-carat-r" data-form="ui-btn-up-a" data-swatch="a" data-theme="a" href="<%= stadiums_path(:uri => @stadium.uri) %>">
+              <%= @stadium.name %>
+              (<%= @stadium.city %>)</a>
+          </li>
+      <% end %>
     </ul>
+    <div class="footer">
+      <div class="left">
+        <div><%= get_filter_name(@filter_type, @filter_value) %></div>
+        <span class="filter-links">
+          <div class="filter-teams">
+            <%= get_teams.compact.sort { |a, b| get_name(a) <=> get_name(b) }.map { |team| link_to(get_name(team), URI.encode(team.uri.to_s)) }.join('<br/>').html_safe %>
+          </div>
+          <div class="filter-rounds">
+            <%= get_rounds.compact.sort { |a, b| a.uri.to_s <=> b.uri.to_s }.map { |group| link_to(get_name(group), URI.encode(group.uri.to_s)) }.join('<br/>').html_safe %>
+          </div>
+          <div class="filter-stadiums">
+            <%= get_stadiums.compact.sort { |a, b| get_name(a) <=> get_name(b) }.map { |stadium| link_to(get_name(stadium), URI.encode(stadium.uri.to_s)) }.join('<br/>').html_safe %>
+          </div>
+          <div class="filter-days">
+            <%= get_days.compact.sort.map { |day| link_to(day.to_s(:short), day.to_s) }.join('<br/>').html_safe %>
+          </div>
+        </span>
+      </div>
+      <div class="right">
+        <span class="navi-links">
+          <%= link_to image_tag('/assets/images/icons-png/arrow-l-black.png'), matches_path(:uri => @matches[@current_index-1].uri, filter_uri: params[:filter_uri]) if @current_index > 0 %>
+        </span>
+        <%= @current_index+1 %>/<%= @matches.count %>
+        <span class="navi-links">
+          <%= link_to image_tag('/assets/images/icons-png/arrow-r-black.png'), matches_path(:uri => @matches[@current_index+1].uri, filter_uri: params[:filter_uri]) if @matches.count >= @current_index+2 %>
+        </span>
+      </div>
+    </div>
     <%= render 'js_after_loaded' %>
   </div>
 

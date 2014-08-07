@@ -59,3 +59,5 @@ gem 'equivalent-xml'
 gem 'yard'
 gem 'dotiw'
 gem 'rest-client'
+
+gem 'actionpack-action_caching'

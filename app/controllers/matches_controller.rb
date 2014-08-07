@@ -1,23 +1,15 @@
 class MatchesController < ApplicationController
 
   def index
-    #http://localhost:3000/pages?uri=2014-06-13_Mexiko_Kamerun
-    #&filter_type=group&filter_value=a
-    @filter_value = params[:filter_uri]
-    @filter_type = 'stadium' # get from params[:filter_uri]
+    @filter_value = params[:filter_uri] || ''
 
-    o = OpenLigaDbDataWrapper.new
-    @matchdays = o.brasil_matches o.brasil_rounds.first
-    if params[:uri] && params[:uri].starts_with?('team_')
-      render :team
-    elsif params[:uri] && params[:uri].starts_with?('player_')
-      render :player
-    else
-      @current_index = @matchdays.index { |m| m.last.first.first.eql?(params[:uri]) } || 0
-      @matchday = @matchdays[@current_index]
-      render text: 'not avaibable' unless @current_index
-    end
-
+    @matches, @filter_type = get_matches(@filter_value)
+    @current_index = @matches.index { |match| match.uri.to_s.eql?(params[:uri]) } || @matches.count-1
+    @match = @matches[@current_index]
+    @goals = get_goals(@match.uri)
+    @home = get_team(@match.homeCompetitor_uri)
+    @away = get_team(@match.awayCompetitor_uri)
+    @stadium = get_stadium(@match.venue_uri)
   end
 
 end

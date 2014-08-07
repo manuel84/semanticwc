@@ -1,10 +1,21 @@
 require 'spec_helper'
 describe RdfHelper do
+
+  describe 'connection' do
+    it 'to dbpedia sparql endpoint' do
+      simple_sparql = "SELECT ?capital WHERE { <http://dbpedia.org/resource/Germany> <http://dbpedia.org/ontology/capital> ?capital . }"
+      dbpedia = SPARQL::Client.new('http://dbpedia.org/sparql')
+      solution = dbpedia.query(simple_sparql).first
+      expect(solution).to be_present
+      #expect(solution.capital.to_s).to eql('http://dbpedia.org/resource/Berlin')
+    end
+  end
+
   describe '#ttl file' do
     it 'Fußball-Weltmeisterschaft_2014 has as MultiStageCompetition' do
       divisional_competitions = get_multi_stage_competitions
       divisional_competitions.filter { |solution| solution.s.eql?(RDF::URI.new 'http://de.dbpedia.org/page/Fußball-Weltmeisterschaft_2014') }
-      divisional_competitions.should_not be_empty
+      expect(divisional_competitions).not_to be_empty
       #helper.write_to_xml
     end
   end
@@ -14,7 +25,7 @@ describe RdfHelper do
     bra_cro.round.to_s.should be_eql('Gruppe A')
   end
 
-  it 'guess the uri of the brazilian national team by the name Brasilien' do
+  it 'guess the uri of the national team by the german name of the country' do
     teams = {'Algerien' => 'http://dbpedia.org/resource/Algeria_national_football_team', 'Elfenbeinküste' => 'http://dbpedia.org/resource/Ivory_Coast_national_football_team', 'Ghana' => 'http://dbpedia.org/resource/Ghana_national_football_team', 'Kamerun' => 'http://dbpedia.org/resource/Cameroon_national_football_team', 'Nigeria' => 'http://dbpedia.org/resource/Nigeria_national_football_team', 'Australien' => 'http://dbpedia.org/resource/Australia_national_football_team', 'Iran' => 'http://dbpedia.org/resource/Iran_national_football_team', 'Japan' => 'http://dbpedia.org/resource/Japan_national_football_team', 'Südkorea' => 'http://dbpedia.org/resource/South_Korea_national_football_team', 'Belgien' => 'http://dbpedia.org/resource/Belgium_national_football_team', 'Bosnien und Herzegowina' => 'http://dbpedia.org/resource/Bosnia_and_Herzegovina_national_football_team', 'Deutschland' => 'http://dbpedia.org/resource/Germany_national_football_team', 'England' => 'http://dbpedia.org/resource/England_national_football_team', 'Frankreich' => 'http://dbpedia.org/resource/France_national_football_team', 'Griechenland' => 'http://dbpedia.org/resource/Greece_national_football_team', 'Italien' => 'http://dbpedia.org/resource/Italy_national_football_team', 'Kroatien' => 'http://dbpedia.org/resource/Croatia_national_football_team', 'Niederlande' => 'http://dbpedia.org/resource/Netherlands_national_football_team', 'Portugal' => 'http://dbpedia.org/resource/Portugal_national_football_team', 'Russland' => 'http://dbpedia.org/resource/Russia_national_football_team', 'Schweiz' => 'http://dbpedia.org/resource/Switzerland_national_football_team', 'Spanien' => 'http://dbpedia.org/resource/Spain_national_football_team', 'Costa Rica' => 'http://dbpedia.org/resource/Costa_Rica_national_football_team', 'Honduras' => 'http://dbpedia.org/resource/Honduras_national_football_team', 'Mexiko' => 'http://dbpedia.org/resource/Mexico_national_football_team', 'USA' => 'http://dbpedia.org/resource/United_States_national_football_team', 'Argentinien' => 'http://dbpedia.org/resource/Argentina_national_football_team', 'Brasilien' => 'http://dbpedia.org/resource/Brazil_national_football_team', 'Chile' => 'http://dbpedia.org/resource/Chile_national_football_team', 'Ecuador' => 'http://dbpedia.org/resource/Ecuador_national_football_team', 'Kolumbien' => 'http://dbpedia.org/resource/Colombia_national_football_team', 'Uruguay' => 'http://dbpedia.org/resource/Uruguay_national_football_team'}
     team_uris = teams.keys.map do |team_name|
       expect(get_team_uri(team_name)).to eql(teams[team_name])
@@ -28,5 +39,18 @@ describe RdfHelper do
       expect(get_player_uri(player_name, team_uri)).to eql(players[player_name])
     end
   end
+
+  describe 'ttl new' do
+    it 'count groups' do
+      RDF_TTL_FILE = (Rails.root.join 'db', 'worldcup.ttl').to_s
+      QUERYABLE = RDF::Repository.load(RDF_TTL_FILE)
+      sparql = SPARQL.parse("SELECT * WHERE { ?s <#{RDF.type}> <#{PREFIX::SOCCER}SoccerClub> }")
+      solutions = QUERYABLE.query(sparql)
+      puts solutions.count
+      expect(solutions.count).to eql(32)
+    end
+
+  end
+
 
 end

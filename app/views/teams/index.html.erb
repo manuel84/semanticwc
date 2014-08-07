@@ -1,33 +1,34 @@
-<div data-role="page" id="team-xxx" data-title="<%= @team.label %>" class="main-page" data-dom-cache="true" data-theme="a"
-     <%= "data-prev=\"#{teams_path(:uri => 'brasilien', filter_uri: params[:filter_uri])}\"".html_safe %>
-     <%= "data-next=\"#{teams_path(:uri => 'brasilien', filter_uri: params[:filter_uri])}\"".html_safe %>>
+<div data-role="page" id="<%= get_name(@team).parameterize %>" data-title="<%= @team.label %>" class="main-page" data-dom-cache="true" data-theme="a" data-prev="<%= request.referer && URI(request.referer).path.start_with?('/matches') ? "#{URI(request.referer).path}?#{URI(request.referer).query}" : 'back' %>">
 
   <%#= render 'filter' Gruppe, Kontinent%>
 
   <div role="main" class="ui-content" id="main">
 
-    <div class="big center"><%= @team.label %>
-      <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Flag_of_Brazil.svg/20px-Flag_of_Brazil.svg.png" alt="Brasilien" height="20"/>
+    <div class="center"><span class="big"><%= @team.label %></span>
+      <%= image_tag(img_url(@team), height: 40, onerror: "this.src='#{lorem_img}';") %>
     </div>
 
-    <%= ui_list @players, header: 'Kader' do |i| %>
-        <% player_uri = get_player_uri(i.to_s, @team.uri) %>
-        <% if player_uri %>
-            <%= ui_list_link_to i, players_path(:uri => player_uri) %>
+    <% player_infos = {} %>
+    <% @players.each do |player| %>
+        <% player_infos[player.uri.to_s] = get_player(player.uri) %>
+        <% player_infos[player.uri.to_s] ||= {position: 'n.A.'} %>
+    <% end %>
+    <%= ui_list sort_players!(@players, player_infos), header: 'Kader' do |player| %>
+        <% if player.uri.to_s.include?('http://cs.hs-rm.de/~mdudd001/semanticwc/') %>
+            <%= ui_list_link_to "#{player.label} (#{player_infos[player.uri.to_s][:position].to_s.titlecase})", 'javascript:void(0);', class: 'disabled' %>
         <% else %>
-            <%= ui_list_link_to "no link", "" %>
+            <%= ui_list_link_to "#{player.label} (#{player_infos[player.uri.to_s][:position].to_s.titlecase})", players_path(:uri => player.uri) %>
         <% end %>
     <% end %>
 
-    <%= ui_list [@trainer], header: 'Trainer' do |i| %>
-        <% trainer_uri = get_trainer_uri(i.to_s, @team.uri) %>
-        <% if trainer_uri %>
-            <%= ui_list_link_to i, trainers_path(:uri => trainer_uri) %>
-        <% else %>
-            <%= ui_list_link_to "no link", "" %>
+    <% if @team.has_variables? ['coach_uri'] %>
+        <%= ui_list [@team.coach_uri], header: 'Trainer' do |i| %>
+            <%= ui_list_link_to @team.coach, trainers_path(:uri => i) %>
         <% end %>
     <% end %>
-
+    <%= ui_list @matches.map { |match| [match_name(match), match.uri] }, header: "Spiele (#{@matches.count})" do |i| %>
+        <%= ui_list_link_to i[0], matches_path(:uri => i[1], :filter_uri => @team.uri) %>
+    <% end %>
 
   </div>
 </div>
