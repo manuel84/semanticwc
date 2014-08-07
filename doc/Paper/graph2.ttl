@@ -1,0 +1,13 @@
+@prefix semwc: <http://cs.hs-rm.de/~mdudd001/semanticwc/> .
+@prefix bbcsport: <http://www.bbc.co.uk/ontologies/sport/> .
+@prefix dbpedia: <http://dbpedia.org/resource/> . 
+@prefix soccervoc: <http://purl.org/hpi/soccer-voc/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+semwc:GER_POR a bbcsport:Match.
+
+semwc:GER_POR bbcsport:homeCompetitor dbpedia:Germany_national_football_team .
+
+semwc:Kramer a soccervoc:SoccerPlayer;
+   soccervoc:playsFor dbpedia:Germany_national_football_team;
+   foaf:name "Kramer" .
