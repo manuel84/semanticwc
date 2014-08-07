@@ -28,15 +28,17 @@
 \usepackage{array}
 \usepackage{listing}
 \usepackage{listings}
+\usepackage{authblk}
+\usepackage[ngerman]{babel}
 
-
-\urldef{\mailsa}\path|{manuel.b.dudda, robert.c.brylka, frank.b.reichwein,}@student.hs-rm.de|    
+\urldef{\mailsa}\path|{manuel.b.dudda, robert.c.brylka, frank.b.reichwein}@student.hs-rm.de|    
 \newcommand{\keywords}[1]{\par\addvspace\baselineskip
 \noindent\keywordname\enspace\ignorespaces#1}
 
 \newcommand{\specialcell}[2][c]{%
   \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 \renewcommand{\figurename}{Abb.}
+
 
 % Language Definitions for Turtle
 \definecolor{olivegreen}{rgb}{0.2,0.8,0.5}
@@ -69,33 +71,28 @@ morestring=[b][\color{blue}]\",
   morekeywords={xmlns,version,type}% list your attributes here
 }
 
+\author{Manuel Dudda, Robert Brylka und Frank Reichwein}
+
 \begin{document}
 
 \mainmatter  % start of an individual contribution
 
 % first the title is needed
-\title{Semantic Web Technologien:\\FIFA's Fu\ss ball-Weltmeisterschaft 2014 in Brasilien bekommt eine semantische Unterst\"utzung.}
+\title{Eine Anwendung für die FIFA Fußball-Weltmeisterschaft mit Semantic-Web-Technologien}
 
 % a short form should be given in case it is too long for the running head
-\titlerunning{Semantic Web: Brasil WM 2014}
+\titlerunning{FIFA Fußball-Weltmeisterschaft mit Semantic-Web-Technologien}
 
-% the name(s) of the author(s) follow(s) next
 %
-% NB: Chinese authors should write their first names(s) in front of
-% their surnames. This ensures that the names appear correctly in
-% the running heads and the author index.
-%
-\author{Manuel Dudda \and Robert Brylka\and Frank Reichwein}
-%
-\authorrunning{Brasil WM 2014 mit Semantic Web}
+\authorrunning{FIFA Fußball-Weltmeisterschaft mit Semantic Web-Technologien}
 % (feature abused for this document to repeat the title also on left hand pages)
 
 % the affiliations are given next; don't give your e-mail address
 % unless you accept that it will be published
 \institute{Hochschule RheinMain Informatik Master of Science \\
 Fachbereich Design Informatik Medien \\
-Campus Unter den Eichen 5
-65195 Wiesbaden , Deutschland\\
+Campus Unter den Eichen 5,
+65195 Wiesbaden, Deutschland\\
 \mailsa\\
 \url{http://www.semanticwc.herokuapp.com}}
 
@@ -112,25 +109,25 @@ Campus Unter den Eichen 5
 
 
 \begin{abstract}
-Große Sportereignisse haben schon immer große Menschenmassen begeistert. So auch die Events, die die Disziplin Fußball betreffen. Dieses Paper beschreibt ein Projekt, das sich als Ziel die Präsentation der Ereignisse der diesjährigen FIFA Fußball-Weltmeisterschaft gesetzt hat. Der Fokus dieser Anwendung liegt auf der Aktualität der präsentierten Daten sowie einer auf mobile Endgeräte angepassten Repräsentation. Für die Vielfalt der Daten sowie deren Richtigkeit sorgt eine Informationssynthese aus mehreren Quellen. Um die Informationen weitestgehend für automatische Weiterverarbeitung vorzubereiten, wurden alle Daten um semantische Bedeutung aus gängigen Sport-Ontologien ergänzt.
+Große Sportereignisse haben schon immer große Menschenmassen begeistert. So auch die Events, die die Disziplin Fußball betreffen. Dieses Paper beschreibt ein Projekt, das sich als Ziel die Präsentation der Ereignisse der diesjährigen FIFA Fußball-Weltmeisterschaft gesetzt hat. Der Fokus dieser Anwendung liegt auf der Aktualität der präsentierten Daten sowie einer auf mobile Endgeräte angepassten Repräsentation. Für die Vielfalt der Daten sowie deren Richtigkeit sorgt eine Informationssynthese aus mehreren Quellen. Um die Informationen weitestgehend für eine automatische Weiterverarbeitung vorzubereiten, wurden alle Daten um semantische Bedeutung aus gängigen Sport-Ontologien ergänzt.
 \end{abstract}
 
 \section{Einleitung}
 
-In den vielen Informationsseiten, welche die diesjährige FIFA Fußball-Welt-meisterschaft in Brasilien präsentieren, sucht man oft vergeblich nach gut strukturierten und leichtgewichtigen Applikationen, die schnell mit mobilen End-geräten zu erreichen sind. Zu dem werden viele Seiten nicht aktuell gehalten, was gerade bei einer so ereignisreichen Sportdisziplin wie Fußball unerlässlich ist. Bei unserem Projekt haben diese Aspekte die höchste Priorität erhalten. Um einem aktuellen Trend in der Webentwicklung zu folgen wurde unsere Applikation mit Konzepten des semantisches Web entwickelt. Dabei werden alle Informationen mit einer für die Maschine verständlicher Syntax ergänzt. Dazu wurden die Informationen der FIFA Webseite extrahiert und mit der Ontologie von BBC-Sport und der Ontologie Soccer-Voc des Hasso-Plattner-Instituts versehen. Für die Darstellung dieser Daten wurde eine Ruby on Rails Web-Applikation, welche zur Präsentation das jQuery Mobile Framework einsetzt, entwickelt. Des Weiteren werden weiterführende Informationen, durch die Einbeziehung von DBpedia Einträgen, eingeblendet.    
+In den vielen Informationsseiten, welche die diesjährige FIFA Fußball-Welt-meisterschaft in Brasilien präsentieren, sucht man oft vergeblich nach gut strukturierten und leichtgewichtigen Applikationen, die schnell mit mobilen End-geräten zu erreichen sind. Zudem werden viele Seiten nicht aktuell gehalten, was gerade bei einer so ereignisreichen Sportdisziplin wie Fußball unerlässlich ist. Bei unserem Projekt haben diese Aspekte die höchste Priorität erhalten. Um einem aktuellen Trend in der Webentwicklung zu folgen, wurde unsere Applikation mit Konzepten des semantisches Web entwickelt. Dabei werden alle Informationen mit einer für die Maschine verständlichen Syntax ergänzt. Dazu wurden die Informationen der FIFA-Webseite extrahiert und mit der Ontologie von BBC-Sport und der Ontologie Soccer-Voc des Hasso-Plattner-Instituts versehen. Für die Darstellung dieser Daten wurde eine Ruby on Rails Web-Applikation, welche zur Präsentation das jQuery Mobile Framework einsetzt, entwickelt. Des Weiteren werden weiterführende Informationen, durch die Einbeziehung von DBpedia-Einträgen, eingeblendet.    
 
 
 \section{Related Work}
 
-Bei der Recherche in dem Bereich der Fußballereignisse mit semantischen Hintergrund hat sich unsere Aufmerksamkeit auf drei Quellen gerichtet, die Sport-Ontologie\footnote{\url{http://www.bbc.co.uk/ontologies/sport}} der BBC, die Soccer-Voc-Ontologie\footnote{\url{http://purl.org/hpi/soccer-voc/}} des Hasso-Plattner-Institut sowie der World Cup\footnote{\url{http://www.http://worldcup.sfg.io/}} JSON API.\\ Die Future Media and Technologie-Abteilung der BBC setzt auf semantische Technologien um die intern relevanten Inhalte automatisch verwalten zu können. Der erste große Einsatz der semantischen Technologien war die Gestaltung der Internetseite\footnote{\url{http://news.bbc.co.uk/sport2/hi/football/world_cup_2010/default.stm}} mit Informationen zu der FIFA Fußball-Weltmeisterschaft 2010. Die dabei eingesetzte Ontologie ist seither frei zugänglich. \\
+Bei der Recherche in dem Bereich der Fußballereignisse mit semantischen Hintergrund hat sich unsere Aufmerksamkeit auf drei Quellen gerichtet, die Sport-Ontologie\footnote{\url{http://www.bbc.co.uk/ontologies/sport}} der BBC, die Soccer-Voc-Ontologie\footnote{\url{http://purl.org/hpi/soccer-voc/}} des Hasso-Plattner-Institut sowie der World Cup\footnote{\url{http://www.http://worldcup.sfg.io/}} JSON API.\\ Die "Future Media and Technology"-Abteilung der BBC setzt auf semantische Technologien, um die intern relevanten Inhalte automatisch verwalten zu können. Der erste große Einsatz der semantischen Technologien war die Gestaltung der Internetseite\footnote{\url{http://news.bbc.co.uk/sport2/hi/football/world_cup_2010/default.stm}} mit Informationen zu der FIFA Fußball-Weltmeisterschaft 2010. Die dabei eingesetzte Ontologie ist seither frei zugänglich. \\
 Die Arbeitsgruppe "Semantic Technologies"\footnote{\url{http://hpi.de/meinel/knowledge_tech/semantics.html}} am Hasso-Plattner-Institut im Potsdam veröffentlichte 2013 ein Paper zu Linked Soccer Data\cite{url_lsd}. Im Rahmen dieses Papers wurde ein Datensatz mit Fußballinformationen vorgestellt, der mit der LOD Cloud\footnote{\url{http://linkeddata.org/}} verknüpft wurde. Die dabei verwendete Ontologie kann frei verwendet werden und stellt eine gute Ergänzung der Sport-Ontologie der BBC dar.\\
 Bei der World Cup API handelt sich um ein von Eric Stiens\footnote{\url{http://softwareforgood.com/soccer-good/}} betreutes Projekt. Dessen Ziel ist es, die aktuellen Fußballereignisse für jeden frei verfügbar zu machen. Neben den frei verfügbaren Informationen, die als JSON Dateien vorliegen, ist auch die API\footnote{\url{https://github.com/estiens/world_cup_json/}} für Weiterentwicklungen auf Github freigegeben. 
 
 
 \section{Bestimmung der Informationsquellen}\label{infoQuell}
 
-Die FIFA Fußball-Weltmeisterschaft ist allgemein ein belebtes Thema in der digitalen Welt. Um geeignete Quellen für die gesuchte Informationen zu finden wurde eine tiefgründige Recherche durchgeführt. Die unten aufgeführte Tabelle zeigt einen Ausschnitt der Bewertung der Quellen. Wie man an der Zusammenstellung erkennen kann verfügen nicht alle Quellen über die gleiche Informationsfülle. Dabei ist die Open Football Datenbank aufgrund der nicht aktuellen Informationen für weitere Verwendung uninteressant. Die Football Data sowie die World Cup Datenbank zeigen beide eine sehr gute Fülle an brauchbaren Informationen. Bei einer weiteren Recherche zu der Word Cup Datenbank wurde die offengelegte API gefunden, die einen direkten Zugriff auf die offizielle Seite der FIFA ermöglicht. Wie der letzten Spalte in der Zusammenstellung zu entnehmen ist, ist die offizielle Seite des internationalen Fußballverbandes die beste Informationsquelle. 
-Nach der Bewertung der Quellen wurde beschossen, dass mit einem Fork der Soccer for good API das beste Ergebnis zu erwarten ist. Dieser Fork wurde unseren Bedürfnissen angepasst. Durch die Anpassungen wurde die Schnittstelle um Informationen zu den Spielern, Trainern und Schiedsrichtern erweitert. Es wurden damit alle für die Anwendung relevanten Informationen  integriert. Dieser Fork bietet entsprechende REST\footnote{\textbf{Re}presentational \textbf{S}tate \textbf{T}ransfer} Endpunkte an. Die Rückgabe dieses Services ist eine JSON\footnote{\textbf{J}ava\textbf{S}cript \textbf{O}bject \textbf{N}otation}-Datei mit allen relevanten Informationen. \\
+Die FIFA Fußball-Weltmeisterschaft ist allgemein ein beliebtes Thema in der digitalen Welt. Um geeignete Quellen für die gesuchten Informationen zu finden, wurde eine tiefgründige Recherche durchgeführt. Die unten aufgeführte Tabelle zeigt einen Ausschnitt der Bewertung der Quellen. Wie man an der Zusammenstellung erkennen kann, verfügen nicht alle Quellen über die gleiche Informationsfülle. Dabei ist die "Open Football"-Datenbank" aufgrund der nicht aktuellen Informationen für weitere Verwendung uninteressant. Die Football Data sowie die "World Cup"-Datenbank zeigen beide eine sehr gute Fülle an brauchbaren Informationen. Bei einer weiteren Recherche zu der Word Cup Datenbank wurde die offengelegte API gefunden, die einen direkten Zugriff auf die offizielle Seite der FIFA ermöglicht. Wie der letzten Spalte in der Zusammenstellung zu entnehmen ist, ist die offizielle Seite des internationalen Fußballverbandes die beste Informationsquelle. 
+Nach der Bewertung der Quellen wurde beschlossen, dass mit einem Fork der Soccer for good API das beste Ergebnis zu erwarten ist. Dieser Fork wurde unseren Bedürfnissen angepasst. Durch die Anpassungen wurde die Schnittstelle um Informationen zu den Spielern, Trainern und Schiedsrichtern erweitert. Es wurden damit alle für die Anwendung relevanten Informationen integriert. Dieser Fork bietet entsprechende REST\footnote{\textbf{Re}presentational \textbf{S}tate \textbf{T}ransfer}-Endpunkte an. Die Rückgabe dieses Services ist eine JSON\footnote{\textbf{J}ava\textbf{S}cript \textbf{O}bject \textbf{N}otation}-Datei mit allen relevanten Informationen. \\
 
 
 
@@ -174,11 +171,11 @@ Besucherzahl			& + & - & - & - & +		\\ \hline
 \end{center}
 
 
-Eine wichtige Rolle bei der Wahl der API hat letztendlich auch der finanzielle Aspekt gespielt. Es gibt eine ganze Reihe an gut organisierten und stets aktuellen Datenbanken, die jedoch eine regelmäßige Gebühr mit sich tragen. Für dieses Projekt wurde jedoch die Vereinbarung getroffen, rein Quelloffene Lösungen zu verwenden. Dadurch wurden finanziell abhängige Projekte direkt bei der Recherche ausgeschlossen. 
+Eine wichtige Rolle bei der Wahl der API hat letztendlich auch der finanzielle Aspekt gespielt. Es gibt eine ganze Reihe an gut organisierten und stets aktuellen Datenbanken, die jedoch eine regelmäßige Gebühr mit sich tragen. Für dieses Projekt wurde jedoch die Vereinbarung getroffen, rein quelloffene Lösungen zu verwenden. Dadurch wurden finanziell abhängige Projekte direkt bei der Recherche ausgeschlossen. 
   
 %\newpage
 \section{Ontologien}
-Um die Daten semantisch korrekt darzustellen wurden verschiedene Ontologien verwendet. Für die Darstellung der Weltmeisterschaft wurde die BBC-Sport-Ontologie verwendet. Mit dieser wurden die verschiedenen Gruppenphasen, Spieltypen, Spiele sowie die zugehörigen Stadien abgebildet. Für die Fußball spezifischen Daten wie Spielevents (Tore, Ein- und Auswechselungen sowie Karten) wurde die Soccer-Voc-Ontologie des Hasso-Platner-Instituts verwendet. Diese erweitert die Friend Of A Friend Ontologie. Außerdem wurde, für die zeitliche Einordnung der Spielevents, die Event-Ontologie verwendet.\\
+Um die Daten semantisch korrekt darzustellen, wurden verschiedene Ontologien verwendet. Für die Darstellung der Weltmeisterschaft wurde die BBC-Sport-Ontologie verwendet. Mit dieser wurden die verschiedenen Gruppenphasen, Spieltypen, Spiele sowie die zugehörigen Stadien abgebildet. Für die fußballspezifischen Daten wie Spielevents (Tore, Ein- und Auswechselungen sowie Karten) wurde die Soccer-Voc-Ontologie des Hasso-Platner-Instituts verwendet. Diese erweitert die "Friend Of A Friend"-Ontologie. Außerdem wurde, für die zeitliche Einordnung der Spielevents, die Event-Ontologie verwendet.\\
  
 
 \begin{figure}
@@ -224,16 +221,16 @@ Um die Daten semantisch korrekt darzustellen wurden verschiedene Ontologien verw
 \label{fig:onto}
 \end{figure}
 
-Die Abbildung \ref{fig:turtlerdf} zeigt einen Ausschnitt aus der mit den Ontologien versehenen Daten. Der dazugehörige Graph ist in der Abbildung \ref{fig:onto} zu sehen. An diesem Beispiel ist die Verflechtung der Ontologien sehr gut sichtbar.
+Die Abbildung \ref{fig:turtlerdf} zeigt einen Ausschnitt aus den mit den Ontologien versehenen Daten. Der dazugehörige Graph ist in der Abbildung \ref{fig:onto} zu sehen. An diesem Beispiel ist die Verflechtung der Ontologien sehr gut sichtbar.
 Aus den Tripeln ist ersichtlich, dass für jedes Spiel ein eigener Knoten mit den Länderkürzeln der Spielteilnehmer erstellt wurde \(GER\_POR\). Diese Knoten sind vom Typ \textit{bbcsport:Match} und haben als \textit{bbcsport:homeCompetitior}-Property die Knoten der jeweiligen Nationalmannschaft\\ \(Germany\_national\_football\_team\). 
-Des Weiteren gibt es einen Knoten für jeden Spieler, welche vom Typ \textit{soccer-voc:SoccerPlayer} sind. Diese sind mit dem Prädikat \textit{soccer-voc:playsFor} mit den Mannschaften verbunden. Das zuletzt genannte Prädikat und der zuletzt genannte Typ stammen von der Soccer-Voc Ontologie. Da \textit{SoccerPlayer} eine Unterklasse von \textit{foaf:Agent} ist, kann ein SoccerPlayer mit einem Prädikat der FOAF-Ontolgie für einen Namen versehen werden.
+Des Weiteren gibt es einen Knoten für alle Spieler, welche vom Typ \textit{soccer-voc:SoccerPlayer} sind. Diese sind mit dem Prädikat \textit{soccer-voc:playsFor} mit den Mannschaften verbunden. Das zuletzt genannte Prädikat und der zuletzt genannte Typ stammen von der Soccer-Voc-Ontologie. Da \textit{SoccerPlayer} eine Unterklasse von \textit{foaf:Agent} ist, kann ein \textit{SoccerPlayer} mit einem Prädikat der FOAF-Ontolgie für einen Namen versehen werden.
 
 
 %\newpage
 \section{Implementierung}
 
 
-Bei der Wahl des Framework für diese Anwendung fiel die Entscheidung zu Gunsten von Ruby on Rails \footnote{\url{http://www.rubyonrails.org/}} aus. Durch die verfügbaren Erweiterungen bietet es eine sehr gute Unterstützung bei Entwicklung von Semantik Web Applikationen. Sei es bei dem Erzeugen von RDF-Daten oder der Erstellung von Abfragen mittels SPARQL. Für die Gestaltung der Seiten, sowie als Unterstützung für die Mobilen-Endgeräte, wurde die jQuery-Mobile\footnote{\url{http://www.jquerymobile.com/}} Bibliothek eingesetzt. Durch diese Bibliothek werden auf Mobilen-Endgeräten z.B. Swipe-Gesten unterstützt. 
+Bei der Wahl des Framework für diese Anwendung fiel die Entscheidung zu Gunsten von Ruby on Rails \footnote{\url{http://www.rubyonrails.org/}} aus. Durch die verfügbaren Erweiterungen bietet es eine sehr gute Unterstützung bei der Entwicklung von "Semantik Web"-Applikationen. Sei es bei dem Erzeugen von RDF-Daten oder der Erstellung von Abfragen mittels SPARQL. Für die Gestaltung der Seiten, sowie als Unterstützung für die Mobilen-Endgeräte, wurde die jQuery-Mobile\footnote{\url{http://www.jquerymobile.com/}} Bibliothek eingesetzt. Durch diese Bibliothek werden auf Mobilen-Endgeräten z. B. Swipe-Gesten unterstützt. 
 
 \begin{figure}
 \centering
@@ -242,14 +239,14 @@ Bei der Wahl des Framework für diese Anwendung fiel die Entscheidung zu Gunsten
 \label{fig:example}
 \end{figure}
 
-Die Abbildung \ref{fig:example} zeigt eine Übersicht über den Technik-Stack. Die Applikation wurde in drei Bereiche unterteilt. Ein REST-Endpunkt, ein Crawler und die Ruby on Rails Applikation welche für die Präsentation der Daten verantwortlich ist.
+Die Abbildung \ref{fig:example} zeigt eine Übersicht über den Technik-Stack. Die Applikation wurde in drei Bereiche unterteilt. Ein REST-Endpunkt, ein Crawler und die "Ruby on Rails"-Applikation, welche für die Präsentation der Daten verantwortlich ist.
 
-Die Ruby on Rails Applikation welche die Informationen der FIFA-Seite crawlt und diese in einem REST-Endpunkt zur Verfügung stellt, ist ein Fork des Soccer for good\footnote{\url{https://github.com/estiens/world_cup_json/}} Projektes. Der entwickelte REST-Endpunkt ist auch separat über \texttt{http://sfgapi.herokuapp.com/matches} erreichbar. Der Service wurde erweitert, indem die Aufstellung der Mannschaften, Trainer sowie die Schiedsrichter für jedes Spiel angezeigt werden. 
+Die "Ruby on Rails"-Applikation, welche die Informationen der FIFA-Seite crawlt und diese in einem REST-Endpunkt zur Verfügung stellt, ist ein Fork des "Soccer for good"\footnote{\url{https://github.com/estiens/world_cup_json/}}-Projektes. Der entwickelte REST-Endpunkt ist auch separat über \texttt{http://sfgapi.herokuapp.com/matches} erreichbar. Der Service wurde erweitert, indem die Aufstellung der Mannschaften, Trainer sowie die Schiedsrichter für jedes Spiel angezeigt werden. 
 
-Als zweiter Teil der Anwendung wurde ein Crawler implementiert. Der Crawler benutzt die Informationen der REST-API, versieht diese mit den passenden Ontologien und erstellt einen Graphen. Für die Erstellung des Graphen wird das Ruby Gem rdf.rb\footnote{\url{https://github.com/ruby-rdf/rdf}} benutzt. Da die Anwendung sich zunächst auf ein sportliches Ereignis beschränkt, in diesem Fall die Fußball-Weltmeisterschaft, wurde für die Speicherung keine zusätzliche Datenbank verwendet. Stattdessen werden alle Datensätze als RDF-Tripel in einer Datei (\textit{worldcup.ttl}) gespeichert. Für die Serialisierung der Daten wurde hierbei die Turtle-Syntax verwendet. Diese Datei enthält über 10.000 Tripel und ist ca. 900 KB groß. Da durch kann der komplette Datenbestand, ohne Probleme, im RAM gehalten werden.
+Als zweiter Teil der Anwendung wurde ein Crawler implementiert. Der Crawler benutzt die Informationen der REST-API, versieht diese mit den passenden Ontologien und erstellt einen Graphen. Für die Erstellung des Graphen wird das Ruby Gem rdf.rb\footnote{\url{https://github.com/ruby-rdf/rdf}} benutzt. Da die Anwendung sich zunächst auf ein sportliches Ereignis beschränkt, in diesem Fall die Fußball-Weltmeisterschaft, wurde für die Speicherung keine zusätzliche Datenbank verwendet. Stattdessen werden alle Datensätze als RDF-Tripel in einer Datei (\textit{worldcup.ttl}) gespeichert. Für die Serialisierung der Daten wurde hierbei die Turtle-Syntax verwendet. Diese Datei enthält über 10.000 Tripel und ist ca. 900 KB groß. Dadurch kann der komplette Datenbestand, ohne Probleme, im RAM gehalten werden.
 %\newpage
 
-Für die Präsentation der Ergebnisse ist eine Ruby on Rails Applikation entwickelt worden, die zur Darstellung jQuery-Mobile verwendet. Für die Darstellung wurden verschiedene SPARQL-Abfragen erstellt, um die entsprechenden Informationen aus der Datei zu extrahieren. Da die Informationen in der Datei mit DBpedia verknüpft sind, mussten außerdem SPARQL-Abfragen für den SPARQL-Endpunkt von DBpedia, entwickelt werden. Die Anwendung stellt alle Spiele mit Ergebnissen, Toren und Torschützen da. Außerdem gibt es für jede Mannschaft eine Ansicht die den Kader darstellt. Die Informationen zu den jeweiligen Spieler kommen von DBpedia. Des Weiteren gibt es eine Ansicht der Stadien, welche die Position des Stadions mittels Google-Maps darstellt. Die Geo-Position der Stadien wird ebenfalls bei DBpedia abgefragt. Die Applikation ist unter \url{http://semanticwc.herokuapp.com/}, der zugehörige Quellcode unter \url{https://github.com/manuel84/semanticwc} zu erreichen.
+Für die Präsentation der Ergebnisse ist eine "Ruby on Rails"-Applikation entwickelt worden, die zur Darstellung jQuery-Mobile verwendet. Für die Darstellung wurden verschiedene SPARQL-Abfragen erstellt, um die entsprechenden Informationen aus der Datei zu extrahieren. Da die Informationen in der Datei mit DBpedia verknüpft sind, mussten außerdem SPARQL-Abfragen für den SPARQL-Endpunkt von DBpedia entwickelt werden. Die Anwendung stellt alle Spiele mit Ergebnissen, Toren und Torschützen da. Außerdem gibt es für jede Mannschaft eine Ansicht, die den Kader darstellt. Die Informationen zu den jeweiligen Spielern kommen von DBpedia. Des Weiteren gibt es eine Ansicht der Stadien, welche die Position des Stadions mittels Google-Maps darstellt. Die Geo-Position der Stadien wird ebenfalls bei DBpedia abgefragt. Die Applikation ist unter \url{http://semanticwc.herokuapp.com/}, der zugehörige Quellcode unter \url{https://github.com/manuel84/semanticwc} zu erreichen.
 
 \begin{figure}
 \centering
@@ -260,7 +257,7 @@ Für die Präsentation der Ergebnisse ist eine Ruby on Rails Applikation entwick
 \label{fig:screenshots}
 \end{figure}
 
-In der Abbildung \ref{fig:screenshots} sind mehrere Screenshots aus unterschiedlichen Ansichten der Anwendung zu sehen. In Abb. \ref{fig:matches_view} ist die Startseite zu sehen, auf der immer der aktuelle Spieltag anzeigt wird. Abb. \ref{fig:stadium_view} ist ein Ausschnitt aus der Ansicht, die Informationen zu Stadien präsentiert. Abb. \ref{fig:trainer_view} zeigt wiederum eine Ansicht, die die Informationen zu einem Trainer präsentiert. Da die Anwendung vorwiegend auf mobile Endgeräte ausgelegt ist, wurde bei der Gestaltung der einzelnen Ansichten ein großer Wert auf die Übersichtlichkeit gelegt. Für eine schnelle Navigation wurden zudem zwei Buttons eingepflegt. Der 'Home' Button, der in jeder Ansicht in der oberen linke Ecke zu sehen ist, führt immer zu der Seite mit den aktuellen Spieltag. Mit dem 'Bar' Button, in oberen rechten Ecke der Spiele-Ansicht, kann eine Seitenansicht mit mehreren Filteroptionen eingeblendet werden. Dabei kann der Inhalt nach dem Team, der Gruppe/Runde, dem austragenden Stadion oder dem Datum eingeschränkt werden.
+In der Abbildung \ref{fig:screenshots} sind mehrere Screenshots aus unterschiedlichen Ansichten der Anwendung zu sehen. In Abb. \ref{fig:matches_view} ist die Startseite zu sehen, auf der immer der aktuelle Spieltag anzeigt wird. Abb. \ref{fig:stadium_view} ist ein Ausschnitt aus der Ansicht, die Informationen zu Stadien präsentiert. Abb. \ref{fig:trainer_view} zeigt wiederum eine Ansicht, die die Informationen zu einem Trainer präsentiert. Da die Anwendung vorwiegend auf mobile Endgeräte ausgelegt ist, wurde bei der Gestaltung der einzelnen Ansichten großer Wert auf die Übersichtlichkeit gelegt. Für eine schnelle Navigation wurden zudem zwei Buttons eingepflegt. Der "Home"-Button, der in jeder Ansicht in der oberen linke Ecke zu sehen ist, führt immer zu der Seite mit dem aktuellen Spieltag. Mit dem "Bar"-Button, in der oberen rechten Ecke der Spiele-Ansicht, kann eine Seitenansicht mit mehreren Filteroptionen eingeblendet werden. Dabei kann der Inhalt nach dem Team, der Gruppe/Runde, dem austragenden Stadion oder dem Datum eingeschränkt werden.
 
 \begin{figure}
 \centering
@@ -280,11 +277,11 @@ In den Single-Views (Abb. \ref{fig:screenshots2}) kann mit einer Wischgeste von 
 
 \section{Fazit und Ausblick}
 
-Im Rahmen dieses Projekts wurde eine Anwendung entwickelt, die alle wichtigen Informationen, zu der 2014 in Brasilien stattfindenden FIFA Fußball-Weltmeister-schaft, bereithält. Als Informationsquelle dient hierbei die offizielle FIFA Webseite, die mit Daten aus der DBpedia ergänzt wurde. Die semantische Aufbereitung wurde mit Hilfe der BBC-Sport sowie der Socker-Voc Ontologie gestaltet.  
+Im Rahmen dieses Projekts wurde eine Anwendung entwickelt, die alle wichtigen Informationen, zu der 2014 in Brasilien stattfindenden FIFA Fußball-Weltmeister-schaft, bereithält. Als Informationsquelle dient hierbei die offizielle FIFA-Webseite, die mit Daten aus der DBpedia ergänzt wurde. Die semantische Aufbereitung wurde mit Hilfe der BBC-Sport sowie der Socker-Voc-Ontologie gestaltet.  
 
 Unsere Anwendung bietet eine solide Grundlage für Weiterentwicklungen, die nicht nur den Bereich Fußball betreffen. Bezogen auf die Fußballereignisse kann eine leichte Portierung auf die nächste Weltmeisterschaft oder Europameisterschaft stattfinden. Denkbar ist aber auch eine Abwandlung zur Informationspräsentation der Spiele der nationalen Meisterschaften, beispielsweise der Fußball-Bundesliga.
 
-Die Struktur- und Spieldaten der Weltmeisterschaft umfasst über 10.000 RDF-Tripel. Diese sind weitestgehend mit DBpedia-URIs verknüpft. Für die Datenabfragen wurden über 200 Zeilen SPARQL-Code implementiert. Leider ist eine Zuverlässigkeit von DBpedia nicht garantiert. Während der Implementierungsphase mussten wir Änderungen am Sparql-Endpoint feststellen, die zum Ausfall der Applikation führte. Des Weiteren hat man immer wieder mit unan-\\ gekündigten Wartungsarbeiten sowie Performanceproblemen seitens DBpedia zu kämpfen. Unserer Einschätzung steht das DBpedia-Projekt noch in den Kinderschuhen - die Daten sind veraltet, Bildreferenzen teilweise nicht mehr existent, Attribute werden inkonsistent mit Prädikaten versehen, Sprachattribute sind oftmals falsch. So entstanden große, unübersichtliche SPARQL-Abfragen, die auf viele optionale Prädikate der gleichen Semantik abzielen. Dieser Umstand ist insbesondere bei Namen zu beobachten, die bis zu 10 verschiedene Prädikate aus 5 Ontologien berücksichtigen. Die Qualität und Verfügbarkeit der Daten ist inkonsistent und führt nur durch heuristische Methoden zu akzeptablen Ergebnissen.
+Die Struktur- und Spieldaten der Weltmeisterschaft umfassen über 10.000 RDF-Tripel. Diese sind weitestgehend mit DBpedia-URIs verknüpft. Für die Datenabfragen wurden über 200 Zeilen SPARQL-Code implementiert. Leider ist eine Zuverlässigkeit von DBpedia nicht garantiert. Während der Implementierungsphase mussten wir Änderungen am Sparql-Endpoint feststellen, die zum Ausfall der Applikation führten. Des Weiteren hat man immer wieder mit unangekündigten Wartungsarbeiten sowie Performanceproblemen seitens DBpedia zu kämpfen. Unserer Einschätzung nach steht das DBpedia-Projekt noch in den Kinderschuhen - die Daten sind veraltet, Bildreferenzen teilweise nicht mehr existent, Attribute werden inkonsistent mit Prädikaten versehen, Sprachattribute sind oftmals falsch. So entstanden große, unübersichtliche SPARQL-Abfragen, die auf viele optionale Prädikate der gleichen Semantik abzielen. Dieser Umstand ist insbesondere bei Namen zu beobachten, die bis zu 10 verschiedene Prädikate aus 5 Ontologien berücksichtigen. Die Qualität und Verfügbarkeit der Daten ist inkonsistent und führt nur durch heuristische Methoden zu akzeptablen Ergebnissen.
 
 
 
